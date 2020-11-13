@@ -11,8 +11,20 @@ import genome_anno as ga
 gtf = ''
 def main():
     args = parseCmd()
+    init(args)
+
+    #read gtf files
     anno = ga.genome(gtf, 'anno1')
     anno.addGtf()
+    anno.print_gtf()
+
+    #compute features
+
+    #detect overaps
+
+    #combine gtfs
+
+    #write result
 
 def init(args):
     global gtf
