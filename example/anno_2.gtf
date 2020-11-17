@@ -1,0 +1,49 @@
+3L	GeneMark.hmm	stop_codon	18462228	18462230	.	-	0	gene_id "7789_g"; transcript_id "7789_t"; count "1_1";
+3L	GeneMark.hmm	CDS	18462228	18462540	.	-	1	gene_id "7789_g"; transcript_id "7789_t"; evidence "0_1"; cds_type "Terminal"; count "2_2";
+3L	GeneMark.hmm	exon	18462228	18462540	0	-	.	gene_id "7789_g"; transcript_id "7789_t"; evidence "0_1"; cds_type "Terminal"; count "2_2";
+3L	GeneMark.hmm	CDS	18462719	18463068	.	-	0	gene_id "7789_g"; transcript_id "7789_t"; evidence "1_0"; cds_type "Initial"; count "1_2";
+3L	GeneMark.hmm	exon	18462719	18463068	0	-	.	gene_id "7789_g"; transcript_id "7789_t"; evidence "1_0"; cds_type "Initial"; count "1_2";
+3L	GeneMark.hmm	start_codon	18463066	18463068	.	-	0	gene_id "7789_g"; transcript_id "7789_t"; count "1_1";
+3R	AUGUSTUS	start_codon	7686444	7686446	.	+	0	transcript_id "g5980.t1"; gene_id "g5980";
+3R	AUGUSTUS	CDS	7686444	7686623	1	+	0	transcript_id "g5980.t1"; gene_id "g5980";
+3R	AUGUSTUS	exon	7686444	7686623	.	+	.	transcript_id "g5980.t1"; gene_id "g5980";
+3R	AUGUSTUS	intron	7686624	7691514	1	+	.	transcript_id "g5980.t1"; gene_id "g5980";
+3R	AUGUSTUS	CDS	7691515	7691630	1	+	1	transcript_id "g5980.t1"; gene_id "g5980";
+3R	AUGUSTUS	exon	7691515	7691630	.	+	.	transcript_id "g5980.t1"; gene_id "g5980";
+3R	AUGUSTUS	intron	7691631	7691712	1	+	.	transcript_id "g5980.t1"; gene_id "g5980";
+3R	AUGUSTUS	CDS	7691713	7693700	1	+	2	transcript_id "g5980.t1"; gene_id "g5980";
+3R	AUGUSTUS	gene	7686444	7693700	1	+	.	g5980
+3R	AUGUSTUS	transcript	7686444	7693700	1	+	.	g5980.t1
+3R	AUGUSTUS	exon	7691713	7693700	.	+	.	transcript_id "g5980.t1"; gene_id "g5980";
+3R	AUGUSTUS	stop_codon	7693698	7693700	.	+	0	transcript_id "g5980.t1"; gene_id "g5980";
+X	AUGUSTUS	stop_codon	2065454	2065456	.	-	0	transcript_id "g12130.t1"; gene_id "g12130";
+X	AUGUSTUS	CDS	2065454	2065891	0.75	-	0	transcript_id "g12130.t1"; gene_id "g12130";
+X	AUGUSTUS	exon	2065454	2065891	.	-	.	transcript_id "g12130.t1"; gene_id "g12130";
+X	AUGUSTUS	intron	2065892	2065944	0.98	-	.	transcript_id "g12130.t1"; gene_id "g12130";
+X	AUGUSTUS	CDS	2065945	2066088	0.93	-	0	transcript_id "g12130.t1"; gene_id "g12130";
+X	AUGUSTUS	exon	2065945	2066088	.	-	.	transcript_id "g12130.t1"; gene_id "g12130";
+X	AUGUSTUS	intron	2066089	2066148	0.92	-	.	transcript_id "g12130.t1"; gene_id "g12130";
+X	AUGUSTUS	CDS	2066149	2066238	0.92	-	0	transcript_id "g12130.t1"; gene_id "g12130";
+X	AUGUSTUS	gene	2065454	2066238	0.7	-	.	g12130
+X	AUGUSTUS	transcript	2065454	2066238	0.7	-	.	g12130.t1
+X	AUGUSTUS	exon	2066149	2066238	.	-	.	transcript_id "g12130.t1"; gene_id "g12130";
+X	AUGUSTUS	start_codon	2066236	2066238	.	-	0	transcript_id "g12130.t1"; gene_id "g12130";
+2R	AUGUSTUS	stop_codon	16433896	16433898	.	-	0	transcript_id "g10583.t1"; gene_id "g10583";
+2R	AUGUSTUS	CDS	16433896	16435797	1	-	0	transcript_id "g10583.t1"; gene_id "g10583";
+2R	AUGUSTUS	exon	16433896	16435797	.	-	.	transcript_id "g10583.t1"; gene_id "g10583";
+2R	AUGUSTUS	start_codon	16435795	16435797	.	-	0	transcript_id "g10583.t1"; gene_id "g10583";
+2R	AUGUSTUS	gene	16433896	16435797	1	-	.	g10583
+2R	AUGUSTUS	transcript	16433896	16435797	1	-	.	g10583.t1
+2R	AUGUSTUS	stop_codon	24640803	24640805	.	-	0	transcript_id "g11793.t1"; gene_id "g11793";
+2R	AUGUSTUS	CDS	24640803	24642212	1	-	0	transcript_id "g11793.t1"; gene_id "g11793";
+2R	AUGUSTUS	exon	24640803	24642212	.	-	.	transcript_id "g11793.t1"; gene_id "g11793";
+2R	AUGUSTUS	start_codon	24642210	24642212	.	-	0	transcript_id "g11793.t1"; gene_id "g11793";
+2R	AUGUSTUS	gene	24640803	24642212	1	-	.	g11793
+2R	AUGUSTUS	transcript	24640803	24642212	1	-	.	g11793.t1
+2L	AUGUSTUS	start_codon	4686842	4686844	.	+	0	transcript_id "g562.t1"; gene_id "g562";
+2L	AUGUSTUS	CDS	4686842	4688705	1	+	0	transcript_id "g562.t1"; gene_id "g562";
+2L	AUGUSTUS	exon	4686842	4688705	.	+	.	transcript_id "g562.t1"; gene_id "g562";
+2L	AUGUSTUS	stop_codon	4688803	4688805	.	+	0	transcript_id "g562.t1"; gene_id "g562";
+2L	AUGUSTUS	gene	4686842	4688705	1	+	.	g562
+2L	AUGUSTUS	transcript	4686842	4688705	1	+	.	g562.t1
+
