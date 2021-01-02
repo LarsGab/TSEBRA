@@ -1,0 +1,9 @@
+3R	AUGUSTUS	exon	110	200	0	+	0	transcript_id "t1"; gene_id "t1_g";
+3R	AUGUSTUS	CDS	110	200	0	+	0	transcript_id "t1"; gene_id "t1_g";
+3R	AUGUSTUS	intron	201	799	0	+	0	transcript_id "t1"; gene_id "t1_g";
+3R	AUGUSTUS	exon	800	1000	0	+	0	transcript_id "t1"; gene_id "t1_g";
+3R	AUGUSTUS	CDS	800	1000	0	+	0	transcript_id "t1"; gene_id "t1_g";
+3R	AUGUSTUS	transcript	110	1000	0	+	0	t1
+3R	AUGUSTUS	exon	350	450	0	+	0	transcript_id "t2"; gene_id "t2_g";
+3R	AUGUSTUS	CDS	350	450	0	+	0	transcript_id "t2"; gene_id "t2_g";
+3R	AUGUSTUS	transcript	350	450	0	+	0	t2

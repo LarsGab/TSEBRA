@@ -1,0 +1,12 @@
+3R	AUGUSTUS	start_codon	100	102	10	+	.	src=E;mult=2;pri=4
+3R	AUGUSTUS	intron	501	599	10	+	.	src=E;mult=2;pri=4
+3R	AUGUSTUS	intron	501	599	10	+	.	src=P;mult=14;pri=4
+3R	AUGUSTUS	stop_codon	698	700	10	+	.	src=E;mult=2;pri=4
+3R	AUGUSTUS	intron	801	899	10	+	.	src=E;mult=2;pri=4
+2L	AUGUSTUS	intron	801	899	10	+	.	src=E;mult=2;pri=4
+3R	AUGUSTUS	intron	801	899	10	+	.	src=P;mult=24;pri=4
+3R	AUGUSTUS	intron	801	949	10	+	.	src=E;mult=2;pri=4
+3R	AUGUSTUS	intron	801	899	10	+	.	src=E;mult=2;pri=4
+3R	AUGUSTUS	intron	1001	1099	10	+	.	src=E;mult=2;pri=4
+3R	AUGUSTUS	stop_codon	1198	1200	10	+	.	src=E;mult=2;pri=4
+3R	AUGUSTUS	intron	1601	1699	10	+	.	src=E;mult=2;pri=4

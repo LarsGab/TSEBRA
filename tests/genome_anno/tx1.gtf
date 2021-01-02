@@ -1,0 +1,5 @@
+3L	GeneMark.hmm	stop_codon	18462228	18462230	.	-	0	gene_id "7789_g"; transcript_id "7789_t"; count "1_1";
+3L	GeneMark.hmm	CDS	18462228	18462540	.	-	1	gene_id "7789_g"; transcript_id "7789_t"; evidence "0_1"; cds_type "Terminal"; count "2_2";
+3L	GeneMark.hmm	exon	18462228	18462540	0	-	.	gene_id "7789_g"; transcript_id "7789_t"; evidence "0_1"; cds_type "Terminal"; count "2_2";
+3L	GeneMark.hmm	CDS	18462719	18463068	.	-	0	gene_id "7789_g"; transcript_id "7789_t"; evidence "1_0"; cds_type "Initial"; count "1_2";
+3L	GeneMark.hmm	exon	18462719	18463068	0	-	.	gene_id "7789_g"; transcript_id "7789_t"; evidence "1_0"; cds_type "Initial"; count "1_2";
