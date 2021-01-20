@@ -4,10 +4,10 @@ import sys
 import os
 
 def main():
-    sys.path.remove('/home/lars/work/combiner/combiner/bin')
-    sys.path.append('/home/lars/work/combiner/')
-    from combiner.bin.genome_anno import Anno
-    from combiner.bin.overlap_graph import Graph
+    sys.path.remove('/home/lars/work/prevco/bin/dev')
+    sys.path.append('/home/lars/work/prevco/bin')
+    from genome_anno import Anno
+    from overlap_graph import Graph
     args = parseCmd()
     gtf = [Anno(args.gtf, 'anno1')]
     gtf[0].addGtf()

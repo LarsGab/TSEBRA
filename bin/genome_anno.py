@@ -6,7 +6,7 @@
 # ==============================================================
 import os
 import multiprocessing as mp
-from combiner.bin.features import Features
+from features import Features
 
 callback = []
 feature_pref = {'numb_introns' : 2, \
@@ -18,20 +18,19 @@ class NotGtfFormat(Exception):
 
 class Transcript:
     # data structures and methods for a transcript
-
     def __init__(self, id, gene_id, chr, source_anno):
         self.id = id
         self.chr = chr
         self.gene_id = gene_id
         self.transcript_lines = {}
         self.gtf = []
-        self.prfl_match = []
         self.source_anno = source_anno
         self.start = -1
         self.end = -1
         self.cds_coords = []
 
     def add_line(self, line):
+        # add a single line from the gtf file to the transcript
         if not line[0] == self.chr:
             raise NotGtfFormat('File is not in gtf format. Error in line {}\n'.format('\t'.join(map(str, line)))
                 + 'Transcript ID is not unique')
