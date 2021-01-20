@@ -1,0 +1,17 @@
+track name=BRAKER2 color=200,0,0 decription="BRAKER2" visibility=3
+chr3R	AUGUSTUS	CDS	31755434	31755791	1	-	1	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	exon	31755434	31755791	.	-	.	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	CDS	31755854	31756386	1	-	0	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	exon	31755854	31756386	.	-	.	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	CDS	31756445	31756553	1	-	1	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	exon	31756445	31756553	.	-	.	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	CDS	31756641	31756781	1	-	1	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	exon	31756641	31756781	.	-	.	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	CDS	31756835	31757054	1	-	2	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	exon	31756835	31757054	.	-	.	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	CDS	31757111	31757228	1	-	0	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	exon	31757111	31757228	.	-	.	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	CDS	31757309	31757468	1	-	1	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	exon	31757309	31757468	.	-	.	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	CDS	31757775	31757977	1	-	0	transcript_id "g8982.t1"; gene_id "g8982";
+chr3R	AUGUSTUS	exon	31757775	31757977	.	-	.	transcript_id "g8982.t1"; gene_id "g8982";

@@ -23,7 +23,8 @@ class Node:
         # dict of edge_ids of edges that are incident
         # self.edge_to[id of incident Node] = edge_id
         self.edge_to = {}
-        self.feature_vector = [None] * 5
+        self.feature_vector = [None] * 7
+        self.evi_support = False
 
 class Graph:
     def __init__(self, genome_anno_lst, anno_pref='braker2'):
@@ -39,7 +40,7 @@ class Graph:
         self.decided_graph = []
         self.init_anno(genome_anno_lst)
         self.anno_pref = anno_pref
-        self.f = [[],[],[],[],[]]
+        self.f = [[],[],[],[],[],[],[]]
         self.ties = 0
 
     def init_anno(self, genome_anno_lst):
@@ -169,6 +170,8 @@ class Graph:
             tx = self.__tx_from_key__(key)
             new_node_feature = Node_features(tx, evi, self.anno_pref)
             self.nodes[key].feature_vector = new_node_feature.get_features()
+            if self.nodes[key].feature_vector[0] > 0  or self.nodes[key].feature_vector[1] > 0:
+                self.nodes[key].evi_support = True
 
     def add_edge_features(self, hintfiles):
         # hintfiles list of Hintfiles()
@@ -210,7 +213,10 @@ class Graph:
     def decide_node(self, edge):
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
-        for i in range(0,5):
+        # print(n1.feature_vector)
+        # print(n2.feature_vector)
+
+        for i in range(0,7):
             if n1.feature_vector[i] > n2.feature_vector[i]:
                 self.f[i].append(n2.id)
                 return n2.id
@@ -312,8 +318,9 @@ class Graph:
         for key in self.anno.keys():
             result.update({key : []})
         for node in self.decided_graph:
-            anno_id, tx_id = node.split(';')
-            result[anno_id].append([tx_id, self.nodes[node].component_id])
+            if self.nodes[node].evi_support:
+                anno_id, tx_id = node.split(';')
+                result[anno_id].append([tx_id, self.nodes[node].component_id])
         print('NODES: {}'.format(len(self.nodes.keys())))
         f = list(map(set, self.f))
         print('f1: {}'.format(len(f[0])))
@@ -329,5 +336,11 @@ class Graph:
         u = u.union(f[3])
         print('f5: {}'.format(len(f[4])))
         print('f5/f4/f3/f2/f1: {}'.format(len(f[4].difference(u))))
+        u = u.union(f[4])
+        print('f6: {}'.format(len(f[5])))
+        print('f6/...: {}'.format(len(f[5].difference(u))))
+        u = u.union(f[5])
+        print('f7: {}'.format(len(f[6])))
+        print('f7/...: {}'.format(len(f[6].difference(u))))
 
         return result

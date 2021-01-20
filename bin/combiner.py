@@ -16,12 +16,14 @@ hintfiles = []
 hints = []
 graph = None
 out = ''
+hint_source_weight = {'P' : 5, 'E' : 0.1, 'C' : 2,  'M' : 1}
 #feature_names = ['numb_introns' ,'transcript_length', 'intron_length', \
 #    'fraction_intron_leng']
 
 def main():
-    sys.path.remove('/home/lars/work/combiner/bin')
-    sys.path.append('/home/lars/work/')
+    combiner_bin = os.path.dirname(os.path.realpath(__file__))
+    sys.path.remove(combiner_bin)
+    sys.path.append(combiner_bin + '/../')
     from combiner.bin.genome_anno import Anno
     from combiner.bin.overlap_graph import Graph
     from combiner.bin.evidence import Evidence
@@ -40,7 +42,7 @@ def main():
         anno[-1].norm_tx_format()
         c += 1
 
-    evi = Evidence()
+    evi = Evidence(hint_source_weight)
     for h in hintfiles:
         print('READING HINTS')
         evi.add_hintfile(h)
@@ -109,13 +111,20 @@ def decide_component(component):
     return result[0][0]
 
 def init(args):
-    global gtf, hintfiles, threads, out
+    global gtf, hintfiles, threads, hint_source_weight, out
     if args.gtf:
         gtf = args.gtf.split(',')
     if args.hintfiles:
         hintfiles = args.hintfiles.split(',')
     if args.threads:
         threads = args.threads
+    if args.sw:
+        sw = args.sw.split(',')
+        i = 0
+        for key in ['P', 'E', 'C', 'M']:
+            hint_source_weight[key] = float(sw[i])
+            i += 1
+        print(hint_source_weight)
     if args.out:
         out = args.out
 def parseCmd():
@@ -134,6 +143,8 @@ def parseCmd():
         help='')
     parser.add_argument('--threads', type=int,
         help='')
+    parser.add_argument('--sw', type=str,
+        help='P,E,C,M')
     parser.add_argument('--out', type=str,
         help='')
     return parser.parse_args()

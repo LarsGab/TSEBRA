@@ -1,0 +1,1853 @@
+##gff-version 3
+##sequence-region   2L 1 23513713
+##sequence-region   2R 1 25286937
+##sequence-region   3L 1 28110228
+##sequence-region   3R 1 32079332
+##sequence-region   4 1 1348132
+##sequence-region   X 1 23542272
+##sequence-region   Y 1 3667353
+2L	FlyBase	gene	7529	9484	.	+	.	ID=FBgn0031208;Name=CR11023;Alias=CG11023;Ontology_term=GO:0070140,GO:0016926,GO:0005634,SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0011023,FlyBase_Annotation_IDs:CR11023,GB_protein:ACZ94128,GB_protein:AAO41164,GB:AI944728,GB:AJ564667,GB_protein:CAD92822,GB:BF495604,UniProt/TrEMBL:Q86BM6,INTERPRO:IPR003653,GB_protein:AGB92323,UniProt/TrEMBL:M9PAY1,EntrezGene:33155,UniProt/TrEMBL:E1JHP8,UniProt/TrEMBL:Q6KEV3,INTERPRO:IPR038765,EPD:CG11023_1,Fly-FISH:CG11023,GenomeRNAi:33155,KEGG_GENES:Dmel_CG11023;gbunit=AE014134;derived_computed_cyto=21A5-21A5
+2L	FlyBase	pseudogene	7529	9484	.	+	.	ID=FBtr0475186;Parent=FBgn0031208;Name=CR11023-RE;Dbxref=FlyBase_Annotation_IDs:CR11023-RE
+2L	FlyBase	exon	7529	8116	.	+	.	Parent=FBtr0475186
+2L	FlyBase	intron	8117	8192	.	+	.	Parent=FBtr0475186
+2L	FlyBase	exon	8193	9484	.	+	.	Parent=FBtr0475186
+###
+2L	FlyBase	gene	454754	455313	.	+	.	ID=FBgn0262510;Name=CR43080;Alias=CG43080,CG43080,CG4164;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43080,GenomeRNAi:12797870;derived_computed_cyto=21C2-21C2
+2L	FlyBase	pseudogene	454754	455313	.	+	.	ID=FBtr0305350;Parent=FBgn0262510;Name=CR43080-RB;Dbxref=FlyBase_Annotation_IDs:CR43080-RB
+2L	FlyBase	exon	454754	454929	.	+	.	Parent=FBtr0305350
+2L	FlyBase	intron	454930	454988	.	+	.	Parent=FBtr0305350
+2L	FlyBase	exon	454989	455313	.	+	.	Parent=FBtr0305350
+###
+2L	FlyBase	gene	2669228	2669622	.	+	.	ID=FBgn0286882;Name=CR46404;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46404;derived_computed_cyto=23A2-23A2
+2L	FlyBase	pseudogene	2669228	2669622	.	+	.	ID=FBtr0475060;Parent=FBgn0286882;Name=CR46404-RA;Dbxref=FlyBase_Annotation_IDs:CR46404-RA
+2L	FlyBase	exon	2669228	2669622	.	+	.	Parent=FBtr0475060
+###
+2L	FlyBase	gene	3162515	3163289	.	+	.	ID=FBgn0051953;Name=CR31953;Alias=FBgn0063614,CG31953,CG31953;Ontology_term=SO:0000042;Dbxref=FlyBase:FBan0031953,FlyBase_Annotation_IDs:CR31953,GB_protein:AAF51140,EntrezGene:261611,Fly-FISH:CG31953,Fly-FISH:CR31953,GenomeRNAi:12798541;gbunit=AE014134;derived_computed_cyto=23D4-23D4
+2L	FlyBase	pseudogene	3162515	3163289	.	+	.	ID=FBtr0077575;Parent=FBgn0051953;Name=CR31953-RA;Alias=CG31953-RA,CG31953-RA;Dbxref=REFSEQ:NM_164528,FlyBase_Annotation_IDs:CR31953-RA
+2L	FlyBase	exon	3162515	3162955	.	+	.	Parent=FBtr0077575
+2L	FlyBase	intron	3162956	3163015	.	+	.	Parent=FBtr0077575
+2L	FlyBase	exon	3163016	3163289	.	+	.	Parent=FBtr0077575
+###
+2L	FlyBase	gene	3171035	3172799	.	-	.	ID=FBgn0264745;Name=CR44003;Alias=FBgn0085435,FBgn0031511,CG44003,CG34406-1,CG3485,CG34406;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44003,GB:CZ466222,GB:CZ467693,GB:CZ483914,GB:CZ486796,GenomeRNAi:14462682;derived_computed_cyto=23D4-23D4
+2L	FlyBase	pseudogene	3171035	3172799	.	-	.	ID=FBtr0339505;Parent=FBgn0264745;Name=CR44003-RB;Dbxref=FlyBase_Annotation_IDs:CR44003-RB
+2L	FlyBase	exon	3171035	3172645	.	-	.	Parent=FBtr0339505
+2L	FlyBase	intron	3172646	3172701	.	-	.	Parent=FBtr0339505
+2L	FlyBase	exon	3172702	3172799	.	-	.	Parent=FBtr0339505
+###
+2L	FlyBase	gene	3694105	3694418	.	-	.	ID=FBgn0263096;Name=CR43364;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43364,GenomeRNAi:12798549;derived_computed_cyto=24B2-24B2
+2L	FlyBase	pseudogene	3694105	3694418	.	-	.	ID=FBtr0307120;Parent=FBgn0263096;Name=CR43364-RA;Dbxref=FlyBase_Annotation_IDs:CR43364-RA
+2L	FlyBase	exon	3694105	3694274	.	-	.	Parent=FBtr0307120
+2L	FlyBase	intron	3694275	3694336	.	-	.	Parent=FBtr0307120
+2L	FlyBase	exon	3694337	3694418	.	-	.	Parent=FBtr0307120
+###
+2L	FlyBase	gene	3785738	3786343	.	+	.	ID=FBgn0051958;Name=CR31958;Alias=FBgn0031570,CG10022,CG31958;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0031958,FlyBase_Annotation_IDs:CR31958,GB_protein:AAF51062,EntrezGene:33603,EPD:CG31958_1,GenomeRNAi:33603;gbunit=AE014134;derived_computed_cyto=24C4-24C4
+2L	FlyBase	pseudogene	3785738	3786343	.	+	.	ID=FBtr0445666;Parent=FBgn0051958;Name=CR31958-RB;Dbxref=FlyBase_Annotation_IDs:CR31958-RB
+2L	FlyBase	exon	3785738	3786343	.	+	.	Parent=FBtr0445666
+###
+2L	FlyBase	gene	4891327	4891845	.	-	.	ID=FBgn0267280;Name=CR45716;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45716,GenomeRNAi:19835380;derived_computed_cyto=25B1-25B1
+2L	FlyBase	pseudogene	4891327	4891845	.	-	.	ID=FBtr0346496;Parent=FBgn0267280;Name=CR45716-RA;Dbxref=FlyBase_Annotation_IDs:CR45716-RA
+2L	FlyBase	exon	4891327	4891845	.	-	.	Parent=FBtr0346496
+###
+2L	FlyBase	gene	5242699	5244239	.	+	.	ID=FBgn0046776;Name=CR14033;Alias=FBgn0040946,FBgn0046777,CG14033,BcDNA:LD26231,BcDNA:LD26673,CG14033;Ontology_term=SO:0000087,SO:0000077,SO:0000042;Dbxref=FlyBase:FBan0014033,FlyBase_Annotation_IDs:CR14033,GB_protein:AAF52231,GB:AA942444,GB:AW942851,GB:AY060378,GB_protein:AAL25417,EntrezGene:50420,UniProt/TrEMBL:Q9VMT0,Fly-FISH:CG14033,Fly-FISH:CR14033,GenomeRNAi:10178827;gbunit=AE014134;derived_computed_cyto=25D2-25D2
+2L	FlyBase	pseudogene	5242699	5244239	.	+	.	ID=FBtr0303308;Parent=FBgn0046776;Name=CR14033-RB;Dbxref=FlyBase_Annotation_IDs:CR14033-RB
+2L	FlyBase	exon	5242699	5244239	.	+	.	Parent=FBtr0303308
+###
+2L	FlyBase	gene	6972243	6972796	.	+	.	ID=FBgn0262616;Name=CR43142;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43142,GenomeRNAi:12798584;derived_computed_cyto=27D1-27D1
+2L	FlyBase	pseudogene	6972243	6972796	.	+	.	ID=FBtr0305347;Parent=FBgn0262616;Name=CR43142-RA;Dbxref=FlyBase_Annotation_IDs:CR43142-RA
+2L	FlyBase	exon	6972243	6972796	.	+	.	Parent=FBtr0305347
+###
+2L	FlyBase	gene	7399465	7399929	.	+	.	ID=FBgn0264888;Name=CR44079;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44079,GenomeRNAi:14462717;derived_computed_cyto=27F3-27F3
+2L	FlyBase	pseudogene	7399465	7399929	.	+	.	ID=FBtr0334837;Parent=FBgn0264888;Name=CR44079-RA;Dbxref=FlyBase_Annotation_IDs:CR44079-RA
+2L	FlyBase	exon	7399465	7399929	.	+	.	Parent=FBtr0334837
+###
+2L	FlyBase	gene	7839777	7840414	.	-	.	ID=FBgn0262546;Name=CR43100;Alias=CG43100;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:AFH03606,EntrezGene:12798302,FlyBase_Annotation_IDs:CR43100,GenomeRNAi:19836114;derived_computed_cyto=28D2-28D2
+2L	FlyBase	pseudogene	7839777	7840414	.	-	.	ID=FBtr0343422;Parent=FBgn0262546;Name=CR43100-RB;Dbxref=FlyBase_Annotation_IDs:CR43100-RB
+2L	FlyBase	exon	7839777	7840414	.	-	.	Parent=FBtr0343422
+###
+2L	FlyBase	gene	9251138	9251459	.	-	.	ID=FBgn0263985;Name=CR43734;Ontology_term=SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43734,GenomeRNAi:14462728;derived_computed_cyto=30A6-30A6
+2L	FlyBase	pseudogene	9251138	9251459	.	-	.	ID=FBtr0330023;Parent=FBgn0263985;Name=CR43734-RA;Dbxref=FlyBase_Annotation_IDs:CR43734-RA
+2L	FlyBase	exon	9251138	9251459	.	-	.	Parent=FBtr0330023
+###
+2L	FlyBase	gene	12453664	12454951	.	+	.	ID=FBgn0032437;Name=CR17024;Alias=CG17024;Ontology_term=SO:0000087,SO:0000043,SO:0000042;Dbxref=FlyBase:FBan0017024,FlyBase_Annotation_IDs:CR17024,GB_protein:AAF53199,EntrezGene:34664,GenomeRNAi:14462752;gbunit=AE014134;derived_computed_cyto=33E5-33E5
+2L	FlyBase	pseudogene	12453664	12454951	.	+	.	ID=FBtr0329828;Parent=FBgn0032437;Name=CR17024-RB;Dbxref=FlyBase_Annotation_IDs:CR17024-RB
+2L	FlyBase	exon	12453664	12454951	.	+	.	Parent=FBtr0329828
+###
+2L	FlyBase	gene	14746807	14747080	.	-	.	ID=FBgn0267014;Name=CR45458;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45458,GenomeRNAi:19835615;derived_computed_cyto=35B5-35B5
+2L	FlyBase	pseudogene	14746807	14747080	.	-	.	ID=FBtr0345971;Parent=FBgn0267014;Name=CR45458-RA;Dbxref=FlyBase_Annotation_IDs:CR45458-RA
+2L	FlyBase	exon	14746807	14747080	.	-	.	Parent=FBtr0345971
+###
+2L	FlyBase	gene	14781715	14783110	.	-	.	ID=FBgn0028867;Name=CR15280;Alias=CG15280,FBgn0032550,SPH204,BG:DS06874.4,CG15280;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:AAF53412.1,FlyBase:FBan0015280,FlyBase_Annotation_IDs:CR15280,GB:AE003411,GB_protein:AAF44894,GenomeRNAi:3885605;gbunit=AE014134;derived_computed_cyto=35B5-35B5
+2L	FlyBase	pseudogene	14781715	14783110	.	-	.	ID=FBtr0100604;Parent=FBgn0028867;Name=CR15280-RA;Alias=CG15280-RB,CR15280-RB;Dbxref=FlyBase_Annotation_IDs:CR15280-RA,REFSEQ:NR_002693
+2L	FlyBase	exon	14781715	14782478	.	-	.	Parent=FBtr0100604
+2L	FlyBase	intron	14782479	14782554	.	-	.	Parent=FBtr0100604
+2L	FlyBase	exon	14782555	14782733	.	-	.	Parent=FBtr0100604
+2L	FlyBase	intron	14782734	14782784	.	-	.	Parent=FBtr0100604
+2L	FlyBase	exon	14782785	14782830	.	-	.	Parent=FBtr0100604
+2L	FlyBase	intron	14782831	14782890	.	-	.	Parent=FBtr0100604
+2L	FlyBase	exon	14782891	14783110	.	-	.	Parent=FBtr0100604
+###
+2L	FlyBase	gene	15128559	15128971	.	+	.	ID=FBgn0265917;Name=CR44706;Alias=lincRNA.143,CG44706;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44706,GenomeRNAi:19835197;derived_computed_cyto=35C2-35C2
+2L	FlyBase	pseudogene	15128559	15128971	.	+	.	ID=FBtr0344629;Parent=FBgn0265917;Name=CR44706-RB;Dbxref=FlyBase_Annotation_IDs:CR44706-RB
+2L	FlyBase	exon	15128559	15128588	.	+	.	Parent=FBtr0344629
+2L	FlyBase	intron	15128589	15128642	.	+	.	Parent=FBtr0344629
+2L	FlyBase	exon	15128643	15128971	.	+	.	Parent=FBtr0344629
+###
+2L	FlyBase	gene	15836725	15837444	.	-	.	ID=FBgn0051822;Name=CR31822;Alias=CG31822,CG31822;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0031822,FlyBase_Annotation_IDs:CR31822,GB_protein:AAN10916,EntrezGene:318962,GenomeRNAi:10178843;gbunit=AE014134;derived_computed_cyto=35D4-35D4
+2L	FlyBase	pseudogene	15836725	15837444	.	-	.	ID=FBtr0304145;Parent=FBgn0051822;Name=CR31822-RB;Dbxref=FlyBase_Annotation_IDs:CR31822-RB
+2L	FlyBase	exon	15836725	15837270	.	-	.	Parent=FBtr0304145
+2L	FlyBase	intron	15837271	15837344	.	-	.	Parent=FBtr0304145
+2L	FlyBase	exon	15837345	15837444	.	-	.	Parent=FBtr0304145
+###
+2L	FlyBase	gene	15887905	15888583	.	+	.	ID=FBgn0051824;Name=CR31824;Alias=FBgn0032574,CG31824,CG18629,CG31824;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0031824,FlyBase_Annotation_IDs:CR31824,GB_protein:AAN10917,EntrezGene:318963,GenomeRNAi:10178848;gbunit=AE014134;derived_computed_cyto=35D6-35D6
+2L	FlyBase	pseudogene	15887905	15888583	.	+	.	ID=FBtr0303311;Parent=FBgn0051824;Name=CR31824-RB;Dbxref=FlyBase_Annotation_IDs:CR31824-RB
+2L	FlyBase	exon	15887905	15888583	.	+	.	Parent=FBtr0303311
+###
+2L	FlyBase	gene	16699921	16700825	.	-	.	ID=FBgn0263744;Name=CR43669;Alias=FBgn0051782,CG31782;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43669,GB:CZ489545,Fly-FISH:CG31782,GenomeRNAi:14462787;derived_computed_cyto=36A10-36A11
+2L	FlyBase	pseudogene	16699921	16700825	.	-	.	ID=FBtr0310393;Parent=FBgn0263744;Name=CR43669-RA;Dbxref=FlyBase_Annotation_IDs:CR43669-RA
+2L	FlyBase	exon	16699921	16700648	.	-	.	Parent=FBtr0310393
+2L	FlyBase	intron	16700649	16700708	.	-	.	Parent=FBtr0310393
+2L	FlyBase	exon	16700709	16700825	.	-	.	Parent=FBtr0310393
+###
+2L	FlyBase	gene	16700940	16703197	.	-	.	ID=FBgn0263745;Name=CR43670;Alias=FBgn0051782,FBgn0062488,CG31782,BcDNA:GM06363;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43670,GB:CZ478551,GB:CZ481758,GB:CZ481759,Fly-FISH:CR43670,GenomeRNAi:14462788;derived_computed_cyto=36A11-36A11
+2L	FlyBase	pseudogene	16700940	16703197	.	-	.	ID=FBtr0310392;Parent=FBgn0263745;Name=CR43670-RA;Dbxref=FlyBase_Annotation_IDs:CR43670-RA
+2L	FlyBase	exon	16700940	16702898	.	-	.	Parent=FBtr0310392
+2L	FlyBase	intron	16702899	16702972	.	-	.	Parent=FBtr0310392
+2L	FlyBase	exon	16702973	16703096	.	-	.	Parent=FBtr0310392
+2L	FlyBase	intron	16703097	16703148	.	-	.	Parent=FBtr0310392
+2L	FlyBase	exon	16703149	16703197	.	-	.	Parent=FBtr0310392
+###
+2L	FlyBase	gene	16728035	16729681	.	-	.	ID=FBgn0263746;Name=CR43671;Alias=FBgn0051782,CG31782;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43671,GB:CZ482442,GenomeRNAi:14462789;derived_computed_cyto=36A12-36A12
+2L	FlyBase	pseudogene	16728035	16729681	.	-	.	ID=FBtr0310391;Parent=FBgn0263746;Name=CR43671-RA;Dbxref=FlyBase_Annotation_IDs:CR43671-RA
+2L	FlyBase	exon	16728035	16729681	.	-	.	Parent=FBtr0310391
+###
+2L	FlyBase	gene	17175763	17176385	.	+	.	ID=FBgn0265544;Name=CR44394;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44394,GenomeRNAi:19835500;derived_computed_cyto=36C2-36C2
+2L	FlyBase	pseudogene	17175763	17176385	.	+	.	ID=FBtr0340179;Parent=FBgn0265544;Name=CR44394-RA;Dbxref=FlyBase_Annotation_IDs:CR44394-RA
+2L	FlyBase	exon	17175763	17176150	.	+	.	Parent=FBtr0340179
+2L	FlyBase	intron	17176151	17176202	.	+	.	Parent=FBtr0340179
+2L	FlyBase	exon	17176203	17176385	.	+	.	Parent=FBtr0340179
+###
+2L	FlyBase	gene	18665132	18667548	.	+	.	ID=FBgn0086200;Name=CR42490;Alias=BK003543,CG42490,HDC03087;Ontology_term=SO:0000087,SO:0000077,SO:0000042;Dbxref=EntrezGene:8674118,FlyBase_Annotation_IDs:CR42490,GB_protein:ACZ94294,GenomeRNAi:19835929;derived_computed_cyto=36F9-36F10
+2L	FlyBase	pseudogene	18665132	18666902	.	+	.	ID=FBtr0343809;Parent=FBgn0086200;Name=CR42490-RB;Dbxref=FlyBase_Annotation_IDs:CR42490-RB
+2L	FlyBase	exon	18665132	18665286	.	+	.	Parent=FBtr0343809
+2L	FlyBase	intron	18665287	18665675	.	+	.	Parent=FBtr0343809
+2L	FlyBase	exon	18665676	18665914	.	+	.	Parent=FBtr0343809
+2L	FlyBase	intron	18665915	18666352	.	+	.	Parent=FBtr0343809
+2L	FlyBase	intron	18666629	18666691	.	+	.	Parent=FBtr0343809
+2L	FlyBase	exon	18666692	18666902	.	+	.	Parent=FBtr0343809
+2L	FlyBase	pseudogene	18665132	18667548	.	+	.	ID=FBtr0347030;Parent=FBgn0086200;Name=CR42490-RC;Dbxref=FlyBase_Annotation_IDs:CR42490-RC
+2L	FlyBase	exon	18665132	18665914	.	+	.	Parent=FBtr0347030
+2L	FlyBase	intron	18665915	18666352	.	+	.	Parent=FBtr0347030
+2L	FlyBase	exon	18666353	18666628	.	+	.	Parent=FBtr0343809,FBtr0347030
+2L	FlyBase	intron	18666629	18666691	.	+	.	Parent=FBtr0347030
+2L	FlyBase	exon	18666692	18667548	.	+	.	Parent=FBtr0347030
+###
+2L	FlyBase	gene	19074992	19075412	.	-	.	ID=FBgn0053315;Name=CR33315;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33315,GenomeRNAi:3771801;gbunit=AE014134;derived_computed_cyto=37B13-37B13
+2L	FlyBase	pseudogene	19074992	19075412	.	-	.	ID=FBtr0081172;Parent=FBgn0053315;Name=CR33315-RA;Dbxref=FlyBase_Annotation_IDs:CR33315-RA,REFSEQ:NR_001666
+2L	FlyBase	exon	19074992	19075412	.	-	.	Parent=FBtr0081172
+###
+2L	FlyBase	gene	19557555	19558205	.	+	.	ID=FBgn0286913;Name=CR46413;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46413;derived_computed_cyto=37F1-37F1
+2L	FlyBase	pseudogene	19557555	19558205	.	+	.	ID=FBtr0475138;Parent=FBgn0286913;Name=CR46413-RA;Dbxref=FlyBase_Annotation_IDs:CR46413-RA
+2L	FlyBase	exon	19557555	19558205	.	+	.	Parent=FBtr0475138
+###
+2L	FlyBase	gene	19558916	19563049	.	+	.	ID=FBgn0264845;Name=Tep5Psi;fullname=Thioester-containing protein 5 pseudogene;Alias=FBgn0032808,FBgn0032807,FBgn0041179,CG13079,TEP5mel,CG13080,dTEPV,Thiolester containing protein V,TepV,TEP,CR13079,Thioester-containing protein 5,Tep5;Ontology_term=GO:0004866,GO:0005615,SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0013079,FlyBase_Annotation_IDs:CR13079,GB:CZ485907,EntrezGene:35250,GB:AC005128,INTERPRO:IPR036595,GB_protein:AAF53828,INTERPRO:IPR013783,UniProt/TrEMBL:Q9VIT8,INTERPRO:IPR001599,INTERPRO:IPR011626,INTERPRO:IPR009048,INTERPRO:IPR008930,GenomeRNAi:35250,KEGG_GENES:Dmel_CG13079;gbunit=AE014134;derived_computed_cyto=37F1-37F2,37F1-37F2
+2L	FlyBase	pseudogene	19558916	19563049	.	+	.	ID=FBtr0475187;Parent=FBgn0264845;Name=Tep5Psi-RC;Alias=Tep5-RC;Dbxref=FlyBase_Annotation_IDs:CR13079-RC
+2L	FlyBase	exon	19558916	19560271	.	+	.	Parent=FBtr0475187
+2L	FlyBase	intron	19560272	19560365	.	+	.	Parent=FBtr0475187
+2L	FlyBase	exon	19560366	19560826	.	+	.	Parent=FBtr0475187
+2L	FlyBase	intron	19560827	19560884	.	+	.	Parent=FBtr0475187
+2L	FlyBase	exon	19560885	19562805	.	+	.	Parent=FBtr0475187
+2L	FlyBase	intron	19562806	19562866	.	+	.	Parent=FBtr0475187
+2L	FlyBase	exon	19562867	19563049	.	+	.	Parent=FBtr0475187
+###
+2L	FlyBase	gene	19740839	19742506	.	-	.	ID=FBgn0266211;Name=CR44906;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44906,GenomeRNAi:19835381;derived_computed_cyto=38A2-38A2
+2L	FlyBase	pseudogene	19740839	19742506	.	-	.	ID=FBtr0343859;Parent=FBgn0266211;Name=CR44906-RA;Dbxref=FlyBase_Annotation_IDs:CR44906-RA
+2L	FlyBase	exon	19740839	19742506	.	-	.	Parent=FBtr0343859
+###
+2L	FlyBase	gene	20639015	20639578	.	+	.	ID=FBgn0262688;Name=CR43158;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43158,GenomeRNAi:12798031;derived_computed_cyto=38D1-38D1
+2L	FlyBase	pseudogene	20639015	20639578	.	+	.	ID=FBtr0305612;Parent=FBgn0262688;Name=CR43158-RA;Dbxref=FlyBase_Annotation_IDs:CR43158-RA
+2L	FlyBase	exon	20639015	20639065	.	+	.	Parent=FBtr0305612
+2L	FlyBase	intron	20639066	20639136	.	+	.	Parent=FBtr0305612
+2L	FlyBase	exon	20639137	20639578	.	+	.	Parent=FBtr0305612
+###
+2L	FlyBase	gene	20862547	20863775	.	-	.	ID=FBgn0032898;Name=CR9337;Alias=CG9337,FBpp0080977,CG9337-PA,FBgn0063270,CG9337,cg9337,BcDNA:GH05725;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:AAF53939.3,GB_protein:AAF53939.2,FlyBase:FBan0009337,FlyBase_Annotation_IDs:CR9337,GB:AI107857,GB:AW940207,GB:AY119476,GB_protein:AAM50130,Fly-FISH:CG9337,Fly-FISH:CR9337,GenomeRNAi:3885658;gbunit=AE014134;derived_computed_cyto=38F3-38F3
+2L	FlyBase	pseudogene	20862547	20863775	.	-	.	ID=FBtr0081448;Parent=FBgn0032898;Name=CR9337-RA;Alias=CG9337-RA,CG9337-RC,CG9337-RA;Dbxref=FlyBase_Annotation_IDs:CR9337-RA,REFSEQ:NR_002695
+2L	FlyBase	exon	20862547	20862939	.	-	.	Parent=FBtr0081448
+2L	FlyBase	intron	20862940	20862993	.	-	.	Parent=FBtr0081448
+2L	FlyBase	exon	20862994	20863082	.	-	.	Parent=FBtr0081448
+2L	FlyBase	intron	20863083	20863206	.	-	.	Parent=FBtr0081448
+2L	FlyBase	exon	20863207	20863296	.	-	.	Parent=FBtr0081448
+2L	FlyBase	intron	20863297	20863414	.	-	.	Parent=FBtr0081448
+2L	FlyBase	exon	20863415	20863775	.	-	.	Parent=FBtr0081448
+###
+2L	FlyBase	gene	20901134	20901524	.	+	.	ID=FBgn0053317;Name=CR33317;Alias=FBgn0032903,FBgn0032905,CG33317,CG18078,cg18092,CG18092,CG33317;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33317,EntrezGene:2768930,GenomeRNAi:8674083;gbunit=AE014134;derived_computed_cyto=38F4-38F4
+2L	FlyBase	pseudogene	20901134	20901524	.	+	.	ID=FBtr0089856;Parent=FBgn0053317;Name=CR33317-RA;Alias=CG33317-RA,CG33317-RA;Dbxref=REFSEQ:NM_206018,FlyBase_Annotation_IDs:CR33317-RA
+2L	FlyBase	exon	20901134	20901298	.	+	.	Parent=FBtr0089856
+2L	FlyBase	intron	20901299	20901338	.	+	.	Parent=FBtr0089856
+2L	FlyBase	exon	20901339	20901524	.	+	.	Parent=FBtr0089856
+###
+2L	FlyBase	gene	20923955	20924534	.	+	.	ID=FBgn0053318;Name=CR33318;Alias=FBgn0032905,CG18078;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33318,GenomeRNAi:3771976;gbunit=AE014134;derived_computed_cyto=38F6-38F6
+2L	FlyBase	pseudogene	20923955	20924534	.	+	.	ID=FBtr0089857;Parent=FBgn0053318;Name=CR33318-RA;Alias=CG33318-RA;Dbxref=FlyBase_Annotation_IDs:CR33318-RA,REFSEQ:NR_001677
+2L	FlyBase	exon	20923955	20924111	.	+	.	Parent=FBtr0089857
+2L	FlyBase	intron	20924112	20924168	.	+	.	Parent=FBtr0089857
+2L	FlyBase	exon	20924169	20924534	.	+	.	Parent=FBtr0089857
+###
+2L	FlyBase	gene	20928824	20929525	.	+	.	ID=FBgn0053319;Name=CR33319;Alias=FBgn0032905,CG18078;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33319,GB:AI944700,GB:AI945671,GenomeRNAi:3772025;gbunit=AE014134;derived_computed_cyto=38F6-38F6
+2L	FlyBase	pseudogene	20928824	20929525	.	+	.	ID=FBtr0089858;Parent=FBgn0053319;Name=CR33319-RA;Alias=CG33319-RA;Dbxref=FlyBase_Annotation_IDs:CR33319-RA,REFSEQ:NR_001678
+2L	FlyBase	exon	20928824	20929035	.	+	.	Parent=FBtr0089858
+2L	FlyBase	intron	20929036	20929144	.	+	.	Parent=FBtr0089858
+2L	FlyBase	exon	20929145	20929525	.	+	.	Parent=FBtr0089858
+###
+2L	FlyBase	gene	21282811	21284273	.	-	.	ID=FBgn0041336;Name=Cyp6t2Psi;fullname=Cyp6t2Psi;Alias=FBgn0051621,6t2p,Cyp6t2p,CR31621;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0031621,FlyBase_Annotation_IDs:CR31621,GenomeRNAi:3772355;gbunit=AE014134;derived_computed_cyto=39C1-39C1,39C1-39C3
+2L	FlyBase	pseudogene	21282811	21284273	.	-	.	ID=FBtr0330681;Parent=FBgn0041336;Name=Cyp6t2Psi-RB;Dbxref=FlyBase_Annotation_IDs:CR31621-RB
+2L	FlyBase	exon	21282811	21284273	.	-	.	Parent=FBtr0330681
+###
+2L	FlyBase	gene	21404181	21404495	.	+	.	ID=FBgn0051616;Name=His-Psi:CR31616;fullname=His-Psi:CR31616;Alias=bs28b08.y1,CR31616;Ontology_term=SO:0000087,SO:0005849,SO:0000042;Dbxref=FlyBase:FBan0031616,FlyBase_Annotation_IDs:CR31616,GB:BE662181,GenomeRNAi:3772087;gbunit=AE014134;derived_computed_cyto=39D3-39D3
+2L	FlyBase	pseudogene	21404181	21404495	.	+	.	ID=FBtr0085889;Parent=FBgn0051616;Name=His-Psi:CR31616-RA;Dbxref=FlyBase_Annotation_IDs:CR31616-RA,REFSEQ:NR_001356
+2L	FlyBase	exon	21404181	21404495	.	+	.	Parent=FBtr0085889
+###
+2L	FlyBase	gene	21404963	21405277	.	+	.	ID=FBgn0051615;Name=His-Psi:CR31615;fullname=His-Psi:CR31615;Alias=bs28b08.y1,CR31615;Ontology_term=SO:0000087,SO:0005849,SO:0000042;Dbxref=FlyBase:FBan0031615,FlyBase_Annotation_IDs:CR31615,GB:BE662181,GenomeRNAi:3772342;gbunit=AE014134;derived_computed_cyto=39D3-39D3
+2L	FlyBase	pseudogene	21404963	21405277	.	+	.	ID=FBtr0085890;Parent=FBgn0051615;Name=His-Psi:CR31615-RA;Dbxref=FlyBase_Annotation_IDs:CR31615-RA,REFSEQ:NR_001357
+2L	FlyBase	exon	21404963	21405277	.	+	.	Parent=FBtr0085890
+###
+2L	FlyBase	gene	21405668	21405970	.	+	.	ID=FBgn0051754;Name=His-Psi:CR31754;fullname=His-Psi:CR31754;Alias=CR31754,His-Psi:CR31754;Ontology_term=SO:0000087,SO:0005849,SO:0000042;Dbxref=FlyBase:FBan0031754,FlyBase_Annotation_IDs:CR31754,GenomeRNAi:3772639;gbunit=AE014134;derived_computed_cyto=39D3-39D3
+2L	FlyBase	pseudogene	21405668	21405970	.	+	.	ID=FBtr0085891;Parent=FBgn0051754;Name=His-Psi:CR31754-RA;Dbxref=FlyBase_Annotation_IDs:CR31754-RA,REFSEQ:NR_001358
+2L	FlyBase	exon	21405668	21405970	.	+	.	Parent=FBtr0085891
+###
+2L	FlyBase	gene	21418835	21419167	.	+	.	ID=FBgn0053802;Name=His-Psi:CR33802;fullname=His-Psi:CR33802;Alias=CR33802;Ontology_term=SO:0000087,SO:0005849,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33802,GenomeRNAi:3772594;gbunit=AE014134;derived_computed_cyto=39D3-39D3
+2L	FlyBase	pseudogene	21418835	21419167	.	+	.	ID=FBtr0091806;Parent=FBgn0053802;Name=His-Psi:CR33802-RA;Dbxref=FlyBase_Annotation_IDs:CR33802-RA,REFSEQ:NR_002515
+2L	FlyBase	exon	21418835	21419167	.	+	.	Parent=FBtr0091806
+###
+2L	FlyBase	gene	21428850	21429289	.	+	.	ID=FBgn0053805;Name=His-Psi:CR33805;fullname=His-Psi:CR33805;Alias=CR33805;Ontology_term=SO:0000087,SO:0005849,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33805,GenomeRNAi:3772371;gbunit=AE014134;derived_computed_cyto=39D3-39D3
+2L	FlyBase	pseudogene	21428850	21429289	.	+	.	ID=FBtr0091809;Parent=FBgn0053805;Name=His-Psi:CR33805-RA;Dbxref=FlyBase_Annotation_IDs:CR33805-RA,REFSEQ:NR_002517
+2L	FlyBase	exon	21428850	21429289	.	+	.	Parent=FBtr0091809
+###
+2L	FlyBase	gene	21438893	21439225	.	+	.	ID=FBgn0053811;Name=His-Psi:CR33811;fullname=His-Psi:CR33811;Alias=CR33811;Ontology_term=SO:0000087,SO:0005849,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33811,GenomeRNAi:3772437;gbunit=AE014134;derived_computed_cyto=39D3-39D3
+2L	FlyBase	pseudogene	21438893	21439225	.	+	.	ID=FBtr0091815;Parent=FBgn0053811;Name=His-Psi:CR33811-RA;Dbxref=FlyBase_Annotation_IDs:CR33811-RA,REFSEQ:NR_002519
+2L	FlyBase	exon	21438893	21439225	.	+	.	Parent=FBtr0091815
+###
+2L	FlyBase	gene	21539129	21541127	.	-	.	ID=FBgn0053867;Name=His-Psi:CR33867;fullname=His-Psi:CR33867;Alias=CR33867,His-Psi:CR33867;Ontology_term=SO:0000087,SO:0005849,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33867,GenomeRNAi:3771859;gbunit=AE014134;derived_computed_cyto=39E1-39E1
+2L	FlyBase	pseudogene	21539129	21541127	.	-	.	ID=FBtr0091871;Parent=FBgn0053867;Name=His-Psi:CR33867-RA;Dbxref=FlyBase_Annotation_IDs:CR33867-RA,REFSEQ:NR_002538
+2L	FlyBase	exon	21539129	21539458	.	-	.	Parent=FBtr0091871
+2L	FlyBase	intron	21539459	21540931	.	-	.	Parent=FBtr0091871
+2L	FlyBase	exon	21540932	21541127	.	-	.	Parent=FBtr0091871
+###
+2L	FlyBase	gene	21542864	21543688	.	+	.	ID=FBgn0051614;Name=His-Psi:CR31614;fullname=His-Psi:CR31614;Alias=CR31614;Ontology_term=SO:0000087,SO:0005849,SO:0000042;Dbxref=FlyBase:FBan0031614,FlyBase_Annotation_IDs:CR31614,GenomeRNAi:3772420;gbunit=AE014134;derived_computed_cyto=39E1-39E1
+2L	FlyBase	pseudogene	21542864	21543688	.	+	.	ID=FBtr0085895;Parent=FBgn0051614;Name=His-Psi:CR31614-RA;Alias=CR31614-RA;Dbxref=FlyBase_Annotation_IDs:CR31614-RA,REFSEQ:NR_001359
+2L	FlyBase	exon	21542864	21543688	.	+	.	Parent=FBtr0085895
+###
+2L	FlyBase	gene	21577205	21577676	.	-	.	ID=FBgn0260718;Name=CR42545;Ontology_term=SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42545,GenomeRNAi:8674105;derived_computed_cyto=39E2-39E2
+2L	FlyBase	pseudogene	21577205	21577676	.	-	.	ID=FBtr0301174;Parent=FBgn0260718;Name=CR42545-RA;Dbxref=FlyBase_Annotation_IDs:CR42545-RA
+2L	FlyBase	exon	21577205	21577549	.	-	.	Parent=FBtr0301174
+2L	FlyBase	intron	21577550	21577605	.	-	.	Parent=FBtr0301174
+2L	FlyBase	pseudogene	21577205	21577676	.	-	.	ID=FBtr0331679;Parent=FBgn0260718;Name=CR42545-RB;Dbxref=FlyBase_Annotation_IDs:CR42545-RB
+2L	FlyBase	exon	21577205	21577545	.	-	.	Parent=FBtr0331679
+2L	FlyBase	intron	21577546	21577605	.	-	.	Parent=FBtr0331679
+2L	FlyBase	exon	21577606	21577676	.	-	.	Parent=FBtr0301174,FBtr0331679
+###
+2L	FlyBase	gene	21589784	21590593	.	-	.	ID=FBgn0260719;Name=CR42546;Ontology_term=SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42546,GenomeRNAi:8674079;derived_computed_cyto=39E2-39E2
+2L	FlyBase	pseudogene	21589784	21590593	.	-	.	ID=FBtr0301172;Parent=FBgn0260719;Name=CR42546-RA;Dbxref=FlyBase_Annotation_IDs:CR42546-RA
+2L	FlyBase	exon	21589784	21590326	.	-	.	Parent=FBtr0301172
+2L	FlyBase	intron	21590327	21590377	.	-	.	Parent=FBtr0301172
+2L	FlyBase	exon	21590378	21590593	.	-	.	Parent=FBtr0301172
+###
+2L	FlyBase	gene	21837085	21837434	.	-	.	ID=FBgn0286927;Name=CR46424;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46424;derived_computed_cyto=40A5-40A5
+2L	FlyBase	pseudogene	21837085	21837434	.	-	.	ID=FBtr0475184;Parent=FBgn0286927;Name=CR46424-RA;Dbxref=FlyBase_Annotation_IDs:CR46424-RA
+2L	FlyBase	exon	21837085	21837434	.	-	.	Parent=FBtr0475184
+###
+2L	FlyBase	gene	22066517	22067170	.	+	.	ID=FBgn0051700;Name=CR31700;Alias=FBan0031700,CG31700,CG31700;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR31700,EntrezGene:318902,GenomeRNAi:8673969;gbunit=AE014134;derived_computed_cyto=40E1-40E1
+2L	FlyBase	pseudogene	22066517	22067170	.	+	.	ID=FBtr0301969;Parent=FBgn0051700;Name=CR31700-RB;Dbxref=FlyBase_Annotation_IDs:CR31700-RB
+2L	FlyBase	exon	22066517	22067170	.	+	.	Parent=FBtr0301969
+###
+2L	FlyBase	gene	22131026	22131127	.	-	.	ID=FBgn0262885;Name=CR43240;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43240,GenomeRNAi:12798532;derived_computed_cyto=40E5-40E5
+2L	FlyBase	pseudogene	22131026	22131127	.	-	.	ID=FBtr0306298;Parent=FBgn0262885;Name=CR43240-RA;Dbxref=FlyBase_Annotation_IDs:CR43240-RA
+2L	FlyBase	exon	22131026	22131127	.	-	.	Parent=FBtr0306298
+###
+2L	FlyBase	gene	22226152	22226771	.	+	.	ID=FBgn0042701;Name=CR12628;fullname=Microsomal glutathione S-transferase-like pseudogene;Alias=FBan0012628,FBgn0032985,CT35150,CG12628,Mgstl-Psi;Ontology_term=SO:0000087,SO:0000042,SO:0000043;Dbxref=FlyBase_Annotation_IDs:CR12628,GB:AC011757,GB:AC023752,GB:AY150729,GB_protein:AAN85288,GB:AY150730,GB_protein:AAN85289,GB:AY150731,GB_protein:AAN85290,GB:AY150732,GB:AY150733,GB_protein:AAN85291,GB:AY150734,GB_protein:AAN85292,GB:AY150735,GB_protein:AAN85293,GB:AY150736,GB_protein:AAN85294,GB:AY150737,GB:AY150738,GB:AY150739,GB_protein:AAN85295,GB:AY150740,GB_protein:AAN85296,GB:AY150741,GB_protein:AAN85297,GB:AY150742,GB_protein:AAN85298,GB:AY150743,GB_protein:AAN85299,GB:AY150744,GB_protein:AAN85300,GB:AY150745,GB_protein:AAN85301,GB:AY150746,GB:AY150747,GB_protein:AAN85302,GB:AY150748,GB_protein:AAN85303,GB:AY150749,GB_protein:AAN85304,GB:AY150750,GB:AY150751,GB:AY150752,GB:AY150753,GB:AY150754,GB:AY150755,GB_protein:AAN85305,GB:AY150756,GB:AY150757,GB:AY150758,GB:AY150759,GB_protein:AAN85306,GB:AY150760,GB_protein:AAN85307,GB:AY150761,GenomeRNAi:3772716;gbunit=AE014134;derived_computed_cyto=40F5-40F5
+2L	FlyBase	pseudogene	22226152	22226771	.	+	.	ID=FBtr0085952;Parent=FBgn0042701;Name=CR12628-RA;Alias=Mgstl-Psi-RA;Dbxref=FlyBase_Annotation_IDs:CR12628-RA,REFSEQ:NR_001360
+2L	FlyBase	exon	22226152	22226771	.	+	.	Parent=FBtr0085952
+###
+2L	FlyBase	gene	22340622	22341291	.	+	.	ID=FBgn0263091;Name=CR43359;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43359,GenomeRNAi:12798534;derived_computed_cyto=40F7-40F7
+2L	FlyBase	pseudogene	22340622	22341291	.	+	.	ID=FBtr0307110;Parent=FBgn0263091;Name=CR43359-RA;Dbxref=FlyBase_Annotation_IDs:CR43359-RA
+2L	FlyBase	exon	22340622	22341291	.	+	.	Parent=FBtr0307110
+###
+2L	FlyBase	gene	22949038	22950476	.	-	.	ID=FBgn0058005;Name=CR40005;Alias=FBan0040005,CG40005,G%26agr;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR40005,GB_protein:ABI31346,GB:AABU01002768,GB_protein:EAA46012,EntrezGene:3355118,GenomeRNAi:26067089;derived_experimental_cyto=40A-40B
+2L	FlyBase	pseudogene	22949038	22950476	.	-	.	ID=FBtr0347083;Parent=FBgn0058005;Name=CR40005-RD;Dbxref=FlyBase_Annotation_IDs:CR40005-RD
+2L	FlyBase	exon	22949038	22949647	.	-	.	Parent=FBtr0347083
+2L	FlyBase	intron	22949648	22949695	.	-	.	Parent=FBtr0347083
+2L	FlyBase	exon	22949696	22949835	.	-	.	Parent=FBtr0347083
+2L	FlyBase	intron	22949836	22949890	.	-	.	Parent=FBtr0347083
+2L	FlyBase	exon	22949891	22950022	.	-	.	Parent=FBtr0347083
+2L	FlyBase	intron	22950023	22950076	.	-	.	Parent=FBtr0347083
+2L	FlyBase	exon	22950077	22950282	.	-	.	Parent=FBtr0347083
+2L	FlyBase	intron	22950283	22950337	.	-	.	Parent=FBtr0347083
+2L	FlyBase	exon	22950338	22950476	.	-	.	Parent=FBtr0347083
+###
+2L	FlyBase	gene	23320508	23324192	.	-	.	ID=FBgn0260435;Name=CR42530;Ontology_term=SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42530,GenomeRNAi:8674040
+2L	FlyBase	pseudogene	23320508	23324192	.	-	.	ID=FBtr0302459;Parent=FBgn0260435;Name=CR42530-RA;Dbxref=FlyBase_Annotation_IDs:CR42530-RA
+2L	FlyBase	exon	23320508	23320671	.	-	.	Parent=FBtr0302459
+2L	FlyBase	intron	23320672	23323954	.	-	.	Parent=FBtr0302459
+2L	FlyBase	exon	23323955	23324192	.	-	.	Parent=FBtr0302459
+###
+2L	FlyBase	gene	23415916	23416153	.	+	.	ID=FBgn0085664;Name=CR41519;Alias=FBan0041519,CG41519,CG41519;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:EDP28162,GB_protein:EDP28161,FlyBase_Annotation_IDs:CR41519,EntrezGene:5740357,GenomeRNAi:10178967
+2L	FlyBase	pseudogene	23415916	23416153	.	+	.	ID=FBtr0304148;Parent=FBgn0085664;Name=CR41519-RC;Dbxref=FlyBase_Annotation_IDs:CR41519-RC
+2L	FlyBase	exon	23415916	23416153	.	+	.	Parent=FBtr0304148
+###
+2R	FlyBase	gene	1207416	1209312	.	+	.	ID=FBgn0261505;Name=CR42653;Alias=noncoding_9454;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42653,GenomeRNAi:10178879
+2R	FlyBase	pseudogene	1207416	1209312	.	+	.	ID=FBtr0334741;Parent=FBgn0261505;Name=CR42653-RB;Dbxref=FlyBase_Annotation_IDs:CR42653-RB
+2R	FlyBase	exon	1207416	1207613	.	+	.	Parent=FBtr0334741
+2R	FlyBase	intron	1207614	1207918	.	+	.	Parent=FBtr0334741
+2R	FlyBase	pseudogene	1207814	1209312	.	+	.	ID=FBtr0302396;Parent=FBgn0261505;Name=CR42653-RA;Dbxref=FlyBase_Annotation_IDs:CR42653-RA
+2R	FlyBase	exon	1207814	1207843	.	+	.	Parent=FBtr0302396
+2R	FlyBase	intron	1207844	1207918	.	+	.	Parent=FBtr0302396
+2R	FlyBase	exon	1207919	1208149	.	+	.	Parent=FBtr0334741,FBtr0302396
+2R	FlyBase	intron	1208150	1208258	.	+	.	Parent=FBtr0334741,FBtr0302396
+2R	FlyBase	exon	1208259	1208447	.	+	.	Parent=FBtr0334741,FBtr0302396
+2R	FlyBase	intron	1208448	1208564	.	+	.	Parent=FBtr0334741,FBtr0302396
+2R	FlyBase	exon	1208565	1209312	.	+	.	Parent=FBtr0334741,FBtr0302396
+###
+2R	FlyBase	gene	1211067	1213666	.	+	.	ID=FBgn0085732;Name=CR40190;Alias=FBan0040190;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR40190,GenomeRNAi:5740733
+2R	FlyBase	pseudogene	1211067	1213666	.	+	.	ID=FBtr0334740;Parent=FBgn0085732;Name=CR40190-RD;Dbxref=FlyBase_Annotation_IDs:CR40190-RD
+2R	FlyBase	exon	1211067	1211267	.	+	.	Parent=FBtr0334740
+2R	FlyBase	intron	1211268	1212215	.	+	.	Parent=FBtr0334740
+2R	FlyBase	pseudogene	1211544	1213666	.	+	.	ID=FBtr0334739;Parent=FBgn0085732;Name=CR40190-RC;Dbxref=FlyBase_Annotation_IDs:CR40190-RC
+2R	FlyBase	exon	1211544	1211639	.	+	.	Parent=FBtr0334739
+2R	FlyBase	intron	1211640	1212215	.	+	.	Parent=FBtr0334739
+2R	FlyBase	pseudogene	1211713	1213666	.	+	.	ID=FBtr0302397;Parent=FBgn0085732;Name=CR40190-RB;Dbxref=FlyBase_Annotation_IDs:CR40190-RB
+2R	FlyBase	exon	1211713	1211910	.	+	.	Parent=FBtr0302397
+2R	FlyBase	intron	1211911	1212215	.	+	.	Parent=FBtr0302397
+2R	FlyBase	exon	1212216	1212491	.	+	.	Parent=FBtr0334740,FBtr0334739,FBtr0302397
+2R	FlyBase	intron	1212492	1212555	.	+	.	Parent=FBtr0334740,FBtr0334739,FBtr0302397
+2R	FlyBase	exon	1212556	1212744	.	+	.	Parent=FBtr0334740,FBtr0334739,FBtr0302397
+2R	FlyBase	intron	1212745	1212835	.	+	.	Parent=FBtr0334740,FBtr0334739,FBtr0302397
+2R	FlyBase	exon	1212836	1213666	.	+	.	Parent=FBtr0334740,FBtr0334739,FBtr0302397
+###
+2R	FlyBase	gene	1618172	1618585	.	+	.	ID=FBgn0058068;Name=CR40068;Alias=FBan0040068,CG40068,CG40068;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB:AABU01002750,GB_protein:EAA46093,EntrezGene:3355068,FlyBase_Annotation_IDs:CR40068,GenomeRNAi:10178799
+2R	FlyBase	pseudogene	1618172	1618585	.	+	.	ID=FBtr0302912;Parent=FBgn0058068;Name=CR40068-RB;Alias=CG40068-RB;Dbxref=FlyBase_Annotation_IDs:CR40068-RB
+2R	FlyBase	exon	1618172	1618585	.	+	.	Parent=FBtr0302912
+###
+2R	FlyBase	gene	1806864	1807342	.	-	.	ID=FBgn0085784;Name=CR41379;Alias=FBan0041379;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41379,GenomeRNAi:5740188
+2R	FlyBase	pseudogene	1806864	1807342	.	-	.	ID=FBtr0114236;Parent=FBgn0085784;Name=CR41379-RA;Dbxref=FlyBase_Annotation_IDs:CR41379-RA,REFSEQ:NR_003970
+2R	FlyBase	exon	1806864	1807342	.	-	.	Parent=FBtr0114236
+###
+2R	FlyBase	gene	2374631	2375134	.	+	.	ID=FBgn0058100;Name=CR40100;Alias=FBan0040100,CG40100,CG40100;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR40100,GB:AABU01002743,GB_protein:EAA46126,EntrezGene:3355045,GenomeRNAi:10178936
+2R	FlyBase	pseudogene	2374631	2375134	.	+	.	ID=FBtr0302913;Parent=FBgn0058100;Name=CR40100-RB;Alias=CG40100-RB;Dbxref=FlyBase_Annotation_IDs:CR40100-RB
+2R	FlyBase	exon	2374631	2374882	.	+	.	Parent=FBtr0302913
+2R	FlyBase	intron	2374883	2374936	.	+	.	Parent=FBtr0302913
+2R	FlyBase	exon	2374937	2375055	.	+	.	Parent=FBtr0302913
+2R	FlyBase	intron	2375056	2375111	.	+	.	Parent=FBtr0302913
+2R	FlyBase	exon	2375112	2375134	.	+	.	Parent=FBtr0302913
+###
+2R	FlyBase	gene	3334854	3336160	.	+	.	ID=FBgn0085570;Name=CR41243;Alias=FBan0041243,CG41243,CG41243;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:EDP28131,EntrezGene:5740663,FlyBase_Annotation_IDs:CR41243,GenomeRNAi:10178783
+2R	FlyBase	pseudogene	3334854	3336160	.	+	.	ID=FBtr0302915;Parent=FBgn0085570;Name=CR41243-RB;Alias=CG41243-RB;Dbxref=FlyBase_Annotation_IDs:CR41243-RB
+2R	FlyBase	exon	3334854	3336160	.	+	.	Parent=FBtr0302915
+###
+2R	FlyBase	gene	3468952	3470223	.	-	.	ID=FBgn0266762;Name=CR45227;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45227,GenomeRNAi:19835669
+2R	FlyBase	pseudogene	3468952	3470223	.	-	.	ID=FBtr0345338;Parent=FBgn0266762;Name=CR45227-RA;Dbxref=FlyBase_Annotation_IDs:CR45227-RA
+2R	FlyBase	exon	3468952	3470223	.	-	.	Parent=FBtr0345338
+###
+2R	FlyBase	gene	3524536	3526047	.	-	.	ID=FBgn0085786;Name=CR41501;Alias=FBan0041501;Ontology_term=SO:0000043,SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41501,GenomeRNAi:5740839
+2R	FlyBase	pseudogene	3524536	3526047	.	-	.	ID=FBtr0302232;Parent=FBgn0085786;Name=CR41501-RC;Dbxref=FlyBase_Annotation_IDs:CR41501-RC
+2R	FlyBase	exon	3524536	3526047	.	-	.	Parent=FBtr0302232
+###
+2R	FlyBase	gene	3590030	3590420	.	-	.	ID=FBgn0058461;Name=CR40461;Alias=CG40461,FBan0040461,CG40461,His2B:CG40461;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB:AABU01000145,GB_protein:EAA46339,FlyBase_Annotation_IDs:CR40461,EntrezGene:3354848,GenomeRNAi:10178849
+2R	FlyBase	pseudogene	3590030	3590420	.	-	.	ID=FBtr0302353;Parent=FBgn0058461;Name=CR40461-RB;Dbxref=FlyBase_Annotation_IDs:CR40461-RB
+2R	FlyBase	exon	3590030	3590420	.	-	.	Parent=FBtr0302353
+###
+2R	FlyBase	gene	4730439	4731241	.	-	.	ID=FBgn0039979;Name=CR40282;Alias=FBan0017706,FBgn0058282,CG40282,CG17706,CG40282;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:EAA46002,GB:AABU01002769,FlyBase_Annotation_IDs:CR40282,EntrezGene:3355140,GenomeRNAi:12798062;derived_computed_cyto=41C1-41C1,41C1-41C6
+2R	FlyBase	pseudogene	4730439	4731241	.	-	.	ID=FBtr0307119;Parent=FBgn0039979;Name=CR40282-RB;Dbxref=FlyBase_Annotation_IDs:CR40282-RB
+2R	FlyBase	exon	4730439	4731241	.	-	.	Parent=FBtr0307119
+###
+2R	FlyBase	gene	4731514	4732343	.	+	.	ID=FBgn0084049;Name=CR41440;Alias=FBan0041440,FBgn0058287,CG40287;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41440,GB:AABU01002769,GB_protein:EAA45989,GenomeRNAi:4379873;derived_computed_cyto=41C1-41C1,41C1-41C6
+2R	FlyBase	pseudogene	4731514	4732343	.	+	.	ID=FBtr0111304;Parent=FBgn0084049;Name=CR41440-RA;Dbxref=FlyBase_Annotation_IDs:CR41440-RA,REFSEQ:NR_003116
+2R	FlyBase	exon	4731514	4731912	.	+	.	Parent=FBtr0111304
+2R	FlyBase	intron	4731913	4732211	.	+	.	Parent=FBtr0111304
+2R	FlyBase	exon	4732212	4732343	.	+	.	Parent=FBtr0111304
+###
+2R	FlyBase	gene	4780311	4783646	.	-	.	ID=FBgn0262970;Name=CR43281;Ontology_term=SO:0000043,SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43281,GenomeRNAi:12798063;derived_computed_cyto=41C2-41C2
+2R	FlyBase	pseudogene	4780311	4783646	.	-	.	ID=FBtr0306722;Parent=FBgn0262970;Name=CR43281-RA;Dbxref=FlyBase_Annotation_IDs:CR43281-RA
+2R	FlyBase	exon	4780311	4780840	.	-	.	Parent=FBtr0306722
+2R	FlyBase	intron	4780841	4782911	.	-	.	Parent=FBtr0306722
+2R	FlyBase	exon	4782912	4783646	.	-	.	Parent=FBtr0306722
+###
+2R	FlyBase	gene	5081884	5082431	.	-	.	ID=FBgn0263092;Name=CR43360;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43360,GenomeRNAi:12798064;derived_computed_cyto=41D2-41D3
+2R	FlyBase	pseudogene	5081884	5082431	.	-	.	ID=FBtr0307111;Parent=FBgn0263092;Name=CR43360-RA;Dbxref=FlyBase_Annotation_IDs:CR43360-RA
+2R	FlyBase	exon	5081884	5082431	.	-	.	Parent=FBtr0307111
+###
+2R	FlyBase	gene	7000154	7001696	.	+	.	ID=FBgn0261856;Name=CR42785;Alias=noncoding_4773;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42785,GenomeRNAi:10178921;derived_computed_cyto=42E4-42E4
+2R	FlyBase	pseudogene	7000154	7001696	.	+	.	ID=FBtr0303442;Parent=FBgn0261856;Name=CR42785-RA;Dbxref=FlyBase_Annotation_IDs:CR42785-RA
+2R	FlyBase	exon	7000154	7000344	.	+	.	Parent=FBtr0303442
+2R	FlyBase	intron	7000345	7001437	.	+	.	Parent=FBtr0303442
+2R	FlyBase	exon	7001438	7001696	.	+	.	Parent=FBtr0303442
+###
+2R	FlyBase	gene	7039130	7039813	.	+	.	ID=FBgn0033131;Name=CR12842;Alias=CG12842,CG12842;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0012842,FlyBase_Annotation_IDs:CR12842,GB_protein:AAF59306,EntrezGene:35619,GenomeRNAi:12798079;gbunit=AE013599;derived_computed_cyto=42E5-42E5
+2R	FlyBase	pseudogene	7039130	7039813	.	+	.	ID=FBtr0306743;Parent=FBgn0033131;Name=CR12842-RB;Dbxref=FlyBase_Annotation_IDs:CR12842-RB
+2R	FlyBase	exon	7039130	7039258	.	+	.	Parent=FBtr0306743
+2R	FlyBase	intron	7039259	7039316	.	+	.	Parent=FBtr0306743
+2R	FlyBase	exon	7039317	7039813	.	+	.	Parent=FBtr0306743
+###
+2R	FlyBase	gene	8157257	8157914	.	-	.	ID=FBgn0050374;Name=CR30374;Alias=CG30374,CG30374;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0030374,FlyBase_Annotation_IDs:CR30374,GB_protein:AAM68853,EntrezGene:246574,GenomeRNAi:10178922;gbunit=AE013599;derived_computed_cyto=44B5-44B5
+2R	FlyBase	pseudogene	8157257	8157914	.	-	.	ID=FBtr0303310;Parent=FBgn0050374;Name=CR30374-RB;Dbxref=FlyBase_Annotation_IDs:CR30374-RB
+2R	FlyBase	exon	8157257	8157772	.	-	.	Parent=FBtr0303310
+2R	FlyBase	intron	8157773	8157782	.	-	.	Parent=FBtr0303310
+2R	FlyBase	exon	8157783	8157827	.	-	.	Parent=FBtr0303310
+2R	FlyBase	intron	8157828	8157875	.	-	.	Parent=FBtr0303310
+2R	FlyBase	exon	8157876	8157914	.	-	.	Parent=FBtr0303310
+###
+2R	FlyBase	gene	8432886	8433384	.	-	.	ID=FBgn0011812;Name=Lcp1Psi;fullname=Larval cuticle protein 1 pseudogene;Alias=FBgn0050367,PsiLcp,LcpPsi,Lcp1Psi,Psi1,PsiI,Psigene I,CG30367,CR30367;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0030367,FlyBase_Annotation_IDs:CR30367,GB:U17196,GB:U17197,GB:U17198,GB:U17199,GB:U17200,GB:U17201,GB:U17202,GB:U17203,GB:U17204,GB:U17205,GB:V00203,GenomeRNAi:3772468;gbunit=AE013599;derived_computed_cyto=44C6-44C6
+2R	FlyBase	pseudogene	8432886	8433384	.	-	.	ID=FBtr0088762;Parent=FBgn0011812;Name=Lcp1Psi-RA;Dbxref=FlyBase_Annotation_IDs:CR30367-RA,REFSEQ:NR_001387
+2R	FlyBase	exon	8432886	8433309	.	-	.	Parent=FBtr0088762
+2R	FlyBase	intron	8433310	8433352	.	-	.	Parent=FBtr0088762
+2R	FlyBase	exon	8433353	8433384	.	-	.	Parent=FBtr0088762
+###
+2R	FlyBase	gene	8569137	8570306	.	+	.	ID=FBgn0033303;Name=Cyp6a15Psi;fullname=Cyp6a15Psi;Alias=6a15p,Cyp6a15p,CG14753,CR14753;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0014753,FlyBase_Annotation_IDs:CR14753,GenomeRNAi:3772535;gbunit=AE013599;derived_computed_cyto=44D3-44D3,44D-44D
+2R	FlyBase	pseudogene	8569137	8570306	.	+	.	ID=FBtr0088689;Parent=FBgn0033303;Name=Cyp6a15Psi-RA;Dbxref=FlyBase_Annotation_IDs:CR14753-RA,REFSEQ:NR_001388
+2R	FlyBase	exon	8569137	8569768	.	+	.	Parent=FBtr0088689
+2R	FlyBase	intron	8569769	8569882	.	+	.	Parent=FBtr0088689
+2R	FlyBase	exon	8569883	8570306	.	+	.	Parent=FBtr0088689
+2R	FlyBase	pseudogene	8569137	8570306	.	+	.	ID=FBtr0333553;Parent=FBgn0033303;Name=Cyp6a15Psi-RB;Dbxref=FlyBase_Annotation_IDs:CR14753-RB
+2R	FlyBase	exon	8569137	8569636	.	+	.	Parent=FBtr0333553
+2R	FlyBase	intron	8569637	8569977	.	+	.	Parent=FBtr0333553
+2R	FlyBase	exon	8569978	8570306	.	+	.	Parent=FBtr0333553
+###
+2R	FlyBase	gene	10376238	10377540	.	-	.	ID=FBgn0265141;Name=Ir47b;fullname=Ionotropic receptor 47b;Alias=DmelIR47b,CR44210;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44210,GenomeRNAi:14462576;derived_computed_cyto=47A2-47A2
+2R	FlyBase	pseudogene	10376238	10377540	.	-	.	ID=FBtr0336973;Parent=FBgn0265141;Name=Ir47b-RA;Alias=CR44210-RA;Dbxref=FlyBase_Annotation_IDs:CR44210-RA
+2R	FlyBase	exon	10376238	10377540	.	-	.	Parent=FBtr0336973
+###
+2R	FlyBase	gene	10408504	10408953	.	-	.	ID=FBgn0262806;Name=CR43177;Alias=CG43177;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:AFH08007,EntrezGene:12798396,FlyBase_Annotation_IDs:CR43177,GenomeRNAi:26067102;derived_computed_cyto=47A6-47A6
+2R	FlyBase	pseudogene	10408504	10408953	.	-	.	ID=FBtr0475130;Parent=FBgn0262806;Name=CR43177-RC;Dbxref=FlyBase_Annotation_IDs:CR43177-RC
+2R	FlyBase	exon	10408504	10408953	.	-	.	Parent=FBtr0475130
+###
+2R	FlyBase	gene	11122387	11123389	.	-	.	ID=FBgn0286920;Name=CR46420;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46420;derived_computed_cyto=47D4-47D4
+2R	FlyBase	pseudogene	11122387	11123389	.	-	.	ID=FBtr0475149;Parent=FBgn0286920;Name=CR46420-RA;Dbxref=FlyBase_Annotation_IDs:CR46420-RA
+2R	FlyBase	exon	11122387	11122697	.	-	.	Parent=FBtr0475149
+2R	FlyBase	intron	11122698	11122759	.	-	.	Parent=FBtr0475149
+2R	FlyBase	exon	11122760	11122863	.	-	.	Parent=FBtr0475149
+2R	FlyBase	intron	11122864	11122931	.	-	.	Parent=FBtr0475149
+2R	FlyBase	exon	11122932	11123389	.	-	.	Parent=FBtr0475149
+###
+2R	FlyBase	gene	11126156	11127155	.	-	.	ID=FBgn0286921;Name=CR46421;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46421;derived_computed_cyto=47D4-47D4
+2R	FlyBase	pseudogene	11126156	11127155	.	-	.	ID=FBtr0475148;Parent=FBgn0286921;Name=CR46421-RA;Dbxref=FlyBase_Annotation_IDs:CR46421-RA
+2R	FlyBase	exon	11126156	11126484	.	-	.	Parent=FBtr0475148
+2R	FlyBase	intron	11126485	11126523	.	-	.	Parent=FBtr0475148
+2R	FlyBase	exon	11126524	11126629	.	-	.	Parent=FBtr0475148
+2R	FlyBase	intron	11126630	11126695	.	-	.	Parent=FBtr0475148
+2R	FlyBase	exon	11126696	11127155	.	-	.	Parent=FBtr0475148
+###
+2R	FlyBase	gene	11246105	11246654	.	+	.	ID=FBgn0050029;Name=CR30029;Alias=FBgn0033595,FBgn0063116,CG34226,FBgn0085255,CG30029,CG18337,BcDNA:LP05669,CG34226;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0030029,FlyBase_Annotation_IDs:CR30029,GB:AI257341,GB:AY119030,GB_protein:AAM50890,Fly-FISH:CG30029,Fly-FISH:CR30029,GenomeRNAi:5740197;gbunit=AE013599;derived_computed_cyto=47E1-47E1
+2R	FlyBase	pseudogene	11246105	11246514	.	+	.	ID=FBtr0339480;Parent=FBgn0050029;Name=CR30029-RB;Dbxref=FlyBase_Annotation_IDs:CR30029-RB
+2R	FlyBase	exon	11246105	11246514	.	+	.	Parent=FBtr0339480
+2R	FlyBase	pseudogene	11246105	11246654	.	+	.	ID=FBtr0088109;Parent=FBgn0050029;Name=CR30029-RA;Dbxref=FlyBase_Annotation_IDs:CR30029-RA,REFSEQ:NR_003791
+2R	FlyBase	exon	11246105	11246654	.	+	.	Parent=FBtr0088109
+###
+2R	FlyBase	gene	11699092	11700317	.	-	.	ID=FBgn0053471;Name=Ir48a;fullname=Ionotropic receptor 48a;Alias=DmelIR48a,CR33471,IR48a,ionotropic receptor 48a;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33471,GenomeRNAi:3772197;gbunit=AE013599;derived_computed_cyto=48C2-48C2
+2R	FlyBase	pseudogene	11699092	11700317	.	-	.	ID=FBtr0088081;Parent=FBgn0053471;Name=Ir48a-RA;Alias=CR33471-RA;Dbxref=FlyBase_Annotation_IDs:CR33471-RA,REFSEQ:NR_001717
+2R	FlyBase	exon	11699092	11700317	.	-	.	Parent=FBtr0088081
+###
+2R	FlyBase	gene	11866943	11867579	.	+	.	ID=FBgn0260437;Name=CR42532;Ontology_term=SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42532,GenomeRNAi:8674101;derived_computed_cyto=48C5-48C5
+2R	FlyBase	pseudogene	11866943	11867579	.	+	.	ID=FBtr0300860;Parent=FBgn0260437;Name=CR42532-RA;Dbxref=FlyBase_Annotation_IDs:CR42532-RA
+2R	FlyBase	exon	11866943	11867186	.	+	.	Parent=FBtr0300860
+2R	FlyBase	intron	11867187	11867239	.	+	.	Parent=FBtr0300860
+2R	FlyBase	exon	11867240	11867383	.	+	.	Parent=FBtr0300860
+2R	FlyBase	intron	11867384	11867458	.	+	.	Parent=FBtr0300860
+2R	FlyBase	exon	11867459	11867579	.	+	.	Parent=FBtr0300860
+###
+2R	FlyBase	gene	12336733	12336804	.	+	.	ID=FBgn0011877;Name=tRNA:His-GTG-2-1Psi;fullname=transfer RNA:Histidine-GTG 2-1 pseudogene;Alias=FBgn0050253,FBgn0060290,His-tRNA,AE002787.trna36-Undet,tRNA:-?:AE002787,CR30253,tRNA:hisPsi,chr2R.trna18-Undet???,tRNA-Und-NNN-2-1,tRNA:His-GTG-2-1Psi,transfer RNA:his:pseudogene,tRNA:HPsi;Ontology_term=SO:0000663,SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0030253,FlyBase_Annotation_IDs:CR30253,GB:M10226,EntrezGene:3772656,GenomeRNAi:3772656;gbunit=AE013599;derived_computed_cyto=48F10-48F10
+2R	FlyBase	pseudogene	12336733	12336804	.	+	.	ID=FBtr0087901;Parent=FBgn0011877;Name=tRNA:His-GTG-2-1Psi-RA;Alias=tRNA:HPsi-RA;Dbxref=FlyBase_Annotation_IDs:CR30253-RA,REFSEQ:NR_001723
+2R	FlyBase	exon	12336733	12336804	.	+	.	Parent=FBtr0087901
+###
+2R	FlyBase	gene	12363320	12366579	.	+	.	ID=FBgn0053013;Name=CR33013;Alias=FBgn0033719,FBgn0050041,CG30041,CG13161,CG33013;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0033013,FlyBase_Annotation_IDs:CR33013,GB_protein:AAO41398,GB:CZ487079,GB:CZ487080,EntrezGene:318830,GenomeRNAi:14462581;gbunit=AE013599;derived_computed_cyto=49A1-49A1
+2R	FlyBase	pseudogene	12363320	12366579	.	+	.	ID=FBtr0334031;Parent=FBgn0053013;Name=CR33013-RE;Dbxref=FlyBase_Annotation_IDs:CR33013-RE
+2R	FlyBase	exon	12363320	12363392	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12363393	12363448	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12363449	12363929	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12363930	12363984	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12363985	12364159	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12364160	12364215	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12364216	12364300	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12364301	12364371	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12364372	12364492	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12364493	12364546	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12364547	12364701	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12364702	12364752	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12364753	12365139	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12365140	12365197	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12365198	12365378	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12365379	12365438	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12365439	12365625	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12365626	12365681	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12365682	12365825	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12365826	12365881	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12365882	12366363	.	+	.	Parent=FBtr0334031
+2R	FlyBase	intron	12366364	12366414	.	+	.	Parent=FBtr0334031
+2R	FlyBase	exon	12366415	12366579	.	+	.	Parent=FBtr0334031
+###
+2R	FlyBase	gene	12419702	12420291	.	-	.	ID=FBgn0267691;Name=CR46027;Alias=mdcds_23070;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46027,GenomeRNAi:26067346;derived_computed_cyto=49A4-49A4
+2R	FlyBase	pseudogene	12419702	12420291	.	-	.	ID=FBtr0347195;Parent=FBgn0267691;Name=CR46027-RA;Dbxref=FlyBase_Annotation_IDs:CR46027-RA
+2R	FlyBase	exon	12419702	12420291	.	-	.	Parent=FBtr0347195
+###
+2R	FlyBase	gene	13410269	13410591	.	-	.	ID=FBgn0267026;Name=CR45470;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45470,GenomeRNAi:19836122;derived_computed_cyto=50A5-50A5
+2R	FlyBase	pseudogene	13410269	13410591	.	-	.	ID=FBtr0345979;Parent=FBgn0267026;Name=CR45470-RB;Dbxref=FlyBase_Annotation_IDs:CR45470-RB
+2R	FlyBase	exon	13410269	13410591	.	-	.	Parent=FBtr0345979
+###
+2R	FlyBase	gene	14360433	14361780	.	-	.	ID=FBgn0033927;Name=CR10102;Alias=CG10102,CG10102,dArc3,Arc3,UGR;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0010102,FlyBase_Annotation_IDs:CR10102,GB:CL943620,GB:CZ474139,GB_protein:AAF58255,EntrezGene:36596,GenomeRNAi:12798454;gbunit=AE013599;derived_computed_cyto=50F6-50F6
+2R	FlyBase	pseudogene	14360433	14361780	.	-	.	ID=FBtr0305617;Parent=FBgn0033927;Name=CR10102-RB;Dbxref=FlyBase_Annotation_IDs:CR10102-RB
+2R	FlyBase	exon	14360433	14361780	.	-	.	Parent=FBtr0305617
+###
+2R	FlyBase	gene	15204654	15206334	.	+	.	ID=FBgn0033997;Name=Ir51a;fullname=Ionotropic receptor 51a;Alias=CG12953,DmelIR51a,CR12953,IR51a,ionotropic receptor 51a;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0012953,FlyBase_Annotation_IDs:CR12953,GenomeRNAi:3771848;gbunit=AE013599;derived_computed_cyto=51E5-51E5
+2R	FlyBase	pseudogene	15204654	15206334	.	+	.	ID=FBtr0087364;Parent=FBgn0033997;Name=Ir51a-RA;Alias=CR12953-RA;Dbxref=FlyBase_Annotation_IDs:CR12953-RA,REFSEQ:NR_001737
+2R	FlyBase	exon	15204654	15206334	.	+	.	Parent=FBtr0087364
+###
+2R	FlyBase	gene	15373240	15373750	.	-	.	ID=FBgn0262965;Name=CR43276;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43276,GenomeRNAi:12798478;derived_computed_cyto=51F11-51F11
+2R	FlyBase	pseudogene	15373240	15373750	.	-	.	ID=FBtr0306716;Parent=FBgn0262965;Name=CR43276-RA;Dbxref=FlyBase_Annotation_IDs:CR43276-RA
+2R	FlyBase	exon	15373240	15373670	.	-	.	Parent=FBtr0306716
+2R	FlyBase	intron	15373671	15373726	.	-	.	Parent=FBtr0306716
+2R	FlyBase	exon	15373727	15373750	.	-	.	Parent=FBtr0306716
+###
+2R	FlyBase	gene	15373890	15374721	.	-	.	ID=FBgn0262964;Name=CR43275;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43275,GenomeRNAi:12798479;derived_computed_cyto=51F11-51F11
+2R	FlyBase	pseudogene	15373890	15374721	.	-	.	ID=FBtr0306709;Parent=FBgn0262964;Name=CR43275-RA;Dbxref=FlyBase_Annotation_IDs:CR43275-RA
+2R	FlyBase	exon	15373890	15374642	.	-	.	Parent=FBtr0306709
+2R	FlyBase	intron	15374643	15374697	.	-	.	Parent=FBtr0306709
+2R	FlyBase	exon	15374698	15374721	.	-	.	Parent=FBtr0306709
+###
+2R	FlyBase	gene	15374846	15375702	.	-	.	ID=FBgn0262565;Name=CR43105;Alias=CG43105,CG43105;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43105,GenomeRNAi:12798480;derived_computed_cyto=51F11-51F11
+2R	FlyBase	pseudogene	15374846	15375702	.	-	.	ID=FBtr0306724;Parent=FBgn0262565;Name=CR43105-RC;Dbxref=FlyBase_Annotation_IDs:CR43105-RC
+2R	FlyBase	exon	15374846	15375611	.	-	.	Parent=FBtr0306724
+2R	FlyBase	intron	15375612	15375666	.	-	.	Parent=FBtr0306724
+2R	FlyBase	exon	15375667	15375702	.	-	.	Parent=FBtr0306724
+###
+2R	FlyBase	gene	15375834	15376481	.	-	.	ID=FBgn0262815;Name=CR43186;Alias=CG43186,CG43186,DMG6-MB6.chr2R.20.008;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43186,GenomeRNAi:12798481;derived_computed_cyto=51F11-51F11
+2R	FlyBase	pseudogene	15375834	15376481	.	-	.	ID=FBtr0306723;Parent=FBgn0262815;Name=CR43186-RB;Dbxref=FlyBase_Annotation_IDs:CR43186-RB
+2R	FlyBase	exon	15375834	15376394	.	-	.	Parent=FBtr0306723
+2R	FlyBase	intron	15376395	15376449	.	-	.	Parent=FBtr0306723
+2R	FlyBase	exon	15376450	15376481	.	-	.	Parent=FBtr0306723
+###
+2R	FlyBase	gene	17135595	17136325	.	+	.	ID=FBgn0265541;Name=CR44391;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44391,GenomeRNAi:19835353;derived_computed_cyto=54A1-54A1
+2R	FlyBase	pseudogene	17135595	17136120	.	+	.	ID=FBtr0340134;Parent=FBgn0265541;Name=CR44391-RA;Dbxref=FlyBase_Annotation_IDs:CR44391-RA
+2R	FlyBase	exon	17135595	17136120	.	+	.	Parent=FBtr0340134
+2R	FlyBase	pseudogene	17135595	17136325	.	+	.	ID=FBtr0345518;Parent=FBgn0265541;Name=CR44391-RB;Dbxref=FlyBase_Annotation_IDs:CR44391-RB
+2R	FlyBase	exon	17135595	17136325	.	+	.	Parent=FBtr0345518
+###
+2R	FlyBase	gene	18173049	18173554	.	+	.	ID=FBgn0266854;Name=CR45315;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45315,GenomeRNAi:19835535;derived_computed_cyto=55B11-55B11
+2R	FlyBase	pseudogene	18173049	18173554	.	+	.	ID=FBtr0345654;Parent=FBgn0266854;Name=CR45315-RA;Dbxref=FlyBase_Annotation_IDs:CR45315-RA
+2R	FlyBase	exon	18173049	18173554	.	+	.	Parent=FBtr0345654
+###
+2R	FlyBase	gene	18401846	18402297	.	+	.	ID=FBgn0263770;Name=CR43687;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43687,GenomeRNAi:14462602;derived_computed_cyto=55C7-55C7
+2R	FlyBase	pseudogene	18401846	18402297	.	+	.	ID=FBtr0310489;Parent=FBgn0263770;Name=CR43687-RA;Dbxref=FlyBase_Annotation_IDs:CR43687-RA
+2R	FlyBase	exon	18401846	18402297	.	+	.	Parent=FBtr0310489
+###
+2R	FlyBase	gene	18402474	18402749	.	+	.	ID=FBgn0263771;Name=CR43688;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43688,GenomeRNAi:14462603;derived_computed_cyto=55C7-55C7
+2R	FlyBase	pseudogene	18402474	18402749	.	+	.	ID=FBtr0310490;Parent=FBgn0263771;Name=CR43688-RA;Dbxref=FlyBase_Annotation_IDs:CR43688-RA
+2R	FlyBase	exon	18402474	18402749	.	+	.	Parent=FBtr0310490
+###
+2R	FlyBase	gene	19652295	19652826	.	+	.	ID=FBgn0265142;Name=Ir56e;fullname=Ionotropic receptor 56e;Alias=DmelIR56e,CR44211;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44211,GenomeRNAi:14462606;derived_computed_cyto=56E1-56E1
+2R	FlyBase	pseudogene	19652295	19652826	.	+	.	ID=FBtr0336979;Parent=FBgn0265142;Name=Ir56e-RA;Alias=CR44211-RA;Dbxref=FlyBase_Annotation_IDs:CR44211-RA
+2R	FlyBase	exon	19652295	19652398	.	+	.	Parent=FBtr0336979
+2R	FlyBase	intron	19652399	19652692	.	+	.	Parent=FBtr0336979
+2R	FlyBase	exon	19652693	19652826	.	+	.	Parent=FBtr0336979
+###
+2R	FlyBase	gene	19729282	19729353	.	+	.	ID=FBgn0050449;Name=tRNA:Glu-CTC-5-1Psi;fullname=transfer RNA:Glutamic acid-CTC 5-1 pseudogene;Alias=FBgn0050221,CR30221,CR30449,chr2R.trna39-GluCTC,tRNA:Glu-CTC-5-1Psi,transfer RNA:CR30449,tRNA:CR30449,tRNA-Glu-CTC-5-1;Ontology_term=SO:0000663,SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0030449,FlyBase_Annotation_IDs:CR30449,EntrezGene:3771804,GenomeRNAi:3771804;gbunit=AE013599;derived_computed_cyto=56E2-56E2
+2R	FlyBase	pseudogene	19729282	19729353	.	+	.	ID=FBtr0472547;Parent=FBgn0050449;Name=tRNA:Glu-CTC-5-1Psi-RB;Dbxref=FlyBase_Annotation_IDs:CR30449-RB
+2R	FlyBase	exon	19729282	19729353	.	+	.	Parent=FBtr0472547
+###
+2R	FlyBase	gene	19742876	19743018	.	-	.	ID=FBgn0053416;Name=5SrRNA-Psi:CR33416;fullname=5SrRNA-Psi:CR33416;Alias=CR33416;Ontology_term=SO:0000573,SO:0000087,SO:0000081,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33416,EntrezGene:3772249,GenomeRNAi:3772249;gbunit=AE013599;derived_computed_cyto=56E2-56E2
+2R	FlyBase	pseudogene	19742876	19743018	.	-	.	ID=FBtr0086408;Parent=FBgn0053416;Name=5SrRNA-Psi:CR33416-RA;Dbxref=FlyBase_Annotation_IDs:CR33416-RA,REFSEQ:NR_001829
+2R	FlyBase	exon	19742876	19743018	.	-	.	Parent=FBtr0086408
+###
+2R	FlyBase	gene	19759474	19759610	.	-	.	ID=FBgn0053371;Name=5SrRNA-Psi:CR33371;fullname=5SrRNA-Psi:CR33371;Alias=CR33371;Ontology_term=SO:0000573,SO:0000087,SO:0000081,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33371,EntrezGene:3771855,GenomeRNAi:3771855;gbunit=AE013599;derived_computed_cyto=56E2-56E2
+2R	FlyBase	pseudogene	19759474	19759610	.	-	.	ID=FBtr0086363;Parent=FBgn0053371;Name=5SrRNA-Psi:CR33371-RA;Dbxref=FlyBase_Annotation_IDs:CR33371-RA,REFSEQ:NR_001874
+2R	FlyBase	exon	19759474	19759610	.	-	.	Parent=FBtr0086363
+###
+2R	FlyBase	gene	19762427	19762570	.	-	.	ID=FBgn0053363;Name=5SrRNA-Psi:CR33363;fullname=5SrRNA-Psi:CR33363;Alias=CR33363;Ontology_term=SO:0000573,SO:0000087,SO:0000081,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33363,EntrezGene:3772399,GenomeRNAi:3772399;gbunit=AE013599;derived_computed_cyto=56E2-56E2
+2R	FlyBase	pseudogene	19762427	19762570	.	-	.	ID=FBtr0086355;Parent=FBgn0053363;Name=5SrRNA-Psi:CR33363-RA;Dbxref=FlyBase_Annotation_IDs:CR33363-RA,REFSEQ:NR_001882
+2R	FlyBase	exon	19762427	19762570	.	-	.	Parent=FBtr0086355
+###
+2R	FlyBase	gene	19765021	19765163	.	-	.	ID=FBgn0053356;Name=5SrRNA-Psi:CR33356;fullname=5SrRNA-Psi:CR33356;Alias=CR33356;Ontology_term=SO:0000573,SO:0000087,SO:0000081,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33356,EntrezGene:3771765,GenomeRNAi:3771765;gbunit=AE013599;derived_computed_cyto=56E2-56E2
+2R	FlyBase	pseudogene	19765021	19765163	.	-	.	ID=FBtr0086348;Parent=FBgn0053356;Name=5SrRNA-Psi:CR33356-RA;Dbxref=FlyBase_Annotation_IDs:CR33356-RA,REFSEQ:NR_001889
+2R	FlyBase	exon	19765021	19765163	.	-	.	Parent=FBtr0086348
+###
+2R	FlyBase	gene	20692187	20692495	.	+	.	ID=FBgn0265870;Name=CR44659;Alias=lncRNA:CR44659,long non-coding RNA:CR44659;Ontology_term=SO:0000042,SO:0000087;Dbxref=EntrezGene:19835602,FlyBase_Annotation_IDs:CR44659,GenomeRNAi:19835602,KEGG_GENES:Dmel_CR44659;derived_computed_cyto=57B1-57B1
+2R	FlyBase	pseudogene	20692187	20692495	.	+	.	ID=FBtr0475133;Parent=FBgn0265870;Name=CR44659-RB;Alias=lncRNA:CR44659-RB;Dbxref=FlyBase_Annotation_IDs:CR44659-RB
+2R	FlyBase	exon	20692187	20692495	.	+	.	Parent=FBtr0475133
+###
+2R	FlyBase	gene	23354367	23355321	.	+	.	ID=FBgn0050409;Name=CR30409;Alias=FBgn0034848,CG9872,CG30409;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0030409,FlyBase_Annotation_IDs:CR30409,GB:AQ073602,GB:BG634233,GB:CL526069,GB_protein:AAF46984,GB_protein:AFH08232,EntrezGene:37696,EPD:CG30409_1,Fly-FISH:CG30409,GenomeRNAi:37696;gbunit=AE013599;derived_computed_cyto=59D8-59D8
+2R	FlyBase	pseudogene	23354367	23355321	.	+	.	ID=FBtr0445664;Parent=FBgn0050409;Name=CR30409-RC;Dbxref=FlyBase_Annotation_IDs:CR30409-RC
+2R	FlyBase	exon	23354367	23354969	.	+	.	Parent=FBtr0445664
+2R	FlyBase	intron	23354970	23355025	.	+	.	Parent=FBtr0445664
+2R	FlyBase	pseudogene	23354367	23355321	.	+	.	ID=FBtr0445665;Parent=FBgn0050409;Name=CR30409-RD;Dbxref=FlyBase_Annotation_IDs:CR30409-RD
+2R	FlyBase	exon	23354367	23354479	.	+	.	Parent=FBtr0445665
+2R	FlyBase	intron	23354480	23354560	.	+	.	Parent=FBtr0445665
+2R	FlyBase	exon	23354561	23354969	.	+	.	Parent=FBtr0445665
+2R	FlyBase	intron	23354970	23355025	.	+	.	Parent=FBtr0445665
+2R	FlyBase	exon	23355026	23355321	.	+	.	Parent=FBtr0445664,FBtr0445665
+###
+2R	FlyBase	gene	24517824	24519152	.	+	.	ID=FBgn0259186;Name=Ir60c;fullname=Ionotropic receptor 60c;Alias=CG13582,CG42290,FBan0013582,FBgn0035015,CG13582,DmelIR60c,CG42290,IR60c,ionotropic receptor 60c,CR42290;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB:CZ487705,GB_protein:ACL83209,FlyBase_Annotation_IDs:CR42290,EntrezGene:7354401,GenomeRNAi:10178791;derived_computed_cyto=60D3-60D3
+2R	FlyBase	pseudogene	24517824	24519152	.	+	.	ID=FBtr0302916;Parent=FBgn0259186;Name=Ir60c-RC;Dbxref=FlyBase_Annotation_IDs:CR42290-RC
+2R	FlyBase	exon	24517824	24519152	.	+	.	Parent=FBtr0302916
+###
+2R	FlyBase	gene	24521369	24521829	.	+	.	ID=FBgn0265154;Name=Ir60f;fullname=Ionotropic receptor 60f;Alias=DmelIR60f,CR44223;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44223,GenomeRNAi:14462632;derived_computed_cyto=60D3-60D3
+2R	FlyBase	pseudogene	24521369	24521829	.	+	.	ID=FBtr0336995;Parent=FBgn0265154;Name=Ir60f-RA;Alias=CR44223-RA;Dbxref=FlyBase_Annotation_IDs:CR44223-RA
+2R	FlyBase	exon	24521369	24521829	.	+	.	Parent=FBtr0336995
+###
+3L	FlyBase	gene	216625	216931	.	+	.	ID=FBgn0063924;Name=Kaz1-ORFA;fullname=Kaz1-ORFA;Alias=CG33045,FBgn0026414,FBgn0053790,FBtr0072488,FBpp0072390,FBtr0072489,FBpp0072391,FBtr0072490,FBpp0072392,FBtr0072491,FBpp0072393,FBtr0072492,FBpp0072394,FBtr0072493,FBpp0072395,FBtr0072494,FBpp0072396,CG33790,KAZ1 type alpha,ORF A,CG33045,Kaz1,CG33790,Kaz1-ORF A,CR33790;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:AAF47352.2,GB_protein:AAN11428.1,GB_protein:AAN11427.1,GB_protein:AAF47354.2,FlyBase:FBan0033045,GB_protein:AAF47353.1,GB_protein:AAG22218.2,GB_protein:AAN11429.1,FlyBase_Annotation_IDs:CR33790,GB_protein:AAF47352,GB:AB017699,GB_protein:BAA75686,EntrezGene:3771923,UniProt/TrEMBL:O97040,INTERPRO:IPR036058,GenomeRNAi:10178868;gbunit=AE014296;derived_computed_cyto=61B2-61B2
+3L	FlyBase	pseudogene	216625	216931	.	+	.	ID=FBtr0304146;Parent=FBgn0063924;Name=Kaz1-ORFA-RB;Dbxref=FlyBase_Annotation_IDs:CR33790-RB
+3L	FlyBase	exon	216625	216931	.	+	.	Parent=FBtr0304146
+###
+3L	FlyBase	gene	1210485	1210726	.	+	.	ID=FBgn0004426;Name=LysC;fullname=Lysozyme C;Alias=FBgn0002575,lysC,CG9111,CR9111,Lys C;Ontology_term=SO:0000548,SO:0000087,SO:0000042,GO:0003796;Dbxref=FlyBase:FBan0009111,FlyBase_Annotation_IDs:CR9111,GB_protein:AAF47449,INTERPRO:IPR000974,INTERPRO:IPR001916,INTERPRO:IPR019799,INTERPRO:IPR023346,GB:Z22226,GB_protein:CAA80228,UniProt/Swiss-Prot:P83971,EntrezGene:38126,EPD:LysC_1,GenomeRNAi:26067588;gbunit=AE014296;derived_computed_cyto=61F3-61F3,61F-61F
+3L	FlyBase	pseudogene	1210485	1210726	.	+	.	ID=FBtr0347605;Parent=FBgn0004426;Name=LysC-RB;Dbxref=FlyBase_Annotation_IDs:CR9111-RB
+3L	FlyBase	exon	1210485	1210726	.	+	.	Parent=FBtr0347605
+###
+3L	FlyBase	gene	2171644	2172773	.	-	.	ID=FBgn0035311;Name=CR15821;Alias=CG15821;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0015821,FlyBase_Annotation_IDs:CR15821,GenomeRNAi:3771832;gbunit=AE014296;derived_computed_cyto=62D1-62D1
+3L	FlyBase	pseudogene	2171644	2172773	.	-	.	ID=FBtr0072914;Parent=FBgn0035311;Name=CR15821-RA;Dbxref=FlyBase_Annotation_IDs:CR15821-RA,REFSEQ:NR_001931
+3L	FlyBase	exon	2171644	2172121	.	-	.	Parent=FBtr0072914
+3L	FlyBase	intron	2172122	2172174	.	-	.	Parent=FBtr0072914
+3L	FlyBase	exon	2172175	2172690	.	-	.	Parent=FBtr0072914
+3L	FlyBase	intron	2172691	2172746	.	-	.	Parent=FBtr0072914
+3L	FlyBase	exon	2172747	2172773	.	-	.	Parent=FBtr0072914
+###
+3L	FlyBase	gene	6148353	6148615	.	+	.	ID=FBgn0020646;Name=Lcp65APsi;fullname=Lcp65APsi;Alias=FBgn0042116,Lcp65APsi,Lcp-a[Psi],Lcp-Psi,LCP65Aapsi,DCP4[Psi],CG18775,CR18775,Larval cuticle protein Psi;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0018775,FlyBase_Annotation_IDs:CR18775,GB:U84748,GenomeRNAi:3771993;gbunit=AE014296;derived_computed_cyto=65A6-65A6
+3L	FlyBase	pseudogene	6148353	6148615	.	+	.	ID=FBtr0076993;Parent=FBgn0020646;Name=Lcp65APsi-RA;Dbxref=FlyBase_Annotation_IDs:CR18775-RA,REFSEQ:NR_001423
+3L	FlyBase	exon	6148353	6148615	.	+	.	Parent=FBtr0076993
+###
+3L	FlyBase	gene	8809523	8810031	.	+	.	ID=FBgn0286938;Name=CR46432;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46432;derived_computed_cyto=66D15-66D15
+3L	FlyBase	pseudogene	8809523	8810031	.	+	.	ID=FBtr0475216;Parent=FBgn0286938;Name=CR46432-RA;Dbxref=FlyBase_Annotation_IDs:CR46432-RA
+3L	FlyBase	exon	8809523	8809870	.	+	.	Parent=FBtr0475216
+3L	FlyBase	intron	8809871	8809926	.	+	.	Parent=FBtr0475216
+3L	FlyBase	exon	8809927	8810031	.	+	.	Parent=FBtr0475216
+###
+3L	FlyBase	gene	8903349	8903422	.	+	.	ID=FBgn0052034;Name=tRNA:Thr-AGT-3-1Psi;fullname=transfer RNA:Threonine-AGT 3-1 pseudogene;Alias=FBgn0060050,AE002602.trna15-ThrAGT,tRNA:TPsi:AGT:AE002602,CR32034,transfer RNA:CR32034,tRNA:CR32034,chr3L.trna21-ThrAGT,tRNA-Thr-AGT-3-1,tRNA:Thr-AGT-3-1Psi,transfer RNA:thr:pseudogene,tRNA:T:Psi;Ontology_term=SO:0000663,SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032034,FlyBase_Annotation_IDs:CR32034,EntrezGene:3772416,GenomeRNAi:3772416;gbunit=AE014296;derived_computed_cyto=66E3-66E3
+3L	FlyBase	pseudogene	8903349	8903422	.	+	.	ID=FBtr0076505;Parent=FBgn0052034;Name=tRNA:Thr-AGT-3-1Psi-RA;Alias=tRNA:CR32034-RA,CR32034-RA,tRNA:T:Psi-RA;Dbxref=FlyBase_Annotation_IDs:CR32034-RA
+3L	FlyBase	exon	8903349	8903422	.	+	.	Parent=FBtr0076505
+###
+3L	FlyBase	gene	9385646	9386112	.	-	.	ID=FBgn0263494;Name=CR43483;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43483,GenomeRNAi:12798375;derived_computed_cyto=67B3-67B3
+3L	FlyBase	pseudogene	9385646	9386112	.	-	.	ID=FBtr0309507;Parent=FBgn0263494;Name=CR43483-RA;Dbxref=FlyBase_Annotation_IDs:CR43483-RA
+3L	FlyBase	exon	9385646	9386112	.	-	.	Parent=FBtr0309507
+###
+3L	FlyBase	gene	9386112	9386463	.	+	.	ID=FBgn0263493;Name=CR43482;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43482,GenomeRNAi:12798376;derived_computed_cyto=67B3-67B3
+3L	FlyBase	pseudogene	9386112	9386463	.	+	.	ID=FBtr0309505;Parent=FBgn0263493;Name=CR43482-RA;Dbxref=FlyBase_Annotation_IDs:CR43482-RA
+3L	FlyBase	exon	9386112	9386463	.	+	.	Parent=FBtr0309505
+###
+3L	FlyBase	gene	9513645	9513959	.	-	.	ID=FBgn0053701;Name=CR33701;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33701,GenomeRNAi:3772701;gbunit=AE014296;derived_computed_cyto=67B11-67B11
+3L	FlyBase	pseudogene	9513645	9513959	.	-	.	ID=FBtr0091689;Parent=FBgn0053701;Name=CR33701-RA;Dbxref=FlyBase_Annotation_IDs:CR33701-RA,REFSEQ:NR_002481
+3L	FlyBase	exon	9513645	9513959	.	-	.	Parent=FBtr0091689
+###
+3L	FlyBase	gene	10127504	10128618	.	+	.	ID=FBgn0267539;Name=CR45879;Alias=lncRNA:CR45879,long non-coding RNA:CR45879;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45879,EntrezGene:26067207,GenomeRNAi:26067207,KEGG_GENES:Dmel_CR45879;derived_computed_cyto=67D8-67D8
+3L	FlyBase	pseudogene	10127504	10128618	.	+	.	ID=FBtr0475134;Parent=FBgn0267539;Name=CR45879-RC;Alias=lncRNA:CR45879-RC;Dbxref=FlyBase_Annotation_IDs:CR45879-RC
+3L	FlyBase	exon	10127504	10128618	.	+	.	Parent=FBtr0475134
+###
+3L	FlyBase	gene	13279776	13279828	.	+	.	ID=FBgn0052123;Name=tRNA:CR32123:Psi;fullname=transfer RNA:CR32123 pseudogene;Alias=FBgn0060170,AE002602.trna21-LeuAAG,tRNA:L:AAG:AE002602,CR32123,tRNA:CR32123:Psi,transfer RNA:CR32123:pseudogene;Ontology_term=SO:0000663,SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0032123,FlyBase_Annotation_IDs:CR32123,EntrezGene:3772697,GenomeRNAi:3772697;gbunit=AE014296;derived_computed_cyto=70A4-70A4
+3L	FlyBase	pseudogene	13279776	13279828	.	+	.	ID=FBtr0075835;Parent=FBgn0052123;Name=tRNA:CR32123:Psi-RA;Alias=CR32123-RA;Dbxref=FlyBase_Annotation_IDs:CR32123-RA,REFSEQ:NR_001964
+3L	FlyBase	exon	13279776	13279828	.	+	.	Parent=FBtr0075835
+###
+3L	FlyBase	gene	15100054	15102040	.	-	.	ID=FBgn0264703;Name=CR43972;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR43972,EntrezGene:14462865,GenomeRNAi:14462865;derived_computed_cyto=71B4-71B4
+3L	FlyBase	pseudogene	15100054	15102040	.	-	.	ID=FBtr0333937;Parent=FBgn0264703;Name=CR43972-RA;Dbxref=FlyBase_Annotation_IDs:CR43972-RA,REFSEQ:NR_073935
+3L	FlyBase	exon	15100054	15100640	.	-	.	Parent=FBtr0333937
+3L	FlyBase	intron	15100641	15100986	.	-	.	Parent=FBtr0333937
+3L	FlyBase	exon	15100987	15102040	.	-	.	Parent=FBtr0333937
+###
+3L	FlyBase	gene	16581637	16582767	.	+	.	ID=FBgn0263975;Name=CR43727;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR43727,EntrezGene:14462874,GenomeRNAi:14462874;derived_computed_cyto=73A9-73A10
+3L	FlyBase	pseudogene	16581637	16582767	.	+	.	ID=FBtr0347098;Parent=FBgn0263975;Name=CR43727-RB;Dbxref=FlyBase_Annotation_IDs:CR43727-RB
+3L	FlyBase	exon	16581637	16582767	.	+	.	Parent=FBtr0347098
+###
+3L	FlyBase	gene	16600448	16602723	.	-	.	ID=FBgn0036646;Name=CR18217;Alias=CG18217,CG18217;Ontology_term=SO:0000087,SO:0000042,GO:0005739,GO:0047631;Dbxref=FlyBase:FBan0018217,FlyBase_Annotation_IDs:CR18217,GB:BI232377,GB:BT010262,GB_protein:AAQ23580,EntrezGene:39852,UniProt/TrEMBL:Q6NR21,INTERPRO:IPR039989,Fly-FISH:CG18217,Fly-FISH:CR18217,GenomeRNAi:8674109;gbunit=AE014296;derived_computed_cyto=73B1-73B1
+3L	FlyBase	pseudogene	16600448	16602723	.	-	.	ID=FBtr0301925;Parent=FBgn0036646;Name=CR18217-RB;Dbxref=FlyBase_Annotation_IDs:CR18217-RB
+3L	FlyBase	exon	16600448	16600955	.	-	.	Parent=FBtr0301925
+3L	FlyBase	intron	16600956	16601011	.	-	.	Parent=FBtr0301925
+3L	FlyBase	exon	16601012	16601669	.	-	.	Parent=FBtr0301925
+3L	FlyBase	intron	16601670	16601730	.	-	.	Parent=FBtr0301925
+3L	FlyBase	exon	16601731	16602489	.	-	.	Parent=FBtr0301925
+3L	FlyBase	intron	16602490	16602548	.	-	.	Parent=FBtr0301925
+3L	FlyBase	exon	16602549	16602723	.	-	.	Parent=FBtr0301925
+###
+3L	FlyBase	gene	17868740	17870573	.	+	.	ID=FBgn0262532;Name=CR43086;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43086,GenomeRNAi:12797927;derived_computed_cyto=75A6-75A6
+3L	FlyBase	pseudogene	17868740	17870573	.	+	.	ID=FBtr0304978;Parent=FBgn0262532;Name=CR43086-RA;Dbxref=FlyBase_Annotation_IDs:CR43086-RA
+3L	FlyBase	intron	17868868	17869615	.	+	.	Parent=FBtr0304978
+3L	FlyBase	exon	17869616	17870007	.	+	.	Parent=FBtr0304978
+3L	FlyBase	intron	17870008	17870078	.	+	.	Parent=FBtr0304978
+3L	FlyBase	pseudogene	17868740	17870573	.	+	.	ID=FBtr0331812;Parent=FBgn0262532;Name=CR43086-RB;Dbxref=FlyBase_Annotation_IDs:CR43086-RB
+3L	FlyBase	intron	17868868	17869615	.	+	.	Parent=FBtr0331812
+3L	FlyBase	exon	17869616	17869947	.	+	.	Parent=FBtr0331812
+3L	FlyBase	intron	17869948	17870078	.	+	.	Parent=FBtr0331812
+3L	FlyBase	pseudogene	17868740	17870573	.	+	.	ID=FBtr0345000;Parent=FBgn0262532;Name=CR43086-RC;Dbxref=FlyBase_Annotation_IDs:CR43086-RC
+3L	FlyBase	exon	17868740	17868867	.	+	.	Parent=FBtr0304978,FBtr0331812,FBtr0345000
+3L	FlyBase	intron	17868868	17869615	.	+	.	Parent=FBtr0345000
+3L	FlyBase	exon	17869616	17870019	.	+	.	Parent=FBtr0345000
+3L	FlyBase	intron	17870020	17870078	.	+	.	Parent=FBtr0345000
+3L	FlyBase	exon	17870079	17870573	.	+	.	Parent=FBtr0304978,FBtr0331812,FBtr0345000
+###
+3L	FlyBase	gene	17874715	17876573	.	+	.	ID=FBgn0262533;Name=CR43087;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43087,GenomeRNAi:12797928;derived_computed_cyto=75A7-75A7
+3L	FlyBase	pseudogene	17874715	17876461	.	+	.	ID=FBtr0304979;Parent=FBgn0262533;Name=CR43087-RA;Dbxref=FlyBase_Annotation_IDs:CR43087-RA
+3L	FlyBase	intron	17876023	17876094	.	+	.	Parent=FBtr0304979
+3L	FlyBase	exon	17876095	17876461	.	+	.	Parent=FBtr0304979
+3L	FlyBase	pseudogene	17874715	17876573	.	+	.	ID=FBtr0345859;Parent=FBgn0262533;Name=CR43087-RB;Dbxref=FlyBase_Annotation_IDs:CR43087-RB
+3L	FlyBase	exon	17874715	17874842	.	+	.	Parent=FBtr0304979,FBtr0345859
+3L	FlyBase	intron	17874843	17875630	.	+	.	Parent=FBtr0304979,FBtr0345859
+3L	FlyBase	exon	17875631	17876022	.	+	.	Parent=FBtr0304979,FBtr0345859
+3L	FlyBase	intron	17876023	17876094	.	+	.	Parent=FBtr0345859
+3L	FlyBase	exon	17876095	17876573	.	+	.	Parent=FBtr0345859
+###
+3L	FlyBase	gene	17885254	17885528	.	-	.	ID=FBgn0260721;Name=CR42548;Ontology_term=SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42548,GenomeRNAi:8673959;derived_computed_cyto=75A8-75A8
+3L	FlyBase	pseudogene	17885254	17885528	.	-	.	ID=FBtr0301175;Parent=FBgn0260721;Name=CR42548-RA;Dbxref=FlyBase_Annotation_IDs:CR42548-RA
+3L	FlyBase	exon	17885254	17885418	.	-	.	Parent=FBtr0301175
+3L	FlyBase	intron	17885419	17885456	.	-	.	Parent=FBtr0301175
+3L	FlyBase	exon	17885457	17885528	.	-	.	Parent=FBtr0301175
+###
+3L	FlyBase	gene	18074504	18075084	.	-	.	ID=FBgn0266940;Name=CR45391;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45391,GenomeRNAi:19835336;derived_computed_cyto=75B6-75B7
+3L	FlyBase	pseudogene	18074504	18075084	.	-	.	ID=FBtr0345834;Parent=FBgn0266940;Name=CR45391-RA;Dbxref=FlyBase_Annotation_IDs:CR45391-RA
+3L	FlyBase	exon	18074504	18075084	.	-	.	Parent=FBtr0345834
+###
+3L	FlyBase	gene	18677931	18679297	.	+	.	ID=FBgn0286925;Name=CR46422;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46422;derived_computed_cyto=75D6-75D6
+3L	FlyBase	pseudogene	18677931	18679297	.	+	.	ID=FBtr0475182;Parent=FBgn0286925;Name=CR46422-RA;Dbxref=FlyBase_Annotation_IDs:CR46422-RA
+3L	FlyBase	exon	18677931	18678042	.	+	.	Parent=FBtr0475182
+3L	FlyBase	intron	18678043	18678093	.	+	.	Parent=FBtr0475182
+3L	FlyBase	exon	18678094	18678759	.	+	.	Parent=FBtr0475182
+3L	FlyBase	intron	18678760	18678868	.	+	.	Parent=FBtr0475182
+3L	FlyBase	exon	18678869	18679297	.	+	.	Parent=FBtr0475182
+###
+3L	FlyBase	gene	18679559	18680779	.	+	.	ID=FBgn0085283;Name=CR34254;Alias=CG34254;Ontology_term=SO:0000042,SO:0000087;Dbxref=GB_protein:ABW08565,FlyBase_Annotation_IDs:CR34254,INTERPRO:IPR013320,UniProt/TrEMBL:A8JNV3,EntrezGene:5740610,EPD:CG34254_1,GenomeRNAi:5740610,KEGG_GENES:Dmel_CG34254;derived_computed_cyto=75D6-75D6
+3L	FlyBase	pseudogene	18679559	18680779	.	+	.	ID=FBtr0475188;Parent=FBgn0085283;Name=CR34254-RB;Dbxref=FlyBase_Annotation_IDs:CR34254-RB
+3L	FlyBase	exon	18679559	18680272	.	+	.	Parent=FBtr0475188
+3L	FlyBase	intron	18680273	18680355	.	+	.	Parent=FBtr0475188
+3L	FlyBase	exon	18680356	18680528	.	+	.	Parent=FBtr0475188
+3L	FlyBase	intron	18680529	18680581	.	+	.	Parent=FBtr0475188
+3L	FlyBase	exon	18680582	18680779	.	+	.	Parent=FBtr0475188
+###
+3L	FlyBase	gene	19423758	19424146	.	+	.	ID=FBgn0053255;Name=CR33255;Alias=CG33255;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33255,GB_protein:AAS64972,EntrezGene:2768959,GB_protein:ADV37565,GenomeRNAi:26067087;gbunit=AE014296;derived_computed_cyto=76B3-76B3
+3L	FlyBase	pseudogene	19423758	19424146	.	+	.	ID=FBtr0347036;Parent=FBgn0053255;Name=CR33255-RC;Dbxref=FlyBase_Annotation_IDs:CR33255-RC
+3L	FlyBase	exon	19423758	19423769	.	+	.	Parent=FBtr0347036
+3L	FlyBase	intron	19423770	19423828	.	+	.	Parent=FBtr0347036
+3L	FlyBase	exon	19423829	19424146	.	+	.	Parent=FBtr0347036
+###
+3L	FlyBase	gene	19424702	19424926	.	+	.	ID=FBgn0262027;Name=CR42838;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42838,GenomeRNAi:10178903;derived_computed_cyto=76B3-76B3
+3L	FlyBase	pseudogene	19424702	19424926	.	+	.	ID=FBtr0303863;Parent=FBgn0262027;Name=CR42838-RA;Dbxref=FlyBase_Annotation_IDs:CR42838-RA
+3L	FlyBase	exon	19424702	19424926	.	+	.	Parent=FBtr0303863
+###
+3L	FlyBase	gene	19478284	19478670	.	+	.	ID=FBgn0262031;Name=CR42842;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42842,GenomeRNAi:10178869;derived_computed_cyto=76B3-76B3
+3L	FlyBase	pseudogene	19478284	19478670	.	+	.	ID=FBtr0303926;Parent=FBgn0262031;Name=CR42842-RA;Dbxref=FlyBase_Annotation_IDs:CR42842-RA
+3L	FlyBase	exon	19478284	19478295	.	+	.	Parent=FBtr0303926
+3L	FlyBase	intron	19478296	19478352	.	+	.	Parent=FBtr0303926
+3L	FlyBase	exon	19478353	19478670	.	+	.	Parent=FBtr0303926
+###
+3L	FlyBase	gene	20322377	20323209	.	-	.	ID=FBgn0036972;Name=CR6434;Alias=CG6434,mdcds_29715;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0006434,FlyBase_Annotation_IDs:CR6434,GB_protein:AAF49030,EntrezGene:40238,GenomeRNAi:26067586;gbunit=AE014296;derived_computed_cyto=77B4-77B4
+3L	FlyBase	pseudogene	20322377	20323209	.	-	.	ID=FBtr0347193;Parent=FBgn0036972;Name=CR6434-RB;Dbxref=FlyBase_Annotation_IDs:CR6434-RB
+3L	FlyBase	exon	20322377	20322644	.	-	.	Parent=FBtr0347193
+3L	FlyBase	intron	20322645	20322703	.	-	.	Parent=FBtr0347193
+3L	FlyBase	exon	20322704	20322823	.	-	.	Parent=FBtr0347193
+3L	FlyBase	intron	20322824	20322876	.	-	.	Parent=FBtr0347193
+3L	FlyBase	exon	20322877	20323058	.	-	.	Parent=FBtr0347193
+3L	FlyBase	intron	20323059	20323120	.	-	.	Parent=FBtr0347193
+3L	FlyBase	exon	20323121	20323209	.	-	.	Parent=FBtr0347193
+###
+3L	FlyBase	gene	20345323	20346034	.	+	.	ID=FBgn0266934;Name=CR45385;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45385,GenomeRNAi:19834949;derived_computed_cyto=77B4-77B4
+3L	FlyBase	pseudogene	20345323	20346034	.	+	.	ID=FBtr0475131;Parent=FBgn0266934;Name=CR45385-RB;Dbxref=FlyBase_Annotation_IDs:CR45385-RB
+3L	FlyBase	exon	20345323	20346034	.	+	.	Parent=FBtr0475131
+###
+3L	FlyBase	gene	20978765	20979650	.	+	.	ID=FBgn0053283;Name=CR33283;Alias=CG33283,CG33283;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:AAS65081,FlyBase_Annotation_IDs:CR33283,EntrezGene:2768985,GenomeRNAi:10178863;gbunit=AE014296;derived_computed_cyto=78A2-78A2
+3L	FlyBase	pseudogene	20978765	20979650	.	+	.	ID=FBtr0302444;Parent=FBgn0053283;Name=CR33283-RB;Dbxref=FlyBase_Annotation_IDs:CR33283-RB
+3L	FlyBase	exon	20978765	20978973	.	+	.	Parent=FBtr0302444
+3L	FlyBase	intron	20978974	20979036	.	+	.	Parent=FBtr0302444
+3L	FlyBase	exon	20979037	20979277	.	+	.	Parent=FBtr0302444
+3L	FlyBase	intron	20979278	20979362	.	+	.	Parent=FBtr0302444
+3L	FlyBase	exon	20979363	20979650	.	+	.	Parent=FBtr0302444
+###
+3L	FlyBase	gene	21949825	21951550	.	+	.	ID=FBgn0037143;Name=CR7448;Alias=CG7448;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0007448,FlyBase_Annotation_IDs:CR7448,GB_protein:AAS65096,GB_protein:AAF51796,GB:AI113472,GB:AW940328,GB:AY121621,GB_protein:AAM51948,UniProt/TrEMBL:Q9VNW9,GB_protein:AAS65096,EntrezGene:40440,EPD:CG7448_1,Fly-FISH:CG7448,GenomeRNAi:26067587;gbunit=AE014296;derived_computed_cyto=79A4-79A4
+3L	FlyBase	pseudogene	21949825	21951550	.	+	.	ID=FBtr0347604;Parent=FBgn0037143;Name=CR7448-RD;Dbxref=FlyBase_Annotation_IDs:CR7448-RD
+3L	FlyBase	exon	21949825	21950400	.	+	.	Parent=FBtr0347604
+3L	FlyBase	intron	21950401	21950455	.	+	.	Parent=FBtr0347604
+3L	FlyBase	exon	21950456	21950684	.	+	.	Parent=FBtr0347604
+3L	FlyBase	intron	21950685	21950736	.	+	.	Parent=FBtr0347604
+3L	FlyBase	exon	21950737	21950801	.	+	.	Parent=FBtr0347604
+3L	FlyBase	intron	21950802	21950856	.	+	.	Parent=FBtr0347604
+3L	FlyBase	exon	21950857	21951095	.	+	.	Parent=FBtr0347604
+3L	FlyBase	intron	21951096	21951153	.	+	.	Parent=FBtr0347604
+3L	FlyBase	exon	21951154	21951313	.	+	.	Parent=FBtr0347604
+3L	FlyBase	intron	21951314	21951373	.	+	.	Parent=FBtr0347604
+3L	FlyBase	exon	21951374	21951550	.	+	.	Parent=FBtr0347604
+###
+3L	FlyBase	gene	21959254	21960503	.	+	.	ID=FBgn0085291;Name=CR34262;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR34262,GenomeRNAi:5740257;derived_computed_cyto=79A4-79A4
+3L	FlyBase	pseudogene	21959254	21960503	.	+	.	ID=FBtr0112457;Parent=FBgn0085291;Name=CR34262-RA;Dbxref=FlyBase_Annotation_IDs:CR34262-RA,REFSEQ:NR_003877
+3L	FlyBase	exon	21959254	21959778	.	+	.	Parent=FBtr0112457
+3L	FlyBase	intron	21959779	21959837	.	+	.	Parent=FBtr0112457
+3L	FlyBase	exon	21959838	21960019	.	+	.	Parent=FBtr0112457
+3L	FlyBase	intron	21960020	21960080	.	+	.	Parent=FBtr0112457
+3L	FlyBase	exon	21960081	21960503	.	+	.	Parent=FBtr0112457
+###
+3L	FlyBase	gene	23136623	23138271	.	+	.	ID=FBgn0084017;Name=CR41454;Alias=FBan0041454,CG41454;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41454,GB_protein:ABI31272,EntrezGene:4379917,GenomeRNAi:14462913;derived_computed_cyto=80D3-80D3
+3L	FlyBase	pseudogene	23136623	23138271	.	+	.	ID=FBtr0336866;Parent=FBgn0084017;Name=CR41454-RB;Dbxref=FlyBase_Annotation_IDs:CR41454-RB
+3L	FlyBase	exon	23136623	23136755	.	+	.	Parent=FBtr0336866
+3L	FlyBase	intron	23136756	23137289	.	+	.	Parent=FBtr0336866
+3L	FlyBase	exon	23137290	23137451	.	+	.	Parent=FBtr0336866
+3L	FlyBase	intron	23137452	23137508	.	+	.	Parent=FBtr0336866
+3L	FlyBase	exon	23137509	23138271	.	+	.	Parent=FBtr0336866
+###
+3L	FlyBase	gene	24534090	24535468	.	+	.	ID=FBgn0040045;Name=CR12460;Alias=FBan0012460,FBgn0058051,CG12460,CG40051,CG12460;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR12460,GB:AABU01002755,EntrezGene:3355078,GB_protein:EAA46074,GenomeRNAi:12798472
+3L	FlyBase	pseudogene	24534090	24535468	.	+	.	ID=FBtr0307117;Parent=FBgn0040045;Name=CR12460-RC;Dbxref=FlyBase_Annotation_IDs:CR12460-RC
+3L	FlyBase	exon	24534090	24534373	.	+	.	Parent=FBtr0307117
+3L	FlyBase	intron	24534374	24534990	.	+	.	Parent=FBtr0307117
+3L	FlyBase	exon	24534991	24535468	.	+	.	Parent=FBtr0307117
+###
+3L	FlyBase	gene	24546138	24546986	.	+	.	ID=FBgn0261639;Name=CR42722;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42722,GenomeRNAi:10178902
+3L	FlyBase	pseudogene	24546138	24546986	.	+	.	ID=FBtr0303009;Parent=FBgn0261639;Name=CR42722-RA;Dbxref=FlyBase_Annotation_IDs:CR42722-RA
+3L	FlyBase	exon	24546138	24546986	.	+	.	Parent=FBtr0303009
+###
+3L	FlyBase	gene	24549636	24550445	.	+	.	ID=FBgn0261640;Name=CR42723;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42723,GenomeRNAi:10178788
+3L	FlyBase	pseudogene	24549636	24550445	.	+	.	ID=FBtr0303010;Parent=FBgn0261640;Name=CR42723-RA;Dbxref=FlyBase_Annotation_IDs:CR42723-RA
+3L	FlyBase	exon	24549636	24550445	.	+	.	Parent=FBtr0303010
+###
+3L	FlyBase	gene	24553110	24554200	.	+	.	ID=FBgn0085810;Name=CR41597;Alias=FBan0041597;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR41597,GenomeRNAi:5740383
+3L	FlyBase	pseudogene	24553110	24554200	.	+	.	ID=FBtr0114264;Parent=FBgn0085810;Name=CR41597-RA;Dbxref=FlyBase_Annotation_IDs:CR41597-RA,REFSEQ:NR_004358
+3L	FlyBase	exon	24553110	24554200	.	+	.	Parent=FBtr0114264
+###
+3L	FlyBase	gene	25201942	25203341	.	+	.	ID=FBgn0058354;Name=CR40354;Alias=FBan0040354,CG40354,CG40354;Ontology_term=SO:0000087,SO:0000043,SO:0000042;Dbxref=GB_protein:EAL24601,GB_protein:EAL24600,FlyBase_Annotation_IDs:CR40354,EntrezGene:3354973,GenomeRNAi:10178779
+3L	FlyBase	pseudogene	25201942	25203341	.	+	.	ID=FBtr0302346;Parent=FBgn0058354;Name=CR40354-RC;Dbxref=FlyBase_Annotation_IDs:CR40354-RC
+3L	FlyBase	exon	25201942	25203341	.	+	.	Parent=FBtr0302346
+###
+3L	FlyBase	gene	25403776	25405940	.	-	.	ID=FBgn0085734;Name=CR40450;Alias=FBan0040450;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR40450,GenomeRNAi:5740527
+3L	FlyBase	pseudogene	25403776	25405940	.	-	.	ID=FBtr0114183;Parent=FBgn0085734;Name=CR40450-RA;Dbxref=FlyBase_Annotation_IDs:CR40450-RA,REFSEQ:NR_003971
+3L	FlyBase	exon	25403776	25404489	.	-	.	Parent=FBtr0114183
+3L	FlyBase	intron	25404490	25404617	.	-	.	Parent=FBtr0114183
+3L	FlyBase	exon	25404618	25405274	.	-	.	Parent=FBtr0114183
+3L	FlyBase	intron	25405275	25405535	.	-	.	Parent=FBtr0114183
+3L	FlyBase	exon	25405536	25405587	.	-	.	Parent=FBtr0114183
+3L	FlyBase	intron	25405588	25405671	.	-	.	Parent=FBtr0114183
+3L	FlyBase	exon	25405672	25405940	.	-	.	Parent=FBtr0114183
+###
+3L	FlyBase	gene	26165235	26178793	.	+	.	ID=FBgn0085612;Name=CR41320;Alias=FBan0041320,CG41320;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:EDP28081,FlyBase_Annotation_IDs:CR41320,EntrezGene:5740635,GenomeRNAi:26067092
+3L	FlyBase	pseudogene	26165235	26178793	.	+	.	ID=FBtr0347357;Parent=FBgn0085612;Name=CR41320-RC;Dbxref=FlyBase_Annotation_IDs:CR41320-RC
+3L	FlyBase	exon	26165235	26165630	.	+	.	Parent=FBtr0347357
+3L	FlyBase	intron	26165631	26165679	.	+	.	Parent=FBtr0347357
+3L	FlyBase	exon	26165680	26165826	.	+	.	Parent=FBtr0347357
+3L	FlyBase	intron	26165827	26178612	.	+	.	Parent=FBtr0347357
+3L	FlyBase	exon	26178613	26178793	.	+	.	Parent=FBtr0347357
+###
+3L	FlyBase	gene	27170036	27170567	.	+	.	ID=FBgn0262789;Name=CR43170;Alias=chr3LHet_2277384_2278053.0;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43170,GenomeRNAi:12798146
+3L	FlyBase	pseudogene	27170036	27170567	.	+	.	ID=FBtr0305903;Parent=FBgn0262789;Name=CR43170-RA;Dbxref=FlyBase_Annotation_IDs:CR43170-RA
+3L	FlyBase	exon	27170036	27170567	.	+	.	Parent=FBtr0305903
+###
+3L	FlyBase	gene	27849226	27850751	.	+	.	ID=FBgn0260469;Name=CR14578;Alias=FBgn0058105,FBan0014578,CG14578,FBgn0040059,CG40105,CG14578;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB:AABU01002740,GB_protein:EAA46132,FlyBase_Annotation_IDs:CR14578,GenomeRNAi:8674034
+3L	FlyBase	pseudogene	27849226	27850751	.	+	.	ID=FBtr0301970;Parent=FBgn0260469;Name=CR14578-RE;Dbxref=FlyBase_Annotation_IDs:CR14578-RE
+3L	FlyBase	intron	27850026	27850080	.	+	.	Parent=FBtr0301970
+3L	FlyBase	exon	27850081	27850751	.	+	.	Parent=FBtr0301970
+3L	FlyBase	pseudogene	27849226	27850751	.	+	.	ID=FBtr0334941;Parent=FBgn0260469;Name=CR14578-RF;Dbxref=FlyBase_Annotation_IDs:CR14578-RF
+3L	FlyBase	exon	27849226	27849390	.	+	.	Parent=FBtr0301970,FBtr0334941
+3L	FlyBase	intron	27849391	27849949	.	+	.	Parent=FBtr0301970,FBtr0334941
+3L	FlyBase	exon	27849950	27850025	.	+	.	Parent=FBtr0301970,FBtr0334941
+3L	FlyBase	intron	27850026	27850065	.	+	.	Parent=FBtr0334941
+3L	FlyBase	exon	27850066	27850751	.	+	.	Parent=FBtr0334941
+###
+3R	FlyBase	gene	722370	722621	.	-	.	ID=FBgn0085804;Name=CR41571;Alias=FBan0041571;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41571,GenomeRNAi:5740809
+3R	FlyBase	pseudogene	722370	722621	.	-	.	ID=FBtr0114258;Parent=FBgn0085804;Name=CR41571-RA;Dbxref=FlyBase_Annotation_IDs:CR41571-RA,REFSEQ:NR_003992
+3R	FlyBase	exon	722370	722621	.	-	.	Parent=FBtr0114258
+###
+3R	FlyBase	gene	1031171	1031354	.	+	.	ID=FBgn0039987;Name=CR12798;Alias=FBan0012798,CG12798,CG12798,SEK1/MKK4,CT38386;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB:AABU01002710,GB_protein:EAA46169,FlyBase_Annotation_IDs:CR12798,EntrezGene:3355004,GenomeRNAi:10178819
+3R	FlyBase	pseudogene	1031171	1031354	.	+	.	ID=FBtr0302440;Parent=FBgn0039987;Name=CR12798-RB;Alias=CG12798-RB;Dbxref=FlyBase_Annotation_IDs:CR12798-RB
+3R	FlyBase	exon	1031171	1031354	.	+	.	Parent=FBtr0302440
+###
+3R	FlyBase	gene	2156916	2157206	.	-	.	ID=FBgn0058182;Name=CR40182;Alias=FBan0040182,CG40182,CG40182;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB:AABU01002634,GB_protein:EAA46247,FlyBase_Annotation_IDs:CR40182,EntrezGene:3354936,GenomeRNAi:10178842
+3R	FlyBase	pseudogene	2156916	2157206	.	-	.	ID=FBtr0302347;Parent=FBgn0058182;Name=CR40182-RB;Dbxref=FlyBase_Annotation_IDs:CR40182-RB
+3R	FlyBase	exon	2156916	2157206	.	-	.	Parent=FBtr0302347
+###
+3R	FlyBase	gene	4186963	4196210	.	+	.	ID=FBgn0053294;Name=CR33294;Alias=CG33294,FBan0033294,FBgn0082879,CG33294,BP1027;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33294,GB:CX309424,GB:CX309462,GenomeRNAi:3772637;gbunit=AE014297;derived_computed_cyto=81F6-81F6
+3R	FlyBase	pseudogene	4186963	4196210	.	+	.	ID=FBtr0308946;Parent=FBgn0053294;Name=CR33294-RD;Dbxref=FlyBase_Annotation_IDs:CR33294-RD
+3R	FlyBase	exon	4186963	4187151	.	+	.	Parent=FBtr0308946
+3R	FlyBase	intron	4187152	4194220	.	+	.	Parent=FBtr0308946
+3R	FlyBase	intron	4195568	4195626	.	+	.	Parent=FBtr0308946
+3R	FlyBase	exon	4195627	4195808	.	+	.	Parent=FBtr0308946
+3R	FlyBase	intron	4195809	4195868	.	+	.	Parent=FBtr0308946
+3R	FlyBase	exon	4195869	4196210	.	+	.	Parent=FBtr0308946
+3R	FlyBase	pseudogene	4191285	4196210	.	+	.	ID=FBtr0308945;Parent=FBgn0053294;Name=CR33294-RC;Dbxref=FlyBase_Annotation_IDs:CR33294-RC
+3R	FlyBase	exon	4191285	4191536	.	+	.	Parent=FBtr0308945
+3R	FlyBase	intron	4191537	4194220	.	+	.	Parent=FBtr0308945
+3R	FlyBase	exon	4194221	4194329	.	+	.	Parent=FBtr0308946,FBtr0308945
+3R	FlyBase	intron	4194330	4194391	.	+	.	Parent=FBtr0308946,FBtr0308945
+3R	FlyBase	exon	4194392	4194873	.	+	.	Parent=FBtr0308946,FBtr0308945
+3R	FlyBase	intron	4194874	4194948	.	+	.	Parent=FBtr0308946,FBtr0308945
+3R	FlyBase	exon	4194949	4195567	.	+	.	Parent=FBtr0308946,FBtr0308945
+3R	FlyBase	intron	4195568	4195626	.	+	.	Parent=FBtr0308945
+3R	FlyBase	exon	4195627	4196210	.	+	.	Parent=FBtr0308945
+###
+3R	FlyBase	gene	4243606	4245511	.	+	.	ID=FBgn0037223;Name=TwdlU;fullname=TweedleU;Alias=FBan0014638,CG14638,CR14638;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR14638,GenomeRNAi:5740279;gbunit=AE014297;derived_computed_cyto=82A1-82A1
+3R	FlyBase	pseudogene	4243606	4245511	.	+	.	ID=FBtr0113190;Parent=FBgn0037223;Name=TwdlU-RC;Alias=CR14638-RC;Dbxref=FlyBase_Annotation_IDs:CR14638-RC,REFSEQ:NR_003879
+3R	FlyBase	exon	4243606	4243622	.	+	.	Parent=FBtr0113190
+3R	FlyBase	intron	4243623	4244400	.	+	.	Parent=FBtr0113190
+3R	FlyBase	exon	4244401	4244585	.	+	.	Parent=FBtr0113190
+3R	FlyBase	intron	4244586	4244639	.	+	.	Parent=FBtr0113190
+3R	FlyBase	exon	4244640	4245511	.	+	.	Parent=FBtr0113190
+###
+3R	FlyBase	gene	5163822	5164106	.	+	.	ID=FBgn0286879;Name=CR46401;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46401;derived_computed_cyto=82F1-82F1
+3R	FlyBase	pseudogene	5163822	5164106	.	+	.	ID=FBtr0475056;Parent=FBgn0286879;Name=CR46401-RA;Dbxref=FlyBase_Annotation_IDs:CR46401-RA
+3R	FlyBase	exon	5163822	5164106	.	+	.	Parent=FBtr0475056
+###
+3R	FlyBase	gene	5269081	5269507	.	+	.	ID=FBgn0266393;Name=CR45033;Alias=CR31541;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45033,GenomeRNAi:19836006;derived_computed_cyto=82F8-82F8
+3R	FlyBase	pseudogene	5269081	5269507	.	+	.	ID=FBtr0344334;Parent=FBgn0266393;Name=CR45033-RA;Dbxref=FlyBase_Annotation_IDs:CR45033-RA
+3R	FlyBase	exon	5269081	5269507	.	+	.	Parent=FBtr0344334
+###
+3R	FlyBase	gene	5848953	5849688	.	+	.	ID=FBgn0037389;Name=CR10991;Alias=CG10991,CG10991;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0010991,FlyBase_Annotation_IDs:CR10991,GB_protein:AAF51939,EntrezGene:40730,GenomeRNAi:12798036;gbunit=AE014297;derived_computed_cyto=83C5-83C5
+3R	FlyBase	pseudogene	5848953	5849453	.	+	.	ID=FBtr0306740;Parent=FBgn0037389;Name=CR10991-RB;Dbxref=FlyBase_Annotation_IDs:CR10991-RB
+3R	FlyBase	exon	5848953	5849128	.	+	.	Parent=FBtr0306740
+3R	FlyBase	intron	5849129	5849273	.	+	.	Parent=FBtr0306740
+3R	FlyBase	exon	5849274	5849453	.	+	.	Parent=FBtr0306740
+3R	FlyBase	pseudogene	5849165	5849688	.	+	.	ID=FBtr0306741;Parent=FBgn0037389;Name=CR10991-RC;Dbxref=FlyBase_Annotation_IDs:CR10991-RC
+3R	FlyBase	exon	5849165	5849688	.	+	.	Parent=FBtr0306741
+###
+3R	FlyBase	gene	6027767	6028621	.	+	.	ID=FBgn0037397;Name=CR1075;Alias=CG1075,CG1075;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0001075,FlyBase_Annotation_IDs:CR1075,GB_protein:AAF51923,EntrezGene:40742,GenomeRNAi:12798037;gbunit=AE014297;derived_computed_cyto=83D2-83D2
+3R	FlyBase	pseudogene	6027767	6028621	.	+	.	ID=FBtr0307114;Parent=FBgn0037397;Name=CR1075-RB;Dbxref=FlyBase_Annotation_IDs:CR1075-RB
+3R	FlyBase	exon	6027767	6028621	.	+	.	Parent=FBtr0307114
+###
+3R	FlyBase	gene	6184455	6185629	.	+	.	ID=FBgn0051562;Name=CR31562;Alias=FBgn0037407,FBgn0040677,CG15588,CG15587,CG31562;Ontology_term=SO:0000043,SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0031562,FlyBase_Annotation_IDs:CR31562,GB_protein:AAF51911,EntrezGene:40753,GenomeRNAi:19835899;gbunit=AE014297;derived_computed_cyto=83D5-83D5
+3R	FlyBase	pseudogene	6184455	6185629	.	+	.	ID=FBtr0344667;Parent=FBgn0051562;Name=CR31562-RD;Dbxref=FlyBase_Annotation_IDs:CR31562-RD
+3R	FlyBase	exon	6184455	6185629	.	+	.	Parent=FBtr0344667
+###
+3R	FlyBase	gene	6819266	6819338	.	-	.	ID=FBgn0051485;Name=tRNA:Lys-CTT-2-1Psi;fullname=transfer RNA:Lysine-CTT 2-1 pseudogene;Alias=FBgn0060191,CR31485,AE002699.trna6-LysCTT,tRNA:KPsi:CTT:AE002699,chr3R.trna79-LysCTT,tRNA:Lys-CTT-2-1Psi,transfer RNA:CR31485:pseudogene,tRNA:CR31485:Psi;Ontology_term=SO:0000663,SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0031485,FlyBase_Annotation_IDs:CR31485,EntrezGene:3772041,GenomeRNAi:3772041;gbunit=AE014297;derived_computed_cyto=84A5-84A5
+3R	FlyBase	pseudogene	6819266	6819338	.	-	.	ID=FBtr0081662;Parent=FBgn0051485;Name=tRNA:Lys-CTT-2-1Psi-RA;Alias=CR31485-RA,tRNA:CR31485:Psi-RA;Dbxref=FlyBase_Annotation_IDs:CR31485-RA,REFSEQ:NR_001988
+3R	FlyBase	exon	6819266	6819338	.	-	.	Parent=FBtr0081662
+###
+3R	FlyBase	gene	7128087	7129166	.	+	.	ID=FBgn0262149;Name=CR42875;Alias=long non-coding RNA:CR42875,lncRNA:CR42875;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR42875,EntrezGene:10178955,GenomeRNAi:10178955,KEGG_GENES:Dmel_CR42875;derived_computed_cyto=84C4-84C4
+3R	FlyBase	pseudogene	7128087	7129166	.	+	.	ID=FBtr0475132;Parent=FBgn0262149;Name=CR42875-RC;Alias=lncRNA:CR42875-RC;Dbxref=FlyBase_Annotation_IDs:CR42875-RC
+3R	FlyBase	exon	7128087	7128297	.	+	.	Parent=FBtr0475132
+3R	FlyBase	intron	7128298	7128463	.	+	.	Parent=FBtr0475132
+3R	FlyBase	exon	7128464	7128647	.	+	.	Parent=FBtr0475132
+3R	FlyBase	intron	7128648	7128702	.	+	.	Parent=FBtr0475132
+3R	FlyBase	exon	7128703	7129166	.	+	.	Parent=FBtr0475132
+###
+3R	FlyBase	gene	7271592	7272509	.	+	.	ID=FBgn0037493;Name=CR10032;Alias=CG10032;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0010032,FlyBase_Annotation_IDs:CR10032,GB_protein:AAF54036,EntrezGene:40877,GenomeRNAi:40877,iBeetle-Base:TC031984,iBeetle-Base:TC004523;gbunit=AE014297;derived_computed_cyto=84D3-84D3
+3R	FlyBase	pseudogene	7271592	7272509	.	+	.	ID=FBtr0445679;Parent=FBgn0037493;Name=CR10032-RC;Dbxref=FlyBase_Annotation_IDs:CR10032-RC
+3R	FlyBase	exon	7271592	7272194	.	+	.	Parent=FBtr0445679
+3R	FlyBase	intron	7272195	7272299	.	+	.	Parent=FBtr0445679
+3R	FlyBase	exon	7272300	7272509	.	+	.	Parent=FBtr0445679
+###
+3R	FlyBase	gene	7418938	7420698	.	+	.	ID=FBgn0283627;Name=CR46300;Alias=CG34023,FBgn0054023,FBgn0082834,CG31544,FBgn0051544,BP1072,CG34023,CG31544;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB:CX309622,GB:CX309623,GB_protein:ABC66166,EntrezGene:3885581,FlyBase:FBan0031544,GB_protein:AAN13339,FlyBase_Annotation_IDs:CR46300,EPD:CG34023_1;gbunit=AE014297;derived_computed_cyto=84D6-84D6
+3R	FlyBase	pseudogene	7418938	7420698	.	+	.	ID=FBtr0445678;Parent=FBgn0283627;Name=CR46300-RB;Dbxref=FlyBase_Annotation_IDs:CR46300-RB
+3R	FlyBase	exon	7418938	7419138	.	+	.	Parent=FBtr0445678
+3R	FlyBase	intron	7419139	7419271	.	+	.	Parent=FBtr0445678
+3R	FlyBase	exon	7419272	7420383	.	+	.	Parent=FBtr0445678
+3R	FlyBase	intron	7420384	7420451	.	+	.	Parent=FBtr0445678
+3R	FlyBase	exon	7420452	7420698	.	+	.	Parent=FBtr0445678
+###
+3R	FlyBase	gene	7526369	7528068	.	+	.	ID=FBgn0027934;Name=alpha-Est4aPsi;fullname=alpha-Est4aPsi;Alias=FBgn0020769,FBgn0051511,DmalphaE4a-Psi,alphaE4a-Psi,alphaE4,aE4a,alphaEPsi,CR31511,alpha-EstPsi,alphaEsterase 4a-Psi;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0031511,FlyBase_Annotation_IDs:CR31511,GB:AF159406,GB:AF159407,GB:AF159408,GB:AF159409,GB:AF159410,GB:AF159411,GB:AF159412,GB:AF159413,GB:AF159414,GB:AF159415,GB:AF159416,GB:AF159417,GenomeRNAi:3772290;gbunit=AE014297;derived_computed_cyto=84D9-84D9
+3R	FlyBase	pseudogene	7526369	7528068	.	+	.	ID=FBtr0090038;Parent=FBgn0027934;Name=alpha-Est4aPsi-RA;Alias=CR31511-RA;Dbxref=FlyBase_Annotation_IDs:CR31511-RA,REFSEQ:NR_001368
+3R	FlyBase	exon	7526369	7526396	.	+	.	Parent=FBtr0090038
+3R	FlyBase	intron	7526397	7526452	.	+	.	Parent=FBtr0090038
+3R	FlyBase	exon	7526453	7526736	.	+	.	Parent=FBtr0090038
+3R	FlyBase	intron	7526737	7526821	.	+	.	Parent=FBtr0090038
+3R	FlyBase	exon	7526822	7526972	.	+	.	Parent=FBtr0090038
+3R	FlyBase	intron	7526973	7527104	.	+	.	Parent=FBtr0090038
+3R	FlyBase	exon	7527105	7527797	.	+	.	Parent=FBtr0090038
+3R	FlyBase	intron	7527798	7527879	.	+	.	Parent=FBtr0090038
+3R	FlyBase	exon	7527880	7528068	.	+	.	Parent=FBtr0090038
+###
+3R	FlyBase	gene	8260706	8261898	.	-	.	ID=FBgn0037560;Name=CR18228;Alias=CG18228,CG18228;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:AAF54205.3,GB_protein:AAF54205.2,FlyBase:FBan0018228,GB:CZ475973,FlyBase_Annotation_IDs:CR18228,EntrezGene:40971,GenomeRNAi:8674096;gbunit=AE014297;derived_computed_cyto=84F6-84F6
+3R	FlyBase	pseudogene	8260706	8261898	.	-	.	ID=FBtr0300631;Parent=FBgn0037560;Name=CR18228-RB;Alias=CG18228-RB;Dbxref=FlyBase_Annotation_IDs:CR18228-RB
+3R	FlyBase	exon	8260706	8261599	.	-	.	Parent=FBtr0300631
+3R	FlyBase	intron	8261600	8261800	.	-	.	Parent=FBtr0300631
+3R	FlyBase	pseudogene	8260706	8261898	.	-	.	ID=FBtr0310082;Parent=FBgn0037560;Name=CR18228-RC;Dbxref=FlyBase_Annotation_IDs:CR18228-RC
+3R	FlyBase	exon	8260706	8261550	.	-	.	Parent=FBtr0310082
+3R	FlyBase	intron	8261551	8261800	.	-	.	Parent=FBtr0310082
+3R	FlyBase	exon	8261801	8261898	.	-	.	Parent=FBtr0300631,FBtr0310082
+###
+3R	FlyBase	gene	9253545	9254683	.	+	.	ID=FBgn0037666;Name=CR16735;Alias=CG16735,CG16735;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0016735,FlyBase_Annotation_IDs:CR16735,GB_protein:AAF54345,EntrezGene:41099,GenomeRNAi:10178810;gbunit=AE014297;derived_computed_cyto=85D4-85D4
+3R	FlyBase	pseudogene	9253545	9254683	.	+	.	ID=FBtr0303309;Parent=FBgn0037666;Name=CR16735-RB;Dbxref=FlyBase_Annotation_IDs:CR16735-RB
+3R	FlyBase	exon	9253545	9254683	.	+	.	Parent=FBtr0303309
+###
+3R	FlyBase	gene	9652659	9653228	.	-	.	ID=FBgn0263389;Name=CR43441;Alias=CG43441;Ontology_term=GO:0005575,GO:0008150,GO:0003674,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR43441,GB_protein:AFH06327,EntrezGene:12798078,UniProt/TrEMBL:E3CTR8,EPD:CG43441_1,GenomeRNAi:12798078,KEGG_GENES:Dmel_CG43441;derived_computed_cyto=85E2-85E2
+3R	FlyBase	pseudogene	9652659	9653228	.	-	.	ID=FBtr0475220;Parent=FBgn0263389;Name=CR43441-RB;Dbxref=FlyBase_Annotation_IDs:CR43441-RB
+3R	FlyBase	exon	9652659	9653228	.	-	.	Parent=FBtr0475220
+###
+3R	FlyBase	gene	10061686	10062314	.	+	.	ID=FBgn0053629;Name=CR33629;Alias=CG33629,FBpp0090978,CG33629;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33629,GenomeRNAi:3772326;gbunit=AE014297;derived_computed_cyto=85F8-85F8
+3R	FlyBase	pseudogene	10061686	10062314	.	+	.	ID=FBtr0091606;Parent=FBgn0053629;Name=CR33629-RA;Alias=CG33629-RA;Dbxref=FlyBase_Annotation_IDs:CR33629-RA,REFSEQ:NR_002495
+3R	FlyBase	exon	10061686	10061810	.	+	.	Parent=FBtr0091606
+3R	FlyBase	intron	10061811	10061854	.	+	.	Parent=FBtr0091606
+3R	FlyBase	exon	10061855	10061984	.	+	.	Parent=FBtr0091606
+3R	FlyBase	intron	10061985	10062035	.	+	.	Parent=FBtr0091606
+3R	FlyBase	exon	10062036	10062314	.	+	.	Parent=FBtr0091606
+###
+3R	FlyBase	gene	12504977	12505250	.	+	.	ID=FBgn0267866;Name=CR46154;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46154,GenomeRNAi:26067468;derived_computed_cyto=87B14-87B14
+3R	FlyBase	pseudogene	12504977	12505250	.	+	.	ID=FBtr0347424;Parent=FBgn0267866;Name=CR46154-RA;Dbxref=FlyBase_Annotation_IDs:CR46154-RA
+3R	FlyBase	exon	12504977	12505250	.	+	.	Parent=FBtr0347424
+###
+3R	FlyBase	gene	12508260	12508533	.	+	.	ID=FBgn0267867;Name=CR46155;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46155,GenomeRNAi:26067469;derived_computed_cyto=87B14-87B14
+3R	FlyBase	pseudogene	12508260	12508533	.	+	.	ID=FBtr0347425;Parent=FBgn0267867;Name=CR46155-RA;Dbxref=FlyBase_Annotation_IDs:CR46155-RA
+3R	FlyBase	exon	12508260	12508533	.	+	.	Parent=FBtr0347425
+###
+3R	FlyBase	gene	12893972	12894529	.	-	.	ID=FBgn0053929;Name=CR33929;Alias=CG33929,CG33929;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33929,GB_protein:AAZ52529,EntrezGene:3772442,GenomeRNAi:10178780;gbunit=AE014297;derived_computed_cyto=87D3-87D3
+3R	FlyBase	pseudogene	12893972	12894529	.	-	.	ID=FBtr0303313;Parent=FBgn0053929;Name=CR33929-RB;Dbxref=FlyBase_Annotation_IDs:CR33929-RB
+3R	FlyBase	exon	12893972	12894158	.	-	.	Parent=FBtr0303313
+3R	FlyBase	intron	12894159	12894230	.	-	.	Parent=FBtr0303313
+3R	FlyBase	exon	12894231	12894406	.	-	.	Parent=FBtr0303313
+3R	FlyBase	intron	12894407	12894469	.	-	.	Parent=FBtr0303313
+3R	FlyBase	exon	12894470	12894529	.	-	.	Parent=FBtr0303313
+###
+3R	FlyBase	gene	13313340	13313974	.	+	.	ID=FBgn0286885;Name=CR46407;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46407;derived_computed_cyto=87E5-87E5
+3R	FlyBase	pseudogene	13313340	13313974	.	+	.	ID=FBtr0475063;Parent=FBgn0286885;Name=CR46407-RA;Dbxref=FlyBase_Annotation_IDs:CR46407-RA
+3R	FlyBase	exon	13313340	13313974	.	+	.	Parent=FBtr0475063
+###
+3R	FlyBase	gene	13838388	13838522	.	+	.	ID=FBgn0286915;Name=CR46415;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46415;derived_computed_cyto=87F15-87F15
+3R	FlyBase	pseudogene	13838388	13838522	.	+	.	ID=FBtr0475140;Parent=FBgn0286915;Name=CR46415-RA;Dbxref=FlyBase_Annotation_IDs:CR46415-RA
+3R	FlyBase	exon	13838388	13838522	.	+	.	Parent=FBtr0475140
+###
+3R	FlyBase	gene	15906240	15906750	.	+	.	ID=FBgn0051292;Name=CR31292;Alias=CG31292,CG31292;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0031292,FlyBase_Annotation_IDs:CR31292,GB_protein:AAN13681,EntrezGene:318665,GenomeRNAi:10178952;gbunit=AE014297;derived_computed_cyto=89A8-89A8
+3R	FlyBase	pseudogene	15906240	15906750	.	+	.	ID=FBtr0304144;Parent=FBgn0051292;Name=CR31292-RB;Dbxref=FlyBase_Annotation_IDs:CR31292-RB
+3R	FlyBase	exon	15906240	15906527	.	+	.	Parent=FBtr0304144
+3R	FlyBase	intron	15906528	15906586	.	+	.	Parent=FBtr0304144
+3R	FlyBase	pseudogene	15906240	15906750	.	+	.	ID=FBtr0345275;Parent=FBgn0051292;Name=CR31292-RC;Dbxref=FlyBase_Annotation_IDs:CR31292-RC
+3R	FlyBase	exon	15906240	15906342	.	+	.	Parent=FBtr0345275
+3R	FlyBase	intron	15906343	15906410	.	+	.	Parent=FBtr0345275
+3R	FlyBase	exon	15906411	15906527	.	+	.	Parent=FBtr0345275
+3R	FlyBase	intron	15906528	15906586	.	+	.	Parent=FBtr0345275
+3R	FlyBase	exon	15906587	15906750	.	+	.	Parent=FBtr0304144,FBtr0345275
+###
+3R	FlyBase	gene	19385917	19387559	.	+	.	ID=FBgn0085314;Name=CR34285;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR34285,GenomeRNAi:5740125;derived_computed_cyto=92A3-92A3
+3R	FlyBase	pseudogene	19385917	19387559	.	+	.	ID=FBtr0339151;Parent=FBgn0085314;Name=CR34285-RB;Dbxref=FlyBase_Annotation_IDs:CR34285-RB
+3R	FlyBase	exon	19385917	19386054	.	+	.	Parent=FBtr0339151
+3R	FlyBase	intron	19386055	19386109	.	+	.	Parent=FBtr0339151
+3R	FlyBase	exon	19386110	19386312	.	+	.	Parent=FBtr0339151
+3R	FlyBase	intron	19386313	19386372	.	+	.	Parent=FBtr0339151
+3R	FlyBase	exon	19386373	19386834	.	+	.	Parent=FBtr0339151
+3R	FlyBase	intron	19386835	19386886	.	+	.	Parent=FBtr0339151
+3R	FlyBase	exon	19386887	19387038	.	+	.	Parent=FBtr0339151
+3R	FlyBase	intron	19387039	19387090	.	+	.	Parent=FBtr0339151
+3R	FlyBase	exon	19387091	19387363	.	+	.	Parent=FBtr0339151
+3R	FlyBase	intron	19387364	19387421	.	+	.	Parent=FBtr0339151
+3R	FlyBase	exon	19387422	19387559	.	+	.	Parent=FBtr0339151
+###
+3R	FlyBase	gene	20734748	20735323	.	+	.	ID=FBgn0261857;Name=CR42786;Alias=lincRNA.821;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42786,GenomeRNAi:10178836;derived_computed_cyto=92F10-92F10
+3R	FlyBase	pseudogene	20734748	20735323	.	+	.	ID=FBtr0303443;Parent=FBgn0261857;Name=CR42786-RA;Dbxref=FlyBase_Annotation_IDs:CR42786-RA
+3R	FlyBase	exon	20734748	20734787	.	+	.	Parent=FBtr0303443
+3R	FlyBase	intron	20734788	20734853	.	+	.	Parent=FBtr0303443
+3R	FlyBase	exon	20734854	20735323	.	+	.	Parent=FBtr0303443
+###
+3R	FlyBase	gene	21216820	21217242	.	+	.	ID=FBgn0264706;Name=CR43975;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43975,GenomeRNAi:14462495;derived_computed_cyto=93C6-93C6
+3R	FlyBase	pseudogene	21216820	21217242	.	+	.	ID=FBtr0333951;Parent=FBgn0264706;Name=CR43975-RA;Dbxref=FlyBase_Annotation_IDs:CR43975-RA
+3R	FlyBase	exon	21216820	21217242	.	+	.	Parent=FBtr0333951
+###
+3R	FlyBase	gene	21729502	21729895	.	-	.	ID=FBgn0262542;Name=CR43096;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43096,GenomeRNAi:12798505;derived_computed_cyto=93F6-93F6
+3R	FlyBase	pseudogene	21729502	21729895	.	-	.	ID=FBtr0304882;Parent=FBgn0262542;Name=CR43096-RA;Dbxref=FlyBase_Annotation_IDs:CR43096-RA
+3R	FlyBase	exon	21729502	21729895	.	-	.	Parent=FBtr0304882
+###
+3R	FlyBase	gene	21737497	21737679	.	-	.	ID=FBgn0286926;Name=CR46423;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46423;derived_computed_cyto=93F7-93F7
+3R	FlyBase	pseudogene	21737497	21737679	.	-	.	ID=FBtr0475183;Parent=FBgn0286926;Name=CR46423-RA;Dbxref=FlyBase_Annotation_IDs:CR46423-RA
+3R	FlyBase	exon	21737497	21737679	.	-	.	Parent=FBtr0475183
+###
+3R	FlyBase	gene	22296870	22297544	.	+	.	ID=FBgn0263834;Name=CR43696;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43696,GenomeRNAi:14462504;derived_computed_cyto=94A4-94A4
+3R	FlyBase	pseudogene	22296870	22297544	.	+	.	ID=FBtr0321274;Parent=FBgn0263834;Name=CR43696-RA;Dbxref=FlyBase_Annotation_IDs:CR43696-RA
+3R	FlyBase	exon	22296870	22297544	.	+	.	Parent=FBtr0321274
+###
+3R	FlyBase	gene	22297548	22298051	.	+	.	ID=FBgn0263835;Name=CR43697;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43697,GenomeRNAi:14462505;derived_computed_cyto=94A4-94A4
+3R	FlyBase	pseudogene	22297548	22298051	.	+	.	ID=FBtr0321275;Parent=FBgn0263835;Name=CR43697-RA;Dbxref=FlyBase_Annotation_IDs:CR43697-RA
+3R	FlyBase	exon	22297548	22298051	.	+	.	Parent=FBtr0321275
+###
+3R	FlyBase	gene	23893518	23894162	.	+	.	ID=FBgn0286880;Name=CR46402;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46402;derived_computed_cyto=95C9-95C9
+3R	FlyBase	pseudogene	23893518	23894162	.	+	.	ID=FBtr0475057;Parent=FBgn0286880;Name=CR46402-RA;Dbxref=FlyBase_Annotation_IDs:CR46402-RA
+3R	FlyBase	exon	23893518	23893587	.	+	.	Parent=FBtr0475057
+3R	FlyBase	intron	23893588	23893659	.	+	.	Parent=FBtr0475057
+3R	FlyBase	exon	23893660	23893825	.	+	.	Parent=FBtr0475057
+3R	FlyBase	intron	23893826	23893874	.	+	.	Parent=FBtr0475057
+3R	FlyBase	exon	23893875	23894162	.	+	.	Parent=FBtr0475057
+###
+3R	FlyBase	gene	25268009	25268464	.	+	.	ID=FBgn0263002;Name=CR43310;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43310,GenomeRNAi:12798258;derived_computed_cyto=96C8-96C8
+3R	FlyBase	pseudogene	25268009	25268464	.	+	.	ID=FBtr0306845;Parent=FBgn0263002;Name=CR43310-RA;Dbxref=FlyBase_Annotation_IDs:CR43310-RA
+3R	FlyBase	exon	25268009	25268226	.	+	.	Parent=FBtr0306845
+3R	FlyBase	intron	25268227	25268321	.	+	.	Parent=FBtr0306845
+3R	FlyBase	exon	25268322	25268464	.	+	.	Parent=FBtr0306845
+###
+3R	FlyBase	gene	25268661	25269965	.	+	.	ID=FBgn0039307;Name=CR13656;Alias=CG13656,CG13656;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0013656,FlyBase_Annotation_IDs:CR13656,EntrezGene:43047,GenomeRNAi:8674041;gbunit=AE014297;derived_computed_cyto=96C8-96C8
+3R	FlyBase	pseudogene	25268661	25269965	.	+	.	ID=FBtr0084817;Parent=FBgn0039307;Name=CR13656-RA;Alias=CG13656-RA,CG13656-RA;Dbxref=REFSEQ:NM_143109,FlyBase_Annotation_IDs:CR13656-RA
+3R	FlyBase	exon	25268661	25268975	.	+	.	Parent=FBtr0084817
+3R	FlyBase	intron	25268976	25268977	.	+	.	Parent=FBtr0084817
+3R	FlyBase	exon	25268978	25269713	.	+	.	Parent=FBtr0084817
+3R	FlyBase	intron	25269714	25269768	.	+	.	Parent=FBtr0084817
+3R	FlyBase	exon	25269769	25269965	.	+	.	Parent=FBtr0084817
+###
+3R	FlyBase	gene	27845089	27845414	.	+	.	ID=FBgn0067407;Name=Or98P;fullname=Odorant receptor 98a pseudogene;Alias=FBgn0053345,CR33345;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33345,GenomeRNAi:3772262;gbunit=AE014297;derived_computed_cyto=98B4-98B4
+3R	FlyBase	pseudogene	27845089	27845414	.	+	.	ID=FBtr0085225;Parent=FBgn0067407;Name=Or98P-RA;Dbxref=FlyBase_Annotation_IDs:CR33345-RA,REFSEQ:NR_002088
+3R	FlyBase	exon	27845089	27845226	.	+	.	Parent=FBtr0085225
+3R	FlyBase	intron	27845227	27845342	.	+	.	Parent=FBtr0085225
+3R	FlyBase	exon	27845343	27845414	.	+	.	Parent=FBtr0085225
+###
+3R	FlyBase	gene	27960768	27961476	.	+	.	ID=FBgn0051054;Name=CR31054;Alias=CG31054,CG31054;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0031054,FlyBase_Annotation_IDs:CR31054,GB_protein:AAN14136,EntrezGene:318573,GenomeRNAi:12798280;gbunit=AE014297;derived_computed_cyto=98B6-98B6
+3R	FlyBase	pseudogene	27960768	27961476	.	+	.	ID=FBtr0307118;Parent=FBgn0051054;Name=CR31054-RB;Dbxref=FlyBase_Annotation_IDs:CR31054-RB
+3R	FlyBase	exon	27960768	27960907	.	+	.	Parent=FBtr0307118
+3R	FlyBase	intron	27960908	27961033	.	+	.	Parent=FBtr0307118
+3R	FlyBase	exon	27961034	27961155	.	+	.	Parent=FBtr0307118
+3R	FlyBase	intron	27961156	27961215	.	+	.	Parent=FBtr0307118
+3R	FlyBase	exon	27961216	27961476	.	+	.	Parent=FBtr0307118
+###
+3R	FlyBase	gene	27961443	27961821	.	-	.	ID=FBgn0267108;Name=CR45548;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45548,GenomeRNAi:19835213;derived_computed_cyto=98B6-98B6
+3R	FlyBase	pseudogene	27961443	27961821	.	-	.	ID=FBtr0346202;Parent=FBgn0267108;Name=CR45548-RA;Dbxref=FlyBase_Annotation_IDs:CR45548-RA
+3R	FlyBase	exon	27961443	27961665	.	-	.	Parent=FBtr0346202
+3R	FlyBase	intron	27961666	27961723	.	-	.	Parent=FBtr0346202
+3R	FlyBase	exon	27961724	27961821	.	-	.	Parent=FBtr0346202
+###
+3R	FlyBase	gene	28638621	28639910	.	-	.	ID=FBgn0267952;Name=CR46232;Alias=lincRNA.880;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46232,GenomeRNAi:26067543;derived_computed_cyto=98D7-98D7
+3R	FlyBase	pseudogene	28638621	28639910	.	-	.	ID=FBtr0347527;Parent=FBgn0267952;Name=CR46232-RA;Dbxref=FlyBase_Annotation_IDs:CR46232-RA
+3R	FlyBase	exon	28638621	28639910	.	-	.	Parent=FBtr0347527
+###
+3R	FlyBase	gene	29238830	29240308	.	-	.	ID=FBgn0051427;Name=CR31427;Alias=FBgn0039657,CG11955,CG31427;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0031427,FlyBase_Annotation_IDs:CR31427,GB_protein:ABW08800,GB_protein:ABW08801,GB_protein:AGB96442,GB_protein:AGB96443,EntrezGene:43464,GB_protein:AAF56883,EPD:CG31427_1,GenomeRNAi:43464;gbunit=AE014297;derived_computed_cyto=99A1-99A1
+3R	FlyBase	pseudogene	29238830	29240308	.	-	.	ID=FBtr0445668;Parent=FBgn0051427;Name=CR31427-RC;Dbxref=FlyBase_Annotation_IDs:CR31427-RC
+3R	FlyBase	exon	29238830	29239351	.	-	.	Parent=FBtr0445668
+3R	FlyBase	intron	29239352	29239407	.	-	.	Parent=FBtr0445668
+3R	FlyBase	exon	29239408	29239975	.	-	.	Parent=FBtr0445668
+3R	FlyBase	intron	29239976	29240216	.	-	.	Parent=FBtr0445668
+3R	FlyBase	exon	29240217	29240308	.	-	.	Parent=FBtr0445668
+###
+3R	FlyBase	gene	29859041	29859865	.	-	.	ID=FBgn0051032;Name=CR31032;Alias=FBgn0063248,CG31032,BcDNA:GH15189;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0031032,FlyBase_Annotation_IDs:CR31032,GB:AI239025,GB:AY118786,GB_protein:AAM50646,Fly-FISH:CG31032,Fly-FISH:CR31032,GenomeRNAi:5740822;gbunit=AE014297;derived_computed_cyto=99C4-99C4
+3R	FlyBase	pseudogene	29859041	29859865	.	-	.	ID=FBtr0085524;Parent=FBgn0051032;Name=CR31032-RA;Dbxref=FlyBase_Annotation_IDs:CR31032-RA,REFSEQ:NR_003913
+3R	FlyBase	exon	29859041	29859650	.	-	.	Parent=FBtr0085524
+3R	FlyBase	intron	29859651	29859705	.	-	.	Parent=FBtr0085524
+3R	FlyBase	exon	29859706	29859865	.	-	.	Parent=FBtr0085524
+###
+3R	FlyBase	gene	30211527	30211753	.	+	.	ID=FBgn0000280;Name=Cec-Psi1;fullname=Cecropin pseudogene 1;Alias=pseudo-1,CecPsi1,cecropin Psi-1,cec-Psi1,CR32926,Crecopin A2 Psi;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032926,FlyBase_Annotation_IDs:CR32926,GB:AB010791,GB_protein:BAA28720,GB:AB010792,GB_protein:BAA28724,GB:AB010793,GB:AB010794,GB_protein:BAA28731,GB:AB010795,GB:AB010796,GB_protein:BAA28737,GB:AB010797,GB_protein:BAA28741,GB:X16972,GB:Y16852,GB:Y16853,GB:Y16854,GB_protein:CAA76438,GB:Y16855,GB_protein:CAA76444,GB:Y16856,GB_protein:CAA76450,GB:Y16857,GB_protein:CAA76456,GB:Y16858,GB:Y16859,GB_protein:CAA76468,GB:Y16861,GB_protein:CAA76478,UniProt/TrEMBL:A2IPN5,UniProt/TrEMBL:A2IPN6,UniProt/TrEMBL:A2IPN7,GenomeRNAi:3772648;gbunit=AE014297;derived_computed_cyto=99E2-99E2
+3R	FlyBase	pseudogene	30211527	30211753	.	+	.	ID=FBtr0085613;Parent=FBgn0000280;Name=Cec-Psi1-RA;Dbxref=FlyBase_Annotation_IDs:CR32926-RA,REFSEQ:NR_001384
+3R	FlyBase	exon	30211527	30211602	.	+	.	Parent=FBtr0085613
+3R	FlyBase	intron	30211603	30211663	.	+	.	Parent=FBtr0085613
+3R	FlyBase	exon	30211664	30211753	.	+	.	Parent=FBtr0085613
+###
+3R	FlyBase	gene	30212903	30213142	.	+	.	ID=FBgn0000281;Name=Cec2;fullname=Cecropin 2;Alias=Cecropin,pseudo-2,CecPsi2,cecropin Psi-2,cec-Psi2,CR32924,CG32924,CR32934,CG32934,cecropin,Cec;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032924,FlyBase_Annotation_IDs:CR32934,GB:AB010791,GB:AB010792,GB:AB010793,GB:AB010794,GB:AB010795,GB:AB010796,GB:AB010797,GB_protein:BAA28743,GB:X16972,GB:Y16852,GB_protein:CAA76428,GB:Y16853,GB:Y16854,GB:Y16855,GB:Y16856,GB:Y16857,GB:Y16858,GB:Y16859,GB_protein:CAA76470,GB:Y16861,UniProt/TrEMBL:A2IPN9,GenomeRNAi:3772199;gbunit=AE014297;derived_computed_cyto=99E2-99E2
+3R	FlyBase	pseudogene	30212903	30213142	.	+	.	ID=FBtr0089614;Parent=FBgn0000281;Name=Cec2-RA;Alias=CR32924-RA,CR32934-RA;Dbxref=FlyBase_Annotation_IDs:CR32934-RA,REFSEQ:NR_002089
+3R	FlyBase	exon	30212903	30212989	.	+	.	Parent=FBtr0089614
+3R	FlyBase	intron	30212990	30213028	.	+	.	Parent=FBtr0089614
+3R	FlyBase	exon	30213029	30213142	.	+	.	Parent=FBtr0089614
+###
+3R	FlyBase	gene	31045295	31045561	.	-	.	ID=FBgn0286884;Name=CR46406;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46406;derived_computed_cyto=100B1-100B1
+3R	FlyBase	pseudogene	31045295	31045561	.	-	.	ID=FBtr0475062;Parent=FBgn0286884;Name=CR46406-RA;Dbxref=FlyBase_Annotation_IDs:CR46406-RA
+3R	FlyBase	exon	31045295	31045561	.	-	.	Parent=FBtr0475062
+###
+3R	FlyBase	gene	32023064	32023483	.	+	.	ID=FBgn0286918;Name=CR46418;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46418;derived_computed_cyto=100E2-100E2
+3R	FlyBase	pseudogene	32023064	32023483	.	+	.	ID=FBtr0475143;Parent=FBgn0286918;Name=CR46418-RA;Dbxref=FlyBase_Annotation_IDs:CR46418-RA
+3R	FlyBase	exon	32023064	32023483	.	+	.	Parent=FBtr0475143
+###
+4	FlyBase	gene	5829	11765	.	-	.	ID=FBgn0052011;Name=CR32011;Alias=CG32011;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032011,FlyBase_Annotation_IDs:CR32011,GenomeRNAi:3772046;gbunit=AE014135;derived_computed_cyto=101F1-102A1
+4	FlyBase	pseudogene	5829	11765	.	-	.	ID=FBtr0333684;Parent=FBgn0052011;Name=CR32011-RB;Dbxref=FlyBase_Annotation_IDs:CR32011-RB
+4	FlyBase	exon	5829	6041	.	-	.	Parent=FBtr0333684
+4	FlyBase	intron	6042	6540	.	-	.	Parent=FBtr0333684
+4	FlyBase	pseudogene	6374	11765	.	-	.	ID=FBtr0089182;Parent=FBgn0052011;Name=CR32011-RA;Dbxref=FlyBase_Annotation_IDs:CR32011-RA,REFSEQ:NR_001596
+4	FlyBase	exon	6374	6475	.	-	.	Parent=FBtr0089182
+4	FlyBase	intron	6476	6540	.	-	.	Parent=FBtr0089182
+4	FlyBase	exon	6541	6723	.	-	.	Parent=FBtr0333684,FBtr0089182
+4	FlyBase	intron	6724	7744	.	-	.	Parent=FBtr0333684,FBtr0089182
+4	FlyBase	exon	7745	8281	.	-	.	Parent=FBtr0333684,FBtr0089182
+4	FlyBase	intron	8282	8339	.	-	.	Parent=FBtr0333684,FBtr0089182
+4	FlyBase	exon	8340	8675	.	-	.	Parent=FBtr0333684,FBtr0089182
+4	FlyBase	intron	8676	8729	.	-	.	Parent=FBtr0333684,FBtr0089182
+4	FlyBase	exon	8730	11765	.	-	.	Parent=FBtr0333684,FBtr0089182
+###
+4	FlyBase	gene	12640	25054	.	-	.	ID=FBgn0052010;Name=CR32010;Alias=CG32010;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBti0020403,FlyBase:FBan0032010,FlyBase_Annotation_IDs:CR32010,GenomeRNAi:3772244;gbunit=AE014135;derived_computed_cyto=102A1-102A1
+4	FlyBase	pseudogene	12640	25054	.	-	.	ID=FBtr0333683;Parent=FBgn0052010;Name=CR32010-RB;Dbxref=FlyBase_Annotation_IDs:CR32010-RB
+4	FlyBase	exon	12640	12825	.	-	.	Parent=FBtr0333683
+4	FlyBase	intron	12826	13322	.	-	.	Parent=FBtr0333683
+4	FlyBase	pseudogene	13153	25054	.	-	.	ID=FBtr0089181;Parent=FBgn0052010;Name=CR32010-RA;Alias=TE20403-RA;Dbxref=FlyBase_Annotation_IDs:CR32010-RA,REFSEQ:NR_001597
+4	FlyBase	exon	13153	13257	.	-	.	Parent=FBtr0089181
+4	FlyBase	intron	13258	13322	.	-	.	Parent=FBtr0089181
+4	FlyBase	exon	13323	13505	.	-	.	Parent=FBtr0333683,FBtr0089181
+4	FlyBase	intron	13506	20969	.	-	.	Parent=FBtr0333683,FBtr0089181
+4	FlyBase	exon	20970	21553	.	-	.	Parent=FBtr0333683,FBtr0089181
+4	FlyBase	intron	21554	21611	.	-	.	Parent=FBtr0333683,FBtr0089181
+4	FlyBase	exon	21612	21947	.	-	.	Parent=FBtr0333683,FBtr0089181
+4	FlyBase	intron	21948	22001	.	-	.	Parent=FBtr0333683,FBtr0089181
+4	FlyBase	exon	22002	25054	.	-	.	Parent=FBtr0333683,FBtr0089181
+###
+4	FlyBase	gene	27020	31633	.	-	.	ID=FBgn0052009;Name=CR32009;Alias=CG32009;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032009,FlyBase_Annotation_IDs:CR32009,GenomeRNAi:3772156;gbunit=AE014135;derived_computed_cyto=102A1-102A1
+4	FlyBase	pseudogene	27020	31633	.	-	.	ID=FBtr0333682;Parent=FBgn0052009;Name=CR32009-RB;Dbxref=FlyBase_Annotation_IDs:CR32009-RB
+4	FlyBase	exon	27020	27205	.	-	.	Parent=FBtr0333682
+4	FlyBase	intron	27206	27702	.	-	.	Parent=FBtr0333682
+4	FlyBase	pseudogene	27530	31633	.	-	.	ID=FBtr0089180;Parent=FBgn0052009;Name=CR32009-RA;Dbxref=FlyBase_Annotation_IDs:CR32009-RA,REFSEQ:NR_001598
+4	FlyBase	exon	27530	27637	.	-	.	Parent=FBtr0089180
+4	FlyBase	intron	27638	27702	.	-	.	Parent=FBtr0089180
+4	FlyBase	exon	27703	27885	.	-	.	Parent=FBtr0333682,FBtr0089180
+4	FlyBase	intron	27886	28906	.	-	.	Parent=FBtr0333682,FBtr0089180
+4	FlyBase	exon	28907	29490	.	-	.	Parent=FBtr0333682,FBtr0089180
+4	FlyBase	intron	29491	29548	.	-	.	Parent=FBtr0333682,FBtr0089180
+4	FlyBase	exon	29549	31633	.	-	.	Parent=FBtr0333682,FBtr0089180
+###
+4	FlyBase	gene	215957	216263	.	+	.	ID=FBgn0286883;Name=CR46405;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46405;derived_computed_cyto=102A8-102A8
+4	FlyBase	pseudogene	215957	216263	.	+	.	ID=FBtr0475061;Parent=FBgn0286883;Name=CR46405-RA;Dbxref=FlyBase_Annotation_IDs:CR46405-RA
+4	FlyBase	exon	215957	216112	.	+	.	Parent=FBtr0475061
+4	FlyBase	intron	216113	216173	.	+	.	Parent=FBtr0475061
+4	FlyBase	exon	216174	216263	.	+	.	Parent=FBtr0475061
+###
+4	FlyBase	gene	637333	637787	.	+	.	ID=FBgn0264820;Name=CR44028;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44028,GenomeRNAi:14462357;derived_computed_cyto=102D1-102D1
+4	FlyBase	pseudogene	637333	637787	.	+	.	ID=FBtr0334478;Parent=FBgn0264820;Name=CR44028-RA;Dbxref=FlyBase_Annotation_IDs:CR44028-RA
+4	FlyBase	exon	637333	637569	.	+	.	Parent=FBtr0334478
+4	FlyBase	intron	637570	637632	.	+	.	Parent=FBtr0334478
+4	FlyBase	exon	637633	637787	.	+	.	Parent=FBtr0334478
+###
+4	FlyBase	gene	843274	843973	.	+	.	ID=FBgn0053797;Name=CR33797;Alias=CG33797;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33797,GB_protein:AAZ52486,EntrezGene:3771744,GenomeRNAi:14462358;gbunit=AE014135;derived_computed_cyto=102E3-102E3
+4	FlyBase	pseudogene	843274	843973	.	+	.	ID=FBtr0334484;Parent=FBgn0053797;Name=CR33797-RB;Dbxref=FlyBase_Annotation_IDs:CR33797-RB
+4	FlyBase	exon	843274	843973	.	+	.	Parent=FBtr0334484
+###
+4	FlyBase	gene	905179	907924	.	+	.	ID=FBgn0263093;Name=CR43361;Alias=CG32021;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43361,Fly-FISH:CG32021,GenomeRNAi:12798289;derived_computed_cyto=102F1-102F1
+4	FlyBase	pseudogene	905179	907924	.	+	.	ID=FBtr0334486;Parent=FBgn0263093;Name=CR43361-RB;Dbxref=FlyBase_Annotation_IDs:CR43361-RB
+4	FlyBase	exon	905179	905578	.	+	.	Parent=FBtr0334486
+4	FlyBase	intron	905579	906893	.	+	.	Parent=FBtr0334486
+4	FlyBase	exon	906894	907047	.	+	.	Parent=FBtr0334486
+4	FlyBase	intron	907048	907114	.	+	.	Parent=FBtr0334486
+4	FlyBase	pseudogene	906676	907924	.	+	.	ID=FBtr0307112;Parent=FBgn0263093;Name=CR43361-RA;Dbxref=FlyBase_Annotation_IDs:CR43361-RA
+4	FlyBase	exon	906676	907047	.	+	.	Parent=FBtr0307112
+4	FlyBase	intron	907048	907114	.	+	.	Parent=FBtr0307112
+4	FlyBase	exon	907115	907924	.	+	.	Parent=FBtr0334486,FBtr0307112
+###
+X	FlyBase	gene	476857	479309	.	-	.	ID=FBgn0029523;Name=CR18275;Alias=CG18275,CG18275;Ontology_term=SO:0000087,SO:0000077,SO:0000042;Dbxref=FlyBase:FBan0018275,FlyBase_Annotation_IDs:CR18275,EntrezGene:30989,GenomeRNAi:8674032;gbunit=AE014298;derived_computed_cyto=1B4-1B4
+X	FlyBase	pseudogene	476857	479309	.	-	.	ID=FBtr0070097;Parent=FBgn0029523;Name=CR18275-RA;Alias=CG18275-RA,CG18275-RA;Dbxref=REFSEQ:NM_130485,FlyBase_Annotation_IDs:CR18275-RA
+X	FlyBase	exon	476857	478543	.	-	.	Parent=FBtr0070097
+X	FlyBase	intron	478544	478598	.	-	.	Parent=FBtr0070097
+X	FlyBase	exon	478599	479026	.	-	.	Parent=FBtr0070097
+X	FlyBase	intron	479027	479115	.	-	.	Parent=FBtr0070097
+X	FlyBase	exon	479116	479309	.	-	.	Parent=FBtr0070097
+###
+X	FlyBase	gene	479864	481826	.	-	.	ID=FBgn0029526;Name=CR18166;Alias=FBgn0043840,CG18166-RA,CG18166-PA,CG18166-RB,CG18166-PB,CG18166,CG13372,BEST:GH02584,CG18166;Ontology_term=SO:0000087,SO:0000077,SO:0000042;Dbxref=GB_protein:AAF45507.4,GB_protein:AAO41629.1,FlyBase:FBan0018166,GB:AI063108,GB:AW940100,GB:AY059436,GB_protein:AAL13342,FlyBase_Annotation_IDs:CR18166,EntrezGene:30992,UniProt/TrEMBL:Q9W5F9,Fly-FISH:CG18166,Fly-FISH:CR18166,GenomeRNAi:8673968;gbunit=AE014298;derived_computed_cyto=1B4-1B4
+X	FlyBase	pseudogene	479864	481826	.	-	.	ID=FBtr0070095;Parent=FBgn0029526;Name=CR18166-RA;Alias=CG18166-RA,CG18166-RA;Dbxref=REFSEQ:NM_166843,FlyBase_Annotation_IDs:CR18166-RA
+X	FlyBase	exon	479864	481169	.	-	.	Parent=FBtr0070095
+X	FlyBase	intron	481170	481232	.	-	.	Parent=FBtr0070095
+X	FlyBase	pseudogene	479864	481826	.	-	.	ID=FBtr0339441;Parent=FBgn0029526;Name=CR18166-RC;Dbxref=FlyBase_Annotation_IDs:CR18166-RC
+X	FlyBase	exon	479864	480758	.	-	.	Parent=FBtr0339441
+X	FlyBase	intron	480759	480912	.	-	.	Parent=FBtr0339441
+X	FlyBase	exon	480913	481169	.	-	.	Parent=FBtr0339441
+X	FlyBase	intron	481170	481232	.	-	.	Parent=FBtr0339441
+X	FlyBase	exon	481233	481562	.	-	.	Parent=FBtr0070095,FBtr0339441
+X	FlyBase	intron	481563	481601	.	-	.	Parent=FBtr0070095,FBtr0339441
+X	FlyBase	pseudogene	480154	481826	.	-	.	ID=FBtr0301337;Parent=FBgn0029526;Name=CR18166-RB;Dbxref=FlyBase_Annotation_IDs:CR18166-RB
+X	FlyBase	exon	480154	481169	.	-	.	Parent=FBtr0301337
+X	FlyBase	intron	481170	481232	.	-	.	Parent=FBtr0301337
+X	FlyBase	exon	481233	481512	.	-	.	Parent=FBtr0301337
+X	FlyBase	intron	481513	481601	.	-	.	Parent=FBtr0301337
+X	FlyBase	exon	481602	481826	.	-	.	Parent=FBtr0070095,FBtr0339441,FBtr0301337
+###
+X	FlyBase	gene	620421	620597	.	-	.	ID=FBgn0286917;Name=CR46417;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46417;derived_computed_cyto=1B12-1B12
+X	FlyBase	pseudogene	620421	620597	.	-	.	ID=FBtr0475142;Parent=FBgn0286917;Name=CR46417-RA;Dbxref=FlyBase_Annotation_IDs:CR46417-RA
+X	FlyBase	exon	620421	620597	.	-	.	Parent=FBtr0475142
+###
+X	FlyBase	gene	644226	644616	.	+	.	ID=FBgn0266102;Name=CR44839;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44839,GenomeRNAi:19835888;derived_computed_cyto=1B13-1B13
+X	FlyBase	pseudogene	644226	644616	.	+	.	ID=FBtr0343565;Parent=FBgn0266102;Name=CR44839-RA;Dbxref=FlyBase_Annotation_IDs:CR44839-RA
+X	FlyBase	exon	644226	644616	.	+	.	Parent=FBtr0343565
+###
+X	FlyBase	gene	680346	680773	.	-	.	ID=FBgn0286919;Name=CR46419;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46419;derived_computed_cyto=1C2-1C2
+X	FlyBase	pseudogene	680346	680773	.	-	.	ID=FBtr0475144;Parent=FBgn0286919;Name=CR46419-RA;Dbxref=FlyBase_Annotation_IDs:CR46419-RA
+X	FlyBase	exon	680346	680773	.	-	.	Parent=FBtr0475144
+###
+X	FlyBase	gene	1163620	1164105	.	-	.	ID=FBgn0085349;Name=CR34320;Alias=CG34320;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:ABW09324,FlyBase_Annotation_IDs:CR34320,EntrezGene:5740595,GenomeRNAi:26067088;derived_computed_cyto=1E3-1E3
+X	FlyBase	pseudogene	1163620	1164105	.	-	.	ID=FBtr0445214;Parent=FBgn0085349;Name=CR34320-RB;Dbxref=FlyBase_Annotation_IDs:CR34320-RB
+X	FlyBase	exon	1163620	1163762	.	-	.	Parent=FBtr0445214
+X	FlyBase	intron	1163763	1163866	.	-	.	Parent=FBtr0445214
+X	FlyBase	exon	1163867	1164105	.	-	.	Parent=FBtr0445214
+###
+X	FlyBase	gene	1692824	1693843	.	+	.	ID=FBgn0029588;Name=CR14798;Alias=FBgn0047084,BcDNA:RE57135,CG14798;Ontology_term=GO:1902445,GO:0006974,GO:0005759,SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0014798,FlyBase_Annotation_IDs:CR14798,GB:AY071524,GB_protein:AAL49146,GB:BI370495,UniProt/TrEMBL:Q8SYI7,GB_protein:AAF45660,INTERPRO:IPR032870,INTERPRO:IPR037151,EntrezGene:31126,EPD:CG14798_1,Fly-FISH:CG14798,GenomeRNAi:31126,KEGG_GENES:Dmel_CG14798;gbunit=AE014298;derived_computed_cyto=2B7-2B7
+X	FlyBase	pseudogene	1692824	1693843	.	+	.	ID=FBtr0475147;Parent=FBgn0029588;Name=CR14798-RB;Dbxref=FlyBase_Annotation_IDs:CR14798-RB
+X	FlyBase	exon	1692824	1693101	.	+	.	Parent=FBtr0475147
+X	FlyBase	intron	1693102	1693162	.	+	.	Parent=FBtr0475147
+X	FlyBase	exon	1693163	1693323	.	+	.	Parent=FBtr0475147
+X	FlyBase	intron	1693324	1693384	.	+	.	Parent=FBtr0475147
+X	FlyBase	exon	1693385	1693843	.	+	.	Parent=FBtr0475147
+###
+X	FlyBase	gene	3793464	3794660	.	+	.	ID=FBgn0260225;Name=CR42499;Alias=CG42499;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:ACZ95193,EntrezGene:8674110,FlyBase_Annotation_IDs:CR42499,GenomeRNAi:14462378;derived_computed_cyto=3F1-3F1
+X	FlyBase	pseudogene	3793464	3794660	.	+	.	ID=FBtr0300629;Parent=FBgn0260225;Name=CR42499-RA;Alias=CG42499-RA,CG42499-RA;Dbxref=REFSEQ:NM_001169185,FlyBase_Annotation_IDs:CR42499-RA
+X	FlyBase	exon	3793464	3794660	.	+	.	Parent=FBtr0300629
+###
+X	FlyBase	gene	3797497	3799028	.	-	.	ID=FBgn0053221;Name=CR33221;Alias=FBgn0039556,CG33221,CG12260,CG33221;Ontology_term=SO:0000042,SO:0000087,SO:0000043;Dbxref=FlyBase_Annotation_IDs:CR33221,GB_protein:AAN09107,EntrezGene:2768878,GenomeRNAi:12798104;gbunit=AE014298;derived_computed_cyto=3F2-3F2
+X	FlyBase	pseudogene	3797497	3799028	.	-	.	ID=FBtr0305348;Parent=FBgn0053221;Name=CR33221-RB;Dbxref=FlyBase_Annotation_IDs:CR33221-RB
+X	FlyBase	exon	3797497	3799028	.	-	.	Parent=FBtr0305348
+###
+X	FlyBase	gene	5832298	5832368	.	+	.	ID=FBgn0052761;Name=tRNA:Glu-CTC-6-1Psi;fullname=transfer RNA:Glutamic acid-CTC 6-1 pseudogene;Alias=FBgn0060254,AE002566.trna3-GluCTC,tRNA:EPsi:CTC:AE002566,CR32761,chrX.trna3-GluCTC,tRNA:Glu-CTC-6-1Psi,transfer RNA:CR32761:pseudogene,tRNA:CR32761:Psi,tRNA-Glu-CTC-6-1;Ontology_term=SO:0000663,SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0032761,FlyBase_Annotation_IDs:CR32761,EntrezGene:3772070,GenomeRNAi:3772070;gbunit=AE014298;derived_computed_cyto=5C2-5C2
+X	FlyBase	pseudogene	5832298	5832368	.	+	.	ID=FBtr0070818;Parent=FBgn0052761;Name=tRNA:Glu-CTC-6-1Psi-RA;Alias=CR32761-RA,tRNA:CR32761:Psi-RA;Dbxref=FlyBase_Annotation_IDs:CR32761-RA,REFSEQ:NR_002099
+X	FlyBase	exon	5832298	5832368	.	+	.	Parent=FBtr0070818
+###
+X	FlyBase	gene	6280233	6280752	.	-	.	ID=FBgn0052745;Name=CR32745;Alias=CG32745;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032745,FlyBase_Annotation_IDs:CR32745,GenomeRNAi:5740857;gbunit=AE014298;derived_computed_cyto=5E4-5E4
+X	FlyBase	pseudogene	6280233	6280752	.	-	.	ID=FBtr0070932;Parent=FBgn0052745;Name=CR32745-RB;Alias=CG32745-RA;Dbxref=FlyBase_Annotation_IDs:CR32745-RB,REFSEQ:NR_003727
+X	FlyBase	exon	6280233	6280439	.	-	.	Parent=FBtr0070932
+X	FlyBase	intron	6280440	6280488	.	-	.	Parent=FBtr0070932
+X	FlyBase	exon	6280489	6280752	.	-	.	Parent=FBtr0070932
+###
+X	FlyBase	gene	6361496	6363310	.	-	.	ID=FBgn0016974;Name=swaPsi;fullname=swallow pseudogene;Alias=FBgn0052747,CG3429,CR32747,Swallow Psi,swaPsi;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032747,FlyBase_Annotation_IDs:CR32747,GenomeRNAi:3771807;gbunit=AE014298;derived_computed_cyto=5F4-5F4
+X	FlyBase	pseudogene	6361496	6362960	.	-	.	ID=FBtr0070923;Parent=FBgn0016974;Name=swaPsi-RA;Dbxref=FlyBase_Annotation_IDs:CR32747-RA,REFSEQ:NR_001305
+X	FlyBase	intron	6362836	6362900	.	-	.	Parent=FBtr0070923
+X	FlyBase	exon	6362901	6362960	.	-	.	Parent=FBtr0070923
+X	FlyBase	pseudogene	6361496	6363310	.	-	.	ID=FBtr0334014;Parent=FBgn0016974;Name=swaPsi-RB;Dbxref=FlyBase_Annotation_IDs:CR32747-RB
+X	FlyBase	exon	6361496	6362035	.	-	.	Parent=FBtr0070923,FBtr0334014
+X	FlyBase	intron	6362036	6362088	.	-	.	Parent=FBtr0070923,FBtr0334014
+X	FlyBase	exon	6362089	6362835	.	-	.	Parent=FBtr0070923,FBtr0334014
+X	FlyBase	intron	6362836	6363110	.	-	.	Parent=FBtr0334014
+X	FlyBase	exon	6363111	6363310	.	-	.	Parent=FBtr0334014
+###
+X	FlyBase	gene	6950510	6951266	.	+	.	ID=FBgn0029920;Name=CR4575;Alias=CG4575,CG4575,DM21;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0004575,FlyBase_Annotation_IDs:CR4575,GB_protein:AAF46219,EntrezGene:31637,GenomeRNAi:12797942;gbunit=AE014298;derived_computed_cyto=6E3-6E3
+X	FlyBase	pseudogene	6950510	6951266	.	+	.	ID=FBtr0307391;Parent=FBgn0029920;Name=CR4575-RB;Dbxref=FlyBase_Annotation_IDs:CR4575-RB
+X	FlyBase	exon	6950510	6951266	.	+	.	Parent=FBtr0307391
+###
+X	FlyBase	gene	6952336	6952809	.	+	.	ID=FBgn0052733;Name=CR32733;Alias=CG32733,CG32733;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032733,FlyBase_Annotation_IDs:CR32733,GB_protein:AAN09191,EntrezGene:318179,GenomeRNAi:12797943;gbunit=AE014298;derived_computed_cyto=6E3-6E3
+X	FlyBase	pseudogene	6952336	6952809	.	+	.	ID=FBtr0071001;Parent=FBgn0052733;Name=CR32733-RA;Alias=CG32733-RA,CG32733-RA;Dbxref=REFSEQ:NM_167099,FlyBase_Annotation_IDs:CR32733-RA
+X	FlyBase	exon	6952336	6952809	.	+	.	Parent=FBtr0071001
+###
+X	FlyBase	gene	7897250	7897987	.	-	.	ID=FBgn0260447;Name=CR11386;Alias=CG11386,FBgn0029973,CG11386;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0011386,FlyBase_Annotation_IDs:CR11386,GenomeRNAi:7354419;gbunit=AE014298;derived_computed_cyto=7C2-7C2
+X	FlyBase	pseudogene	7897250	7897987	.	-	.	ID=FBtr0299927;Parent=FBgn0260447;Name=CR11386-RB;Dbxref=FlyBase_Annotation_IDs:CR11386-RB
+X	FlyBase	exon	7897250	7897736	.	-	.	Parent=FBtr0299927
+X	FlyBase	intron	7897737	7897935	.	-	.	Parent=FBtr0299927
+X	FlyBase	exon	7897936	7897987	.	-	.	Parent=FBtr0299927
+###
+X	FlyBase	gene	7898438	7901302	.	-	.	ID=FBgn0053222;Name=CR33222;Alias=FBgn0029973,CG33222,CG33222,CR11386;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR33222,EntrezGene:2768866,GenomeRNAi:8674045;gbunit=AE014298;derived_computed_cyto=7C2-7C2
+X	FlyBase	pseudogene	7898438	7899177	.	-	.	ID=FBtr0300634;Parent=FBgn0053222;Name=CR33222-RB;Alias=CG33222-RB;Dbxref=FlyBase_Annotation_IDs:CR33222-RB
+X	FlyBase	intron	7898927	7899125	.	-	.	Parent=FBtr0300634
+X	FlyBase	exon	7899126	7899177	.	-	.	Parent=FBtr0300634
+X	FlyBase	pseudogene	7898438	7901302	.	-	.	ID=FBtr0300652;Parent=FBgn0053222;Name=CR33222-RC;Alias=FBgn0053222-RC,CG33222-RC;Dbxref=FlyBase_Annotation_IDs:CR33222-RC
+X	FlyBase	exon	7898438	7898926	.	-	.	Parent=FBtr0300634,FBtr0300652
+X	FlyBase	intron	7898927	7901242	.	-	.	Parent=FBtr0300652
+X	FlyBase	exon	7901243	7901302	.	-	.	Parent=FBtr0300652
+###
+X	FlyBase	gene	8397157	8398298	.	-	.	ID=FBgn0040928;Name=CR15345;Alias=FBgn0064877,CG15345,BcDNA:RE52922;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0015345,FlyBase_Annotation_IDs:CR15345,GB:AY089636,GB_protein:AAL90374,GB:BI367210,UniProt/TrEMBL:Q9W3G2,GB_protein:AAF46365,EntrezGene:50402,EPD:CG15345_1,Fly-FISH:CG15345,Fly-FISH:CR15345,GenomeRNAi:26067082;gbunit=AE014298;derived_computed_cyto=7E6-7E6
+X	FlyBase	pseudogene	8397157	8398298	.	-	.	ID=FBtr0445213;Parent=FBgn0040928;Name=CR15345-RB;Dbxref=FlyBase_Annotation_IDs:CR15345-RB
+X	FlyBase	exon	8397157	8398158	.	-	.	Parent=FBtr0445213
+X	FlyBase	intron	8398159	8398215	.	-	.	Parent=FBtr0445213
+X	FlyBase	exon	8398216	8398298	.	-	.	Parent=FBtr0445213
+###
+X	FlyBase	gene	9259218	9260522	.	-	.	ID=FBgn0030116;Name=CR17438;Alias=CG17438,CG17438;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0017438,FlyBase_Annotation_IDs:CR17438,GenomeRNAi:10178895;gbunit=AE014298;derived_computed_cyto=8D3-8D3
+X	FlyBase	pseudogene	9259218	9260522	.	-	.	ID=FBtr0304143;Parent=FBgn0030116;Name=CR17438-RB;Dbxref=FlyBase_Annotation_IDs:CR17438-RB
+X	FlyBase	exon	9259218	9260522	.	-	.	Parent=FBtr0304143
+###
+X	FlyBase	gene	9260697	9261332	.	+	.	ID=FBgn0030117;Name=ric8b;fullname=ric8b;Alias=FBpp0071253,CG15910,CR15910,ric-8b,Ric-8B;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:AAF46479.1,FlyBase:FBan0015910,FlyBase_Annotation_IDs:CR15910,GenomeRNAi:3771922;gbunit=AE014298;derived_computed_cyto=8D3-8D3
+X	FlyBase	pseudogene	9260697	9261332	.	+	.	ID=FBtr0071318;Parent=FBgn0030117;Name=ric8b-RA;Dbxref=FlyBase_Annotation_IDs:CR15910-RA
+X	FlyBase	exon	9260697	9261332	.	+	.	Parent=FBtr0071318
+###
+X	FlyBase	gene	11586228	11586944	.	+	.	ID=FBgn0262853;Name=CR43217;Alias=noncoding_23159,noncoding_23161;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43217,GenomeRNAi:12797962;derived_computed_cyto=10C9-10C9
+X	FlyBase	pseudogene	11586228	11586944	.	+	.	ID=FBtr0306143;Parent=FBgn0262853;Name=CR43217-RA;Dbxref=FlyBase_Annotation_IDs:CR43217-RA
+X	FlyBase	exon	11586228	11586643	.	+	.	Parent=FBtr0306143
+X	FlyBase	intron	11586644	11586709	.	+	.	Parent=FBtr0306143
+X	FlyBase	exon	11586710	11586944	.	+	.	Parent=FBtr0306143
+###
+X	FlyBase	gene	11587283	11589173	.	+	.	ID=FBgn0262852;Name=CR43216;Alias=noncoding_23159,noncoding_23161;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43216,GenomeRNAi:12797963;derived_computed_cyto=10C9-10C9
+X	FlyBase	pseudogene	11587283	11589173	.	+	.	ID=FBtr0306144;Parent=FBgn0262852;Name=CR43216-RA;Dbxref=FlyBase_Annotation_IDs:CR43216-RA
+X	FlyBase	exon	11587283	11587685	.	+	.	Parent=FBtr0306144
+X	FlyBase	intron	11587686	11588322	.	+	.	Parent=FBtr0306144
+X	FlyBase	exon	11588323	11588736	.	+	.	Parent=FBtr0306144
+X	FlyBase	intron	11588737	11588802	.	+	.	Parent=FBtr0306144
+X	FlyBase	exon	11588803	11589173	.	+	.	Parent=FBtr0306144
+###
+X	FlyBase	gene	11589376	11591266	.	+	.	ID=FBgn0262851;Name=CR43215;Alias=noncoding_23159,noncoding_23161;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43215,GenomeRNAi:12797964;derived_computed_cyto=10C9-10C9
+X	FlyBase	pseudogene	11589376	11591266	.	+	.	ID=FBtr0306145;Parent=FBgn0262851;Name=CR43215-RA;Dbxref=FlyBase_Annotation_IDs:CR43215-RA
+X	FlyBase	exon	11589376	11589778	.	+	.	Parent=FBtr0306145
+X	FlyBase	intron	11589779	11590415	.	+	.	Parent=FBtr0306145
+X	FlyBase	exon	11590416	11590829	.	+	.	Parent=FBtr0306145
+X	FlyBase	intron	11590830	11590895	.	+	.	Parent=FBtr0306145
+X	FlyBase	exon	11590896	11591266	.	+	.	Parent=FBtr0306145
+###
+X	FlyBase	gene	11591469	11593359	.	+	.	ID=FBgn0262850;Name=CR43214;Alias=noncoding_23159,noncoding_23161;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43214,GenomeRNAi:12797965;derived_computed_cyto=10C9-10C9
+X	FlyBase	pseudogene	11591469	11593359	.	+	.	ID=FBtr0306146;Parent=FBgn0262850;Name=CR43214-RA;Dbxref=FlyBase_Annotation_IDs:CR43214-RA
+X	FlyBase	exon	11591469	11591871	.	+	.	Parent=FBtr0306146
+X	FlyBase	intron	11591872	11592508	.	+	.	Parent=FBtr0306146
+X	FlyBase	exon	11592509	11592922	.	+	.	Parent=FBtr0306146
+X	FlyBase	intron	11592923	11592988	.	+	.	Parent=FBtr0306146
+X	FlyBase	exon	11592989	11593359	.	+	.	Parent=FBtr0306146
+###
+X	FlyBase	gene	11593562	11595452	.	+	.	ID=FBgn0262849;Name=CR43213;Alias=noncoding_23159,noncoding_23161;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43213,GenomeRNAi:12797966;derived_computed_cyto=10C9-10C9
+X	FlyBase	pseudogene	11593562	11595452	.	+	.	ID=FBtr0306147;Parent=FBgn0262849;Name=CR43213-RA;Dbxref=FlyBase_Annotation_IDs:CR43213-RA
+X	FlyBase	exon	11593562	11593964	.	+	.	Parent=FBtr0306147
+X	FlyBase	intron	11593965	11594601	.	+	.	Parent=FBtr0306147
+X	FlyBase	exon	11594602	11595015	.	+	.	Parent=FBtr0306147
+X	FlyBase	intron	11595016	11595081	.	+	.	Parent=FBtr0306147
+X	FlyBase	exon	11595082	11595452	.	+	.	Parent=FBtr0306147
+###
+X	FlyBase	gene	11595655	11597545	.	+	.	ID=FBgn0262848;Name=CR43212;Alias=noncoding_23159,noncoding_23161;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43212,GenomeRNAi:12797967;derived_computed_cyto=10C9-10C9
+X	FlyBase	pseudogene	11595655	11597545	.	+	.	ID=FBtr0306148;Parent=FBgn0262848;Name=CR43212-RA;Dbxref=FlyBase_Annotation_IDs:CR43212-RA
+X	FlyBase	exon	11595655	11596057	.	+	.	Parent=FBtr0306148
+X	FlyBase	intron	11596058	11596694	.	+	.	Parent=FBtr0306148
+X	FlyBase	exon	11596695	11597108	.	+	.	Parent=FBtr0306148
+X	FlyBase	intron	11597109	11597174	.	+	.	Parent=FBtr0306148
+X	FlyBase	exon	11597175	11597545	.	+	.	Parent=FBtr0306148
+###
+X	FlyBase	gene	11597748	11599638	.	+	.	ID=FBgn0262847;Name=CR43211;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43211,GenomeRNAi:12797968;derived_computed_cyto=10C9-10C10
+X	FlyBase	pseudogene	11597748	11599638	.	+	.	ID=FBtr0306149;Parent=FBgn0262847;Name=CR43211-RA;Dbxref=FlyBase_Annotation_IDs:CR43211-RA
+X	FlyBase	exon	11597748	11598150	.	+	.	Parent=FBtr0306149
+X	FlyBase	intron	11598151	11598787	.	+	.	Parent=FBtr0306149
+X	FlyBase	exon	11598788	11599201	.	+	.	Parent=FBtr0306149
+X	FlyBase	intron	11599202	11599267	.	+	.	Parent=FBtr0306149
+X	FlyBase	exon	11599268	11599638	.	+	.	Parent=FBtr0306149
+###
+X	FlyBase	gene	11741001	11742477	.	+	.	ID=FBgn0263215;Name=CR43385;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43385,GenomeRNAi:12797969;derived_computed_cyto=10E1-10E1
+X	FlyBase	pseudogene	11741001	11742477	.	+	.	ID=FBtr0307589;Parent=FBgn0263215;Name=CR43385-RA;Dbxref=FlyBase_Annotation_IDs:CR43385-RA
+X	FlyBase	exon	11741001	11741314	.	+	.	Parent=FBtr0307589
+X	FlyBase	intron	11741315	11742380	.	+	.	Parent=FBtr0307589
+X	FlyBase	exon	11742381	11742477	.	+	.	Parent=FBtr0307589
+###
+X	FlyBase	gene	15576355	15576964	.	+	.	ID=FBgn0262163;Name=betaNACtes5;fullname=Nascent-associated complex beta-subunit-like%2C testis 5;Alias=CR42877,beta-subunit of nascent polypeptide-associated complex;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42877,GenomeRNAi:10178924;derived_computed_cyto=13D4-13D4
+X	FlyBase	pseudogene	15576355	15576964	.	+	.	ID=FBtr0304150;Parent=FBgn0262163;Name=betaNACtes5-RA;Alias=CR42877-RA;Dbxref=FlyBase_Annotation_IDs:CR42877-RA
+X	FlyBase	exon	15576355	15576964	.	+	.	Parent=FBtr0304150
+###
+X	FlyBase	gene	15796477	15796897	.	+	.	ID=FBgn0265533;Name=CR44383;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR44383,GenomeRNAi:19835913;derived_computed_cyto=13F1-13F1
+X	FlyBase	pseudogene	15796477	15796897	.	+	.	ID=FBtr0340112;Parent=FBgn0265533;Name=CR44383-RA;Dbxref=FlyBase_Annotation_IDs:CR44383-RA
+X	FlyBase	exon	15796477	15796897	.	+	.	Parent=FBtr0340112
+X	FlyBase	pseudogene	15796477	15796897	.	+	.	ID=FBtr0340113;Parent=FBgn0265533;Name=CR44383-RB;Dbxref=FlyBase_Annotation_IDs:CR44383-RB
+X	FlyBase	exon	15796477	15796717	.	+	.	Parent=FBtr0340113
+X	FlyBase	intron	15796718	15796790	.	+	.	Parent=FBtr0340113
+X	FlyBase	exon	15796791	15796897	.	+	.	Parent=FBtr0340113
+###
+X	FlyBase	gene	17898643	17899498	.	+	.	ID=FBgn0052496;Name=CR32496;Alias=CG32496,CG32496,FBpp0074273,Fibrinogen-related protein;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032496,FlyBase_Annotation_IDs:CR32496,EntrezGene:318054,GenomeRNAi:8673958;gbunit=AE014298;derived_computed_cyto=16F1-16F1
+X	FlyBase	pseudogene	17898643	17899498	.	+	.	ID=FBtr0074499;Parent=FBgn0052496;Name=CR32496-RA;Alias=CG32496-RA,CG32496-RA;Dbxref=FlyBase_Annotation_IDs:CR32496-RA,REFSEQ:NM_167588
+X	FlyBase	exon	17898643	17899278	.	+	.	Parent=FBtr0074499
+X	FlyBase	intron	17899279	17899356	.	+	.	Parent=FBtr0074499
+X	FlyBase	exon	17899357	17899498	.	+	.	Parent=FBtr0074499
+###
+X	FlyBase	gene	18490028	18490545	.	-	.	ID=FBgn0286881;Name=CR46403;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46403;derived_computed_cyto=17B5-17B5
+X	FlyBase	pseudogene	18490028	18490545	.	-	.	ID=FBtr0475059;Parent=FBgn0286881;Name=CR46403-RA;Dbxref=FlyBase_Annotation_IDs:CR46403-RA
+X	FlyBase	exon	18490028	18490429	.	-	.	Parent=FBtr0475059
+X	FlyBase	intron	18490430	18490485	.	-	.	Parent=FBtr0475059
+X	FlyBase	exon	18490486	18490545	.	-	.	Parent=FBtr0475059
+###
+X	FlyBase	gene	18785805	18786210	.	+	.	ID=FBgn0030958;Name=CR6900;Alias=CG6900;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0006900,FlyBase_Annotation_IDs:CR6900,EntrezGene:32868,GB_protein:AAF48884,GenomeRNAi:14462413;gbunit=AE014298;derived_computed_cyto=17D5-17D5
+X	FlyBase	pseudogene	18785805	18786210	.	+	.	ID=FBtr0334467;Parent=FBgn0030958;Name=CR6900-RC;Dbxref=FlyBase_Annotation_IDs:CR6900-RC
+X	FlyBase	exon	18785805	18785927	.	+	.	Parent=FBtr0334467
+X	FlyBase	intron	18785928	18786000	.	+	.	Parent=FBtr0334467
+X	FlyBase	exon	18786001	18786210	.	+	.	Parent=FBtr0334467
+###
+X	FlyBase	gene	19910168	19910521	.	-	.	ID=FBgn0052821;Name=CR32821;Alias=CG32821,CG32821;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032821,FlyBase_Annotation_IDs:CR32821,GB_protein:AAN08990,EntrezGene:318229,GenomeRNAi:12798185;gbunit=AE014298;derived_computed_cyto=19A2-19A2
+X	FlyBase	pseudogene	19910168	19910521	.	-	.	ID=FBtr0307588;Parent=FBgn0052821;Name=CR32821-RB;Dbxref=FlyBase_Annotation_IDs:CR32821-RB
+X	FlyBase	exon	19910168	19910521	.	-	.	Parent=FBtr0307588
+###
+X	FlyBase	gene	19912655	19913283	.	+	.	ID=FBgn0267051;Name=CR45495;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45495,GenomeRNAi:19835681;derived_computed_cyto=19A2-19A2
+X	FlyBase	pseudogene	19912655	19913283	.	+	.	ID=FBtr0346022;Parent=FBgn0267051;Name=CR45495-RA;Dbxref=FlyBase_Annotation_IDs:CR45495-RA
+X	FlyBase	exon	19912655	19913283	.	+	.	Parent=FBtr0346022
+###
+X	FlyBase	gene	19915332	19915685	.	-	.	ID=FBgn0263207;Name=CR43377;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43377,GenomeRNAi:12798186;derived_computed_cyto=19A2-19A2
+X	FlyBase	pseudogene	19915332	19915685	.	-	.	ID=FBtr0307587;Parent=FBgn0263207;Name=CR43377-RA;Dbxref=FlyBase_Annotation_IDs:CR43377-RA
+X	FlyBase	exon	19915332	19915685	.	-	.	Parent=FBtr0307587
+###
+X	FlyBase	gene	19917819	19918447	.	+	.	ID=FBgn0267052;Name=CR45496;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45496,GenomeRNAi:19835765;derived_computed_cyto=19A2-19A2
+X	FlyBase	pseudogene	19917819	19918447	.	+	.	ID=FBtr0346023;Parent=FBgn0267052;Name=CR45496-RA;Dbxref=FlyBase_Annotation_IDs:CR45496-RA
+X	FlyBase	exon	19917819	19918447	.	+	.	Parent=FBtr0346023
+###
+X	FlyBase	gene	19920486	19920708	.	-	.	ID=FBgn0263208;Name=CR43378;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43378,GenomeRNAi:12798187;derived_computed_cyto=19A2-19A2
+X	FlyBase	pseudogene	19920486	19920708	.	-	.	ID=FBtr0307586;Parent=FBgn0263208;Name=CR43378-RA;Dbxref=FlyBase_Annotation_IDs:CR43378-RA
+X	FlyBase	exon	19920486	19920708	.	-	.	Parent=FBtr0307586
+###
+X	FlyBase	gene	19929229	19929580	.	-	.	ID=FBgn0263209;Name=CR43379;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43379,GenomeRNAi:12798188;derived_computed_cyto=19A3-19A3
+X	FlyBase	pseudogene	19929229	19929580	.	-	.	ID=FBtr0307585;Parent=FBgn0263209;Name=CR43379-RA;Dbxref=FlyBase_Annotation_IDs:CR43379-RA
+X	FlyBase	exon	19929229	19929580	.	-	.	Parent=FBtr0307585
+###
+X	FlyBase	gene	19931714	19932342	.	+	.	ID=FBgn0267053;Name=CR45497;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45497,GenomeRNAi:19835290;derived_computed_cyto=19A3-19A3
+X	FlyBase	pseudogene	19931714	19932342	.	+	.	ID=FBtr0346024;Parent=FBgn0267053;Name=CR45497-RA;Dbxref=FlyBase_Annotation_IDs:CR45497-RA
+X	FlyBase	exon	19931714	19932342	.	+	.	Parent=FBtr0346024
+###
+X	FlyBase	gene	19934345	19934565	.	-	.	ID=FBgn0263210;Name=CR43380;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43380,GenomeRNAi:12798189;derived_computed_cyto=19A3-19A3
+X	FlyBase	pseudogene	19934345	19934565	.	-	.	ID=FBtr0307584;Parent=FBgn0263210;Name=CR43380-RA;Dbxref=FlyBase_Annotation_IDs:CR43380-RA
+X	FlyBase	exon	19934345	19934565	.	-	.	Parent=FBtr0307584
+###
+X	FlyBase	gene	19939045	19939396	.	-	.	ID=FBgn0263211;Name=CR43381;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43381,GenomeRNAi:12798190;derived_computed_cyto=19A3-19A3
+X	FlyBase	pseudogene	19939045	19939396	.	-	.	ID=FBtr0307583;Parent=FBgn0263211;Name=CR43381-RA;Dbxref=FlyBase_Annotation_IDs:CR43381-RA
+X	FlyBase	exon	19939045	19939396	.	-	.	Parent=FBtr0307583
+###
+X	FlyBase	gene	19941530	19942158	.	+	.	ID=FBgn0267054;Name=CR45498;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45498,GenomeRNAi:19835057;derived_computed_cyto=19A3-19A3
+X	FlyBase	pseudogene	19941530	19942158	.	+	.	ID=FBtr0346025;Parent=FBgn0267054;Name=CR45498-RA;Dbxref=FlyBase_Annotation_IDs:CR45498-RA
+X	FlyBase	exon	19941530	19942158	.	+	.	Parent=FBtr0346025
+###
+X	FlyBase	gene	19944198	19944417	.	-	.	ID=FBgn0263212;Name=CR43382;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43382,GenomeRNAi:12798191;derived_computed_cyto=19A3-19A3
+X	FlyBase	pseudogene	19944198	19944417	.	-	.	ID=FBtr0307582;Parent=FBgn0263212;Name=CR43382-RA;Dbxref=FlyBase_Annotation_IDs:CR43382-RA
+X	FlyBase	exon	19944198	19944417	.	-	.	Parent=FBtr0307582
+###
+X	FlyBase	gene	19948924	19949147	.	-	.	ID=FBgn0263213;Name=CR43383;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43383,GenomeRNAi:12798192;derived_computed_cyto=19A3-19A3
+X	FlyBase	pseudogene	19948924	19949147	.	-	.	ID=FBtr0307581;Parent=FBgn0263213;Name=CR43383-RA;Dbxref=FlyBase_Annotation_IDs:CR43383-RA
+X	FlyBase	exon	19948924	19949147	.	-	.	Parent=FBtr0307581
+###
+X	FlyBase	gene	19953659	19953882	.	-	.	ID=FBgn0263214;Name=CR43384;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR43384,GenomeRNAi:12798193;derived_computed_cyto=19A3-19A3
+X	FlyBase	pseudogene	19953659	19953882	.	-	.	ID=FBtr0307580;Parent=FBgn0263214;Name=CR43384-RA;Dbxref=FlyBase_Annotation_IDs:CR43384-RA
+X	FlyBase	exon	19953659	19953882	.	-	.	Parent=FBtr0307580
+###
+X	FlyBase	gene	20178755	20179729	.	-	.	ID=FBgn0053491;Name=CR33491;Alias=CG33491;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR33491,GB_protein:AAS65419,EntrezGene:2768894,GenomeRNAi:19835680;gbunit=AE014298;derived_computed_cyto=19C1-19C1
+X	FlyBase	pseudogene	20178755	20179729	.	-	.	ID=FBtr0344321;Parent=FBgn0053491;Name=CR33491-RB;Dbxref=FlyBase_Annotation_IDs:CR33491-RB
+X	FlyBase	exon	20178755	20178811	.	-	.	Parent=FBtr0344321
+X	FlyBase	intron	20178812	20179203	.	-	.	Parent=FBtr0344321
+X	FlyBase	exon	20179204	20179385	.	-	.	Parent=FBtr0344321
+X	FlyBase	intron	20179386	20179467	.	-	.	Parent=FBtr0344321
+X	FlyBase	exon	20179468	20179729	.	-	.	Parent=FBtr0344321
+###
+X	FlyBase	gene	20359752	20360046	.	+	.	ID=FBgn0267741;Name=CR46072;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46072,GenomeRNAi:26067389;derived_computed_cyto=19C4-19C4
+X	FlyBase	pseudogene	20359752	20360046	.	+	.	ID=FBtr0347301;Parent=FBgn0267741;Name=CR46072-RA;Dbxref=FlyBase_Annotation_IDs:CR46072-RA
+X	FlyBase	exon	20359752	20360046	.	+	.	Parent=FBtr0347301
+###
+X	FlyBase	gene	20383584	20384062	.	-	.	ID=FBgn0085340;Name=CR34311;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR34311,GenomeRNAi:5740123;derived_computed_cyto=19C5-19C5
+X	FlyBase	pseudogene	20383584	20384062	.	-	.	ID=FBtr0112509;Parent=FBgn0085340;Name=CR34311-RA;Dbxref=FlyBase_Annotation_IDs:CR34311-RA,REFSEQ:NR_003749
+X	FlyBase	exon	20383584	20383710	.	-	.	Parent=FBtr0112509
+X	FlyBase	intron	20383711	20383766	.	-	.	Parent=FBtr0112509
+X	FlyBase	exon	20383767	20384062	.	-	.	Parent=FBtr0112509
+###
+X	FlyBase	gene	20874941	20875303	.	+	.	ID=FBgn0031135;Name=CR11235;Alias=CG11235,CG11235;Ontology_term=SO:0000087,SO:0000043,SO:0000042;Dbxref=FlyBase:FBan0011235,FlyBase_Annotation_IDs:CR11235,GB_protein:AAF50878,EntrezGene:33067,GenomeRNAi:10178883;gbunit=AE014298;derived_computed_cyto=19E4-19E4
+X	FlyBase	pseudogene	20874941	20875303	.	+	.	ID=FBtr0303307;Parent=FBgn0031135;Name=CR11235-RB;Dbxref=FlyBase_Annotation_IDs:CR11235-RB
+X	FlyBase	exon	20874941	20875303	.	+	.	Parent=FBtr0303307
+###
+X	FlyBase	gene	21155432	21156173	.	-	.	ID=FBgn0267055;Name=CR45499;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45499,GenomeRNAi:19835552;derived_computed_cyto=19F1-19F1
+X	FlyBase	pseudogene	21155432	21156173	.	-	.	ID=FBtr0346036;Parent=FBgn0267055;Name=CR45499-RA;Dbxref=FlyBase_Annotation_IDs:CR45499-RA
+X	FlyBase	exon	21155432	21155667	.	-	.	Parent=FBtr0346036
+X	FlyBase	intron	21155668	21155725	.	-	.	Parent=FBtr0346036
+X	FlyBase	exon	21155726	21155754	.	-	.	Parent=FBtr0346036
+X	FlyBase	intron	21155755	21155850	.	-	.	Parent=FBtr0346036
+X	FlyBase	exon	21155851	21156173	.	-	.	Parent=FBtr0346036
+###
+X	FlyBase	gene	21156259	21156621	.	-	.	ID=FBgn0052511;Name=CR32511;Alias=CG32511,CG32511;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase:FBan0032511,FlyBase_Annotation_IDs:CR32511,GB_protein:AAN09533,EntrezGene:318063,GenomeRNAi:12798210;gbunit=AE014298;derived_computed_cyto=19F1-19F1
+X	FlyBase	pseudogene	21156259	21156621	.	-	.	ID=FBtr0307579;Parent=FBgn0052511;Name=CR32511-RB;Dbxref=FlyBase_Annotation_IDs:CR32511-RB
+X	FlyBase	exon	21156259	21156621	.	-	.	Parent=FBtr0307579
+###
+X	FlyBase	gene	21231325	21231399	.	-	.	ID=FBgn0052518;Name=tRNA:Ile-AAT-2-1Psi;fullname=transfer RNA:Isoleucine-AAT 2-1 pseudogene;Alias=FBgn0060203,CR32518,AE002620.trna2-IleAAT,tRNA:IPsi:AAT:AE002620,chrX.trna19-IleAAT,tRNA-Ile-AAT-2-1,tRNA:Ile-AAT-2-1Psi,transfer RNA:CR32518:pseudogene,tRNA:CR32518:Psi;Ontology_term=SO:0000663,SO:0000042,SO:0000087;Dbxref=FlyBase:FBan0032518,FlyBase_Annotation_IDs:CR32518,EntrezGene:3772200,GenomeRNAi:3772200;gbunit=AE014298;derived_computed_cyto=19F2-19F2
+X	FlyBase	pseudogene	21231325	21231399	.	-	.	ID=FBtr0077238;Parent=FBgn0052518;Name=tRNA:Ile-AAT-2-1Psi-RA;Alias=CR32518-RA,tRNA:CR32518:Psi-RA;Dbxref=FlyBase_Annotation_IDs:CR32518-RA,REFSEQ:NR_002133
+X	FlyBase	exon	21231325	21231399	.	-	.	Parent=FBtr0077238
+###
+X	FlyBase	gene	23101576	23102262	.	-	.	ID=FBgn0286928;Name=CR46425;Ontology_term=SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR46425
+X	FlyBase	pseudogene	23101576	23102262	.	-	.	ID=FBtr0475185;Parent=FBgn0286928;Name=CR46425-RA;Dbxref=FlyBase_Annotation_IDs:CR46425-RA
+X	FlyBase	exon	23101576	23101807	.	-	.	Parent=FBtr0475185
+X	FlyBase	intron	23101808	23101869	.	-	.	Parent=FBtr0475185
+X	FlyBase	exon	23101870	23101953	.	-	.	Parent=FBtr0475185
+X	FlyBase	intron	23101954	23102002	.	-	.	Parent=FBtr0475185
+X	FlyBase	exon	23102003	23102077	.	-	.	Parent=FBtr0475185
+X	FlyBase	intron	23102078	23102089	.	-	.	Parent=FBtr0475185
+X	FlyBase	exon	23102090	23102262	.	-	.	Parent=FBtr0475185
+###
+X	FlyBase	gene	23200802	23201056	.	+	.	ID=FBgn0267513;Name=28SrRNA-Psi:CR45853;fullname=28S ribosomal RNA pseudogene:CR45853;Alias=CR45853;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45853,GenomeRNAi:26067181
+X	FlyBase	pseudogene	23200802	23201056	.	+	.	ID=FBtr0346888;Parent=FBgn0267513;Name=28SrRNA-Psi:CR45853-RA;Alias=CR45853-RA;Dbxref=FlyBase_Annotation_IDs:CR45853-RA
+X	FlyBase	exon	23200802	23201056	.	+	.	Parent=FBtr0346888
+###
+X	FlyBase	gene	23205258	23205380	.	+	.	ID=FBgn0267514;Name=5.8SrRNA-Psi:CR45854;fullname=5.8S ribosomal RNA pseudogene:CR45854;Alias=CR45854;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45854,GenomeRNAi:26067182
+X	FlyBase	pseudogene	23205258	23205380	.	+	.	ID=FBtr0346889;Parent=FBgn0267514;Name=5.8SrRNA-Psi:CR45854-RA;Alias=CR45854-RA;Dbxref=FlyBase_Annotation_IDs:CR45854-RA
+X	FlyBase	exon	23205258	23205380	.	+	.	Parent=FBtr0346889
+###
+X	FlyBase	gene	23205409	23205438	.	+	.	ID=FBgn0085765;Name=2SrRNA-Psi:CR40677;fullname=2S ribosomal RNA pseudogene:CR40677;Alias=FBan0040677,CR40677;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR40677,EntrezGene:5740367,GenomeRNAi:5740367
+X	FlyBase	pseudogene	23205409	23205438	.	+	.	ID=FBtr0346890;Parent=FBgn0085765;Name=2SrRNA-Psi:CR40677-RB;Alias=CR40677-RB;Dbxref=FlyBase_Annotation_IDs:CR40677-RB
+X	FlyBase	exon	23205409	23205438	.	+	.	Parent=FBtr0346890
+###
+X	FlyBase	gene	23205822	23206525	.	+	.	ID=FBgn0267515;Name=28SrRNA-Psi:CR45855;fullname=28S ribosomal RNA pseudogene:CR45855;Alias=CR45855;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45855,GenomeRNAi:26067183
+X	FlyBase	pseudogene	23205822	23206525	.	+	.	ID=FBtr0346891;Parent=FBgn0267515;Name=28SrRNA-Psi:CR45855-RA;Alias=CR45855-RA;Dbxref=FlyBase_Annotation_IDs:CR45855-RA
+X	FlyBase	exon	23205822	23206525	.	+	.	Parent=FBtr0346891
+###
+X	FlyBase	gene	23211192	23213166	.	+	.	ID=FBgn0085813;Name=18SrRNA-Psi:CR41602;fullname=18S ribosomal RNA pseudogene:CR41602;Alias=FBan0041602,CR41602;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR41602,EntrezGene:5740420,GenomeRNAi:5740420
+X	FlyBase	pseudogene	23211192	23213166	.	+	.	ID=FBtr0346892;Parent=FBgn0085813;Name=18SrRNA-Psi:CR41602-RB;Alias=CR41602-RB;Dbxref=FlyBase_Annotation_IDs:CR41602-RB
+X	FlyBase	exon	23211192	23213166	.	+	.	Parent=FBtr0346892
+###
+X	FlyBase	gene	23213889	23214011	.	+	.	ID=FBgn0267517;Name=5.8SrRNA-Psi:CR45857;fullname=5.8S ribosomal RNA pseudogene:CR45857;Alias=CR45857;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45857,GenomeRNAi:26067185
+X	FlyBase	pseudogene	23213889	23214011	.	+	.	ID=FBtr0346893;Parent=FBgn0267517;Name=5.8SrRNA-Psi:CR45857-RA;Alias=CR45857-RA;Dbxref=FlyBase_Annotation_IDs:CR45857-RA
+X	FlyBase	exon	23213889	23214011	.	+	.	Parent=FBtr0346893
+###
+X	FlyBase	gene	23214040	23214069	.	+	.	ID=FBgn0267518;Name=2SrRNA-Psi:CR45858;fullname=2S ribosomal RNA pseudogene:CR45858;Alias=CR45858;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45858,GenomeRNAi:26067186
+X	FlyBase	pseudogene	23214040	23214069	.	+	.	ID=FBtr0346894;Parent=FBgn0267518;Name=2SrRNA-Psi:CR45858-RA;Alias=CR45858-RA;Dbxref=FlyBase_Annotation_IDs:CR45858-RA
+X	FlyBase	exon	23214040	23214069	.	+	.	Parent=FBtr0346894
+###
+X	FlyBase	gene	23214452	23217140	.	+	.	ID=FBgn0267519;Name=28SrRNA-Psi:CR45859;fullname=28S ribosomal RNA pseudogene:CR45859;Alias=CR45859;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45859,GenomeRNAi:26067187
+X	FlyBase	pseudogene	23214452	23217140	.	+	.	ID=FBtr0346895;Parent=FBgn0267519;Name=28SrRNA-Psi:CR45859-RA;Alias=CR45859-RA;Dbxref=FlyBase_Annotation_IDs:CR45859-RA
+X	FlyBase	exon	23214452	23217140	.	+	.	Parent=FBtr0346895
+###
+X	FlyBase	gene	23239718	23240975	.	+	.	ID=FBgn0085771;Name=28SrRNA-Psi:CR40741;fullname=28S ribosomal RNA pseudogene:CR40741;Alias=FBan0040741,CR40741;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR40741,EntrezGene:5740241,GenomeRNAi:5740241
+X	FlyBase	pseudogene	23239718	23240975	.	+	.	ID=FBtr0346896;Parent=FBgn0085771;Name=28SrRNA-Psi:CR40741-RB;Alias=CR40741-RB;Dbxref=FlyBase_Annotation_IDs:CR40741-RB
+X	FlyBase	exon	23239718	23240975	.	+	.	Parent=FBtr0346896
+###
+X	FlyBase	gene	23261772	23262666	.	-	.	ID=FBgn0085819;Name=28SrRNA-Psi:CR41609;fullname=28S ribosomal RNA pseudogene:CR41609;Alias=FBan0041609,CR41609;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR41609,EntrezGene:5740375,GenomeRNAi:5740375
+X	FlyBase	pseudogene	23261772	23262666	.	-	.	ID=FBtr0346904;Parent=FBgn0085819;Name=28SrRNA-Psi:CR41609-RB;Alias=CR41609-RB;Dbxref=FlyBase_Annotation_IDs:CR41609-RB
+X	FlyBase	exon	23261772	23262666	.	-	.	Parent=FBtr0346904
+###
+X	FlyBase	gene	23270802	23271158	.	-	.	ID=FBgn0267520;Name=28SrRNA-Psi:CR45860;fullname=28S ribosomal RNA pseudogene:CR45860;Alias=CR45860;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45860,GenomeRNAi:26067188
+X	FlyBase	pseudogene	23270802	23271158	.	-	.	ID=FBtr0346903;Parent=FBgn0267520;Name=28SrRNA-Psi:CR45860-RA;Alias=CR45860-RA;Dbxref=FlyBase_Annotation_IDs:CR45860-RA
+X	FlyBase	exon	23270802	23271158	.	-	.	Parent=FBtr0346903
+###
+X	FlyBase	gene	23278007	23280010	.	-	.	ID=FBgn0267522;Name=28SrRNA-Psi:CR45862;fullname=28S ribosomal RNA pseudogene:CR45862;Alias=CR45862;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45862,GenomeRNAi:26067190
+X	FlyBase	pseudogene	23278007	23280010	.	-	.	ID=FBtr0346902;Parent=FBgn0267522;Name=28SrRNA-Psi:CR45862-RA;Alias=CR45862-RA;Dbxref=FlyBase_Annotation_IDs:CR45862-RA
+X	FlyBase	exon	23278007	23280010	.	-	.	Parent=FBtr0346902
+###
+X	FlyBase	gene	23278007	23283731	.	-	.	ID=FBgn0267516;Name=pre-rRNA:CR45856;fullname=ribosomal RNA primary transcript:CR45856;Alias=CR45856,ribosomal RNA primary transcript pseudogene:CR45856,pre-rRNA-Psi:CR45856;Ontology_term=SO:0000087,SO:0000573;Dbxref=FlyBase_Annotation_IDs:CR45856,RNAcentral:URS0000A0C8C2_7227,EntrezGene:26067184,GenomeRNAi:26067184
+X	FlyBase	rRNA	23278007	23283731	.	-	.	ID=FBtr0346899;Parent=FBgn0267516;Name=pre-rRNA:CR45856-RA;Alias=pre-rRNA-Psi:CR45856-RA;Dbxref=FlyBase_Annotation_IDs:CR45856-RA,RNAcentral:URS0000A0C8C2_7227,REFSEQ:NR_156773
+X	FlyBase	exon	23278007	23283731	.	-	.	Parent=FBtr0346899
+###
+X	FlyBase	gene	23280998	23282931	.	-	.	ID=FBgn0267521;Name=18SrRNA-Psi:CR45861;fullname=18S ribosomal RNA pseudogene:CR45861;Alias=CR45861;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45861,GenomeRNAi:26067189
+X	FlyBase	pseudogene	23280998	23282931	.	-	.	ID=FBtr0346900;Parent=FBgn0267521;Name=18SrRNA-Psi:CR45861-RA;Alias=CR45861-RA;Dbxref=FlyBase_Annotation_IDs:CR45861-RA
+X	FlyBase	exon	23280998	23282931	.	-	.	Parent=FBtr0346900
+###
+X	FlyBase	gene	23291549	23291671	.	+	.	ID=FBgn0267523;Name=5.8SrRNA-Psi:CR45863;fullname=5.8S ribosomal RNA pseudogene:CR45863;Alias=CR45863;Ontology_term=SO:0000573,SO:0000042,SO:0000087;Dbxref=FlyBase_Annotation_IDs:CR45863,GenomeRNAi:26067191
+X	FlyBase	pseudogene	23291549	23291671	.	+	.	ID=FBtr0346897;Parent=FBgn0267523;Name=5.8SrRNA-Psi:CR45863-RA;Alias=CR45863-RA;Dbxref=FlyBase_Annotation_IDs:CR45863-RA
+X	FlyBase	exon	23291549	23291671	.	+	.	Parent=FBtr0346897
+###
+Y	FlyBase	gene	335386	335911	.	-	.	ID=FBgn0267608;Name=CR45946;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45946,GenomeRNAi:26067273
+Y	FlyBase	pseudogene	335386	335911	.	-	.	ID=FBtr0347038;Parent=FBgn0267608;Name=CR45946-RA;Dbxref=FlyBase_Annotation_IDs:CR45946-RA
+Y	FlyBase	exon	335386	335911	.	-	.	Parent=FBtr0347038
+###
+Y	FlyBase	gene	346620	347145	.	-	.	ID=FBgn0267609;Name=CR45947;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45947,GenomeRNAi:26067274
+Y	FlyBase	pseudogene	346620	347145	.	-	.	ID=FBtr0347037;Parent=FBgn0267609;Name=CR45947-RA;Dbxref=FlyBase_Annotation_IDs:CR45947-RA
+Y	FlyBase	exon	346620	347145	.	-	.	Parent=FBtr0347037
+###
+Y	FlyBase	gene	1883796	1883972	.	-	.	ID=FBgn0058441;Name=CR40441;Alias=FBan0040441,CG40441,CG40441;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:EDP28011,EntrezGene:5740765,FlyBase_Annotation_IDs:CR40441,GenomeRNAi:10178882;derived_experimental_cyto=h1-h25B
+Y	FlyBase	pseudogene	1883796	1883972	.	-	.	ID=FBtr0302914;Parent=FBgn0058441;Name=CR40441-RB;Alias=CG40441-RB;Dbxref=FlyBase_Annotation_IDs:CR40441-RB
+Y	FlyBase	exon	1883796	1883972	.	-	.	Parent=FBtr0302914
+###
+Y	FlyBase	gene	2266650	2267259	.	-	.	ID=FBgn0267593;Name=CR45931;Alias=CG40245;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45931,GenomeRNAi:26067258
+Y	FlyBase	pseudogene	2266650	2267259	.	-	.	ID=FBtr0347032;Parent=FBgn0267593;Name=CR45931-RA;Dbxref=FlyBase_Annotation_IDs:CR45931-RA
+Y	FlyBase	exon	2266650	2267259	.	-	.	Parent=FBtr0347032
+###
+Y	FlyBase	gene	2482594	2483518	.	+	.	ID=FBgn0267610;Name=CR45948;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45948,GenomeRNAi:26067275
+Y	FlyBase	pseudogene	2482594	2483518	.	+	.	ID=FBtr0347039;Parent=FBgn0267610;Name=CR45948-RA;Dbxref=FlyBase_Annotation_IDs:CR45948-RA
+Y	FlyBase	exon	2482594	2482793	.	+	.	Parent=FBtr0347039
+Y	FlyBase	intron	2482794	2482854	.	+	.	Parent=FBtr0347039
+Y	FlyBase	exon	2482855	2483518	.	+	.	Parent=FBtr0347039
+###
+Y	FlyBase	gene	3024149	3024385	.	-	.	ID=FBgn0085831;Name=CR42201;Alias=FBan0042201;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR42201,GenomeRNAi:5740261
+Y	FlyBase	pseudogene	3024149	3024385	.	-	.	ID=FBtr0114289;Parent=FBgn0085831;Name=CR42201-RA;Dbxref=FlyBase_Annotation_IDs:CR42201-RA,REFSEQ:NR_004372
+Y	FlyBase	exon	3024149	3024385	.	-	.	Parent=FBtr0114289
+###
+Y	FlyBase	gene	3026761	3028019	.	-	.	ID=FBgn0085790;Name=CR41507;Alias=FBan0041507;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41507,GenomeRNAi:5740732
+Y	FlyBase	pseudogene	3026761	3028019	.	-	.	ID=FBtr0114243;Parent=FBgn0085790;Name=CR41507-RA;Dbxref=FlyBase_Annotation_IDs:CR41507-RA,REFSEQ:NR_004373
+Y	FlyBase	exon	3026761	3027225	.	-	.	Parent=FBtr0114243
+Y	FlyBase	intron	3027226	3027296	.	-	.	Parent=FBtr0114243
+Y	FlyBase	exon	3027297	3027458	.	-	.	Parent=FBtr0114243
+Y	FlyBase	intron	3027459	3027540	.	-	.	Parent=FBtr0114243
+Y	FlyBase	exon	3027541	3027898	.	-	.	Parent=FBtr0114243
+Y	FlyBase	intron	3027899	3027963	.	-	.	Parent=FBtr0114243
+Y	FlyBase	exon	3027964	3028019	.	-	.	Parent=FBtr0114243
+###
+Y	FlyBase	gene	3034052	3035310	.	-	.	ID=FBgn0085791;Name=CR41508;Alias=FBan0041508;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41508,GenomeRNAi:5740520
+Y	FlyBase	pseudogene	3034052	3035310	.	-	.	ID=FBtr0114244;Parent=FBgn0085791;Name=CR41508-RA;Dbxref=FlyBase_Annotation_IDs:CR41508-RA,REFSEQ:NR_004374
+Y	FlyBase	exon	3034052	3034516	.	-	.	Parent=FBtr0114244
+Y	FlyBase	intron	3034517	3034587	.	-	.	Parent=FBtr0114244
+Y	FlyBase	exon	3034588	3034749	.	-	.	Parent=FBtr0114244
+Y	FlyBase	intron	3034750	3034831	.	-	.	Parent=FBtr0114244
+Y	FlyBase	exon	3034832	3035189	.	-	.	Parent=FBtr0114244
+Y	FlyBase	intron	3035190	3035254	.	-	.	Parent=FBtr0114244
+Y	FlyBase	exon	3035255	3035310	.	-	.	Parent=FBtr0114244
+###
+Y	FlyBase	gene	3041350	3042787	.	-	.	ID=FBgn0085792;Name=CR41509;Alias=FBan0041509;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41509,GenomeRNAi:5740384
+Y	FlyBase	pseudogene	3041350	3042787	.	-	.	ID=FBtr0114245;Parent=FBgn0085792;Name=CR41509-RA;Dbxref=FlyBase_Annotation_IDs:CR41509-RA,REFSEQ:NR_004375
+Y	FlyBase	exon	3041350	3041829	.	-	.	Parent=FBtr0114245
+Y	FlyBase	intron	3041830	3041900	.	-	.	Parent=FBtr0114245
+Y	FlyBase	exon	3041901	3042121	.	-	.	Parent=FBtr0114245
+Y	FlyBase	intron	3042122	3042212	.	-	.	Parent=FBtr0114245
+Y	FlyBase	exon	3042213	3042502	.	-	.	Parent=FBtr0114245
+Y	FlyBase	intron	3042503	3042567	.	-	.	Parent=FBtr0114245
+Y	FlyBase	exon	3042568	3042787	.	-	.	Parent=FBtr0114245
+###
+Y	FlyBase	gene	3047606	3048886	.	+	.	ID=FBgn0085789;Name=CR41506;Alias=FBan0041506;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41506,GenomeRNAi:5740167
+Y	FlyBase	pseudogene	3047606	3048886	.	+	.	ID=FBtr0347566;Parent=FBgn0085789;Name=CR41506-RB;Dbxref=FlyBase_Annotation_IDs:CR41506-RB
+Y	FlyBase	exon	3047606	3047721	.	+	.	Parent=FBtr0347566
+Y	FlyBase	intron	3047722	3047751	.	+	.	Parent=FBtr0347566
+Y	FlyBase	exon	3047752	3048356	.	+	.	Parent=FBtr0347566
+Y	FlyBase	intron	3048357	3048453	.	+	.	Parent=FBtr0347566
+Y	FlyBase	exon	3048454	3048629	.	+	.	Parent=FBtr0347566
+Y	FlyBase	intron	3048630	3048687	.	+	.	Parent=FBtr0347566
+Y	FlyBase	exon	3048688	3048886	.	+	.	Parent=FBtr0347566
+###
+Y	FlyBase	gene	3050502	3051290	.	+	.	ID=FBgn0085788;Name=CR41504;Alias=FBan0041504;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR41504,GenomeRNAi:5740225
+Y	FlyBase	pseudogene	3050502	3051290	.	+	.	ID=FBtr0114241;Parent=FBgn0085788;Name=CR41504-RA;Dbxref=FlyBase_Annotation_IDs:CR41504-RA,REFSEQ:NR_004377
+Y	FlyBase	exon	3050502	3051290	.	+	.	Parent=FBtr0114241
+###
+Y	FlyBase	gene	3059061	3059480	.	-	.	ID=FBgn0267869;Name=CR46157;Alias=ade5-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46157,GenomeRNAi:26067471
+Y	FlyBase	pseudogene	3059061	3059480	.	-	.	ID=FBtr0347464;Parent=FBgn0267869;Name=CR46157-RA;Dbxref=FlyBase_Annotation_IDs:CR46157-RA
+Y	FlyBase	exon	3059061	3059480	.	-	.	Parent=FBtr0347464
+###
+Y	FlyBase	gene	3060612	3061377	.	+	.	ID=FBgn0267899;Name=CR46187;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46187,GenomeRNAi:26067501
+Y	FlyBase	pseudogene	3060612	3061377	.	+	.	ID=FBtr0347430;Parent=FBgn0267899;Name=CR46187-RA;Dbxref=FlyBase_Annotation_IDs:CR46187-RA
+Y	FlyBase	exon	3060612	3061377	.	+	.	Parent=FBtr0347430
+###
+Y	FlyBase	gene	3061391	3062109	.	-	.	ID=FBgn0267870;Name=CR46158;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46158,GenomeRNAi:26067472
+Y	FlyBase	pseudogene	3061391	3062109	.	-	.	ID=FBtr0347463;Parent=FBgn0267870;Name=CR46158-RA;Dbxref=FlyBase_Annotation_IDs:CR46158-RA
+Y	FlyBase	exon	3061391	3062109	.	-	.	Parent=FBtr0347463
+###
+Y	FlyBase	gene	3071943	3072466	.	+	.	ID=FBgn0267871;Name=CR46159;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46159,GenomeRNAi:26067473
+Y	FlyBase	pseudogene	3071943	3072466	.	+	.	ID=FBtr0347431;Parent=FBgn0267871;Name=CR46159-RA;Dbxref=FlyBase_Annotation_IDs:CR46159-RA
+Y	FlyBase	exon	3071943	3072466	.	+	.	Parent=FBtr0347431
+###
+Y	FlyBase	gene	3074924	3075180	.	+	.	ID=FBgn0267873;Name=CR46161;Alias=Mst35Ba-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46161,GenomeRNAi:26067475
+Y	FlyBase	pseudogene	3074924	3075180	.	+	.	ID=FBtr0347432;Parent=FBgn0267873;Name=CR46161-RA;Dbxref=FlyBase_Annotation_IDs:CR46161-RA
+Y	FlyBase	exon	3074924	3075180	.	+	.	Parent=FBtr0347432
+###
+Y	FlyBase	gene	3084618	3085392	.	+	.	ID=FBgn0267872;Name=CR46160;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46160,GenomeRNAi:26067474
+Y	FlyBase	pseudogene	3084618	3085392	.	+	.	ID=FBtr0347433;Parent=FBgn0267872;Name=CR46160-RA;Dbxref=FlyBase_Annotation_IDs:CR46160-RA
+Y	FlyBase	exon	3084618	3085392	.	+	.	Parent=FBtr0347433
+###
+Y	FlyBase	gene	3085424	3085676	.	-	.	ID=FBgn0267874;Name=CR46162;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46162,GenomeRNAi:26067476
+Y	FlyBase	pseudogene	3085424	3085676	.	-	.	ID=FBtr0347462;Parent=FBgn0267874;Name=CR46162-RA;Dbxref=FlyBase_Annotation_IDs:CR46162-RA
+Y	FlyBase	exon	3085424	3085676	.	-	.	Parent=FBtr0347462
+###
+Y	FlyBase	gene	3091730	3091891	.	-	.	ID=FBgn0267875;Name=CR46163;Alias=ade5-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46163,GenomeRNAi:26067477
+Y	FlyBase	pseudogene	3091730	3091891	.	-	.	ID=FBtr0347461;Parent=FBgn0267875;Name=CR46163-RA;Dbxref=FlyBase_Annotation_IDs:CR46163-RA
+Y	FlyBase	exon	3091730	3091891	.	-	.	Parent=FBtr0347461
+###
+Y	FlyBase	gene	3093052	3093817	.	+	.	ID=FBgn0267876;Name=CR46164;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46164,GenomeRNAi:26067478
+Y	FlyBase	pseudogene	3093052	3093817	.	+	.	ID=FBtr0347434;Parent=FBgn0267876;Name=CR46164-RA;Dbxref=FlyBase_Annotation_IDs:CR46164-RA
+Y	FlyBase	exon	3093052	3093817	.	+	.	Parent=FBtr0347434
+###
+Y	FlyBase	gene	3093855	3094575	.	-	.	ID=FBgn0267877;Name=CR46165;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46165,GenomeRNAi:26067479
+Y	FlyBase	pseudogene	3093855	3094575	.	-	.	ID=FBtr0347460;Parent=FBgn0267877;Name=CR46165-RA;Dbxref=FlyBase_Annotation_IDs:CR46165-RA
+Y	FlyBase	exon	3093855	3094575	.	-	.	Parent=FBtr0347460
+###
+Y	FlyBase	gene	3110839	3111104	.	+	.	ID=FBgn0267878;Name=CR46166;Alias=Mst35Ba-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46166,GenomeRNAi:26067480
+Y	FlyBase	pseudogene	3110839	3111104	.	+	.	ID=FBtr0347435;Parent=FBgn0267878;Name=CR46166-RA;Dbxref=FlyBase_Annotation_IDs:CR46166-RA
+Y	FlyBase	exon	3110839	3111104	.	+	.	Parent=FBtr0347435
+###
+Y	FlyBase	gene	3113044	3113644	.	+	.	ID=FBgn0267879;Name=CR46167;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46167,GenomeRNAi:26067481
+Y	FlyBase	pseudogene	3113044	3113644	.	+	.	ID=FBtr0347436;Parent=FBgn0267879;Name=CR46167-RA;Dbxref=FlyBase_Annotation_IDs:CR46167-RA
+Y	FlyBase	exon	3113044	3113644	.	+	.	Parent=FBtr0347436
+###
+Y	FlyBase	gene	3113685	3114094	.	-	.	ID=FBgn0267880;Name=CR46168;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46168,GenomeRNAi:26067482
+Y	FlyBase	pseudogene	3113685	3114094	.	-	.	ID=FBtr0347459;Parent=FBgn0267880;Name=CR46168-RA;Dbxref=FlyBase_Annotation_IDs:CR46168-RA
+Y	FlyBase	exon	3113685	3114094	.	-	.	Parent=FBtr0347459
+###
+Y	FlyBase	gene	3134941	3135206	.	+	.	ID=FBgn0267881;Name=CR46169;Alias=Mst35Ba-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46169,GenomeRNAi:26067483
+Y	FlyBase	pseudogene	3134941	3135206	.	+	.	ID=FBtr0347437;Parent=FBgn0267881;Name=CR46169-RA;Dbxref=FlyBase_Annotation_IDs:CR46169-RA
+Y	FlyBase	exon	3134941	3135206	.	+	.	Parent=FBtr0347437
+###
+Y	FlyBase	gene	3136899	3137576	.	+	.	ID=FBgn0267882;Name=CR46170;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46170,GenomeRNAi:26067484
+Y	FlyBase	pseudogene	3136899	3137576	.	+	.	ID=FBtr0347438;Parent=FBgn0267882;Name=CR46170-RA;Dbxref=FlyBase_Annotation_IDs:CR46170-RA
+Y	FlyBase	exon	3136899	3137576	.	+	.	Parent=FBtr0347438
+###
+Y	FlyBase	gene	3137617	3138026	.	-	.	ID=FBgn0267883;Name=CR46171;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46171,GenomeRNAi:26067485
+Y	FlyBase	pseudogene	3137617	3138026	.	-	.	ID=FBtr0347458;Parent=FBgn0267883;Name=CR46171-RA;Dbxref=FlyBase_Annotation_IDs:CR46171-RA
+Y	FlyBase	exon	3137617	3138026	.	-	.	Parent=FBtr0347458
+###
+Y	FlyBase	gene	3164949	3165401	.	+	.	ID=FBgn0267884;Name=CR46172;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46172,GenomeRNAi:26067486
+Y	FlyBase	pseudogene	3164949	3165401	.	+	.	ID=FBtr0347439;Parent=FBgn0267884;Name=CR46172-RA;Dbxref=FlyBase_Annotation_IDs:CR46172-RA
+Y	FlyBase	exon	3164949	3165401	.	+	.	Parent=FBtr0347439
+###
+Y	FlyBase	gene	3165390	3166079	.	-	.	ID=FBgn0267885;Name=CR46173;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46173,GenomeRNAi:26067487
+Y	FlyBase	pseudogene	3165390	3166079	.	-	.	ID=FBtr0347457;Parent=FBgn0267885;Name=CR46173-RA;Dbxref=FlyBase_Annotation_IDs:CR46173-RA
+Y	FlyBase	exon	3165390	3166079	.	-	.	Parent=FBtr0347457
+###
+Y	FlyBase	gene	3167772	3168037	.	-	.	ID=FBgn0267886;Name=CR46174;Alias=Mst35Ba-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46174,GenomeRNAi:26067488
+Y	FlyBase	pseudogene	3167772	3168037	.	-	.	ID=FBtr0347456;Parent=FBgn0267886;Name=CR46174-RA;Dbxref=FlyBase_Annotation_IDs:CR46174-RA
+Y	FlyBase	exon	3167772	3168037	.	-	.	Parent=FBtr0347456
+###
+Y	FlyBase	gene	3185268	3185720	.	+	.	ID=FBgn0267887;Name=CR46175;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46175,GenomeRNAi:26067489
+Y	FlyBase	pseudogene	3185268	3185720	.	+	.	ID=FBtr0347440;Parent=FBgn0267887;Name=CR46175-RA;Dbxref=FlyBase_Annotation_IDs:CR46175-RA
+Y	FlyBase	exon	3185268	3185720	.	+	.	Parent=FBtr0347440
+###
+Y	FlyBase	gene	3185709	3186398	.	-	.	ID=FBgn0267888;Name=CR46176;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46176,GenomeRNAi:26067490
+Y	FlyBase	pseudogene	3185709	3186398	.	-	.	ID=FBtr0347455;Parent=FBgn0267888;Name=CR46176-RA;Dbxref=FlyBase_Annotation_IDs:CR46176-RA
+Y	FlyBase	exon	3185709	3186398	.	-	.	Parent=FBtr0347455
+###
+Y	FlyBase	gene	3188367	3188632	.	-	.	ID=FBgn0267889;Name=CR46177;Alias=Mst35Ba-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46177,GenomeRNAi:26067491
+Y	FlyBase	pseudogene	3188367	3188632	.	-	.	ID=FBtr0347454;Parent=FBgn0267889;Name=CR46177-RA;Dbxref=FlyBase_Annotation_IDs:CR46177-RA
+Y	FlyBase	exon	3188367	3188632	.	-	.	Parent=FBtr0347454
+###
+Y	FlyBase	gene	3191215	3191491	.	-	.	ID=FBgn0267890;Name=CR46178;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46178,GenomeRNAi:26067492
+Y	FlyBase	pseudogene	3191215	3191491	.	-	.	ID=FBtr0347453;Parent=FBgn0267890;Name=CR46178-RA;Dbxref=FlyBase_Annotation_IDs:CR46178-RA
+Y	FlyBase	exon	3191215	3191491	.	-	.	Parent=FBtr0347453
+###
+Y	FlyBase	gene	3203123	3203840	.	+	.	ID=FBgn0267891;Name=CR46179;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46179,Fly-FISH:CR46179,GenomeRNAi:26067493
+Y	FlyBase	pseudogene	3203123	3203840	.	+	.	ID=FBtr0347441;Parent=FBgn0267891;Name=CR46179-RA;Dbxref=FlyBase_Annotation_IDs:CR46179-RA
+Y	FlyBase	exon	3203123	3203840	.	+	.	Parent=FBtr0347441
+###
+Y	FlyBase	gene	3203881	3204640	.	-	.	ID=FBgn0267892;Name=CR46180;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46180,GenomeRNAi:26067494
+Y	FlyBase	pseudogene	3203881	3204640	.	-	.	ID=FBtr0347452;Parent=FBgn0267892;Name=CR46180-RA;Dbxref=FlyBase_Annotation_IDs:CR46180-RA
+Y	FlyBase	exon	3203881	3204640	.	-	.	Parent=FBtr0347452
+###
+Y	FlyBase	gene	3205803	3205967	.	+	.	ID=FBgn0267893;Name=CR46181;Alias=ade5-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46181,GenomeRNAi:26067495
+Y	FlyBase	pseudogene	3205803	3205967	.	+	.	ID=FBtr0347442;Parent=FBgn0267893;Name=CR46181-RA;Dbxref=FlyBase_Annotation_IDs:CR46181-RA
+Y	FlyBase	exon	3205803	3205967	.	+	.	Parent=FBtr0347442
+###
+Y	FlyBase	gene	3212119	3212805	.	+	.	ID=FBgn0085500;Name=CR40601;Alias=FBan0040601,CG40601,CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB:AJ784397,FlyBase_Annotation_IDs:CR40601,EntrezGene:5740598,GenomeRNAi:26067090
+Y	FlyBase	pseudogene	3212119	3212805	.	+	.	ID=FBtr0347465;Parent=FBgn0085500;Name=CR40601-RB;Dbxref=FlyBase_Annotation_IDs:CR40601-RB
+Y	FlyBase	exon	3212119	3212805	.	+	.	Parent=FBtr0347465
+###
+Y	FlyBase	gene	3212762	3213536	.	-	.	ID=FBgn0267894;Name=CR46182;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46182,GenomeRNAi:26067496
+Y	FlyBase	pseudogene	3212762	3213536	.	-	.	ID=FBtr0347451;Parent=FBgn0267894;Name=CR46182-RA;Dbxref=FlyBase_Annotation_IDs:CR46182-RA
+Y	FlyBase	exon	3212762	3213536	.	-	.	Parent=FBtr0347451
+###
+Y	FlyBase	gene	3218291	3218817	.	-	.	ID=FBgn0267895;Name=CR46183;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46183,GenomeRNAi:26067497
+Y	FlyBase	pseudogene	3218291	3218817	.	-	.	ID=FBtr0347449;Parent=FBgn0267895;Name=CR46183-RA;Dbxref=FlyBase_Annotation_IDs:CR46183-RA
+Y	FlyBase	exon	3218291	3218817	.	-	.	Parent=FBtr0347449
+###
+Y	FlyBase	gene	3228674	3229392	.	+	.	ID=FBgn0267896;Name=CR46184;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46184,GenomeRNAi:26067498
+Y	FlyBase	pseudogene	3228674	3229392	.	+	.	ID=FBtr0347443;Parent=FBgn0267896;Name=CR46184-RA;Dbxref=FlyBase_Annotation_IDs:CR46184-RA
+Y	FlyBase	exon	3228674	3229392	.	+	.	Parent=FBtr0347443
+###
+Y	FlyBase	gene	3229424	3230181	.	-	.	ID=FBgn0267897;Name=CR46185;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46185,GenomeRNAi:26067499
+Y	FlyBase	pseudogene	3229424	3230181	.	-	.	ID=FBtr0347448;Parent=FBgn0267897;Name=CR46185-RA;Dbxref=FlyBase_Annotation_IDs:CR46185-RA
+Y	FlyBase	exon	3229424	3230181	.	-	.	Parent=FBtr0347448
+###
+Y	FlyBase	gene	3231310	3231723	.	+	.	ID=FBgn0267898;Name=CR46186;Alias=ade5-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46186,GenomeRNAi:26067500
+Y	FlyBase	pseudogene	3231310	3231723	.	+	.	ID=FBtr0347444;Parent=FBgn0267898;Name=CR46186-RA;Dbxref=FlyBase_Annotation_IDs:CR46186-RA
+Y	FlyBase	exon	3231310	3231723	.	+	.	Parent=FBtr0347444
+###
+Y	FlyBase	gene	3236012	3237041	.	-	.	ID=FBgn0267900;Name=CR46188;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46188,GenomeRNAi:26067502
+Y	FlyBase	pseudogene	3236012	3237041	.	-	.	ID=FBtr0347447;Parent=FBgn0267900;Name=CR46188-RA;Dbxref=FlyBase_Annotation_IDs:CR46188-RA
+Y	FlyBase	exon	3236012	3237041	.	-	.	Parent=FBtr0347447
+###
+Y	FlyBase	gene	3241623	3242076	.	+	.	ID=FBgn0267901;Name=CR46189;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46189,GenomeRNAi:26067503
+Y	FlyBase	pseudogene	3241623	3242076	.	+	.	ID=FBtr0347445;Parent=FBgn0267901;Name=CR46189-RA;Dbxref=FlyBase_Annotation_IDs:CR46189-RA
+Y	FlyBase	exon	3241623	3242076	.	+	.	Parent=FBtr0347445
+###
+Y	FlyBase	gene	3242065	3242646	.	-	.	ID=FBgn0267902;Name=CR46190;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46190,GenomeRNAi:26067504
+Y	FlyBase	pseudogene	3242065	3242646	.	-	.	ID=FBtr0347446;Parent=FBgn0267902;Name=CR46190-RA;Dbxref=FlyBase_Annotation_IDs:CR46190-RA
+Y	FlyBase	exon	3242065	3242646	.	-	.	Parent=FBtr0347446
+###
+Y	FlyBase	gene	3250355	3251252	.	-	.	ID=FBgn0283435;Name=CR46279;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46279,GenomeRNAi:26067585
+Y	FlyBase	pseudogene	3250355	3251252	.	-	.	ID=FBtr0445180;Parent=FBgn0283435;Name=CR46279-RA;Dbxref=FlyBase_Annotation_IDs:CR46279-RA
+Y	FlyBase	exon	3250355	3251252	.	-	.	Parent=FBtr0445180
+###
+Y	FlyBase	gene	3258406	3259223	.	+	.	ID=FBgn0267862;Name=CR46150;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46150,GenomeRNAi:26067464
+Y	FlyBase	pseudogene	3258406	3259223	.	+	.	ID=FBtr0347419;Parent=FBgn0267862;Name=CR46150-RA;Dbxref=FlyBase_Annotation_IDs:CR46150-RA
+Y	FlyBase	exon	3258406	3259223	.	+	.	Parent=FBtr0347419
+###
+Y	FlyBase	gene	3264145	3264418	.	+	.	ID=FBgn0267863;Name=CR46151;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46151,GenomeRNAi:26067465
+Y	FlyBase	pseudogene	3264145	3264418	.	+	.	ID=FBtr0347420;Parent=FBgn0267863;Name=CR46151-RA;Dbxref=FlyBase_Annotation_IDs:CR46151-RA
+Y	FlyBase	exon	3264145	3264418	.	+	.	Parent=FBtr0347420
+###
+Y	FlyBase	gene	3265434	3266598	.	+	.	ID=FBgn0085644;Name=CR41423;Alias=FBan0041423,CG41423;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:EDP27957,FlyBase_Annotation_IDs:CR41423,EntrezGene:5740393,GenomeRNAi:26067093
+Y	FlyBase	pseudogene	3265434	3266598	.	+	.	ID=FBtr0347421;Parent=FBgn0085644;Name=CR41423-RB;Dbxref=FlyBase_Annotation_IDs:CR41423-RB
+Y	FlyBase	exon	3265434	3266598	.	+	.	Parent=FBtr0347421
+###
+Y	FlyBase	gene	3267088	3268196	.	-	.	ID=FBgn0085520;Name=CR40801;Alias=FBan0040801,CG40801,ade5-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:EDP27958,GB:AJ784372,FlyBase_Annotation_IDs:CR40801,GB_protein:EDP27958,EntrezGene:5740548,GenomeRNAi:26067091
+Y	FlyBase	pseudogene	3267088	3268196	.	-	.	ID=FBtr0347466;Parent=FBgn0085520;Name=CR40801-RC;Dbxref=FlyBase_Annotation_IDs:CR40801-RC
+Y	FlyBase	exon	3267088	3267232	.	-	.	Parent=FBtr0347466
+Y	FlyBase	intron	3267233	3267332	.	-	.	Parent=FBtr0347466
+Y	FlyBase	exon	3267333	3267541	.	-	.	Parent=FBtr0347466
+Y	FlyBase	intron	3267542	3267959	.	-	.	Parent=FBtr0347466
+Y	FlyBase	exon	3267960	3268196	.	-	.	Parent=FBtr0347466
+###
+Y	FlyBase	gene	3272835	3273532	.	+	.	ID=FBgn0267864;Name=CR46152;Alias=CG12717-related;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR46152,GenomeRNAi:26067466
+Y	FlyBase	pseudogene	3272835	3273532	.	+	.	ID=FBtr0347422;Parent=FBgn0267864;Name=CR46152-RA;Dbxref=FlyBase_Annotation_IDs:CR46152-RA
+Y	FlyBase	exon	3272835	3272923	.	+	.	Parent=FBtr0347422
+Y	FlyBase	intron	3272924	3273136	.	+	.	Parent=FBtr0347422
+Y	FlyBase	exon	3273137	3273532	.	+	.	Parent=FBtr0347422
+###
+Y	FlyBase	gene	3297271	3298126	.	+	.	ID=FBgn0267418;Name=CR45771;Alias=Mst77Y;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45771,GB:JSAE01000257,GenomeRNAi:26067109
+Y	FlyBase	pseudogene	3297271	3298126	.	+	.	ID=FBtr0346742;Parent=FBgn0267418;Name=CR45771-RA;Dbxref=FlyBase_Annotation_IDs:CR45771-RA
+Y	FlyBase	exon	3297271	3297700	.	+	.	Parent=FBtr0346742
+Y	FlyBase	intron	3297701	3297764	.	+	.	Parent=FBtr0346742
+Y	FlyBase	exon	3297765	3298126	.	+	.	Parent=FBtr0346742
+###
+Y	FlyBase	gene	3318599	3319442	.	+	.	ID=FBgn0267419;Name=CR45772;Alias=Mst77Y;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45772,GB:JSAE01000257,GenomeRNAi:26067110
+Y	FlyBase	pseudogene	3318599	3319442	.	+	.	ID=FBtr0346744;Parent=FBgn0267419;Name=CR45772-RA;Dbxref=FlyBase_Annotation_IDs:CR45772-RA
+Y	FlyBase	exon	3318599	3319026	.	+	.	Parent=FBtr0346744
+Y	FlyBase	intron	3319027	3319090	.	+	.	Parent=FBtr0346744
+Y	FlyBase	exon	3319091	3319442	.	+	.	Parent=FBtr0346744
+###
+Y	FlyBase	gene	3323143	3323855	.	+	.	ID=FBgn0267420;Name=CR45773;Alias=Mst77Y;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45773,GB:JSAE01000257,GenomeRNAi:26067111
+Y	FlyBase	pseudogene	3323143	3323855	.	+	.	ID=FBtr0346745;Parent=FBgn0267420;Name=CR45773-RA;Dbxref=FlyBase_Annotation_IDs:CR45773-RA
+Y	FlyBase	exon	3323143	3323439	.	+	.	Parent=FBtr0346745
+Y	FlyBase	intron	3323440	3323503	.	+	.	Parent=FBtr0346745
+Y	FlyBase	exon	3323504	3323855	.	+	.	Parent=FBtr0346745
+###
+Y	FlyBase	gene	3331980	3332699	.	+	.	ID=FBgn0267494;Name=Mst77Y-8Psi;fullname=Male-specific pseudogene 77Y 8;Alias=FBgn0262757,FBgn0267421,CR45774,Male-specific transcript 77Y 8,Mst77Y-8;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45774,GB:GQ868250,GenomeRNAi:12869594,GenomeRNAi:26067112;derived_experimental_cyto=h18-h19
+Y	FlyBase	pseudogene	3331980	3332699	.	+	.	ID=FBtr0346747;Parent=FBgn0267494;Name=Mst77Y-8Psi-RA;Alias=Mst77Y-8-RA,CR45774-RA;Dbxref=FlyBase_Annotation_IDs:CR45774-RA
+Y	FlyBase	exon	3331980	3332273	.	+	.	Parent=FBtr0346747
+Y	FlyBase	intron	3332274	3332337	.	+	.	Parent=FBtr0346747
+Y	FlyBase	exon	3332338	3332699	.	+	.	Parent=FBtr0346747
+###
+Y	FlyBase	gene	3340824	3341546	.	+	.	ID=FBgn0267422;Name=CR45775;Alias=Mst77Y;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45775,GB:JSAE01000257,GenomeRNAi:26067113
+Y	FlyBase	pseudogene	3340824	3341546	.	+	.	ID=FBtr0346749;Parent=FBgn0267422;Name=CR45775-RA;Dbxref=FlyBase_Annotation_IDs:CR45775-RA
+Y	FlyBase	exon	3340824	3341120	.	+	.	Parent=FBtr0346749
+Y	FlyBase	intron	3341121	3341184	.	+	.	Parent=FBtr0346749
+Y	FlyBase	exon	3341185	3341546	.	+	.	Parent=FBtr0346749
+###
+Y	FlyBase	gene	3345247	3345950	.	+	.	ID=FBgn0267423;Name=CR45776;Alias=Mst77Y;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45776,GB:JSAE01000257,GenomeRNAi:26067114
+Y	FlyBase	pseudogene	3345247	3345950	.	+	.	ID=FBtr0346750;Parent=FBgn0267423;Name=CR45776-RA;Dbxref=FlyBase_Annotation_IDs:CR45776-RA
+Y	FlyBase	exon	3345247	3345543	.	+	.	Parent=FBtr0346750
+Y	FlyBase	intron	3345544	3345607	.	+	.	Parent=FBtr0346750
+Y	FlyBase	exon	3345608	3345950	.	+	.	Parent=FBtr0346750
+###
+Y	FlyBase	gene	3358571	3359286	.	+	.	ID=FBgn0267424;Name=CR45777;Alias=Mst77Y;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45777,GB:JSAE01000257,GenomeRNAi:26067115
+Y	FlyBase	pseudogene	3358571	3359286	.	+	.	ID=FBtr0346753;Parent=FBgn0267424;Name=CR45777-RA;Dbxref=FlyBase_Annotation_IDs:CR45777-RA
+Y	FlyBase	exon	3358571	3358867	.	+	.	Parent=FBtr0346753
+Y	FlyBase	intron	3358868	3358924	.	+	.	Parent=FBtr0346753
+Y	FlyBase	exon	3358925	3359286	.	+	.	Parent=FBtr0346753
+###
+Y	FlyBase	gene	3364463	3365197	.	+	.	ID=FBgn0262795;Name=CR43176;Alias=CG43176,CG40648,Mst77Y;Ontology_term=SO:0000087,SO:0000042;Dbxref=GB_protein:EIC81960,EntrezGene:12798486,FlyBase_Annotation_IDs:CR43176,GB:JSAE01000257,GenomeRNAi:26067101
+Y	FlyBase	pseudogene	3364463	3365197	.	+	.	ID=FBtr0346756;Parent=FBgn0262795;Name=CR43176-RD;Dbxref=FlyBase_Annotation_IDs:CR43176-RD
+Y	FlyBase	exon	3364463	3365197	.	+	.	Parent=FBtr0346756
+###
+Y	FlyBase	gene	3370887	3371602	.	+	.	ID=FBgn0267426;Name=CR45779;Alias=Mst77Y;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45779,GB:JSAE01000257,GenomeRNAi:26067117
+Y	FlyBase	pseudogene	3370887	3371602	.	+	.	ID=FBtr0346754;Parent=FBgn0267426;Name=CR45779-RA;Dbxref=FlyBase_Annotation_IDs:CR45779-RA
+Y	FlyBase	exon	3370887	3371183	.	+	.	Parent=FBtr0346754
+Y	FlyBase	intron	3371184	3371240	.	+	.	Parent=FBtr0346754
+Y	FlyBase	exon	3371241	3371602	.	+	.	Parent=FBtr0346754
+###
+Y	FlyBase	gene	3376224	3376984	.	+	.	ID=FBgn0267427;Name=CR45780;Alias=Mst77Y;Ontology_term=SO:0000087,SO:0000042;Dbxref=FlyBase_Annotation_IDs:CR45780,GB:JSAE01000257,GenomeRNAi:26067118
+Y	FlyBase	pseudogene	3376224	3376984	.	+	.	ID=FBtr0346755;Parent=FBgn0267427;Name=CR45780-RA;Dbxref=FlyBase_Annotation_IDs:CR45780-RA
+Y	FlyBase	exon	3376224	3376578	.	+	.	Parent=FBtr0346755
+Y	FlyBase	intron	3376579	3376642	.	+	.	Parent=FBtr0346755
+Y	FlyBase	exon	3376643	3376984	.	+	.	Parent=FBtr0346755
+###
