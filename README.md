@@ -1,1 +1,1 @@
-# genome_prediction_combiner
+# PrEvCo: gene Predcition and extrinsic Evidence Combiner
