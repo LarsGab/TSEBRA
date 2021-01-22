@@ -14,6 +14,7 @@ hintfiles = []
 hints = []
 graph = None
 out = ''
+pref = 'braker2'
 v = 0
 hint_source_weight = {'P' : 5, 'E' : 0.1, 'C' : 2,  'M' : 1}
 
@@ -83,7 +84,7 @@ def main():
         file.write(combined_gtf)
 
 def init(args):
-    global gtf, hintfiles, threads, hint_source_weight, out, v
+    global gtf, hintfiles, threads, hint_source_weight, out, v, pref
     if args.gtf:
         gtf = args.gtf.split(',')
     if args.hintfiles:
@@ -98,6 +99,8 @@ def init(args):
         out = args.out
     if args.verbose:
         v = args.verbose
+    if args.pref:
+        pref = 'braker{}'.format(args.pref)
 
 def parseCmd():
     """Parse command line arguments
@@ -105,17 +108,19 @@ def parseCmd():
     Returns:
         dictionary: Dictionary with arguments
     """
-    parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--gtf', type=str,
-        help='')
-    parser.add_argument('--hintfiles', type=str,
-        help='')
+    parser = argparse.ArgumentParser(description='PrEvCo: gene Predcition and extrinsic Evidence Combiner')
     parser.add_argument('--sw', type=str,
         help='P,E,C,M')
-    parser.add_argument('--out', type=str,
+    parser.add_argument('-v', '--verbose', type=int,
         help='')
-    parser.add_argument('--verbose', type=int,
-        help='')
+    parser.add_argument('-p', '--pref', type=int, required=True,
+        help='Index (>=1) of the preferred gene prediction source file in the gene prediciton list.')
+    parser.add_argument('-g', '--gtf', type=str, required=True,
+        help='List (separated by commas) of gene prediciton files in gtf .\n(gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
+    parser.add_argument('-e', '--hintfiles', type=str, required=True,
+        help='List (separated by commas) of files containing extrinsic evidence in gff.\n(hintsfile1.gff,hintsfile2.gtf,3.gtf)')
+    parser.add_argument('-o', '--out', type=str, required=True,
+        help='Outputfile for the combined gene prediciton in gtf.')
     return parser.parse_args()
 
 if __name__ == '__main__':
