@@ -16,7 +16,6 @@ graph = None
 out = ''
 pref = 'braker2'
 v = 0
-hint_source_weight = {'P' : 5, 'E' : 0.1, 'C' : 2,  'M' : 1}
 
 def main():
     '''
@@ -50,7 +49,7 @@ def main():
         anno[-1].norm_tx_format()
         c += 1
 
-    evi = Evidence(hint_source_weight)
+    evi = Evidence()
     for h in hintfiles:
         print('### READING EVIDENCE')
         evi.add_hintfile(h)
@@ -84,17 +83,11 @@ def main():
         file.write(combined_gtf)
 
 def init(args):
-    global gtf, hintfiles, threads, hint_source_weight, out, v, pref
+    global gtf, hintfiles, threads, out, v, pref
     if args.gtf:
         gtf = args.gtf.split(',')
     if args.hintfiles:
         hintfiles = args.hintfiles.split(',')
-    if args.sw:
-        sw = args.sw.split(',')
-        i = 0
-        for key in ['P', 'E', 'C', 'M']:
-            hint_source_weight[key] = float(sw[i])
-            i += 1
     if args.out:
         out = args.out
     if args.verbose:
@@ -109,8 +102,6 @@ def parseCmd():
         dictionary: Dictionary with arguments
     """
     parser = argparse.ArgumentParser(description='PrEvCo: gene Predcition and extrinsic Evidence Combiner')
-    parser.add_argument('--sw', type=str,
-        help='P,E,C,M')
     parser.add_argument('-v', '--verbose', type=int,
         help='')
     parser.add_argument('-p', '--pref', type=int, required=True,
