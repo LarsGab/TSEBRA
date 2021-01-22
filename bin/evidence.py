@@ -12,7 +12,6 @@ class NotGtfFormat(Exception):
 class AttributeMissing(Exception):
     pass
 
-
 class Hint:
     # data structure for one hint
 

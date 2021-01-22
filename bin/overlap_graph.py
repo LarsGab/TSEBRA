@@ -9,7 +9,6 @@
 # ==============================================================
 from features import Node_features
 
-
 class Edge:
     def __init__(self, tx1_id, tx2_id):
         self.node1 = tx1_id
@@ -111,7 +110,6 @@ class Graph:
                             self.edges.update({new_edge_key : Edge(interval[0], match)})
                             self.nodes[interval[0]].edge_to.update({match : new_edge_key})
                             self.nodes[match].edge_to.update({interval[0] : new_edge_key})
-
 
     def compare_tx_cds(self, tx1, tx2):
         # check for overlapping cds in two txs
