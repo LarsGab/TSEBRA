@@ -3,11 +3,11 @@ import os
 import sys
 import pytest
 
-sys.path.append('/home/lars/work/')
+sys.path.append('/home/lars/work/prevco/bin')
 
-from combiner.bin.genome_anno import Anno
-from combiner.bin.overlap_graph import Graph, Node
-from combiner.bin.evidence import Hintfile
+from genome_anno import Anno
+from overlap_graph import Graph, Node
+from evidence import Hintfile
 
 testDir = os.path.abspath(os.path.dirname(__file__))
 example_files = testDir + '/graph/'
@@ -38,8 +38,10 @@ def test_example_2():
     anno1.norm_tx_format()
     anno2 = Anno(example_files + '/ex2_anno2.gtf', 'anno2')
     anno2.addGtf()
+    anno2.norm_tx_format()
     graph = Graph([anno1, anno2])
     graph.build()
+    print(graph.print_nodes())
     component_list = graph.connected_components()
     compare_lists(result, component_list)
 
@@ -54,7 +56,7 @@ def test_example_3():
     graph.build()
     component_list = graph.connected_components()
     compare_lists(result, component_list)
-
+'''
 def test_edge_features():
     result = [[0.0, 0.0, 0.5, 0.5, 0.5, 0.0, 0.0, 0.0, 1.0, 1.0], \
         [0.0, 0.5, 0.0, 0.5, 0, 0.0, 0.5, 0.0, 0.5, 0], \
@@ -77,3 +79,4 @@ def test_edge_features():
     for e in graph.edges.values():
         for r in e.features.values():
             assert r in result
+'''

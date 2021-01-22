@@ -1,7 +1,7 @@
 import argparse
 import subprocess as sp
 import os
-combiner_bin = "/home/lars/work/combiner/bin/"
+combiner_bin = os.path.dirname(os.path.realpath(__file__))
 def main():
     args = parseCmd()
     braker2_level = ['species_excluded', 'family_excluded', 'order_excluded']
@@ -19,6 +19,7 @@ def main():
 
 def fix(gtf, out):
     cmd = '{}/fix_gtf_id_error.py --gtf {} --out {}'.format(combiner_bin, gtf, out)
+    print(cmd)
     sp.call(cmd, shell=True)
 def parseCmd():
     """Parse command line arguments

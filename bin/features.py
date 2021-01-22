@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+# ==============================================================
+# author: Lars Gabriel
+#
+# features.py: Classes for creating a list of features for a transcript
+# ==============================================================
 class Node_features:
     def __init__(self, tx, evi, anno_pref):
 
@@ -50,7 +56,7 @@ class Node_features:
                 if mult > 0:
                     evi_list[type].append(mult)
 
-                    
+
         if tx.transcript_lines['intron']:
             f[0] = len(evi_list['intron']) / len(tx.transcript_lines['intron'])
         else:
@@ -68,6 +74,9 @@ class Node_features:
 
     def get_features(self):
         return self.feature_vector
+
+
+'''
 class Edge_features:
     def __init__(self, tx1, tx2, evi):
         # tx1, tx2, evi are lists of lists of gtf lines of all introns,
@@ -226,3 +235,4 @@ class String_feature:
         if self.value == self.pref:
             return 0
         return 1
+'''

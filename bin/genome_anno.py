@@ -2,11 +2,10 @@
 # ==============================================================
 # Lars Gabriel
 #
-# Class structure for a genome annotation file
+# Data structure for a genome annotation file
 # ==============================================================
 import os
 import multiprocessing as mp
-from features import Features
 
 callback = []
 feature_pref = {'numb_introns' : 2, \
@@ -45,6 +44,7 @@ class Transcript:
         self.transcript_lines[line[2]].append(line)
 
     def get_cds_coords(self):
+        # returns list of [start_coord, end_coord] of all CDS
         if not self.cds_coords:
             if 'CDS' in self.transcript_lines.keys():
                 key  = 'CDS'
@@ -55,17 +55,23 @@ class Transcript:
         return self.cds_coords
 
     def add_missing_lines(self):
+        # add components to tx, that can miss in gtf files
+        # add intron lines
         self.find_introns()
-        #add exons/cds
+        # check if tx has cds or exon
         self.check_cds_exons()
-        self.find_start_stop_codon()
+        # add transcript line
         self.find_transcript()
+        # add start/stop codon line
+        self.find_start_stop_codon()
 
     def check_cds_exons(self):
+        # check if tx has cds or exon
         if 'CDS' not in self.transcript_lines.keys() and 'exon' not in self.transcript_lines.keys():
             raise NotGtfFormat('No CDS nor exons in {}'.format(self.id))
 
     def find_introns(self):
+        # add intron lines
         if not 'intron' in self.transcript_lines.keys():
             self.transcript_lines.update({'intron' : []})
             key = ''
@@ -90,6 +96,7 @@ class Transcript:
                     self.transcript_lines['intron'].append(intron)
 
     def find_transcript(self):
+        # add transcript line
         if not 'transcript' in self.transcript_lines.keys():
             for k in self.transcript_lines.keys():
                 for line in self.transcript_lines[k]:
@@ -102,6 +109,7 @@ class Transcript:
             self.add_line(tx_line)
 
     def find_start_stop_codon(self):
+        # add start/stop codon line
         if not 'transcript' in self.transcript_lines.keys():
             self.find_transcript()
         tx = self.transcript_lines['transcript'][0]
@@ -128,7 +136,7 @@ class Transcript:
             self.add_line(stop)
 
     def get_gtf(self, prefix='', new_gene_id=None):
-        #returns the annotation of the transcript in gtf
+        # returns transcript lines in gtf
         gtf = []
         if new_gene_id:
             g_id = new_gene_id
@@ -138,9 +146,6 @@ class Transcript:
         if prefix:
             prefix += '.'
         for k in self.transcript_lines.keys():
-
-        #self.transcript_line[8] = self.id
-        #gtf = ['\t'.join(list(map(str, self.transcript_line)))]
             for g in self.transcript_lines[k]:
                 if k == 'transcript':
                     g[8] = prefix + self.id
@@ -152,22 +157,8 @@ class Transcript:
         gtf = ['\t'.join(list(map(str, g))) for g in gtf]
         return('\n'.join(gtf))
 
-    def get_transcript_length(self):
-        if self.start < 0 or self.end < 0:
-            self.find_transcript()
-        return self.end - self.start + 1
-
-    def get_intron_length(self):
-        length = 0
-        if not 'intron' in self.transcript_lines.keys():
-            self.find_introns()
-        for line in self.transcript_lines['intron']:
-            length += line[4] - line[3] + 1
-        return length
-
-
 class Anno:
-    #data structures and methods for one genome annotation file
+    # data structures and methods for one genome annotation file
     def __init__(self, path, id):
         self.id = id
         self.genes = {'None' : []}
@@ -184,7 +175,7 @@ class Anno:
                 line[3] = int(line[3])
                 line[4] = int(line[4])
                 if line[2] == 'gene':
-                    continue
+                    #continue
                     gene_id = line[8]
                     self.genes_update(gene_id)
                     if not gene_id in self.gene_gtf.keys():
@@ -192,16 +183,11 @@ class Anno:
                     else:
                         print('ERROR, gene_id not unique: {}'.format(gene_id))
                 elif line[2] == 'transcript':
-                    continue
-                    #gene_id = line[8].split('.')[0]
+                    #continue
                     transcript_id = line[8]
-                    #self.genes_update(gene_id, transcript_id)
                     self.transcript_update(transcript_id, gene_id, line[0])
                     self.transcripts[transcript_id].add_line(line)
                 else:
-                    #gene_id = line[8].split('gene_id "')[1].split('";')[0]
-                    #transcript_id = line[8].split('transcript_id "')[1].split('";')[0]
-
                     transcript_id = line[8].split('transcript_id "')
                     if len(transcript_id) > 1:
                         transcript_id = transcript_id[1].split('";')[0]
@@ -227,11 +213,12 @@ class Anno:
             self.genes_update(gene_id, tx_id)
 
     def norm_tx_format(self):
+        # add missing lines to all tx
         for k in self.transcripts.keys():
             self.transcripts[k].add_missing_lines()
 
-
     def genes_update(self, gene_id, transcript_id=''):
+        # update gene ids
         if not gene_id in self.genes.keys():
             self.genes.update({ gene_id : []})
         if transcript_id and transcript_id not in self.genes[gene_id]:
@@ -241,10 +228,12 @@ class Anno:
             self.transcripts[transcript_id].gene_id = gene_id
 
     def transcript_update(self, t_id, g_id, chr):
+        # update tx ids
         if not t_id in self.transcripts.keys():
             self.transcripts.update({ t_id : Transcript(t_id, g_id, chr, self.id)})
 
     def get_gtf(self):
+        # get annotaion file as gtf string
         gtf = ''
         for k in self.genes.keys():
             if k in self.gene_gtf.keys():
@@ -254,6 +243,7 @@ class Anno:
         return gtf.strip('\n')
 
     def get_subset_gtf(self, tx_list):
+        # return string in gtf for tx in tx_list
         gtf = ''
         for tx in tx_list:
             gtf += self.transcripts[tx[0]].get_gtf(self.id, tx[1]) + '\n'
@@ -261,17 +251,11 @@ class Anno:
 
 
     def change_id(self, new_id):
+        # change annotation file id
         self.id = new_id
         for k in self.transcripts.keys():
             self.transcripts.source_anno = self.id
 
     def get_transcript_list(self):
+        # get list of all txs
         return list(self.transcripts.values())
-
-
-
-
-def callback_mp(result):
-    #gathering results for multiprocessing
-    global callback
-    callback.append(res)

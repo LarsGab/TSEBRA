@@ -3,9 +3,9 @@ import os
 import sys
 import pytest
 
-sys.path.append('/home/lars/work/')
+sys.path.append('/home/lars/work/prevco/bin')
 
-from combiner.bin.genome_anno import Transcript, Anno, NotGtfFormat
+from genome_anno import Transcript, Anno, NotGtfFormat
 
 
 testDir = os.path.abspath(os.path.dirname(__file__))
@@ -82,8 +82,8 @@ def test_anno_read_file(anno_anno1, file_anno1):
     gtf_anno = [g.split('\t')[:8] for g in gtf_anno]
     file_anno1 = [f.split('\t')[:8] for f in file_anno1]
     assert len(gtf_anno) == len(file_anno1)
-    for line in gtf_anno:
-        assert line in file_anno1
+    for line in file_anno1:
+        assert line in gtf_anno
 
 def test_format_error():
     anno = Anno(anno_format_error, 'error_anno')

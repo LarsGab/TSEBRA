@@ -7,7 +7,7 @@
 # Add a feature vector to each node
 # Compare nodes with the 'decision rule'
 # ==============================================================
-from features import Edge_features, Node_features
+from features import Node_features
 
 
 class Edge:
@@ -23,6 +23,7 @@ class Node:
         self.transcript_id = t_id
         self.anno_id = a_id
         self.component_id = None
+
         # dict of edge_ids of edges that are incident
         # self.edge_to[id of incident Node] = edge_id
         self.edge_to = {}
@@ -33,21 +34,34 @@ class Graph:
     def __init__(self, genome_anno_lst, anno_pref='braker2', verbose=0):
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}
+
         # self.edges['ei'] = Edge()
         self.edges = {}
+
         # self.anno[annoid] = Anno()
         self.anno = {}
-        self.duplicates = {}
-        self.v = verbose
-        self.component_list = []
-        self.decided_graph = []
-        self.init_anno(genome_anno_lst)
+
+        # preferred annotation source
         self.anno_pref = anno_pref
+
+        # list of connected graph components
+        self.component_list = []
+
+        # subset of all transcripts that weren't excluded by the decision rule
+        self.decided_graph = []
+
+        # dict of duplicate genome annotation ids to new ids
+        self.duplicates = {}
+        # init annotations, check fpr duplicate ids
+        self.init_anno(genome_anno_lst)
+
+        # variables for verbose mode
+        self.v = verbose
         self.f = [[],[],[],[],[],[],[]]
         self.ties = 0
 
     def init_anno(self, genome_anno_lst):
-        #make sure that the genome_anno ids are unique
+        # make sure that the genome_anno ids are unique
         counter = 0
         for ga in genome_anno_lst:
             if ga.id in self.anno.keys():
@@ -57,18 +71,15 @@ class Graph:
                 ga.change_id(new_id)
             self.anno.update({ga.id : ga})
 
-    def get_transcript_from_node(self, node_id):
-        return self.anno[self.nodes[node_id].anno_id].transcripts[self.nodes[node_id].transcript_id]
-
     def __tx_from_key__(self, key):
-        #print(key)
+        # get transcript of a node
         anno_id, tx_id = key.split(';')
         return self.anno[anno_id].transcripts[tx_id]
 
     def build(self):
         # build graph
-        # put all transcripts of a chromosome in one list and sort the
-        # lists by start coordinates
+        # put all transcripts of a chromosome in one list and sort it by start coordinates
+        # create vertex in graph for each transcript
         # tx_start_end[chr] = [tx_id, coord, id for start or end]
         # for every tx one element for start and one for end
         tx_start_end = {}
@@ -80,8 +91,8 @@ class Graph:
                     tx.id)
                 self.nodes.update({key : Node(tx.source_anno, \
                     tx.id)})
-                tx_start_end[tx.chr].append([key, tx.start, 1])
-                tx_start_end[tx.chr].append([key, tx.end, 0])
+                tx_start_end[tx.chr].append([key, tx.start, 0])
+                tx_start_end[tx.chr].append([key, tx.end, 1])
 
         # detect overlapping nodes
         edge_count = 0
@@ -89,7 +100,7 @@ class Graph:
             tx_start_end[chr] = sorted(tx_start_end[chr], key=lambda t:(t[1], t[2]))
             open_intervals = []
             for interval in tx_start_end[chr]:
-                if interval[2] == 1:
+                if interval[2] == 0:
                     open_intervals.append(interval[0])
                 else:
                     open_intervals.remove(interval[0])
@@ -105,6 +116,7 @@ class Graph:
 
 
     def compare_tx_cds(self, tx1, tx2):
+        # check for overlapping cds in two txs
         coords = []
         coords += tx1.get_cds_coords()
         coords += tx2.get_cds_coords()
@@ -123,9 +135,9 @@ class Graph:
             print('\n')
 
     def connected_components(self):
-        #returns list of connected components
+        # returns list of connected components of the graph and adds component id to vertices
         visited = []
-        self.component_list
+        self.component_list = []
         component_index = 0
         for key in list(self.nodes.keys()):
             component = [key]
@@ -146,16 +158,19 @@ class Graph:
                 self.nodes[node].component_id = 'g_{}'.format(component_index)
         return self.component_list
 
+    '''
     def component_to_no_edge_subtree(self, component):
         return self.no_edge_subtree('', component)
 
     def no_edge_subtree(self, prefix, node_list):
+        # returns all subtrees of a connected component, that have no edges
         result = [prefix + n for n in node_list]
         for i in range(0, len(node_list)-1):
             new_node_list = [n for n in node_list[i+1:] if n not in \
                 self.nodes[node_list[i]].edge_to.keys()]
             result += self.no_edge_subtree(result[i] + ';', new_node_list)
         return result
+    '''
 
     def add_node_features(self, evi):
         for key in self.nodes.keys():
@@ -165,12 +180,15 @@ class Graph:
             if self.nodes[key].feature_vector[0] > 0  or self.nodes[key].feature_vector[1] > 0:
                 self.nodes[key].evi_support = True
 
+
     def decide_node(self, edge):
+        # decision rule
+        # compare the feature vectors f of two txs
+        # compare elements of f from f[0] to f[7],
+        # a tx is excluded from the 'decided graph',if it has a smaller value during a comparison
+        # in this case the decision makes no other comparison
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
-        # print(n1.feature_vector)
-        # print(n2.feature_vector)
-
         for i in range(0,7):
             if n1.feature_vector[i] > n2.feature_vector[i]:
                 self.f[i].append(n2.id)
@@ -181,8 +199,8 @@ class Graph:
         return None
 
     def decide_component(self, component):
+        # return all ids of vertices of a graph component, that weren't excluded by the decision rule
         result = component.copy()
-        #visited_edges = []
         for node_id in component:
             for e_id in self.nodes[node_id].edge_to.values():
                 node_to_remove = self.edges[e_id].node_to_remove
@@ -192,6 +210,9 @@ class Graph:
         return result
 
     def decide_graph(self):
+        # applies the decision rule to all pairs of connected vertices and
+        # excludes all transcript with no evidencesupport
+        # returns node.id for all nodes in final prediction
         for key in self.edges.keys():
             self.edges[key].node_to_remove = self.decide_node(self.edges[key])
             #edge.decision = self.decide_edge(edge)
@@ -203,10 +224,24 @@ class Graph:
                 self.decided_graph += self.decide_component(component)
             else:
                 self.decided_graph += component
-
+        '''
+        self.decided_graph = []
+        nodes_to_remove = []
+        for key in self.edges.keys():
+            #self.edges[key].node_to_remove = self.decide_node(self.edges[key])
+            #edge.decision = self.decide_edge(edge)
+            nodes_to_remove.append(self.decide_node(self.edges[key]))
+        for node in self.nodes.values():
+            if not node.edge_to.values():
+                    if node.evi_support:
+                        self.decided_graph.append(node.id)
+            elif node.id not in nodes_to_remove:
+                self.decided_graph.append(node.id)
+        '''
     def get_decided_graph(self):
-        # returns the result of decided graph as a dict with
+        # returns the result of decide graph as a dict with
         # result[anno_id] = [[tx_ids, new_gene_id]]
+        # a connected component in decided graph is a gene in the output
         if not self.decided_graph:
             self.decide_graph()
         result = {}

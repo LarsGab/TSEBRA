@@ -2,9 +2,9 @@ import sys
 import os
 import pytest
 
-sys.path.append('/home/lars/work/')
+sys.path.append('/home/lars/work/prevco/bin')
 
-from combiner.bin.evidence import NotGtfFormat, AttributeMissing, Hint, Hintfile
+from evidence import NotGtfFormat, AttributeMissing, Hint, Evidence
 
 testDir = os.path.abspath(os.path.dirname(__file__))
 
@@ -27,16 +27,8 @@ def test_hint_error(hints1):
     with pytest.raises(NotGtfFormat):
         Hint(hints1[3])
 
-def test_hint_range():
-    hint3 = Hintfile(testDir + '/evidence/hint3.gff')
-    h_list = hint3.hints_in_range(550, 899, '3R')
-    with open(testDir + '/evidence/hint3.gff') as file:
-        hints = file.read().split('\n')
-    correct = hints[3:5]
-    correct.append(hints[6])
-    correct.append(hints[8])
-    correct = [c.split('\t') for c in correct]
-    h_list = [list(map(str, l)) for l in h_list]
-    print(correct)
-    print(h_list)
-    assert h_list == correct
+def test_get_hint():
+    evi = Evidence()
+    evi.add_hintfile(testDir + '/evidence/hint3.gff')
+    mult = evi.get_hint('3R','801','899','intron','+')
+    assert mult == 28

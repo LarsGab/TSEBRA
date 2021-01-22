@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+# ==============================================================
+# author: Lars Gabriel
+#
+# test_species.py: automated testing for multiple species and testsettings for BRAKER1 and BRAKER2
+# ==============================================================
 import argparse
 import os
 import subprocess as sp
@@ -28,13 +34,13 @@ def main():
     for species in species_list:
         species_path = "{}/{}".format(args.data, species)
         braker = "{}/braker1/braker_fixed.gtf,".format(species_path)
-        evidence = "{}/braker1/hintsfile.gff".format(species_path)
+        evidence1 = "{}/braker1/hintsfile.gff".format(species_path)
         for level in braker2_level:
             braker2 = "{}/braker2/{}/braker_fixed.gtf".format(species_path, level)
             if os.path.exists(braker2):
                 test_id = "{}_{}".format(species, level)
                 #braker += ',' + braker2
-                evidence += ",{}/braker2/{}/hintsfile.gff".format(species_path, \
+                evidence = evidence1 + ",{}/braker2/{}/hintsfile.gff".format(species_path, \
                     level)
                 out = "{}/{}_{}".format(args.out, species, level)
                 #pref = 'braker2'
@@ -87,6 +93,7 @@ def combine(braker, evidence, sw, out):
     # run the combiner
     cmd = "{}/../combiner.py --gtf {} --hintfiles {} --out {} --sw {}".format(combiner_bin, braker, \
         evidence, out, sw)
+    print(cmd)
     sp.call(cmd, shell=True)
 
 def gtf2ucsc(gtf, out, name):

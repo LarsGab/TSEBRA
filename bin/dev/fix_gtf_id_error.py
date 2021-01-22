@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import os
-sys.path.remove('/home/lars/work/combiner/bin')
-sys.path.append('/home/lars/work/')
-
 import argparse
-from combiner.bin.genome_anno import Anno
 
 class FormatError(Exception):
     pass
@@ -18,12 +14,14 @@ class Chr:
 def start2int(line):
     line[3] = int(line[3])
     return line
+
 def main():
     args = parseCmd()
     with open(args.gtf, 'r') as file:
         gtf = file.readlines()
     chr = {}
     print(len(gtf))
+
     for line in gtf:
         line = line.split('\t')
         chr_id = line[0] + line[6]
@@ -31,6 +29,7 @@ def main():
             chr.update({chr_id : Chr()})
         if line[2] == 'gene':
             gene_id = line[8]
+            gene_id = gene_id.strip('\n')
             if not gene_id in chr[chr_id].genes.keys():
                 chr[chr_id].genes.update({gene_id : [line]})
             else:
@@ -40,10 +39,12 @@ def main():
                 transcript_id = line[8]
             else:
                 transcript_id = line[8].split('transcript_id "')[1].split('";')[0]
+            transcript_id = transcript_id.strip('\n')
             if not transcript_id in chr[chr_id].txs.keys():
                 chr[chr_id].txs.update({transcript_id : [line]})
             else:
                 chr[chr_id].txs[transcript_id].append(line)
+
     result = {}
     for k in chr.keys():
         for g_key in chr[k].genes.keys():
@@ -53,6 +54,9 @@ def main():
                 chr[k].genes[g_key][8] = k + '_' + g_key
                 result.update({k + '_' + g_key : chr[k].genes[g_key]})
         for t_key in chr[k].txs.keys():
+            if len(chr[k].txs[t_key]) == 1 and chr[k].txs[t_key][0][2] == 'transcript':
+                print(t_key)
+                continue
             if not t_key in result:
                 result.update({t_key : chr[k].txs[t_key]})
             else:
@@ -66,7 +70,6 @@ def main():
                 result.update({k + '_' + t_key : chr[k].txs[t_key]})
     out = []
     for value in result.values():
-        #value = ['\t'.join(v) for v in value]
         out += value
     out = list(map(start2int, out))
     print(len(out))

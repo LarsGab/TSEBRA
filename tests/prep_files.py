@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+# ==============================================================
+# author: Lars Gabriel
+#
+# prep_files.py: create example data for pytests
+# ==============================================================
 import os
 testDir = os.path.abspath(os.path.dirname(__file__))
 
@@ -25,9 +31,6 @@ def genome_anno():
     anno = ['\t'.join(map(str, line)) for line in anno]
     with open(testDir + '/genome_anno/missing_gid.gtf', 'w+') as file:
         file.write('\n'.join(anno))
-
-
-
 
 def get_anno(tx_dict, phase):
         template = ['3R', 'AUGUSTUS', '', '', '', phase, '+', '0', '']
