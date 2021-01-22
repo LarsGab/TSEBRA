@@ -5,8 +5,6 @@
 # PrEvCo: gene Predcition and extrinsic Evidence Combiner
 # ==============================================================
 import argparse
-import sys
-import os
 
 gtf = []
 anno = []

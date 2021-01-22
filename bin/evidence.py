@@ -4,8 +4,6 @@
 #
 # evdence.py: classes to handle the hints from multiple hintfiles
 # ==============================================================
-from bisect import bisect_left
-
 class NotGtfFormat(Exception):
     pass
 
