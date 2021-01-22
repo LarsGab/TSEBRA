@@ -164,7 +164,7 @@ class Graph:
         # decision rule
         # compare the feature vectors f of two txs
         # compare elements of f from f[0] to f[7],
-        # a tx is excluded from the 'decided graph',if it has a smaller value during a comparison
+        # a tx is excluded from the 'decided graph', if it has a smaller value during a comparison
         # in this case the decision makes no other comparison
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]

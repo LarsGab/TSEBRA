@@ -14,7 +14,7 @@ class Node_features:
         # start/stop codons in tx)
         # self.feature_vector[2] : sum of multiplicities of intron evidence for tx
         # self.feature_vector[3] : sum of multiplicities of start/stop codon evidence for tx
-        # self.feature_vector[4] : 1 if tx is from anno_pref, 0 otherwise
+        # self.feature_vector[4] : 1 if tx is from anno_pref, 0 otherwise        
         self.feature_vector = self.__init_features__(tx, evi, anno_pref)
 
     def __init_features__(self, tx, evi, pref):

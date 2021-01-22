@@ -56,7 +56,7 @@ def main():
 
     # detect overlapping transcripts
     # two transcript overlap, if there is overlap in the cds
-    graph = Graph(anno)
+    graph = Graph(anno, anno_pref=pref)
     print('### BUILD OVERLAP GRAPH')
     graph.build()
 
