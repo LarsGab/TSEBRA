@@ -57,16 +57,12 @@ def main():
                 param.append([braker1 + ',' + braker2, evidence, out, test_id, species_path])
     print(param)
 
-    #for p in param:
-        #job(p)
-    '''
-
     pool = mp.Pool(mp.cpu_count())
     for p in param:
         pool.apply_async(job, (p,))
     pool.close()
     pool.join()
-    '''
+
     job_results = []
     pool = mp.Pool(mp.cpu_count())
     for p in param:
@@ -107,7 +103,7 @@ def collector(result):
     summary_eval.update({result[0] : result[2]})
 
 def combine(braker, evidence, out):
-    # run the combiner
+    # run combiner
     cmd = "{}/../prevco.py --gtf {} --hintfiles {} --out {} --sw {} -q -p 2".format(combiner_bin, braker, \
         evidence, out, sw)
     print(cmd)
@@ -151,7 +147,7 @@ def write_full_eval(out):
     full_eval_out += '\\end{tabular}\n\\end{table}'
 
     full_eval_out = full_eval_out.replace('_', ' ')
-    with open(out + 'full_evaluation.txt', 'w+') as file:
+    with open(out + '/full_evaluation.txt', 'w+') as file:
         file.write(full_eval_out)
 
 def write_summary_eval(out):
@@ -162,7 +158,7 @@ def write_summary_eval(out):
     summary_out += '# {}\n'.format('\t'.join(map(str,[s[1] for s in summary_list])))
     summary_out += '&'.join(map(str,[round(s[1], 2) for s in summary_list]))
     summary_out = summary_out.replace('_', ' ')
-    with open(out + 'summary_eval.txt', 'w+') as file:
+    with open(out + '/summary_eval.txt', 'w+') as file:
         file.write(summary_out)
 
 def parseCmd():
