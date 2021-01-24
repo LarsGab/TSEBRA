@@ -17,6 +17,7 @@ combiner_bin = os.path.dirname(os.path.realpath(__file__))
 def main():
     global combiner_bin
     args = parseCmd()
+    
     if args.combiner:
         combiner_bin = args.combiner
     braker2_level = ['species_excluded', 'family_excluded', 'order_excluded']
@@ -27,6 +28,9 @@ def main():
         with open(args.data + '/species.tab', 'r') as file:
             species_list = file.read().split('\n')
     species_list = [s for s in species_list if s]
+
+    if not os.path.exists(args.out):
+        os.mkdir(args.out)
 
     full_eval = []
     summary_eval = []
