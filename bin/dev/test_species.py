@@ -78,8 +78,8 @@ def main():
     pool.close()
     pool.join()
 
-    write_full_eval()
-    write_summary_eval()
+    write_full_eval(args.out)
+    write_summary_eval(args.out)
 
 def job(para):
     combine(para[0], para[1], para[2] + ".gtf")
@@ -140,7 +140,7 @@ def tx_per_gene(gtf):
     stdout = [s for s in stdout.split('\n') if s]
     return [s.split('\t') for s in stdout[-3:]]
 
-def write_full_eval():
+def write_full_eval(out):
     full_eval_out = '# Mode\t{}\n'.format('\t'.join(header))
     for id in test_order:
         full_eval_out += '# {}\n'.format('\t'.join(full_eval[id]))
@@ -151,10 +151,10 @@ def write_full_eval():
     full_eval_out += '\\end{tabular}\n\\end{table}'
 
     full_eval_out = full_eval_out.replace('_', ' ')
-    with open(args.out + 'full_evaluation.txt', 'w+') as file:
+    with open(out + 'full_evaluation.txt', 'w+') as file:
         file.write(full_eval_out)
 
-def write_summary_eval():
+def write_summary_eval(out):
     summary_list = []
     for id in test_order:
         summary_list.append(summary_eval[id])
@@ -162,7 +162,7 @@ def write_summary_eval():
     summary_out += '# {}\n'.format('\t'.join(map(str,[s[1] for s in summary_list])))
     summary_out += '&'.join(map(str,[round(s[1], 2) for s in summary_list]))
     summary_out = summary_out.replace('_', ' ')
-    with open(args.out + 'summary_eval.txt', 'w+') as file:
+    with open(out + 'summary_eval.txt', 'w+') as file:
         file.write(summary_out)
 
 def parseCmd():
