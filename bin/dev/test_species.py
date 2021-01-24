@@ -164,6 +164,7 @@ def write_summary_eval():
     summary_out = summary_out.replace('_', ' ')
     with open(args.out + 'summary_eval.txt', 'w+') as file:
         file.write(summary_out)
+        
 def parseCmd():
     """Parse command line arguments
 

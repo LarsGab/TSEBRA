@@ -24,7 +24,7 @@ annot=$1; shift
 pseudo="$1"; shift
 prediction="$1"; shift
 
-sortedPrediction=$(mktemp)
+sortedPrediction=$prediciton + "_temp"
 
 sort -k1,1 -k4,4n -k5,5n $prediction > $sortedPrediction
 
