@@ -185,6 +185,7 @@ class Anno:
                 elif line[2] == 'transcript':
                     #continue
                     transcript_id = line[8]
+                    gene_id = transcript_id.split('.')[0]                    
                     self.transcript_update(transcript_id, gene_id, line[0])
                     self.transcripts[transcript_id].add_line(line)
                 else:
