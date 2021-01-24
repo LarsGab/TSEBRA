@@ -4,8 +4,9 @@ import sys
 import os
 
 def main():
-    sys.path.remove('/home/lars/work/prevco/bin/dev')
-    sys.path.append('/home/lars/work/prevco/bin')
+    dev = os.path.dirname(os.path.realpath(__file__))
+    sys.path.remove(dev)
+    sys.path.append(dev + '/../')
     from genome_anno import Anno
     from overlap_graph import Graph
     args = parseCmd()

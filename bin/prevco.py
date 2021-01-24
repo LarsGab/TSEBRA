@@ -44,7 +44,8 @@ def main():
         print(gtf)
 
     for g in gtf:
-        print('### READING GTF')
+        if not quiet:
+            print('### READING GTF')
         #!!! change braker to anno
         anno.append(Anno(g, 'braker{}'.format(c)))
         anno[-1].addGtf()
