@@ -11,7 +11,7 @@ def main():
     color = args.color
     if mode == 'augustus':
         gtf = ""
-        temp = 'temp.gtf'
+        temp = args.gtf + '_temp.gtf'
         tool = "augustus2browser.pl"
         cmd = "{} < {} > {}".format(augustus_script, args.gtf, temp)
         sp.call(cmd, shell=True)
@@ -75,7 +75,7 @@ def main():
                 out_cds.append('\t'.join(line))
             else:
                 print(line)
-        out = '.'.join(args.out.split('.')[:-1]) 
+        out = '.'.join(args.out.split('.')[:-1])
         if len(out_intron) > 1:
             with open (out + "_intron.gff", 'w+') as file:
                 file.write(''.join(out_intron))
