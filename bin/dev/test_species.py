@@ -29,7 +29,7 @@ summary_eval = {}
 def main():
     global combiner_bin, sw
     args = parseCmd()
-    
+
     if args.combiner:
         combiner_bin = args.combiner
     if args.sw:
@@ -43,17 +43,16 @@ def main():
             species_list = file.read().split('\n')
     species_list = [s for s in species_list if s]
 
-<<<<<<< HEAD
     if not os.path.exists(args.out):
         os.mkdir(args.out)
 
     full_eval = []
     summary_eval = []
     header = ''
-=======
+
     # [...,[braker_list, hintfile_list, out, test id, species path],..]
     param = []
->>>>>>> 3790fd8cc96d7e03eb213b7ca07f8567a0379df8
+
     for species in species_list:
         species_path = "{}/{}".format(args.data, species)
         for level in braker2_level:
