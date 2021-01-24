@@ -16,7 +16,7 @@ class EvaluationError(Exception):
 sw = {}
 combiner_bin = os.path.dirname(os.path.realpath(__file__))
 
-header = ['gene Sn', 'gene Sp', 'trans Sn', 'trans Sp', 'cds Sn', 'cds Sp', 'tx per gene']
+header = ['gene_Sn', 'gene_Sp', 'trans_Sn', 'trans_Sp', 'cds_Sn', 'cds_Sp', 'tx_per_gene']
 test_order = ['Arabidopsis_thaliana_species_excluded', 'Arabidopsis_thaliana_family_excluded',\
             'Arabidopsis_thaliana_order_excluded', 'Caenorhabditis_elegans_species_excluded', \
             'Caenorhabditis_elegans_family_excluded', 'Caenorhabditis_elegans_order_excluded', \
@@ -69,7 +69,7 @@ def main():
     '''
     for p in param:
         evaluation(p)
-        
+
     write_full_eval()
     write_summary_eval()
 
@@ -82,7 +82,7 @@ def evaluation(para):
     accuracies = eval("{}/anno/".format(para[4]), para[2] + ".gtf")
     tx_gene = tx_per_gene(para[2] + ".gtf")
     txt = [a[0] for a in accuracies]
-    txt.append(tx_gene[2][0])
+    txt.append(tx_gene[2][0].strip(':'))
     print(header)
     print(txt)
     if not header == txt:
