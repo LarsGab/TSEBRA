@@ -84,16 +84,16 @@ def evaluation(para):
     txt = [a[0] for a in accuracies]
     txt.append(tx_gene[2][0])
     if not header == '\t'.join(txt):
-        raise EvaluationError('Accuracy assessment output for {}'.format(test_id))
+        raise EvaluationError('Accuracy assessment output for {}'.format(para[3]))
     txt = [a[1] for a in accuracies]
     txt.append(str(round(float(tx_gene[2][1]), 2)))
-    full = [test_id] + txt
+    full = [para[3]] + txt
     txt = list(map(float, txt))
-    summary = [test_id, sum(txt[2:-1])/4, txt[-1]]
-    if test_id in full_eval.keys() or test_id in summary_eval.keys():
-        raise EvaluationError('{} already in evaluation dictionarys.'.format(test_id))
-    full_eval.update({test_id : full})
-    summary_eval.update({test_id : summary})
+    summary = [para[3], sum(txt[2:-1])/4, txt[-1]]
+    if para[3] in full_eval.keys() or para[3] in summary_eval.keys():
+        raise EvaluationError('{} already in evaluation dictionarys.'.format(para[3]))
+    full_eval.update({para[3] : full})
+    summary_eval.update({para[3] : summary})
 
 def combine(braker, evidence, out):
     # run the combiner
