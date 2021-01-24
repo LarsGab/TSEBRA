@@ -103,22 +103,23 @@ def main():
 
     #for p in param:
         #job(p)
-    
+
     job_results = []
     pool = mp.Pool(mp.cpu_count())
     for p in param:
-        r = pool.apply_async(job, (p,), callback=collector)
-        job_results.append(r)
-    for r in job_results:
-        r.wait()
+        pool.apply_async(job, (p,), callback=collector)
     pool.close()
     pool.join()
-    
+    for p in param:
+        evaluation(p)
     write_full_eval()
     write_summary_eval()
-    
+
 def job(para):
     combine(para[0], para[1], para[2] + ".gtf")
+
+def evaluation(para):
+    global full_eval, summary_eval
     gtf2ucsc(para[2] + ".gtf", para[2] + "_ucsc.gtf", para[3])
     accuracies = eval("{}/anno/".format(para[4]), para[2] + ".gtf")
     tx_gene = tx_per_gene(para[2] + ".gtf")
@@ -131,14 +132,10 @@ def job(para):
     full = [test_id] + txt
     txt = list(map(float, txt))
     summary = [test_id, sum(txt[2:-1])/4, txt[-1]]
-    return [test_id, full, summary]
-
-def collector(result):
-    global full_eval, summary_eval
-    if result[0] in full_eval.keys() or result[0] in summary_eval.keys():
+    if test_id in full_eval.keys() or test_id in summary_eval.keys():
         raise EvaluationError('{} already in evaluation dictionarys.'.format(test_id))
-    full_eval.update({test_id : result[1]})
-    summary_eval.update({test_id : result[2]})
+    full_eval.update({test_id : full})
+    summary_eval.update({test_id : summary})
 
 def combine(braker, evidence, out):
     # run the combiner
