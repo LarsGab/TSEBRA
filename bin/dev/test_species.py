@@ -42,8 +42,6 @@ def main():
             species_list = file.read().split('\n')
     species_list = [s for s in species_list if s]
 
-
-    header = ''
     # [...,[braker_list, hintfile_list, out, test id, species path],..]
     param = []
     for species in species_list:
@@ -83,7 +81,7 @@ def evaluation(para):
     tx_gene = tx_per_gene(para[2] + ".gtf")
     txt = [a[0] for a in accuracies]
     txt.append(tx_gene[2][0])
-    if not header == '\t'.join(txt):
+    if not header == txt:
         raise EvaluationError('Accuracy assessment output for {}'.format(para[3]))
     txt = [a[1] for a in accuracies]
     txt.append(str(round(float(tx_gene[2][1]), 2)))
