@@ -60,15 +60,23 @@ def main():
     #for p in param:
         #job(p)
     '''
-    job_results = []
+
     pool = mp.Pool(mp.cpu_count())
     for p in param:
         pool.apply_async(job, (p,))
     pool.close()
     pool.join()
     '''
+    job_results = []
+    pool = mp.Pool(mp.cpu_count())
     for p in param:
-        evaluation(p)
+        #evaluation(p)
+        r = pool.apply_async(evaluation, (p,), callback=collector)
+        job_results.append(r)
+    for r in job_results:
+        r.wait()
+    pool.close()
+    pool.join()
 
     write_full_eval()
     write_summary_eval()
@@ -77,14 +85,11 @@ def job(para):
     combine(para[0], para[1], para[2] + ".gtf")
 
 def evaluation(para):
-    global full_eval, summary_eval
     gtf2ucsc(para[2] + ".gtf", para[2] + "_ucsc.gtf", para[3])
     accuracies = eval("{}/anno/".format(para[4]), para[2] + ".gtf")
     tx_gene = tx_per_gene(para[2] + ".gtf")
     txt = [a[0] for a in accuracies]
     txt.append(tx_gene[2][0].strip(':'))
-    print(header)
-    print(txt)
     if not header == txt:
         raise EvaluationError('Accuracy assessment output for {}'.format(para[3]))
     txt = [a[1] for a in accuracies]
@@ -94,8 +99,12 @@ def evaluation(para):
     summary = [para[3], sum(txt[2:-1])/4, txt[-1]]
     if para[3] in full_eval.keys() or para[3] in summary_eval.keys():
         raise EvaluationError('{} already in evaluation dictionarys.'.format(para[3]))
-    full_eval.update({para[3] : full})
-    summary_eval.update({para[3] : summary})
+    return [para[3], full, summary]
+
+def collector(result):
+    global full_eval, summary_eval
+    full_eval.update({result[0] : result[1]})
+    summary_eval.update({result[0] : result[2]})
 
 def combine(braker, evidence, out):
     # run the combiner
@@ -132,11 +141,11 @@ def tx_per_gene(gtf):
     return [s.split('\t') for s in stdout[-3:]]
 
 def write_full_eval():
-    full_eval_out = '# Mode\t{}\n'.format(header)
+    full_eval_out = '# Mode\t{}\n'.format('\t'.join(header))
     for id in test_order:
         full_eval_out += '# {}\n'.format('\t'.join(full_eval[id]))
     full_eval_out += '\\begin{table}[h]\n\\centering\n\\begin{tabular}{p{4cm}||c|c||c|c||c|c||c}\n'
-    full_eval_out += 'Mode&{}\\\\\n\\hline\\hline\n'.format('&'.join(header.split('\t')))
+    full_eval_out += 'Mode&{}\\\\\n\\hline\\hline\n'.format('&'.join(header))
     for id in test_order:
         full_eval_out += '{}\\\\\n\\hline\n'.format('&'.join(line))
     full_eval_out += '\\end{tabular}\n\\end{table}'
