@@ -8,17 +8,73 @@ import argparse
 import os
 import subprocess as sp
 import numpy as np
+import multiprocessing as mp
 
 class EvaluationError(Exception):
     pass
 
+'''
+callback = []
+    job_results = []
+    pool = mp.Pool(mp.cpu_count())
+    for p in pairs:
+        #job(p)
+        r = pool.apply_async(job, (p,), callback=gather_result)
+        job_results.append(r)
+    for r in job_results:
+        r.wait()
+    pool.close()
+    pool.join()
 
+def job(p):
+    p = p.split('\t')
+    key = "{}.{}.{}..{}".format(p[0], p[1], int(p[2]) - flanking, int(p[3]) + flanking)
+    p.append(key)
+    cmd = "{}/fastBlockSearch {}/{}.fa {}/{}.prfl".format(augustus_path_bin, pathGenome, key, pathPrfl, p[1])
+    q = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
+    score_out = q.stdout.read().decode().split('Mult. score:')
+    multScore = -1
+    for score in score_out[1::]:
+        score = float(score.split('\n')[0])
+        if score > multScore:
+            multScore = score
+    p.append(multScore)
+    len_out = q.stderr.read().decode().split("blocks with ")
+    prfl_len = "-1"
+    if len(len_out) > 1:
+        prfl_len = len_out[1].split(" columns.\n")[0]
+    p.append(prfl_len)
+    return p
+
+def gather_result(res):
+    global callback
+    callback.append(res)
+
+
+'''
+
+
+
+sw = {}
 combiner_bin = os.path.dirname(os.path.realpath(__file__))
+
+header = ['gene Sn', 'gene Sp', 'trans Sn', 'trans Sp', 'cds Sn', 'cds Sp', 'tx per gene']
+test_order = ['Arabidopsis_thaliana_species_excluded', 'Arabidopsis_thaliana_family_excluded',\
+            'Arabidopsis_thaliana_order_excluded', 'Caenorhabditis_elegans_species_excluded', \
+            'Caenorhabditis_elegans_family_excluded', 'Caenorhabditis_elegans_order_excluded', \
+            'Danio_rerio_order_excluded', 'Drosophila_melanogaster_species_excluded', \
+            'Drosophila_melanogaster_family_excluded', 'Drosophila_melanogaster_order_excluded', \
+            'Medicago_truncatula_order_excluded', 'Solanum_lycopersicum_order_excluded']
+full_eval = {}
+summary_eval = {}
+
 def main():
-    global combiner_bin
+    global combiner_bin, sw
     args = parseCmd()
     if args.combiner:
         combiner_bin = args.combiner
+    if args.sw:
+        sw = args.sw
     braker2_level = ['species_excluded', 'family_excluded', 'order_excluded']
 
     if args.species:
@@ -28,68 +84,61 @@ def main():
             species_list = file.read().split('\n')
     species_list = [s for s in species_list if s]
 
-    full_eval = []
-    summary_eval = []
+
     header = ''
+    # [...,[braker_list, hintfile_list, out, test id, species path],..]
+    param = []
     for species in species_list:
         species_path = "{}/{}".format(args.data, species)
-        braker = "{}/braker1/braker_fixed.gtf,".format(species_path)
-        evidence1 = "{}/braker1/hintsfile.gff".format(species_path)
         for level in braker2_level:
             braker2 = "{}/braker2/{}/braker_fixed.gtf".format(species_path, level)
             if os.path.exists(braker2):
                 test_id = "{}_{}".format(species, level)
-                #braker += ',' + braker2
-                evidence = evidence1 + ",{}/braker2/{}/hintsfile.gff".format(species_path, \
-                    level)
+                braker1 = "{}/braker1/braker_{}.gtf".format(species_path, level)
+                evidence = "{}/braker1/hintsfile_{}.gff".format(species_path, level) \
+                        + ",{}/braker2/{}/hintsfile.gff".format(species_path, level)
                 out = "{}/{}_{}".format(args.out, species, level)
-                #pref = 'braker2'
-                combine(braker + braker2, evidence, args.sw, out + ".gtf")
-                gtf2ucsc(out + ".gtf", out + "_ucsc.gtf", \
-                    test_id)
-                accuracies = eval("{}/anno/".format(species_path), out + ".gtf")
-                print(accuracies)
-                tx_gene = tx_per_gene(out + ".gtf")
-                txt = [a[0] for a in accuracies]
-                txt.append(tx_gene[2][0])
-                if not header:
-                    header = '\t'.join(txt)
-                elif not header == '\t'.join(txt):
-                    raise EvaluationError('Accuracy assessment output for {}'.format(test_id))
-                txt = [a[1] for a in accuracies]
-                txt.append(str(round(float(tx_gene[2][1]), 2)))
-                full_eval.append([test_id] + txt)
-                txt = list(map(float, txt))
-                print(txt[2:-1])
-                summary_eval.append([test_id, sum(txt[2:-1])/4, txt[-1]])
+                param.append([braker1 + ',' + braker2, evidence, out, test_id, species_path])
+    print(param)
 
-    full_eval_out = '# Mode\t{}\n'.format(header)
-    for line in full_eval:
-        full_eval_out += '# {}\n'.format('\t'.join(line))
-    full_eval_out += '\\begin{table}[h]\n\\centering\n\\begin{tabular}{p{4cm}||c|c||c|c||c|c||c}\n'
-    full_eval_out += 'Mode&{}\\\\\n\\hline\\hline\n'.format('&'.join(header.split('\t')))
-    for line in full_eval:
-        full_eval_out += '{}\\\\\n\\hline\n'.format('&'.join(line))
-    full_eval_out += '\\end{tabular}\n\\end{table}'
+    job_results = []
+    pool = mp.Pool(mp.cpu_count())
+    for p in param:
+        #job(p)
+        r = pool.apply_async(job, (p,), callback=collector)
+        job_results.append(r)
+    for r in job_results:
+        r.wait()
+    pool.close()
+    pool.join()
 
-    full_eval_out = full_eval_out.replace('_', ' ')
-    with open(args.out + 'full_evaluation.txt', 'w+') as file:
-        file.write(full_eval_out)
+    write_full_eval()
+    write_summary_eval()
+    
+def job(para):
+    combine(para[0], para[1], para[2] + ".gtf")
+    gtf2ucsc(para[2] + ".gtf", para[2] + "_ucsc.gtf", para[3])
+    accuracies = eval("{}/anno/".format(para[4]), para[2] + ".gtf")
+    tx_gene = tx_per_gene(para[2] + ".gtf")
+    txt = [a[0] for a in accuracies]
+    txt.append(tx_gene[2][0])
+    if not header == '\t'.join(txt):
+        raise EvaluationError('Accuracy assessment output for {}'.format(test_id))
+    txt = [a[1] for a in accuracies]
+    txt.append(str(round(float(tx_gene[2][1]), 2)))
+    full = [test_id] + txt
+    txt = list(map(float, txt))
+    summary = [test_id, sum(txt[2:-1])/4, txt[-1]]
+    return [test_id, full, summary]
 
-    #summary_eval = []
-    #for line in full_eval:
-        #print(line[2:-1])
-        #summary_eval.append([line[0], sum(list(map(float, line[2:-1])))/4, line[-1]])
-    #summary_eval = sorted(summary_eval, key= lambda s:s[0])
-    summary_out = '# {}\n'.format('\t'.join(map(str,[s[0] for s in summary_eval])))
-    summary_out += '# {}\n'.format('\t'.join(map(str,[s[1] for s in summary_eval])))
-    summary_out += '&'.join(map(str,[round(s[1], 2) for s in summary_eval]))
-    summary_out = summary_out.replace('_', ' ')
-    print(summary_out)
-    with open(args.out + 'summary_eval.txt', 'w+') as file:
-        file.write(summary_out)
+def collector(result):
+    global full_eval, summary_eval
+    if result[0] in full_eval.keys() or result[0] in summary_eval.keys():
+        raise EvaluationError('{} already in evaluation dictionarys.'.format(test_id))
+    full_eval.update({test_id : result[1]})
+    summary_eval.update({test_id : result[2]})
 
-def combine(braker, evidence, sw, out):
+def combine(braker, evidence, out):
     # run the combiner
     cmd = "{}/../combiner.py --gtf {} --hintfiles {} --out {} --sw {} -p 2".format(combiner_bin, braker, \
         evidence, out, sw)
@@ -123,6 +172,30 @@ def tx_per_gene(gtf):
     stdout = [s for s in stdout.split('\n') if s]
     return [s.split('\t') for s in stdout[-3:]]
 
+def write_full_eval():
+    full_eval_out = '# Mode\t{}\n'.format(header)
+    for id in test_order:
+        full_eval_out += '# {}\n'.format('\t'.join(full_eval[id]))
+    full_eval_out += '\\begin{table}[h]\n\\centering\n\\begin{tabular}{p{4cm}||c|c||c|c||c|c||c}\n'
+    full_eval_out += 'Mode&{}\\\\\n\\hline\\hline\n'.format('&'.join(header.split('\t')))
+    for id in test_order:
+        full_eval_out += '{}\\\\\n\\hline\n'.format('&'.join(line))
+    full_eval_out += '\\end{tabular}\n\\end{table}'
+
+    full_eval_out = full_eval_out.replace('_', ' ')
+    with open(args.out + 'full_evaluation.txt', 'w+') as file:
+        file.write(full_eval_out)
+
+def write_summary_eval():
+    summary_list = []
+    for id in test_order:
+        summary_list.append(summary_eval[id])
+    summary_out = '# {}\n'.format('\t'.join(map(str,[s[0] for s in summary_list])))
+    summary_out += '# {}\n'.format('\t'.join(map(str,[s[1] for s in summary_list])))
+    summary_out += '&'.join(map(str,[round(s[1], 2) for s in summary_list]))
+    summary_out = summary_out.replace('_', ' ')
+    with open(args.out + 'summary_eval.txt', 'w+') as file:
+        file.write(summary_out)
 def parseCmd():
     """Parse command line arguments
 
