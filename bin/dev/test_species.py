@@ -139,7 +139,7 @@ def evaluation(para):
 
 def combine(braker, evidence, out):
     # run the combiner
-    cmd = "{}/../prevco.py --gtf {} --hintfiles {} --out {} --sw {} -p 2".format(combiner_bin, braker, \
+    cmd = "{}/../prevco.py --gtf {} --hintfiles {} --out {} --sw {} -q -p 2".format(combiner_bin, braker, \
         evidence, out, sw)
     print(cmd)
     sp.call(cmd, shell=True)
