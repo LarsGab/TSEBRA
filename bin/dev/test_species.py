@@ -13,48 +13,6 @@ import multiprocessing as mp
 class EvaluationError(Exception):
     pass
 
-'''
-callback = []
-    job_results = []
-    pool = mp.Pool(mp.cpu_count())
-    for p in pairs:
-        #job(p)
-        r = pool.apply_async(job, (p,), callback=gather_result)
-        job_results.append(r)
-    for r in job_results:
-        r.wait()
-    pool.close()
-    pool.join()
-
-def job(p):
-    p = p.split('\t')
-    key = "{}.{}.{}..{}".format(p[0], p[1], int(p[2]) - flanking, int(p[3]) + flanking)
-    p.append(key)
-    cmd = "{}/fastBlockSearch {}/{}.fa {}/{}.prfl".format(augustus_path_bin, pathGenome, key, pathPrfl, p[1])
-    q = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
-    score_out = q.stdout.read().decode().split('Mult. score:')
-    multScore = -1
-    for score in score_out[1::]:
-        score = float(score.split('\n')[0])
-        if score > multScore:
-            multScore = score
-    p.append(multScore)
-    len_out = q.stderr.read().decode().split("blocks with ")
-    prfl_len = "-1"
-    if len(len_out) > 1:
-        prfl_len = len_out[1].split(" columns.\n")[0]
-    p.append(prfl_len)
-    return p
-
-def gather_result(res):
-    global callback
-    callback.append(res)
-
-
-'''
-
-
-
 sw = {}
 combiner_bin = os.path.dirname(os.path.realpath(__file__))
 
@@ -107,7 +65,7 @@ def main():
     job_results = []
     pool = mp.Pool(mp.cpu_count())
     for p in param:
-        pool.apply_async(job, (p,), callback=collector)
+        pool.apply_async(job, (p,))
     pool.close()
     pool.join()
     for p in param:
