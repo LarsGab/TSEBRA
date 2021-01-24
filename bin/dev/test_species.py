@@ -64,7 +64,6 @@ def main():
                         + ",{}/braker2/{}/hintsfile.gff".format(species_path, level)
                 out = "{}/{}_{}".format(args.out, species, level)
                 param.append([braker1 + ',' + braker2, evidence, out, test_id, species_path])
-    print(param)
 
     pool = mp.Pool(mp.cpu_count())
     for p in param:
@@ -127,7 +126,6 @@ def gtf2ucsc(gtf, out, name):
 def eval(anno, prediction):
     cmd = "{}/compute_accuracies.sh {}/annot.gtf {}/pseudo.gff3 {} gene trans cds".\
         format(combiner_bin, anno, anno, prediction)
-    print(cmd)
     p = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
     stdout, stderr = p.communicate()
     if stderr.decode():
