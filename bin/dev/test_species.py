@@ -59,15 +59,17 @@ def main():
 
     #for p in param:
         #job(p)
-
+    '''
     job_results = []
     pool = mp.Pool(mp.cpu_count())
     for p in param:
         pool.apply_async(job, (p,))
     pool.close()
     pool.join()
+    '''
     for p in param:
         evaluation(p)
+        
     write_full_eval()
     write_summary_eval()
 
@@ -81,6 +83,8 @@ def evaluation(para):
     tx_gene = tx_per_gene(para[2] + ".gtf")
     txt = [a[0] for a in accuracies]
     txt.append(tx_gene[2][0])
+    print(header)
+    print(txt)
     if not header == txt:
         raise EvaluationError('Accuracy assessment output for {}'.format(para[3]))
     txt = [a[1] for a in accuracies]
