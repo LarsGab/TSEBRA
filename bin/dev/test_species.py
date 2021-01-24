@@ -147,7 +147,7 @@ def write_full_eval():
     full_eval_out += '\\begin{table}[h]\n\\centering\n\\begin{tabular}{p{4cm}||c|c||c|c||c|c||c}\n'
     full_eval_out += 'Mode&{}\\\\\n\\hline\\hline\n'.format('&'.join(header))
     for id in test_order:
-        full_eval_out += '{}\\\\\n\\hline\n'.format('&'.join(line))
+        full_eval_out += '{}\\\\\n\\hline\n'.format('&'.join(full_eval[id]))
     full_eval_out += '\\end{tabular}\n\\end{table}'
 
     full_eval_out = full_eval_out.replace('_', ' ')
@@ -164,7 +164,7 @@ def write_summary_eval():
     summary_out = summary_out.replace('_', ' ')
     with open(args.out + 'summary_eval.txt', 'w+') as file:
         file.write(summary_out)
-        
+
 def parseCmd():
     """Parse command line arguments
 
