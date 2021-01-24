@@ -101,17 +101,19 @@ def main():
                 param.append([braker1 + ',' + braker2, evidence, out, test_id, species_path])
     print(param)
 
+    #for p in param:
+        #job(p)
+    
     job_results = []
     pool = mp.Pool(mp.cpu_count())
     for p in param:
-        #job(p)
         r = pool.apply_async(job, (p,), callback=collector)
         job_results.append(r)
     for r in job_results:
         r.wait()
     pool.close()
     pool.join()
-
+    
     write_full_eval()
     write_summary_eval()
     
@@ -140,7 +142,7 @@ def collector(result):
 
 def combine(braker, evidence, out):
     # run the combiner
-    cmd = "{}/../combiner.py --gtf {} --hintfiles {} --out {} --sw {} -p 2".format(combiner_bin, braker, \
+    cmd = "{}/../prevco.py --gtf {} --hintfiles {} --out {} --sw {} -p 2".format(combiner_bin, braker, \
         evidence, out, sw)
     print(cmd)
     sp.call(cmd, shell=True)
