@@ -25,7 +25,7 @@ pseudo="$1"; shift
 prediction="$1"; shift
 
 sortedPrediction=$prediciton + "_temp"
-
+echo $sortedPrediction
 sort -k1,1 -k4,4n -k5,5n $prediction > $sortedPrediction
 
 for type in "$@"; do
