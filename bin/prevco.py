@@ -14,7 +14,7 @@ hintfiles = []
 hints = []
 graph = None
 out = ''
-pref = 'braker2'
+pref = ''
 v = 0
 quiet = False
 hint_source_weight = {'P' : 5, 'E' : 0.1, 'C' : 2,  'M' : 1}
@@ -60,7 +60,7 @@ def main():
 
     # detect overlapping transcripts
     # two transcript overlap, if there is overlap in the cds
-    graph = Graph(anno)
+    graph = Graph(anno, anno_pref=pref)
     if not quiet:
         print('### BUILD OVERLAP GRAPH')
     graph.build()
