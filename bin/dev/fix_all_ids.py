@@ -16,7 +16,7 @@ def main():
         for level in braker2_level:
             braker2 = "{}/braker2/{}/".format(species_path, level)
             if os.path.exists(braker2 + 'braker.gtf'):
-                shutil.copy(braker, "{}/braker1/braker_{}.gtf".format(species_path, level))
+                shutil.copy(braker + 'braker_fixed.gtf', braker + "braker_{}.gtf".format(level))
                 fix(braker2 + 'braker.gtf', braker2 + 'braker_fixed.gtf')
 
 def fix(gtf, out):
