@@ -90,6 +90,7 @@ class Graph:
             # detect overlapping transcripts and add an edge to them
             # find overlapping transcripts t_j with t_j.end <= t.start
         for i in range(0, len(transcripts)):
+            key = '{}_{}'.format(transcripts[i].source_anno, transcripts[i].id)
             j = i
             while True:
                 j -= 1
