@@ -73,7 +73,7 @@ class Graph:
         anno_id, tx_id = key.split(';')
         return self.anno[anno_id].transcripts[tx_id]
 
-    def build(self):
+    def build_old(self):
         # build graph
         # put all transcripts in one list and sort list by start coordinates
         transcripts = []
@@ -121,7 +121,7 @@ class Graph:
                 #self.nodes[key].edge_to.append('{}_{}'.\
                     #format(transcripts[j].source_anno, transcripts[j].id))
 
-    def build_old(self):
+    def build(self):
         # create vertex in graph for each transcript
         # tx_start_end[chr] = [tx_id, coord, id for start or end]
         # for every tx one element for start and one for end
