@@ -236,7 +236,7 @@ class Graph:
                     continue
                 visited_edges.append(e_id)
                 if self.edges[e_id].decision in result:
-                    result.remove(n)
+                    result.remove(self.edges[e_id].decision)
         return result
 
     def decide_component_old(self, component):
