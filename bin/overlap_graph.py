@@ -100,8 +100,8 @@ class Graph:
                 edge_count += 1
                 match = '{}_{}'.format(transcripts[j].source_anno, transcripts[j].id)
                 self.edges.update({new_edge_key : Edge(key, match)})
-                self.nodes[key].edge_to.append({match : new_edge_key})
-                self.nodes[match].edge_to.append({key : new_edge_key})
+                self.nodes[key].edge_to.update({match : new_edge_key})
+                self.nodes[match].edge_to.update({key : new_edge_key})
             # find overlapping transcripts t_j with t_j.start <= t.end
             j = i
             while True:
@@ -114,8 +114,8 @@ class Graph:
                 edge_count += 1
                 match = '{}_{}'.format(transcripts[j].source_anno, transcripts[j].id)
                 self.edges.update({new_edge_key : Edge(key, match)})
-                self.nodes[key].edge_to.append({match : new_edge_key})
-                self.nodes[match].edge_to.append({key : new_edge_key})
+                self.nodes[key].edge_to.update({match : new_edge_key})
+                self.nodes[match].edge_to.update({key : new_edge_key})
                 #self.nodes[key].edge_to.append('{}_{}'.\
                     #format(transcripts[j].source_anno, transcripts[j].id))
 
