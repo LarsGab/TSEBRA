@@ -12,7 +12,7 @@ hintfiles = []
 hints = []
 graph = None
 out = ''
-pref = 'braker2'
+pref = ''
 v = 0
 
 def main():
