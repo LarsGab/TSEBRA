@@ -253,7 +253,7 @@ class Graph:
 
     def decide_graph(self):
         for key in self.edges.keys():
-            edge.decision = self.decide_node(edge)
+            self.edges[key].decision = self.decide_node(self.edges[key])
             #ar = ['anno2;g482.t1', 'anno1;g479.t1']
             #if edge.node1 in ar and edge.node2 in ar:
                 #print(edge.decision)
