@@ -73,7 +73,7 @@ class Graph:
         anno_id, tx_id = key.split(';')
         return self.anno[anno_id].transcripts[tx_id]
 
-    def build_old(self):
+    def build(self):
         # build graph
         # put all transcripts in one list and sort list by start coordinates
         transcripts = []
@@ -96,11 +96,12 @@ class Graph:
                     break
                 if transcripts[j].end < transcripts[i].start:
                     break
+                new_edge_key = 'e{}'.format(edge_count)
                 edge_count += 1
-                self.edges.update({new_edge_key : Edge(self.nodes[key].id, '{}_{}'.\
-                    format(transcripts[j].source_anno, transcripts[j].id))})
-                self.nodes[key].edge_to.append('{}_{}'.\
-                    format(transcripts[j].source_anno, transcripts[j].id))
+                match = '{}_{}'.format(transcripts[j].source_anno, transcripts[j].id)
+                self.edges.update({new_edge_key : Edge(key, match)})
+                self.nodes[key].edge_to.append({match : new_edge_key})
+                self.nodes[match].edge_to.append({key : new_edge_key})
             # find overlapping transcripts t_j with t_j.start <= t.end
             j = i
             while True:
@@ -109,29 +110,30 @@ class Graph:
                     break
                 if transcripts[j].start > transcripts[i].end:
                     break
+                new_edge_key = 'e{}'.format(edge_count)
                 edge_count += 1
-                self.nodes[key].edge_to.append('{}_{}'.\
-                    format(transcripts[j].source_anno, transcripts[j].id))
+                match = '{}_{}'.format(transcripts[j].source_anno, transcripts[j].id)
+                self.edges.update({new_edge_key : Edge(key, match)})
+                self.nodes[key].edge_to.append({match : new_edge_key})
+                self.nodes[match].edge_to.append({key : new_edge_key})
+                #self.nodes[key].edge_to.append('{}_{}'.\
+                    #format(transcripts[j].source_anno, transcripts[j].id))
 
-    def build(self):
+    def build_old(self):
         # create vertex in graph for each transcript
-
-        transcripts = []
-        for k in self.anno.keys():
-            transcripts += self.anno[k].get_transcript_list()
-        transcripts = sorted(transcripts, key=lambda t:t.start)
         # tx_start_end[chr] = [tx_id, coord, id for start or end]
         # for every tx one element for start and one for end
         tx_start_end = {}
-        for tx in transcripts:
-            if tx.chr not in tx_start_end.keys():
-                tx_start_end.update({tx.chr : []})
-            key = '{};{}'.format(tx.source_anno, \
-                tx.id)
-            self.nodes.update({key : Node(tx.source_anno, \
-                tx.id)})
-            tx_start_end[tx.chr].append([key, tx.start, 0])
-            tx_start_end[tx.chr].append([key, tx.end, 1])
+        for k in self.anno.keys():
+            for tx in self.anno[k].get_transcript_list():
+                if tx.chr not in tx_start_end.keys():
+                    tx_start_end.update({tx.chr : []})
+                key = '{};{}'.format(tx.source_anno, \
+                    tx.id)
+                self.nodes.update({key : Node(tx.source_anno, \
+                    tx.id)})
+                tx_start_end[tx.chr].append([key, tx.start, 0])
+                tx_start_end[tx.chr].append([key, tx.end, 1])
 
         # detect overlapping nodes
         edge_count = 0
