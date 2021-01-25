@@ -203,13 +203,17 @@ class Graph:
         # in this case the decision makes no other comparison
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
-        for i in range(0,5):
+        for i in range(0,4):
             if n1.feature_vector[i] > n2.feature_vector[i]:
                 self.f[i].append(n2.id)
                 return n2.id
             elif n1.feature_vector[i] < n2.feature_vector[i]:
                 self.f[i].append(n1.id)
                 return n1.id
+        if n1.feature_vector[4] == 1:
+            return n2.id
+        if n2.feature_vector[4] == 1:
+            return n1.id
         return None
 
     def decide_component(self, component):
