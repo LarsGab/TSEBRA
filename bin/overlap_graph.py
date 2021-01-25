@@ -235,10 +235,7 @@ class Graph:
                 if e_id in visited_edges:
                     continue
                 visited_edges.append(e_id)
-
-                node_to_remove = [node for node in [edge.node1, edge.node2] \
-                    if node not in edge.decision]
-                for n in node_to_remove:
+                for n == node_to_remove:
                     if n in result:
                         result.remove(n)
         return result
@@ -257,7 +254,7 @@ class Graph:
 
     def decide_graph(self):
         for key in self.edges.keys():
-            edge.decision = self.decide_edge(edge)
+            edge.decision = self.decide_node(edge)
             #ar = ['anno2;g482.t1', 'anno1;g479.t1']
             #if edge.node1 in ar and edge.node2 in ar:
                 #print(edge.decision)
