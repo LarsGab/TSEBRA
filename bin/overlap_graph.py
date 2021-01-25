@@ -221,10 +221,10 @@ class Graph:
             elif n1.feature_vector[i] < n2.feature_vector[i]:
                 self.f[i].append(n1.id)
                 return n1.id
-        if n1.feature_vector[4] == 1:
-            return n2.id
         if n2.feature_vector[4] == 1:
             return n1.id
+        if n1.feature_vector[4] == 1:
+            return n2.id
         return None
 
     def decide_component(self, component):
