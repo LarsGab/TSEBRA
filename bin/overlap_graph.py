@@ -235,9 +235,8 @@ class Graph:
                 if e_id in visited_edges:
                     continue
                 visited_edges.append(e_id)
-                for n == node_to_remove:
-                    if n in result:
-                        result.remove(n)
+                if n == node_to_remove and n in result:
+                    result.remove(n)
         return result
 
     def decide_component_old(self, component):
