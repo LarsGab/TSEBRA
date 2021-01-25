@@ -123,19 +123,24 @@ class Graph:
 
     def build(self):
         # create vertex in graph for each transcript
+        transcripts = []
+        for k in self.anno.keys():
+            transcripts += self.anno[k].get_transcript_list()
+        transcripts = sorted(transcripts, key=lambda t:t.id)
         # tx_start_end[chr] = [tx_id, coord, id for start or end]
         # for every tx one element for start and one for end
         tx_start_end = {}
-        for k in self.anno.keys():
-            for tx in self.anno[k].get_transcript_list():
-                if tx.chr not in tx_start_end.keys():
-                    tx_start_end.update({tx.chr : []})
-                key = '{};{}'.format(tx.source_anno, \
-                    tx.id)
-                self.nodes.update({key : Node(tx.source_anno, \
-                    tx.id)})
-                tx_start_end[tx.chr].append([key, tx.start, 0])
-                tx_start_end[tx.chr].append([key, tx.end, 1])
+        #for k in self.anno.keys():
+            #for tx in self.anno[k].get_transcript_list():
+        for tx in transcripts:
+            if tx.chr not in tx_start_end.keys():
+                tx_start_end.update({tx.chr : []})
+            key = '{};{}'.format(tx.source_anno, \
+                tx.id)
+            self.nodes.update({key : Node(tx.source_anno, \
+                tx.id)})
+            tx_start_end[tx.chr].append([key, tx.start, 0])
+            tx_start_end[tx.chr].append([key, tx.end, 1])
 
         # detect overlapping nodes
         edge_count = 0
