@@ -235,7 +235,7 @@ class Graph:
                 if e_id in visited_edges:
                     continue
                 visited_edges.append(e_id)
-                if n == node_to_remove and n in result:
+                if node_to_remove in result:
                     result.remove(n)
         return result
 
