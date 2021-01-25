@@ -228,6 +228,22 @@ class Graph:
         return None
 
     def decide_component(self, component):
+        result = component.copy()
+        visited_edges = []
+        for node_id in component:
+            for e_id in self.nodes[node_id].edge_to.values():
+                if e_id in visited_edges:
+                    continue
+                visited_edges.append(e_id)
+
+                node_to_remove = [node for node in [edge.node1, edge.node2] \
+                    if node not in edge.decision]
+                for n in node_to_remove:
+                    if n in result:
+                        result.remove(n)
+        return result
+
+    def decide_component_old(self, component):
         # return all ids of vertices of a graph component, that weren't excluded by the decision rule
         result = component.copy()
         for node_id in component:
@@ -238,7 +254,24 @@ class Graph:
                         result.remove(node_to_remove)
         return result
 
+
     def decide_graph(self):
+        for key in self.edges.keys():
+            edge.decision = self.decide_edge(edge)
+            #ar = ['anno2;g482.t1', 'anno1;g479.t1']
+            #if edge.node1 in ar and edge.node2 in ar:
+                #print(edge.decision)
+                #print(edge.features)
+        self.decided_graph = []
+        if not self.component_list:
+            self.connected_components()
+        for component in self.component_list:
+            if len(component) > 1:
+                self.decided_graph += self.decide_component(component)
+            else:
+                self.decided_graph += component
+
+    def decide_graph_old(self):
         # applies the decision rule to all pairs of connected vertices and
         # excludes all transcript with no evidencesupport
         # returns node.id for all nodes in final prediction
