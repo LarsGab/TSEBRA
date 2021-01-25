@@ -75,6 +75,41 @@ class Graph:
 
     def build(self):
         # build graph
+        # put all transcripts in one list and sort list by start coordinates
+        transcripts = []
+        for k in self.anno.keys():
+            transcripts += self.anno[k].get_transcript_list()
+        transcripts = sorted(transcripts, key=lambda t:t.start)
+
+        for i in range(0, len(transcripts)):
+            # add a node for each transcript t
+            key = '{}_{}'.format(transcripts[i].source_anno, transcripts[i].id)
+            self.nodes.update({key : Node(transcripts[i].source_anno, \
+                transcripts[i].id)})
+            # detect overlapping transcripts and add an edge to them
+            # find overlapping transcripts t_j with t_j.end <= t.start
+            j = i
+            while True:
+                j -= 1
+                if j < 0:
+                    break
+                if transcripts[j].end < transcripts[i].start:
+                    break
+                self.nodes[key].edge_to.append('{}_{}'.\
+                    format(transcripts[j].source_anno, transcripts[j].id))
+            # find overlapping transcripts t_j with t_j.start <= t.end
+            j = i
+            while True:
+                j += 1
+                if j == len(transcripts):
+                    break
+                if transcripts[j].start > transcripts[i].end:
+                    break
+                self.nodes[key].edge_to.append('{}_{}'.\
+                    format(transcripts[j].source_anno, transcripts[j].id))
+
+    def build_old(self):
+        # build graph
         # put all transcripts of a chromosome in one list and sort it by start coordinates
         # create vertex in graph for each transcript
         # tx_start_end[chr] = [tx_id, coord, id for start or end]
