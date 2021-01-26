@@ -167,7 +167,6 @@ class Anno:
                 line[3] = int(line[3])
                 line[4] = int(line[4])
                 if line[2] == 'gene':
-                    #continue
                     gene_id = line[8]
                     self.genes_update(gene_id)
                     if not gene_id in self.gene_gtf.keys():
@@ -175,7 +174,6 @@ class Anno:
                     else:
                         print('ERROR, gene_id not unique: {}'.format(gene_id))
                 elif line[2] == 'transcript':
-                    #continue
                     transcript_id = line[8]
                     self.transcript_update(transcript_id, gene_id, line[0])
                     self.transcripts[transcript_id].add_line(line)
