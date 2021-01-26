@@ -6,7 +6,6 @@
 # ==============================================================
 class Node_features:
     def __init__(self, tx, evi, anno_pref):
-
         # feature vector specifies the support of
         # introns, start/stop codons for a transcript
         # self.feature_vector[0] : (supported introns by evidence of tx) / (number of introns in tx)
@@ -26,6 +25,10 @@ class Node_features:
             for line in tx.transcript_lines[type]:
                 mult = evi.get_hint(line[0], line[3], line[4], line[2], \
                     line[6])
+                if tx.id == 'g30841.t1':
+                    print(tx.source_anno)
+                    print(line)
+                    print(mult)
                 if mult > 0:
                     evi_list[type].append(mult)
 
