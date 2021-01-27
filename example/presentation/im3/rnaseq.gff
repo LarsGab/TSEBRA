@@ -1,5 +1,0 @@
-track name=RNA-Seq_intron color=0,200,0 decription="rnaseq_intron" visibility=3
-chr3R	b2h	CDS	31757469	31757774	2	-	.	mult=2_pri=4_src=E; transcript_id="t.48471"
-chr3R	b2h	CDS	31757229	31757308	12	-	.	mult=12_pri=4_src=E; transcript_id="t.48470"
-chr3R	b2h	CDS	31757055	31757110	8	-	.	mult=8_pri=4_src=E; transcript_id="t.48469"
-chr3R	b2h	CDS	31755792	31755853	14	-	.	mult=14_pri=4_src=E; transcript_id="t.48465"
