@@ -172,7 +172,8 @@ class Anno:
                     if not gene_id in self.gene_gtf.keys():
                         self.gene_gtf.update({gene_id : line})
                     else:
-                        print('ERROR, gene_id not unique: {}'.format(gene_id))
+                        raise NotGtfFormat('File: "{}" duplicate gene id. \n'.format(\
+                            self.path) + 'Error in line {}\n'.format('\t'.join(map(str, line))))
                 elif line[2] == 'transcript':
                     transcript_id = line[8]
                     self.transcript_update(transcript_id, gene_id, line[0])

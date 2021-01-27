@@ -161,7 +161,6 @@ class Graph:
             self.nodes[key].feature_vector = new_node_feature.get_features()
 
     def decide_edge(self, edge):
-        # decision rule
         # compare the feature vectors f of two txs
         # use the 'decision rule' to filter tx
         n1 = self.nodes[edge.node1]
@@ -192,7 +191,6 @@ class Graph:
         # returns node.id for all nodes in final prediction
         for key in self.edges.keys():
             self.edges[key].node_to_remove = self.decide_edge(self.edges[key])
-            #edge.decision = self.decide_edge(edge)
         self.decided_graph = []
         if not self.component_list:
             self.connected_components()
