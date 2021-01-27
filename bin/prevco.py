@@ -104,7 +104,7 @@ def parseCmd():
     parser.add_argument('-p', '--pref', type=int, required=True,
         help='Index (>=1) of the preferred gene prediction source file in the gene prediciton list.')
     parser.add_argument('-g', '--gtf', type=str, required=True,
-        help='List (separated by commas) of gene prediciton files in gtf .\n(gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
+        help='List (separated by commas) of gene prediciton files in gtf.\n(gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
     parser.add_argument('-e', '--hintfiles', type=str, required=True,
         help='List (separated by commas) of files containing extrinsic evidence in gff.\n(hintsfile1.gff,hintsfile2.gtf,3.gtf)')
     parser.add_argument('-o', '--out', type=str, required=True,
