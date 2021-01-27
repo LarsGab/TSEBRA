@@ -1,7 +1,0 @@
-track name=BRAKER1 color=0,0,200 decription="BRAKER1" visibility=3
-chr3R	GeneMark.hmm	CDS	31755434	31755791	.	-	1	gene_id "3704_g"; transcript_id "3704_t"; cds_type "Terminal"; count "3_3";
-chr3R	GeneMark.hmm	CDS	31755854	31756386	.	-	0	gene_id "3704_g"; transcript_id "3704_t"; cds_type "Internal"; count "2_3";
-chr3R	GeneMark.hmm	CDS	31756445	31756486	.	-	0	gene_id "3704_g"; transcript_id "3704_t"; cds_type "Initial"; count "1_3";
-chr3R	GeneMark.hmm	exon	31755434	31755791	0	-	.	gene_id "3704_g"; transcript_id "3704_t"; cds_type "Terminal"; count "3_3";
-chr3R	GeneMark.hmm	exon	31755854	31756386	0	-	.	gene_id "3704_g"; transcript_id "3704_t"; cds_type "Internal"; count "2_3";
-chr3R	GeneMark.hmm	exon	31756445	31756486	0	-	.	gene_id "3704_g"; transcript_id "3704_t"; cds_type "Initial"; count "1_3";
