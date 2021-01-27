@@ -4,8 +4,6 @@
 #
 # evdence.py: classes to handle the hints from multiple hintfiles
 # ==============================================================
-from bisect import bisect_left
-
 class NotGtfFormat(Exception):
     pass
 
@@ -17,6 +15,7 @@ class Hint:
 
     def __init__(self, line):
         # hint types currently used for the descision rule
+        allowed_types = ['intron', 'start', 'stop']
         line = line.split('\t')
         if not len(line) == 9:
             raise NotGtfFormat('File not in gtf Format. Error at line: {}'.format(line))
@@ -40,10 +39,10 @@ class Hint:
         if 'pri=' in attribute:
             self.pri = attribute.split('pri=')[1].split(';')[0]
 
-        if self.type == 'stop':
-            self.type = 'stop_codon'
-        elif self.type == 'start':
-            self.type = 'start_codon'
+        if self.type == 'stop_codon':
+            self.type = 'stop'
+        elif self.type == 'start_codon':
+            self.type = 'start'
 
     def hint2list(self):
         attribute = ['src=' + self.src]
@@ -62,7 +61,6 @@ class Hintfile:
         # dictonary containing evidence
         # self.hints[chromosom_id] = [Hints()]
         self.hints = {}
-        self.start_key = {}
         self.read_file()
 
     def read_file(self):
@@ -77,22 +75,35 @@ class Hintfile:
             if not new_hint.chr in self.hints.keys():
                 self.hints.update({new_hint.chr : []})
             self.hints[new_hint.chr].append(new_hint)
-        for k in self.hints.keys():
-            self.hints[k] = sorted(self.hints[k], key=lambda h:h.start)
-            self.start_key.update({k : [h.start for h in self.hints[k]]})
 
-    def hints_in_range(self, start, end, chr):
-        # find all hints between start and end
-        result = []
-        if chr in self.hints.keys():
-            start = int(start)
-            end = int(end)
-            index = bisect_left(self.start_key[chr], start)
-            if index < len(self.hints[chr]):
-                while self.hints[chr][index].start < end:
-                    if self.hints[chr][index].end <= end:
-                        result.append(self.hints[chr][index].hint2list())
-                    index += 1
-                    if index >= len(self.hints[chr]):
-                        break
-        return result
+class Evidence:
+    # data structure for one or more hints
+    def __init__(self):
+        # hint_keys[chr][start_end_type_strand] = multiplicity
+        self.hint_keys = {}
+
+    def add_hintfile(self, path_to_hintfile):
+        # read a hintfile
+        hintfile = Hintfile(path_to_hintfile)
+        for chr in hintfile.hints.keys():
+            if chr not in self.hint_keys.keys():
+                self.hint_keys.update({chr : {}})
+            for hint in hintfile.hints[chr]:
+                new_key = '{}_{}_{}_{}'.format(hint.start, hint.end, \
+                    hint.type, hint.strand)
+                val = 1
+                if new_key in self.hint_keys[chr].keys():
+                    self.hint_keys[chr][new_key] += val
+                else:
+                    self.hint_keys[chr].update({new_key : val})
+
+    def get_hint(self, chr, start, end, type, strand):
+        if type == 'start_codon':
+            type = 'start'
+        elif type == 'stop_codon':
+            type = 'stop'
+        key = '{}_{}_{}_{}'.format(start, end, type, strand)
+        if chr in self.hint_keys.keys():
+            if key in self.hint_keys[chr].keys():
+                return self.hint_keys[chr][key]
+        return 0

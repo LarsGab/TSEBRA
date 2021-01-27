@@ -9,6 +9,7 @@ import argparse
 gtf = []
 anno = []
 hintfiles = []
+hints = []
 graph = None
 out = ''
 pref = ''
@@ -27,7 +28,7 @@ def main():
     '''
     from genome_anno import Anno
     from overlap_graph import Graph
-    from evidence import Hintfile
+    from evidence import Evidence
     global anno, graph
 
     args = parseCmd()
@@ -40,16 +41,15 @@ def main():
 
     for g in gtf:
         print('### READING GTF')
-        #!!! change braker to anno
-        anno.append(Anno(g, 'braker{}'.format(c)))
+        anno.append(Anno(g, 'anno{}'.format(c)))
         anno[-1].addGtf()
         anno[-1].norm_tx_format()
         c += 1
 
-    evi = []
+    evi = Evidence()
     for h in hintfiles:
         print('### READING EVIDENCE')
-        evi.append(Hintfile(h))
+        evi.add_hintfile(h)
 
     # detect overlapping transcripts
     # two transcript overlap, if there is overlap in the cds
@@ -59,7 +59,7 @@ def main():
 
     # add features
     print('### ADD FEATURES')
-    graph.add_edge_features(evi)
+    graph.add_node_features(evi)
 
     # apply decision rule to exclude a set of transcripts
     print('### APPLY DECISION RULE')
@@ -90,7 +90,7 @@ def init(args):
     if args.verbose:
         v = args.verbose
     if args.pref:
-        pref = 'braker{}'.format(args.pref)
+        pref = 'anno{}'.format(args.pref)
 
 def parseCmd():
     """Parse command line arguments
@@ -104,7 +104,7 @@ def parseCmd():
     parser.add_argument('-p', '--pref', type=int, required=True,
         help='Index (>=1) of the preferred gene prediction source file in the gene prediciton list.')
     parser.add_argument('-g', '--gtf', type=str, required=True,
-        help='List (separated by commas) of gene prediciton files in gtf.\n(gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
+        help='List (separated by commas) of gene prediciton files in gtf .\n(gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
     parser.add_argument('-e', '--hintfiles', type=str, required=True,
         help='List (separated by commas) of files containing extrinsic evidence in gff.\n(hintsfile1.gff,hintsfile2.gtf,3.gtf)')
     parser.add_argument('-o', '--out', type=str, required=True,

@@ -31,7 +31,7 @@ class Transcript:
         line[4] = int(line[4])
         if self.start < 0 or line[3] < self.start:
             self.start = line[3]
-        if self.end > 0 or line[4] > self.end:
+        if self.end < 0 or line[4] > self.end:
             self.end = line[4]
         self.transcript_lines[line[2]].append(line)
 
@@ -52,10 +52,10 @@ class Transcript:
         self.find_introns()
         # check if tx has cds or exon
         self.check_cds_exons()
-        # add start/stop codon line
-        self.find_start_stop_codon()
         # add transcript line
         self.find_transcript()
+        # add start/stop codon line
+        self.find_start_stop_codon()
 
     def check_cds_exons(self):
         # check if tx has cds or exon
