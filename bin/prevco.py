@@ -9,7 +9,6 @@ import argparse
 gtf = []
 anno = []
 hintfiles = []
-hints = []
 graph = None
 out = ''
 pref = ''
@@ -28,7 +27,7 @@ def main():
     '''
     from genome_anno import Anno
     from overlap_graph import Graph
-    from evidence import Evidence
+    from evidence import Hintfile
     global anno, graph
 
     args = parseCmd()
@@ -47,10 +46,10 @@ def main():
         anno[-1].norm_tx_format()
         c += 1
 
-    evi = Evidence()
+    evi = []
     for h in hintfiles:
         print('### READING EVIDENCE')
-        evi.add_hintfile(h)
+        evi.append(Hintfile(h))
 
     # detect overlapping transcripts
     # two transcript overlap, if there is overlap in the cds
@@ -60,7 +59,7 @@ def main():
 
     # add features
     print('### ADD FEATURES')
-    graph.add_node_features(evi)
+    graph.add_edge_features(evi)
 
     # apply decision rule to exclude a set of transcripts
     print('### APPLY DECISION RULE')

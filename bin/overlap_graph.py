@@ -7,12 +7,13 @@
 # Add a feature vector to each node
 # Compare nodes with the 'decision rule'
 # ==============================================================
-from features import Node_features
+from features import Edge_features
 
 class Edge:
     def __init__(self, tx1_id, tx2_id):
         self.node1 = tx1_id
         self.node2 = tx2_id
+        self.features = {}
         self.node_to_remove = None
 
 class Node:
@@ -25,10 +26,9 @@ class Node:
         # dict of edge_ids of edges that are incident
         # self.edge_to[id of incident Node] = edge_id
         self.edge_to = {}
-        self.feature_vector = [None] * 7
 
 class Graph:
-    def __init__(self, genome_anno_lst, anno_pref='braker2', verbose=0):
+    def __init__(self, genome_anno_lst, anno_pref='braker2'):
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}
 
@@ -53,11 +53,6 @@ class Graph:
         # init annotations, check fpr duplicate ids
         self.init_anno(genome_anno_lst)
 
-        # variables for verbose mode
-        self.v = verbose
-        self.f = [[],[],[],[],[],[],[]]
-        self.ties = 0
-
     def init_anno(self, genome_anno_lst):
         # make sure that the genome_anno ids are unique
         counter = 0
@@ -74,82 +69,30 @@ class Graph:
         anno_id, tx_id = key.split(';')
         return self.anno[anno_id].transcripts[tx_id]
 
-    def build_old(self):
-        # build graph
-        # put all transcripts in one list and sort list by start coordinates
-        transcripts = []
-        for k in self.anno.keys():
-            transcripts += self.anno[k].get_transcript_list()
-        transcripts = sorted(transcripts, key=lambda t:t.start)
-
-        edge_count = 0
-        for i in range(0, len(transcripts)):
-            # add a node for each transcript t
-            key = '{};{}'.format(transcripts[i].source_anno, transcripts[i].id)
-            self.nodes.update({key : Node(transcripts[i].source_anno, \
-                transcripts[i].id)})
-            # detect overlapping transcripts and add an edge to them
-            # find overlapping transcripts t_j with t_j.end <= t.start
-        for i in range(0, len(transcripts)):
-            key = '{};{}'.format(transcripts[i].source_anno, transcripts[i].id)
-            j = i
-            while True:
-                j -= 1
-                if j < 0:
-                    break
-                if transcripts[j].end < transcripts[i].start:
-                    break
-                new_edge_key = 'e{}'.format(edge_count)
-                edge_count += 1
-                match = '{};{}'.format(transcripts[j].source_anno, transcripts[j].id)
-                self.edges.update({new_edge_key : Edge(key, match)})
-                self.nodes[key].edge_to.update({match : new_edge_key})
-                self.nodes[match].edge_to.update({key : new_edge_key})
-            # find overlapping transcripts t_j with t_j.start <= t.end
-            j = i
-            while True:
-                j += 1
-                if j == len(transcripts):
-                    break
-                if transcripts[j].start > transcripts[i].end:
-                    break
-                new_edge_key = 'e{}'.format(edge_count)
-                edge_count += 1
-                match = '{};{}'.format(transcripts[j].source_anno, transcripts[j].id)
-                self.edges.update({new_edge_key : Edge(key, match)})
-                self.nodes[key].edge_to.update({match : new_edge_key})
-                self.nodes[match].edge_to.update({key : new_edge_key})
-                #self.nodes[key].edge_to.append('{}_{}'.\
-                    #format(transcripts[j].source_anno, transcripts[j].id))
-
     def build(self):
         # create vertex in graph for each transcript
-        transcripts = []
-        for k in self.anno.keys():
-            transcripts += self.anno[k].get_transcript_list()
-        transcripts = sorted(transcripts, key=lambda t: t.id)
         # tx_start_end[chr] = [tx_id, coord, id for start or end]
         # for every tx one element for start and one for end
         tx_start_end = {}
-        #for k in self.anno.keys():
-            #for tx in self.anno[k].get_transcript_list():
-        for tx in transcripts:
-            if tx.chr not in tx_start_end.keys():
-                tx_start_end.update({tx.chr : []})
-            key = '{};{}'.format(tx.source_anno, \
-                tx.id)
-            self.nodes.update({key : Node(tx.source_anno, \
-                tx.id)})
-            tx_start_end[tx.chr].append([key, tx.start, 0])
-            tx_start_end[tx.chr].append([key, tx.end, 1])
 
-        # detect overlapping nodes
+        for k in self.anno.keys():
+            for tx in self.anno[k].get_transcript_list():
+                if tx.chr not in tx_start_end.keys():
+                    tx_start_end.update({tx.chr : []})
+                key = '{};{}'.format(tx.source_anno, \
+                    tx.id)
+                self.nodes.update({key : Node(tx.source_anno, \
+                    tx.id)})
+                tx_start_end[tx.chr].append([key, tx.start, 1])
+                tx_start_end[tx.chr].append([key, tx.end, 0])
+
+        # detect overlapping transcripts
         edge_count = 0
         for chr in tx_start_end.keys():
             tx_start_end[chr] = sorted(tx_start_end[chr], key=lambda t:(t[1], t[2]))
             open_intervals = []
             for interval in tx_start_end[chr]:
-                if interval[2] == 0:
+                if interval[2] == 1:
                     open_intervals.append(interval[0])
                 else:
                     open_intervals.remove(interval[0])
@@ -206,47 +149,56 @@ class Graph:
                 self.nodes[node].component_id = 'g_{}'.format(component_index)
         return self.component_list
 
-    def add_node_features(self, evi):
-        for key in self.nodes.keys():
-            tx = self.__tx_from_key__(key)
-            new_node_feature = Node_features(tx, evi, self.anno_pref)
-            self.nodes[key].feature_vector = new_node_feature.get_features()
+    def add_edge_features(self, hintfiles):
+        # hintfiles: list of Hintfiles()
+        for key in self.edges.keys():
+            tx1 = self.__tx_from_key__(self.edges[key].node1)
+            tx2 = self.__tx_from_key__(self.edges[key].node2)
 
-    def decide_node(self, edge):
+            if tx1.start < tx2.start:
+                start = tx1.start
+            else:
+                start = tx2.start
+            if tx1.end > tx2.end:
+                end = tx1.end
+            else:
+                end = tx2.end
+
+            evi = []
+            for h_file in hintfiles:
+                evi += h_file.hints_in_range(start, end, tx1.chr)
+
+            type_dict = {'intron' : ['intron'], 'start_stop' : \
+                ['start_codon', 'stop_codon']}
+            for type_key in type_dict.keys():
+                tx1_lst = []
+                tx2_lst = []
+                evi_lst = []
+                for type in type_dict[type_key]:
+                    if type in tx1.transcript_lines.keys():
+                        tx1_lst += tx1.transcript_lines[type]
+                    if type in tx2.transcript_lines.keys():
+                        tx2_lst += tx2.transcript_lines[type]
+                    evi_lst += [e for e in evi if e[2] == type]
+                self.edges[key].features.update({type_key : Edge_features(tx1_lst, \
+                    tx2_lst, evi_lst).feature_vector})
+
+    def decide_edge(self, edge):
         # decision rule
-        # compare the feature vectors f of two txs
-        # compare elements of f from f[0] to f[7],
-        # a tx is excluded from the 'decided graph', if it has a smaller value during a comparison
-        # in this case the decision makes no other comparison
-        n1 = self.nodes[edge.node1]
-        n2 = self.nodes[edge.node2]
-        for i in range(0,4):
-            if n1.feature_vector[i] > n2.feature_vector[i]:
-                self.f[i].append(n2.id)
-                return n2.id
-            elif n1.feature_vector[i] < n2.feature_vector[i]:
-                self.f[i].append(n1.id)
-                return n1.id
-        if n1.feature_vector[4] == 1:
-            return n2.id
-        if n2.feature_vector[4] == 1:
-            return n1.id
+        # compare the features of the nodes connected by edge
+        for i in [0,1]:
+            for type in ['intron', 'start_stop']:
+                if edge.features[type][i] > edge.features[type][i+2]:
+                    return edge.node2
+                if edge.features[type][i] < edge.features[type][i+2]:
+                    return edge.node1
+        if edge.node1.split(';')[0] == self.anno_pref:
+            return edge.node2
+        elif edge.node2.split(';')[0] == self.anno_pref:
+            return edge.node1
         return None
 
     def decide_component(self, component):
-        result = component.copy()
-        visited_edges = []
-        for node_id in component:
-            for e_id in self.nodes[node_id].edge_to.values():
-                if e_id in visited_edges:
-                    continue
-                visited_edges.append(e_id)
-                if self.edges[e_id].decision in result:
-                    result.remove(self.edges[e_id].decision)
-        return result
-
-    def decide_component_old(self, component):
-        # return all ids of vertices of a graph component, that weren't excluded by the decision rule
         result = component.copy()
         for node_id in component:
             for e_id in self.nodes[node_id].edge_to.values():
@@ -257,50 +209,8 @@ class Graph:
         return result
 
     def decide_graph(self):
-        #print_list = [['60409407', '60409486'], ['60409866', '60410023'], ['60410890', '60411001'], ['60411764', '60411825'], ['60411925', '60412027'], ['15257480', '15257615'], ['15257780', '15257835'], ['15259452', '15259523'], ['1878', '1991'], ['2808', '2811'], ['35597584', '35597641'], ['35597723', '35597850'], ['35598074', '35598235'], ['8734975', '8735891'], ['8736315', '8736738'], ['18710592', '18710771'], ['18711462', '18711575'], ['18711690', '18711905'], ['18712139', '18712279'], ['18712406', '18712573'], ['18713390', '18713835'], ['18714384', '18714480'], ['18716009', '18716011'], ['29001180', '29001319'], ['29001412', '29001465'], ['29002790', '29002892'], ['8374273', '8374396'], ['8374933', '8375123'], ['29939926', '29940163'], ['29940336', '29940546'], ['29940641', '29940845'], ['27446320', '27446343'], ['27446781', '27447118'], ['27447638', '27447696'], ['27447803', '27447831'], ['27451650', '27451720'], ['27451977', '27452131']]
-        print_list = [['60405171', '60405460'], ['60407031', '60407761'], ['60407875', '60408116'], ['60408409', '60408483'], ['60408576', '60408657'], ['60409125', '60409211'], ['60409324', '60409486'], ['60409948', '60410023'], ['60410618', '60410701'], ['60410790', '60410815'], ['1878', '1961'], ['2042', '2045'], ['8734616', '8734756'], ['8734975', '8737116'], ['18712501', '18712573'], ['18713390', '18713828'], ['18714371', '18714480'], ['18717505', '18717927'], ['29940329', '29940546'], ['29940641', '29940767'], ['29942619', '29942735'], ['29942928', '29943198'], ['27446156', '27446343'], ['27446781', '27447696'], ['27447803', '27447930'], ['27448350', '27448409'], ['27451650', '27451798'], ['27451941', '27452131']]
         for key in self.edges.keys():
-            '''
-            edge = self.edges[key]
-            n1 = self.nodes[edge.node1]
-            tx1 = self.__tx_from_key__(n1.id)
-            n2 = self.nodes[edge.node2]
-            tx2 = self.__tx_from_key__(n2.id)
-            check = False
-            for l in print_list:
-                for t in [tx1, tx2]:
-                    if int(l[0]) == int(t.start):
-                        check = True
-            if not check:
-                continue
-            print(n1.id)
-            print(n1.feature_vector)
-            print(n2.id)
-            print(n2.feature_vector)
-            print(self.decide_node(self.edges[key]))
-            print('\n')
-            '''
-            self.edges[key].decision = self.decide_node(self.edges[key])
-            #ar = ['anno2;g482.t1', 'anno1;g479.t1']
-            #if edge.node1 in ar and edge.node2 in ar:
-                #print(edge.decision)
-                #print(edge.features)
-        self.decided_graph = []
-        if not self.component_list:
-            self.connected_components()
-        for component in self.component_list:
-            if len(component) > 1:
-                self.decided_graph += self.decide_component(component)
-            else:
-                self.decided_graph += component
-
-    def decide_graph_old(self):
-        # applies the decision rule to all pairs of connected vertices and
-        # excludes all transcript with no evidencesupport
-        # returns node.id for all nodes in final prediction
-        for key in self.edges.keys():
-            self.edges[key].node_to_remove = self.decide_node(self.edges[key])
-            #edge.decision = self.decide_edge(edge)
+            self.edges[key].node_to_remove = self.decide_edge(self.edges[key])
         self.decided_graph = []
         if not self.component_list:
             self.connected_components()
@@ -322,26 +232,4 @@ class Graph:
         for node in self.decided_graph:
             anno_id, tx_id = node.split(';')
             result[anno_id].append([tx_id, self.nodes[node].component_id])
-        if self.v > 0:
-            print('NODES: {}'.format(len(self.nodes.keys())))
-            f = list(map(set, self.f))
-            print('f1: {}'.format(len(f[0])))
-            u = f[0]
-            print('f2: {}'.format(len(f[1])))
-            print('f2/f1: {}'.format(len(f[1].difference(u))))
-            u = u.union(f[1])
-            print('f3: {}'.format(len(f[2])))
-            print('f3/f2/f1: {}'.format(len(f[2].difference(u))))
-            u = u.union(f[2])
-            print('f4: {}'.format(len(f[3])))
-            print('f4/f3/f2/f1: {}'.format(len(f[3].difference(u))))
-            u = u.union(f[3])
-            print('f5: {}'.format(len(f[4])))
-            print('f5/f4/f3/f2/f1: {}'.format(len(f[4].difference(u))))
-            u = u.union(f[4])
-            print('f6: {}'.format(len(f[5])))
-            print('f6/...: {}'.format(len(f[5].difference(u))))
-            u = u.union(f[5])
-            print('f7: {}'.format(len(f[6])))
-            print('f7/...: {}'.format(len(f[6].difference(u))))
         return result

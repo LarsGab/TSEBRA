@@ -52,10 +52,10 @@ class Transcript:
         self.find_introns()
         # check if tx has cds or exon
         self.check_cds_exons()
-        # add transcript line
-        self.find_transcript()
         # add start/stop codon line
         self.find_start_stop_codon()
+        # add transcript line
+        self.find_transcript()
 
     def check_cds_exons(self):
         # check if tx has cds or exon
