@@ -39,7 +39,7 @@ class Transcript:
         line[4] = int(line[4])
         if self.start < 0 or line[3] < self.start:
             self.start = line[3]
-        if self.end > 0 or line[4] > self.end:
+        if self.end < 0 or line[4] > self.end:
             self.end = line[4]
         self.transcript_lines[line[2]].append(line)
 
@@ -185,7 +185,7 @@ class Anno:
                 elif line[2] == 'transcript':
                     #continue
                     transcript_id = line[8]
-                    gene_id = transcript_id.split('.')[0]                    
+                    gene_id = transcript_id.split('.')[0]
                     self.transcript_update(transcript_id, gene_id, line[0])
                     self.transcripts[transcript_id].add_line(line)
                 else:

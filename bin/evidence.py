@@ -64,7 +64,6 @@ class Hintfile:
         # dictonary containing evidence
         # self.hints[chromosom_id] = [Hints()]
         self.hints = {}
-        #self.start_key = {}
         self.read_file()
 
     def read_file(self):
@@ -79,28 +78,7 @@ class Hintfile:
             if not new_hint.chr in self.hints.keys():
                 self.hints.update({new_hint.chr : []})
             self.hints[new_hint.chr].append(new_hint)
-        #for k in self.hints.keys():
-            #self.hints[k] = sorted(self.hints[k], key=lambda h:h.start)
-            #self.start_key.update({k : [h.start for h in self.hints[k]]})
 
-    '''
-    def hints_in_range(self, start, end, chr):
-        result = []
-        if chr in self.hints.keys():
-            start = int(start)
-            end = int(end)
-            index = bisect_left(self.start_key[chr], start)
-            if index < len(self.hints[chr]):
-                while self.hints[chr][index].start < end:
-                    if self.hints[chr][index].end <= end:
-                        result.append(self.hints[chr][index].hint2list())
-                    index += 1
-                    if index >= len(self.hints[chr]):
-                        print(len(self.hints[chr]))
-                        print(index)
-                        break
-        return result
-    '''
 class Evidence:
     # data structure for one or more hints
     def __init__(self, sw={'P' : 1, 'E' : 1, 'C' : 1,  'M' : 1}):

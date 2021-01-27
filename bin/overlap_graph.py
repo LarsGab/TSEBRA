@@ -13,7 +13,6 @@ class Edge:
     def __init__(self, tx1_id, tx2_id):
         self.node1 = tx1_id
         self.node2 = tx2_id
-        self.decision = None
         self.node_to_remove = None
 
 class Node:
@@ -51,6 +50,7 @@ class Graph:
 
         # dict of duplicate genome annotation ids to new ids
         self.duplicates = {}
+
         # init annotations, check fpr duplicate ids
         self.init_anno(genome_anno_lst)
 
@@ -156,20 +156,6 @@ class Graph:
                 self.nodes[node].component_id = 'g_{}'.format(component_index)
         return self.component_list
 
-    '''
-    def component_to_no_edge_subtree(self, component):
-        return self.no_edge_subtree('', component)
-
-    def no_edge_subtree(self, prefix, node_list):
-        # returns all subtrees of a connected component, that have no edges
-        result = [prefix + n for n in node_list]
-        for i in range(0, len(node_list)-1):
-            new_node_list = [n for n in node_list[i+1:] if n not in \
-                self.nodes[node_list[i]].edge_to.keys()]
-            result += self.no_edge_subtree(result[i] + ';', new_node_list)
-        return result
-    '''
-
     def add_node_features(self, evi):
         for key in self.nodes.keys():
             tx = self.__tx_from_key__(key)
@@ -178,13 +164,9 @@ class Graph:
             if self.nodes[key].feature_vector[0] > 0  or self.nodes[key].feature_vector[1] > 0:
                 self.nodes[key].evi_support = True
 
-
-    def decide_node(self, edge):
-        # decision rule
+    def decide_edge(self, edge):
         # compare the feature vectors f of two txs
-        # compare elements of f from f[0] to f[7],
-        # a tx is excluded from the 'decided graph',if it has a smaller value during a comparison
-        # in this case the decision makes no other comparison
+        # use the 'decision rule' to filter tx
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
         for i in range(0,7):
@@ -213,7 +195,6 @@ class Graph:
         # returns node.id for all nodes in final prediction
         for key in self.edges.keys():
             self.edges[key].node_to_remove = self.decide_node(self.edges[key])
-            #edge.decision = self.decide_edge(edge)
         self.decided_graph = []
         if not self.component_list:
             self.connected_components()
@@ -222,20 +203,7 @@ class Graph:
                 self.decided_graph += self.decide_component(component)
             else:
                 self.decided_graph += component
-        '''
-        self.decided_graph = []
-        nodes_to_remove = []
-        for key in self.edges.keys():
-            #self.edges[key].node_to_remove = self.decide_node(self.edges[key])
-            #edge.decision = self.decide_edge(edge)
-            nodes_to_remove.append(self.decide_node(self.edges[key]))
-        for node in self.nodes.values():
-            if not node.edge_to.values():
-                    if node.evi_support:
-                        self.decided_graph.append(node.id)
-            elif node.id not in nodes_to_remove:
-                self.decided_graph.append(node.id)
-        '''
+
     def get_decided_graph(self):
         # returns the result of decide graph as a dict with
         # result[anno_id] = [[tx_ids, new_gene_id]]

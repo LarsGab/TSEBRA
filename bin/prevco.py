@@ -11,13 +11,12 @@ import os
 gtf = []
 anno = []
 hintfiles = []
-hints = []
 graph = None
 out = ''
 pref = ''
 v = 0
 quiet = False
-hint_source_weight = {'P' : 5, 'E' : 0.1, 'C' : 2,  'M' : 1}
+hint_source_weight = {'P' : 0.1, 'E' : 5, 'C' : 0.5,  'M' : 1}
 
 def main():
     '''
@@ -38,16 +37,15 @@ def main():
     args = parseCmd()
     init(args)
 
-    # read gene prediciton files
-    c = 1
     if v > 0:
         print(gtf)
 
+    # read gene prediciton files
+    c = 1
     for g in gtf:
         if not quiet:
             print('### READING GTF')
-        #!!! change braker to anno
-        anno.append(Anno(g, 'braker{}'.format(c)))
+        anno.append(Anno(g, 'anno{}'.format(c)))
         anno[-1].addGtf()
         anno[-1].norm_tx_format()
         c += 1

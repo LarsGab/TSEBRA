@@ -13,8 +13,7 @@ def hints1():
     with open(testDir + '/evidence/hint1.gff') as file:
         hints = file.readlines()
     return hints
-
-
+    
 def test_hint(hints1):
     hint = Hint(hints1[0])
     assert list(map(str, hint.hint2list())) == hints1[0].split('\t')
