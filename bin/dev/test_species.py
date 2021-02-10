@@ -25,9 +25,10 @@ test_order = ['Arabidopsis_thaliana_species_excluded', 'Arabidopsis_thaliana_fam
             'Medicago_truncatula_order_excluded', 'Solanum_lycopersicum_order_excluded']
 full_eval = {}
 summary_eval = {}
+cmd_lst_path = ''
 
 def main():
-    global combiner_bin, sw
+    global combiner_bin, sw, cmd_lst_path
     args = parseCmd()
 
     if args.combiner:
@@ -43,6 +44,7 @@ def main():
             species_list = file.read().split('\n')
     species_list = [s for s in species_list if s]
 
+    cmd_lst_path = args.out + '/cmd.lst'
     if not os.path.exists(args.out):
         os.mkdir(args.out)
 
@@ -114,18 +116,23 @@ def combine(braker, evidence, out):
     # run combiner
     cmd = "{}/../prevco.py --gtf {} --hintfiles {} --out {} --sw {} -q -p 2".format(combiner_bin, braker, \
         evidence, out, sw)
-    print(cmd)
+    with open(cmd_lst_path, 'a+') as file:
+        file.write(cmd + '\n')
     sp.call(cmd, shell=True)
 
 def gtf2ucsc(gtf, out, name):
     color = list(map(str, list(np.random.choice(range(256), size=3))))
     cmd = "{}/gtf2ucsc.py --gtf {} --out {} --name {} --mode augustus --color {}".\
         format(combiner_bin, gtf, out, name , ','.join(color))
+    with open(cmd_lst_path, 'a+') as file:
+        file.write(cmd + '\n')
     sp.call(cmd, shell=True)
 
 def eval(anno, prediction):
     cmd = "{}/compute_accuracies.sh {}/annot.gtf {}/pseudo.gff3 {} gene trans cds".\
         format(combiner_bin, anno, anno, prediction)
+    with open(cmd_lst_path, 'a+') as file:
+        file.write(cmd + '\n')
     p = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
     stdout, stderr = p.communicate()
     if stderr.decode():
@@ -135,6 +142,8 @@ def eval(anno, prediction):
 
 def tx_per_gene(gtf):
     cmd = "{}/tx_per_gene.py --gtf {}".format(combiner_bin, gtf)
+    with open(cmd_lst_path, 'a+') as file:
+        file.write(cmd + '\n')
     p = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
     stdout, stderr = p.communicate()
     if stderr.decode():
