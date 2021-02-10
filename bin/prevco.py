@@ -104,7 +104,7 @@ def init(args):
     if args.verbose:
         v = args.verbose
     if args.pref:
-        pref = 'braker{}'.format(args.pref)
+        pref = 'anno{}'.format(args.pref)
     if args.quiet:
         quiet = True
 

@@ -29,7 +29,7 @@ class Node:
         self.evi_support = False
 
 class Graph:
-    def __init__(self, genome_anno_lst, anno_pref='braker2', verbose=0):
+    def __init__(self, genome_anno_lst, anno_pref='anno', verbose=0):
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}
 
@@ -194,7 +194,7 @@ class Graph:
         # excludes all transcript with no evidencesupport
         # returns node.id for all nodes in final prediction
         for key in self.edges.keys():
-            self.edges[key].node_to_remove = self.decide_node(self.edges[key])
+            self.edges[key].node_to_remove = self.decide_edge(self.edges[key])
         self.decided_graph = []
         if not self.component_list:
             self.connected_components()
