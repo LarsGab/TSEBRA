@@ -5,8 +5,14 @@
 # features.py: Classes for creating a list of features for a transcript
 # ==============================================================
 class Node_features:
-    def __init__(self, tx, evi, anno_pref):
+    def __init__(self, tx, evi, anno_pref, hint_source_weight={'P' : 0.1, 'E' : 5, 'C' : 0.5,  'M' : 1}):
 
+        self.sw = hint_source_weight
+        # evi_list[gene structure type] = [{hint.src : hint.multi}]
+        self.evi_list = {'intron' : [], 'start_codon' : [], 'stop_codon': []}
+        self.numb_introns = 0
+        self.pref = None
+        self.__init_hints__(tx, evi, anno_pref)
         # feature vector specifies the support of
         # introns, start/stop codons for a transcript
         # self.feature_vector[0] : (supported introns by evidence of tx) / (number of introns in tx)
@@ -15,16 +21,11 @@ class Node_features:
         # self.feature_vector[3] : sum of multiplicities of intron evidence for tx
         # self.feature_vector[4] : sum of multiplicities of start/stop codon evidence for tx
         # self.feature_vector[6] : 1 if tx is from anno_pref, 0 otherwise
-        self.feature_vector = self.__init_features__(tx, evi, anno_pref)
+        self.feature_vector = self.create_feature_vec()
 
-    def __init_features__(self, tx, evi, pref):
-        f = [None]*7
-        f[2] = 0.0
-        f[5] = 0.0
-
-        evi_list = {'intron' : [], 'start_codon' : [], 'stop_codon': []}
+    def __init_hints__(self, tx, evi, anno_pref):
         cds_len = 0
-        for type in ['intron', 'start_codon', 'stop_codon', 'CDS']:
+        for type in ['intron', 'start_codon', 'stop_codon']:#, 'CDS']:
             for line in tx.transcript_lines[type]:
                 '''
                 if line[2] == 'CDS':
@@ -48,29 +49,46 @@ class Node_features:
                                 end = c[1]
                             if not start == cds_parts[-1][0]:
                                 f[2] += end - start + 1
-
                 else:
                 '''
-                mult = evi.get_hint(line[0], line[3], line[4], line[2], \
+                hint = evi.get_hint(line[0], line[3], line[4], line[2], \
                     line[6])
-                if mult > 0:
-                    evi_list[type].append(mult)
-
-
+                if hint:
+                    self.evi_list[type].append(hint)
         if tx.transcript_lines['intron']:
-            f[0] = len(evi_list['intron']) / len(tx.transcript_lines['intron'])
-        else:
-            f[0] = 1.0
-        f[3] = sum(evi_list['intron'])
-        f[1] = (len(evi_list['start_codon']) + len(evi_list['stop_codon'])) / 2
-        f[4] = sum(evi_list['start_codon']) + sum(evi_list['stop_codon'])
-        if tx.source_anno == pref:
-            f[6] = 1.0
-        else:
-            f[6] = 0.0
-        #f[2] /= cds_len
-        #f[5] /= cds_len
-        return f
+            self.numb_introns = len(tx.transcript_lines['intron'])
+        self.pref = tx.source_anno == anno_pref
+
+    def create_feature_vec(self):
+        return [self.relative_support(['intron'], self.numb_introns), \
+                self.relative_support(['start_codon', 'stop_codon'], 2.0), \
+                self.absolute_support(['intron']), \
+                self.absolute_support(['start_codon', 'stop_codon']), \
+                self.preferred_anno() \
+                ]
+
+
+    def relative_support(self, gene_feature_types, abs_numb):
+        # fraction of gene_feature_types that are supported by hints
+        if abs_numb > 0:
+            hint_numb = 0
+            for type in gene_feature_types:
+                hint_numb += len(self.evi_list[type])
+            return hint_numb / abs_numb
+        return 1.0
+
+    def absolute_support(self, gene_feature_types):
+        score = 0.0
+        for type in gene_feature_types:
+            for hint in self.evi_list[type]:
+                for src in hint.keys():
+                    score += self.sw[src] * hint[src]
+        return score
+
+    def preferred_anno(self):
+        if self.pref:
+            return 1.0
+        return 0.0
 
     def get_features(self):
         return self.feature_vector

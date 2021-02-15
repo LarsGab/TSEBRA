@@ -12,8 +12,6 @@ class NotGtfFormat(Exception):
 class AttributeMissing(Exception):
     pass
 
-hint_source_weight = {}
-
 class Hint:
     # data structure for one hint
     def __init__(self, line):
@@ -81,10 +79,8 @@ class Hintfile:
 
 class Evidence:
     # data structure for one or more hints
-    def __init__(self, sw={'P' : 1, 'E' : 1, 'C' : 1,  'M' : 1}):
-        global hint_source_weight
-        hint_source_weight = sw
-        # hint_keys[chr][start_end_type_strand] = multiplicity
+    def __init__(self):
+        # hint_keys[chr][start_end_type_strand][src] = multiplicity
         self.hint_keys = {}
         self.cds_parts = {}
         self.cds_start = {}
@@ -109,11 +105,11 @@ class Evidence:
                 else:
                     new_key = '{}_{}_{}_{}'.format(hint.start, hint.end, \
                         hint.type, hint.strand)
-                    val = hint_source_weight[hint.src] * int(hint.mult)
-                    if new_key in self.hint_keys[chr].keys():
-                        self.hint_keys[chr][new_key] += val
-                    else:
-                        self.hint_keys[chr].update({new_key : val})
+                    if not new_key in self.hint_keys[chr].keys():
+                        self.hint_keys[chr].update({new_key : {}})
+                    if not hint.src in self.hint_keys[chr][new_key].keys():
+                        self.hint_keys[chr][new_key].update({hint.src : 0})
+                    self.hint_keys[chr][new_key][hint.src] += int(hint.mult)
             i = 0
             for h in self.cds_parts[chr]:
                 self.cds_start[chr].append([h.start, i])
@@ -164,4 +160,4 @@ class Evidence:
         if chr in self.hint_keys.keys():
             if key in self.hint_keys[chr].keys():
                 return self.hint_keys[chr][key]
-        return 0
+        return {}

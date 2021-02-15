@@ -50,7 +50,7 @@ def main():
         anno[-1].norm_tx_format()
         c += 1
 
-    evi = Evidence(hint_source_weight)
+    evi = Evidence()
     for h in hintfiles:
         if not quiet:
             print('### READING EVIDENCE')
@@ -58,7 +58,7 @@ def main():
 
     # detect overlapping transcripts
     # two transcript overlap, if there is overlap in the cds
-    graph = Graph(anno, anno_pref=pref)
+    graph = Graph(anno, anno_pref=pref, sw=hint_source_weight, verbose=v)
     if not quiet:
         print('### BUILD OVERLAP GRAPH')
     graph.build()

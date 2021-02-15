@@ -29,7 +29,8 @@ class Node:
         self.evi_support = False
 
 class Graph:
-    def __init__(self, genome_anno_lst, anno_pref='anno', verbose=0):
+    def __init__(self, genome_anno_lst, anno_pref='anno', verbose=0, \
+        sw={'P' : 0.1, 'E' : 5, 'C' : 0.5,  'M' : 1}):
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}
 
@@ -51,13 +52,14 @@ class Graph:
         # dict of duplicate genome annotation ids to new ids
         self.duplicates = {}
 
-        # init annotations, check fpr duplicate ids
-        self.init_anno(genome_anno_lst)
-
         # variables for verbose mode
         self.v = verbose
         self.f = [[],[],[],[],[],[],[]]
         self.ties = 0
+        self.sw = sw
+
+        # init annotations, check for duplicate ids
+        self.init_anno(genome_anno_lst)
 
     def init_anno(self, genome_anno_lst):
         # make sure that the genome_anno ids are unique
@@ -159,7 +161,7 @@ class Graph:
     def add_node_features(self, evi):
         for key in self.nodes.keys():
             tx = self.__tx_from_key__(key)
-            new_node_feature = Node_features(tx, evi, self.anno_pref)
+            new_node_feature = Node_features(tx, evi, self.anno_pref, self.sw)
             self.nodes[key].feature_vector = new_node_feature.get_features()
             if self.nodes[key].feature_vector[0] > 0  or self.nodes[key].feature_vector[1] > 0:
                 self.nodes[key].evi_support = True
@@ -169,7 +171,7 @@ class Graph:
         # use the 'decision rule' to filter tx
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
-        for i in range(0,7):
+        for i in range(0,5):
             if n1.feature_vector[i] > n2.feature_vector[i]:
                 self.f[i].append(n2.id)
                 return n2.id
