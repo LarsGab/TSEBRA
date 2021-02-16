@@ -31,6 +31,7 @@ class Node:
 class Graph:
     def __init__(self, genome_anno_lst, anno_pref='anno', verbose=0, \
         sw={'P' : 0.1, 'E' : 5, 'C' : 0.5,  'M' : 1}):
+
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}
 
@@ -56,7 +57,10 @@ class Graph:
         self.v = verbose
         self.f = [[],[],[],[],[],[],[]]
         self.ties = 0
+
+        # parameters for decision rule
         self.sw = sw
+        self.epsilon = [0.1, 0.1, 0.1, 0.1, 0]
 
         # init annotations, check for duplicate ids
         self.init_anno(genome_anno_lst)
@@ -172,10 +176,11 @@ class Graph:
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
         for i in range(0,5):
-            if n1.feature_vector[i] > n2.feature_vector[i]:
+            diff = n1.feature_vector[i] - n2.feature_vector[i]
+            if diff > self.epsilon[i]:
                 self.f[i].append(n2.id)
                 return n2.id
-            elif n1.feature_vector[i] < n2.feature_vector[i]:
+            elif diff < (-1 * self.epsilon[i]):
                 self.f[i].append(n1.id)
                 return n1.id
         return None

@@ -74,7 +74,7 @@ class Node_features:
             for type in gene_feature_types:
                 hint_numb += len(self.evi_list[type])
             return hint_numb / abs_numb
-        return 0.5
+        return 1
 
     def absolute_support(self, gene_feature_types):
         score = 0.0
