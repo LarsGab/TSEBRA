@@ -78,7 +78,7 @@ class Hintfile:
             self.hints[new_hint.chr].append(new_hint)
 
 class Evidence:
-    # data structure for one or more hints
+    # data structure for hints
     def __init__(self):
         # hint_keys[chr][start_end_type_strand][src] = multiplicity
         self.hint_keys = {}

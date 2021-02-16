@@ -18,9 +18,9 @@ class Node_features:
         # self.feature_vector[0] : (supported introns by evidence of tx) / (number of introns in tx)
         # self.feature_vector[1] : (supported start/stop codons by evidence of tx) / (number of \
         # start/stop codons in tx)
-        # self.feature_vector[3] : sum of multiplicities of intron evidence for tx
-        # self.feature_vector[4] : sum of multiplicities of start/stop codon evidence for tx
-        # self.feature_vector[6] : 1 if tx is from anno_pref, 0 otherwise
+        # self.feature_vector[2] : sum of multiplicities of intron evidence for tx
+        # self.feature_vector[3] : sum of multiplicities of start/stop codon evidence for tx
+        # self.feature_vector[4] : 1 if tx is from anno_pref, 0 otherwise
         self.feature_vector = self.create_feature_vec()
 
     def __init_hints__(self, tx, evi, anno_pref):
@@ -67,7 +67,6 @@ class Node_features:
                 self.preferred_anno() \
                 ]
 
-
     def relative_support(self, gene_feature_types, abs_numb):
         # fraction of gene_feature_types that are supported by hints
         if abs_numb > 0:
@@ -75,7 +74,7 @@ class Node_features:
             for type in gene_feature_types:
                 hint_numb += len(self.evi_list[type])
             return hint_numb / abs_numb
-        return 1.0
+        return 0.5
 
     def absolute_support(self, gene_feature_types):
         score = 0.0
