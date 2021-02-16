@@ -17,7 +17,7 @@ class NotGtfFormat(Exception):
 
 class Transcript:
     # data structures and methods for a transcript
-    def __init__(self, id, gene_id, chr, source_anno):
+    def __init__(self, id, gene_id, chr, source_anno, strand):
         self.id = id
         self.chr = chr
         self.gene_id = gene_id
@@ -27,10 +27,11 @@ class Transcript:
         self.start = -1
         self.end = -1
         self.cds_coords = []
+        self.strand = strand
 
     def add_line(self, line):
         # add a single line from the gtf file to the transcript
-        if not line[0] == self.chr:
+        if not (line[0] == self.chr or line[6] == self.strand):
             raise NotGtfFormat('File is not in gtf format. Error in line {}\n'.format('\t'.join(map(str, line)))
                 + 'Transcript ID is not unique')
         if line[2] not in self.transcript_lines.keys():
@@ -186,7 +187,7 @@ class Anno:
                     #continue
                     transcript_id = line[8]
                     gene_id = transcript_id.split('.')[0]
-                    self.transcript_update(transcript_id, gene_id, line[0])
+                    self.transcript_update(transcript_id, gene_id, line[0], line[6])
                     self.transcripts[transcript_id].add_line(line)
                 else:
                     transcript_id = line[8].split('transcript_id "')
@@ -205,7 +206,7 @@ class Anno:
                             if value == transcript_id:
                                 gene_id = key
 
-                    self.transcript_update(transcript_id, gene_id, line[0])
+                    self.transcript_update(transcript_id, gene_id, line[0], line[6])
                     self.genes_update(gene_id, transcript_id)
                     self.transcripts[transcript_id].add_line(line)
 
@@ -228,10 +229,10 @@ class Anno:
             self.genes['None'].remove(transcript_id)
             self.transcripts[transcript_id].gene_id = gene_id
 
-    def transcript_update(self, t_id, g_id, chr):
+    def transcript_update(self, t_id, g_id, chr, strand):
         # update tx ids
         if not t_id in self.transcripts.keys():
-            self.transcripts.update({ t_id : Transcript(t_id, g_id, chr, self.id)})
+            self.transcripts.update({ t_id : Transcript(t_id, g_id, chr, self.id, strand)})
 
     def get_gtf(self):
         # get annotaion file as gtf string
