@@ -13,7 +13,6 @@ import multiprocessing as mp
 class EvaluationError(Exception):
     pass
 
-sw = {}
 combiner_bin = os.path.dirname(os.path.realpath(__file__))
 
 header = ['gene_Sn', 'gene_Sp', 'trans_Sn', 'trans_Sp', 'cds_Sn', 'cds_Sp', 'tx_per_gene']
@@ -26,15 +25,14 @@ test_order = ['Arabidopsis_thaliana_species_excluded', 'Arabidopsis_thaliana_fam
 full_eval = {}
 summary_eval = {}
 cmd_lst_path = ''
-
+parameter = ''
 def main():
-    global combiner_bin, sw, cmd_lst_path
+    global combiner_bin, cmd_lst_path, parameter
     args = parseCmd()
-
+    if args.parameter:
+        parameter = args.parameter
     if args.combiner:
         combiner_bin = args.combiner
-    if args.sw:
-        sw = args.sw
     braker2_level = ['species_excluded', 'family_excluded', 'order_excluded']
 
     if args.species:
@@ -114,8 +112,8 @@ def collector(result):
 
 def combine(braker, evidence, out):
     # run combiner
-    cmd = "{}/../prevco.py --gtf {} --hintfiles {} --out {} --sw {} -q -p 2".format(combiner_bin, braker, \
-        evidence, out, sw)
+    cmd = "{}/../prevco.py --gtf {} --hintfiles {} --out {} -c {} -q -p 2".format(combiner_bin, braker, \
+        evidence, out, parameter)
     with open(cmd_lst_path, 'a+') as file:
         file.write(cmd + '\n')
     sp.call(cmd, shell=True)
@@ -188,8 +186,8 @@ def parseCmd():
         help='')
     parser.add_argument('--out', type=str,
         help='')
-    parser.add_argument('--sw', type=str,
-        help='P,E,C,M')
+    parser.add_argument('--config', type=str,
+        help='config file')
     parser.add_argument('--species', type=str,
         help='')
     parser.add_argument('--combiner', type=str,

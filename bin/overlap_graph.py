@@ -29,8 +29,7 @@ class Node:
         self.evi_support = False
 
 class Graph:
-    def __init__(self, genome_anno_lst, anno_pref='anno1', verbose=0, \
-        sw={'P' : 0.1, 'E' : 5, 'C' : 0.5,  'M' : 1}):
+    def __init__(self, genome_anno_lst, para, anno_pref='anno1', verbose=0):
 
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}
@@ -59,8 +58,7 @@ class Graph:
         self.ties = 0
 
         # parameters for decision rule
-        self.sw = sw
-        self.epsilon = [0, 0, 10, 25, 0]
+        self.para = para
 
         # init annotations, check for duplicate ids
         self.init_anno(genome_anno_lst)
@@ -184,9 +182,10 @@ class Graph:
     def add_node_features(self, evi):
         for key in self.nodes.keys():
             tx = self.__tx_from_key__(key)
-            new_node_feature = Node_features(tx, evi, self.anno_pref, self.sw)
+            new_node_feature = Node_features(tx, evi, self.anno_pref, self.para)
             self.nodes[key].feature_vector = new_node_feature.get_features()
-            if self.nodes[key].feature_vector[0] > 0.5 or self.nodes[key].feature_vector[1] == 1:
+            if self.nodes[key].feature_vector[0] > self.para['intron_support'] \
+                or self.nodes[key].feature_vector[1] == self.para['stasto_support']:
                 self.nodes[key].evi_support = True
 
     def decide_edge(self, edge):
@@ -197,10 +196,10 @@ class Graph:
         for i in range(0,5):
             diff = n1.feature_vector[i] - n2.feature_vector[i]
             #print(diff)
-            if diff > self.epsilon[i]:
+            if diff > self.para['e_{}'.format(i+1)]:
                 self.f[i].append(n2.id)
                 return n2.id
-            elif diff < (-1 * self.epsilon[i]):
+            elif diff < (-1 * self.para['e_{}'.format(i+1)]):
                 self.f[i].append(n1.id)
                 return n1.id
         return None
