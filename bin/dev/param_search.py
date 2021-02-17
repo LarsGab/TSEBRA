@@ -28,7 +28,7 @@ def main():
 
 
     if args.mode == 1:
-        para_level_sw = ['0', '1', '5']
+        para_level_sw = ['0', '0.1', '0.5', '1', '5', '10', '50']
         para_list = list(itertools.product(para_level_sw, repeat=4))
         for para in para_list:
             id = '_'.join(para)
@@ -66,7 +66,6 @@ def main():
                     file.write(label[i] + ' ' + full_para[i] + '\n')
             file_list.append(path)
 
-
     pool = mp.Pool(mp.cpu_count())
     for f in file_list:
         pool.apply_async(job, (f,))
@@ -93,7 +92,7 @@ def job(p):
     accuracies = [s.split('\t') for s in stdout.split('\n') if s]
     txt = [a[1] for a in accuracies]
     txt = list(map(float, txt))
-    summary = str(sum(txt[2:-1])/4)
+    summary = str(sum(txt[2:])/4)
     with open('{}/summary_eval.out'.format(p), 'w+') as file:
         file.write(summary)
 
