@@ -7,9 +7,9 @@ import multiprocessing as mp
 species = 'Drosophila_melanogaster'
 t_setting = 'family_excluded'
 pref = '2'
-default_sw = ['0.1', '10', '0.5', '1']
-default_support = ['0.5', '1']
-default_epsilon = ['0', '0', '10', '20', '0']
+default_sw = ['0.1', '10', '5', '1']
+default_support = ['0.75', '1']
+default_epsilon = ['0', '0.5', '25', '0', '0']
 label = ['P', 'E', 'C', 'M', 'intron_support', 'stasto_support', 'e_1', 'e_2', 'e_3', 'e_4', 'e_5']
 prevco = ''
 braker = ''
@@ -28,7 +28,7 @@ def main():
 
 
     if args.mode == 1:
-        para_level_sw = ['0', '0.1', '0.5', '1', '5', '10', '50']
+        para_level_sw = ['0', '0.1', '0.5', '1', '5', '10', '20', '50']
         para_list = list(itertools.product(para_level_sw, repeat=4))
         for para in para_list:
             id = '_'.join(para)
@@ -40,7 +40,7 @@ def main():
                     file.write(label[i] + ' ' + full_para[i] + '\n')
             file_list.append(path)
     elif args.mode == 2:
-        para_level_supp = [['-1', '0', '0.1', '0.25', '0.5', '0.75'], ['-1', '0', '0.5', '1']]
+        para_level_supp = [['0', '0.1', '0.25', '0.5', '0.6', '0.75', '0.8', '0.9', '1'], ['0', '0.5', '1']]
         para_list = list(itertools.product(para_level_supp[0], para_level_supp[1]))
         for para in para_list:
             id = '_'.join(para)
@@ -52,7 +52,7 @@ def main():
                     file.write(label[i] + ' ' + full_para[i] + '\n')
             file_list.append(path)
     elif args.mode == 3:
-        para_level_epsi = [['0', '0.01', '0.1', '0.2'], \
+        para_level_epsi = [['0', '0.01', '0.1', '0.2', '0.3', '0.5'], \
                             ['0', '5', '10', '25', '50'], ['0']]
         para_list = list(itertools.product(para_level_epsi[0], para_level_epsi[0], \
             para_level_epsi[1], para_level_epsi[1], para_level_epsi[2]))
@@ -60,7 +60,7 @@ def main():
             id = '_'.join(para)
             path = args.out + '/' + id
             os.mkdir(path)
-            full_para = default_sw + default_support + para
+            full_para = default_sw + default_support + list(para)
             with open(path + '/para.cfg', 'w+') as file:
                 for i in range(0, len(label)):
                     file.write(label[i] + ' ' + full_para[i] + '\n')

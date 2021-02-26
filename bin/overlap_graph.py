@@ -29,7 +29,7 @@ class Node:
         self.evi_support = False
 
 class Graph:
-    def __init__(self, genome_anno_lst, para, anno_pref='anno1', verbose=0):
+    def __init__(self, genome_anno_lst, para=[1,1,1,1,0,0,0,0,0,0,0], anno_pref='anno1', verbose=0):
 
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}

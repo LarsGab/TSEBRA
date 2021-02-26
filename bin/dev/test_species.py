@@ -29,8 +29,8 @@ parameter = ''
 def main():
     global combiner_bin, cmd_lst_path, parameter
     args = parseCmd()
-    if args.parameter:
-        parameter = args.parameter
+    if args.config:
+        parameter = args.config
     if args.combiner:
         combiner_bin = args.combiner
     braker2_level = ['species_excluded', 'family_excluded', 'order_excluded']
@@ -65,16 +65,16 @@ def main():
                 out = "{}/{}_{}".format(args.out, species, level)
                 param.append([braker1 + ',' + braker2, evidence, out, test_id, species_path])
 
+    
     pool = mp.Pool(mp.cpu_count())
     for p in param:
         pool.apply_async(job, (p,))
     pool.close()
     pool.join()
-
+    
     job_results = []
     pool = mp.Pool(mp.cpu_count())
-    for p in param:
-        #evaluation(p)
+    for p in param:        
         r = pool.apply_async(evaluation, (p,), callback=collector)
         job_results.append(r)
     for r in job_results:
@@ -113,7 +113,7 @@ def collector(result):
 def combine(braker, evidence, out):
     # run combiner
     cmd = "{}/../prevco.py --gtf {} --hintfiles {} --out {} -c {} -q -p 2".format(combiner_bin, braker, \
-        evidence, out, parameter)
+        evidence, out, parameter)    
     with open(cmd_lst_path, 'a+') as file:
         file.write(cmd + '\n')
     sp.call(cmd, shell=True)
