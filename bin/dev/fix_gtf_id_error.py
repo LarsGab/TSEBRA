@@ -21,6 +21,7 @@ def main():
         gtf = file.readlines()
     chr = {}
     print(len(gtf))
+    gene_ids = set()
 
     for line in gtf:
         line = line.split('\t')
@@ -39,6 +40,7 @@ def main():
                 transcript_id = line[8]
             else:
                 transcript_id = line[8].split('transcript_id "')[1].split('";')[0]
+                gene_ids.append(line[8].split('gene_id "')[1].split('";')[0])
             transcript_id = transcript_id.strip('\n')
             if not transcript_id in chr[chr_id].txs.keys():
                 chr[chr_id].txs.update({transcript_id : [line]})
@@ -48,14 +50,16 @@ def main():
     result = {}
     for k in chr.keys():
         for g_key in chr[k].genes.keys():
+            if g_key not in gene_ids:
+                continue
             if not g_key in result:
                 result.update({g_key : chr[k].genes[g_key]})
             else:
                 chr[k].genes[g_key][8] = k + '_' + g_key
                 result.update({k + '_' + g_key : chr[k].genes[g_key]})
+                
         for t_key in chr[k].txs.keys():
             if len(chr[k].txs[t_key]) == 1 and chr[k].txs[t_key][0][2] == 'transcript':
-                print(t_key)
                 continue
             if not t_key in result:
                 result.update({t_key : chr[k].txs[t_key]})
