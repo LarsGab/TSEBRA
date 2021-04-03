@@ -6,7 +6,7 @@
 # ==============================================================
 import os
 import multiprocessing as mp
-
+import sys
 callback = []
 feature_pref = {'numb_introns' : 2, \
     'transcript_length' : 0, 'intron_length' : 0, \
@@ -60,16 +60,22 @@ class Transcript:
         # add intron lines
         self.find_introns()
         # check if tx has cds or exon
-        self.check_cds_exons()
+        if not self.check_cds_exons():
+            return False
         # add transcript line
         self.find_transcript()
         # add start/stop codon line
         self.find_start_stop_codon()
+        return True
 
     def check_cds_exons(self):
         # check if tx has cds or exon
+        #if 'CDS' not in self.transcript_lines.keys() and 'exon' not in self.transcript_lines.keys():
+            #raise NotGtfFormat('No CDS nor exons in {}'.format(self.id))
         if 'CDS' not in self.transcript_lines.keys() and 'exon' not in self.transcript_lines.keys():
-            raise NotGtfFormat('No CDS nor exons in {}'.format(self.id))
+            sys.stderr.write('Skipping transcript {}, no CDS nor exons in {}\n'.format(self.id, self.id))
+            return False
+        return True
 
     def find_introns(self):
         # add intron lines
@@ -215,9 +221,13 @@ class Anno:
             self.genes_update(gene_id, tx_id)
 
     def norm_tx_format(self):
+        tx_no_cds = []
         # add missing lines to all tx
         for k in self.transcripts.keys():
-            self.transcripts[k].add_missing_lines()
+            if not self.transcripts[k].add_missing_lines():
+                tx_no_cds.append(k)
+        for k in tx_no_cds:
+            del self.transcripts[k]
 
     def genes_update(self, gene_id, transcript_id=''):
         # update gene ids

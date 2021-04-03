@@ -184,8 +184,8 @@ class Graph:
             tx = self.__tx_from_key__(key)
             new_node_feature = Node_features(tx, evi, self.anno_pref, self.para)
             self.nodes[key].feature_vector = new_node_feature.get_features()
-            if self.nodes[key].feature_vector[0] > self.para['intron_support'] \
-                or self.nodes[key].feature_vector[1] == self.para['stasto_support']:
+            if self.nodes[key].feature_vector[0] >= self.para['intron_support'] \
+                or self.nodes[key].feature_vector[1] >= self.para['stasto_support']:
                 self.nodes[key].evi_support = True
 
     def decide_edge(self, edge):

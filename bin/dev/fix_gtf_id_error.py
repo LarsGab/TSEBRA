@@ -17,12 +17,35 @@ def start2int(line):
 
 def main():
     args = parseCmd()
+    result = ''
     with open(args.gtf, 'r') as file:
-        gtf = file.readlines()
-    chr = {}
-    print(len(gtf))
-    gene_ids = set()
+        for line in file.readlines():
+            line = line.split('\t')
+            if len(line) == 9:
+                if line[2] in ['gene', 'transcript']:
+                    continue
+                id_prefix = line[0] + line[6]
+                transcript_id = line[8].split('transcript_id "')[1].split('";')[0]
+                temp = line[8].split('transcript_id "')
+                line[8] = '{}transcript_id "{}_{}";{}'.format(temp[0], id_prefix, transcript_id, '";'.join(temp[1].split('";')[1:]))
+                gene_id = line[8].split('gene_id "')[1].split('";')[0]
+                temp = line[8].split('gene_id "')
+                line[8] = '{}gene_id "{}_{}";{}'.format(temp[0], id_prefix, gene_id, '";'.join(temp[1].split('";')[1:]))
+                result += '\t'.join(line)
+    with open(args.out, 'w+') as file:
+        file.write(result)
 
+
+
+
+
+    '''
+    result = ''
+    with open(args.gtf, 'r') as file:
+        gtf = file.readlines():
+    chr = {}
+    gene_ids = set()
+    print(len(gtf))
     for line in gtf:
         line = line.split('\t')
         chr_id = line[0] + line[6]
@@ -40,7 +63,7 @@ def main():
                 transcript_id = line[8]
             else:
                 transcript_id = line[8].split('transcript_id "')[1].split('";')[0]
-                gene_ids.append(line[8].split('gene_id "')[1].split('";')[0])
+                gene_ids.add(line[8].split('gene_id "')[1].split('";')[0])
             transcript_id = transcript_id.strip('\n')
             if not transcript_id in chr[chr_id].txs.keys():
                 chr[chr_id].txs.update({transcript_id : [line]})
@@ -57,20 +80,20 @@ def main():
             else:
                 chr[k].genes[g_key][8] = k + '_' + g_key
                 result.update({k + '_' + g_key : chr[k].genes[g_key]})
-                
+
         for t_key in chr[k].txs.keys():
             if len(chr[k].txs[t_key]) == 1 and chr[k].txs[t_key][0][2] == 'transcript':
                 continue
             if not t_key in result:
                 result.update({t_key : chr[k].txs[t_key]})
             else:
-                new_key = k + '_' + t_key
+                new_key_tx = k + '_' + t_key
                 for line in chr[k].txs[t_key]:
                     if line[2] == 'transcript':
-                        line[8] = new_key
+                        line[8] = new_key_tx
                     else:
                         temp = line[8].split('transcript_id "')
-                        line[8] = '{}transcript_id "{}";{}'.format(temp[0], new_key, '";'.join(temp[1].split('";')[1:]))
+                        line[8] = '{}transcript_id "{}";{}'.format(temp[0], new_key_tx, '";'.join(temp[1].split('";')[1:]))
                 result.update({k + '_' + t_key : chr[k].txs[t_key]})
     out = []
     for value in result.values():
@@ -82,6 +105,10 @@ def main():
     out = ''.join(out)
     with open(args.out, 'w+') as file:
         file.write(out)
+    '''
+
+
+
 def parseCmd():
     """Parse command line arguments
 

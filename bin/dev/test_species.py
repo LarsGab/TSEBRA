@@ -16,12 +16,25 @@ class EvaluationError(Exception):
 combiner_bin = os.path.dirname(os.path.realpath(__file__))
 
 header = ['gene_Sn', 'gene_Sp', 'trans_Sn', 'trans_Sp', 'cds_Sn', 'cds_Sp', 'tx_per_gene']
-test_order = ['Arabidopsis_thaliana_species_excluded', 'Arabidopsis_thaliana_family_excluded',\
-            'Arabidopsis_thaliana_order_excluded', 'Caenorhabditis_elegans_species_excluded', \
-            'Caenorhabditis_elegans_family_excluded', 'Caenorhabditis_elegans_order_excluded', \
-            'Danio_rerio_order_excluded', 'Drosophila_melanogaster_species_excluded', \
-            'Drosophila_melanogaster_family_excluded', 'Drosophila_melanogaster_order_excluded', \
-            'Medicago_truncatula_order_excluded', 'Solanum_lycopersicum_order_excluded']
+test_order = ['Arabidopsis_thaliana_species_excluded', \
+        'Arabidopsis_thaliana_family_excluded', \
+        'Arabidopsis_thaliana_order_excluded', \
+        'Bombus_terrestris_species_excluded', \
+        'Bombus_terrestris_order_excluded', \
+        'Caenorhabditis_elegans_species_excluded', \
+        'Caenorhabditis_elegans_family_excluded', \
+        'Caenorhabditis_elegans_order_excluded', \
+        'Danio_rerio_order_excluded', \
+        'Drosophila_melanogaster_species_excluded', \
+        'Drosophila_melanogaster_family_excluded', \
+        'Drosophila_melanogaster_order_excluded', \
+        'Medicago_truncatula_order_excluded', \
+        'Parasteatoda_tepidariorum_order_excluded', \
+        'Populus_trichocarpa_order_excluded', \
+        'Rhodnius_prolixus_order_excluded', \
+        'Tetraodon_nigroviridis_order_excluded', \
+        'Xenopus_tropicalis_order_excluded']
+
 full_eval = {}
 summary_eval = {}
 cmd_lst_path = ''
@@ -38,9 +51,12 @@ def main():
     if args.species:
         species_list = args.species.split(',')
     else:
-        with open(args.data + '/species.tab', 'r') as file:
-            species_list = file.read().split('\n')
-    species_list = [s for s in species_list if s]
+        species_list = []
+        with open('{}/species.tab'.format(args.data), 'r') as file:
+            for s in file.read().split('\n'):
+                if s:
+                    if not s[0] == '#':
+                        species_list.append(s)
 
     cmd_lst_path = args.out + '/cmd.lst'
     if not os.path.exists(args.out):
@@ -52,29 +68,29 @@ def main():
 
     # [...,[braker_list, hintfile_list, out, test id, species path],..]
     param = []
-
     for species in species_list:
         species_path = "{}/{}".format(args.data, species)
         for level in braker2_level:
             braker2 = "{}/braker2/{}/braker_fixed.gtf".format(species_path, level)
             if os.path.exists(braker2):
                 test_id = "{}_{}".format(species, level)
-                braker1 = "{}/braker1/braker_{}.gtf".format(species_path, level)
-                evidence = "{}/braker1/hintsfile_{}.gff".format(species_path, level) \
-                        + ",{}/braker2/{}/hintsfile.gff".format(species_path, level)
+                braker1 = "{}/braker1/braker_fixed.gtf".format(species_path)
+                #evidence = "{}/braker1/hintsfile.gff".format(species_path) \
+                        #+ ",{}/braker2/{}/hintsfile.gff".format(species_path, level)
+                evidence = '{}/varus/braker_evm_hints_varus.gff'.format(species_path) \
+                    + ',{}/protHint/{}/braker_evm_hints_spaln.gff'.format(species_path, level)
                 out = "{}/{}_{}".format(args.out, species, level)
                 param.append([braker1 + ',' + braker2, evidence, out, test_id, species_path])
 
-    
     pool = mp.Pool(mp.cpu_count())
     for p in param:
         pool.apply_async(job, (p,))
     pool.close()
     pool.join()
-    
+
     job_results = []
     pool = mp.Pool(mp.cpu_count())
-    for p in param:        
+    for p in param:
         r = pool.apply_async(evaluation, (p,), callback=collector)
         job_results.append(r)
     for r in job_results:
@@ -113,7 +129,7 @@ def collector(result):
 def combine(braker, evidence, out):
     # run combiner
     cmd = "{}/../prevco.py --gtf {} --hintfiles {} --out {} -c {} -q -p 2".format(combiner_bin, braker, \
-        evidence, out, parameter)    
+        evidence, out, parameter)
     with open(cmd_lst_path, 'a+') as file:
         file.write(cmd + '\n')
     sp.call(cmd, shell=True)
