@@ -16,12 +16,12 @@ anno = []
 hintfiles = []
 graph = None
 out = ''
-pref = ''
+#pref = ''
 v = 0
 quiet = False
 parameter = {'P' : 0, 'E' : 0, 'C' : 0,  'M' : 0, \
     'intron_support' : 0, 'stasto_support' : 0, \
-    'e_1' : 0, 'e_2' : 0, 'e_3' : 0, 'e_4' : 0, 'e_5' : 0,}
+    'e_1' : 0, 'e_2' : 0, 'e_3' : 0, 'e_4' : 0}#, 'e_5' : 0}
 
 def main():
     '''
@@ -63,7 +63,8 @@ def main():
 
     # detect overlapping transcripts
     # two transcript overlap, if there is overlap in the cds
-    graph = Graph(anno, anno_pref=pref, para=parameter, verbose=v)
+    #graph = Graph(anno, anno_pref=pref, para=parameter, verbose=v)
+    graph = Graph(anno, para=parameter, verbose=v)
     if not quiet:
         print('### BUILD OVERLAP GRAPH')
     graph.build()
@@ -106,7 +107,7 @@ def set_parameter(cfg_file):
                 parameter[line[0]] = float(line[1])
 
 def init(args):
-    global gtf, hintfiles, threads, hint_source_weight, out, v, pref, quiet
+    global gtf, hintfiles, threads, hint_source_weight, out, v, quiet#, pref
     if args.gtf:
         gtf = args.gtf.split(',')
     if args.hintfiles:
@@ -120,8 +121,8 @@ def init(args):
         out = args.out
     if args.verbose:
         v = args.verbose
-    if args.pref:
-        pref = 'anno{}'.format(args.pref)
+    #if args.pref:
+        #pref = 'anno{}'.format(args.pref)
     if args.quiet:
         quiet = True
 
@@ -136,8 +137,8 @@ def parseCmd():
         help='List of parameter settings, if not set default parameters are used.')
     parser.add_argument('-v', '--verbose', type=int,
         help='')
-    parser.add_argument('-p', '--pref', type=int, required=True,
-        help='Index (>=1) of the preferred gene prediction source file in the gene prediciton list.')
+    #parser.add_argument('-p', '--pref', type=int, required=True,
+        #help='Index (>=1) of the preferred gene prediction source file in the gene prediciton list.')
     parser.add_argument('-g', '--gtf', type=str, required=True,
         help='List (separated by commas) of gene prediciton files in gtf .\n(gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
     parser.add_argument('-e', '--hintfiles', type=str, required=True,

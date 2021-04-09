@@ -5,14 +5,16 @@
 # features.py: Classes for creating a list of features for a transcript
 # ==============================================================
 class Node_features:
-    def __init__(self, tx, evi, anno_pref, hint_source_weight={'P' : 0.1, 'E' : 5, 'C' : 0.5,  'M' : 1}):
+    #def __init__(self, tx, evi, anno_pref, hint_source_weight={'P' : 0.1, 'E' : 5, 'C' : 0.5,  'M' : 1}):
+    def __init__(self, tx, evi, hint_source_weight={'P' : 0.1, 'E' : 5, 'C' : 0.5,  'M' : 1}):
 
         self.sw = hint_source_weight
         # evi_list[gene structure type] = [{hint.src : hint.multi}]
         self.evi_list = {'intron' : [], 'start_codon' : [], 'stop_codon': []}
         self.numb_introns = 0
         self.pref = None
-        self.__init_hints__(tx, evi, anno_pref)
+        #self.__init_hints__(tx, evi, anno_pref)
+        self.__init_hints__(tx, evi)
         # feature vector specifies the support of
         # introns, start/stop codons for a transcript
         # self.feature_vector[0] : (supported introns by evidence of tx) / (number of introns in tx)
@@ -23,7 +25,8 @@ class Node_features:
         # self.feature_vector[4] : 1 if tx is from anno_pref, 0 otherwise
         self.feature_vector = self.create_feature_vec()
 
-    def __init_hints__(self, tx, evi, anno_pref):
+    #def __init_hints__(self, tx, evi, anno_pref):
+    def __init_hints__(self, tx, evi):
         cds_len = 0
         for type in ['intron', 'start_codon', 'stop_codon']:#, 'CDS']:
             for line in tx.transcript_lines[type]:
@@ -57,15 +60,15 @@ class Node_features:
                     self.evi_list[type].append(hint)
         if tx.transcript_lines['intron']:
             self.numb_introns = len(tx.transcript_lines['intron'])
-        self.pref = tx.source_anno == anno_pref
+        #self.pref = tx.source_anno == anno_pref
 
     def create_feature_vec(self):
         return [self.relative_support(['intron'], self.numb_introns), \
                 self.relative_support(['start_codon', 'stop_codon'], 2.0), \
                 self.absolute_support(['intron']), \
-                self.absolute_support(['start_codon', 'stop_codon']), \
-                self.preferred_anno() \
-                ]
+                self.absolute_support(['start_codon', 'stop_codon'])]#, \
+                #self.preferred_anno() \
+                #]
 
     def relative_support(self, gene_feature_types, abs_numb):
         # fraction of gene_feature_types that are supported by hints
@@ -83,11 +86,11 @@ class Node_features:
                 for src in hint.keys():
                     score += self.sw[src] * hint[src]
         return score
-
+    '''
     def preferred_anno(self):
         if self.pref:
             return 1.0
         return 0.0
-
+    '''
     def get_features(self):
         return self.feature_vector

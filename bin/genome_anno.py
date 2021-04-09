@@ -7,10 +7,6 @@
 import os
 import multiprocessing as mp
 import sys
-callback = []
-feature_pref = {'numb_introns' : 2, \
-    'transcript_length' : 0, 'intron_length' : 0, \
-    'fraction_intron_leng' : 1, 'source' : 'braker2'}
 
 class NotGtfFormat(Exception):
     pass

@@ -75,10 +75,10 @@ def main():
             if os.path.exists(braker2):
                 test_id = "{}_{}".format(species, level)
                 braker1 = "{}/braker1/braker_fixed.gtf".format(species_path)
-                #evidence = "{}/braker1/hintsfile.gff".format(species_path) \
-                        #+ ",{}/braker2/{}/hintsfile.gff".format(species_path, level)
-                evidence = '{}/varus/braker_evm_hints_varus.gff'.format(species_path) \
-                    + ',{}/protHint/{}/braker_evm_hints_spaln.gff'.format(species_path, level)
+                evidence = "{}/braker1/hintsfile.gff".format(species_path) \
+                        + ",{}/braker2/{}/hintsfile.gff".format(species_path, level)
+                #evidence = '{}/varus/braker_evm_hints_varus.gff'.format(species_path) \
+                    #+ ',{}/protHint/{}/braker_evm_hints_spaln.gff'.format(species_path, level)
                 out = "{}/{}_{}".format(args.out, species, level)
                 param.append([braker1 + ',' + braker2, evidence, out, test_id, species_path])
 
@@ -105,7 +105,7 @@ def job(para):
     combine(para[0], para[1], para[2] + ".gtf")
 
 def evaluation(para):
-    gtf2ucsc(para[2] + ".gtf", para[2] + "_ucsc.gtf", para[3])
+    #gtf2ucsc(para[2] + ".gtf", para[2] + "_ucsc.gtf", para[3])
     accuracies = eval("{}/anno/".format(para[4]), para[2] + ".gtf")
     tx_gene = tx_per_gene(para[2] + ".gtf")
     txt = [a[0] for a in accuracies]
