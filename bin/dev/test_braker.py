@@ -1,13 +1,14 @@
 import argparse
 import os
 import subprocess as sp
-combiner_bin = "/home/lars/work/combiner/bin/"
+combiner_bin = "/nas-hs/projs/intron-ppx/combiner_proj/PrEvCo/bin/dev/"
 def main():
     args = parseCmd()
     braker2_level = ['species_excluded', 'family_excluded', 'order_excluded']
     with open(args.data + '/species.tab', 'r') as file:
         species_list = file.read().split('\n')
     species_list = [s for s in species_list if s]
+    species_list = [s for s in species_list if not s[0] == '#']
 
     full_eval = []
     summary_eval = []
@@ -63,7 +64,7 @@ def main():
     summary_out += '# {}\n'.format('\t'.join(map(str,[s[1] for s in summary_eval])))
     summary_out += '&'.join(map(str,[round(s[1], 2) for s in summary_eval]))
     summary_out = summary_out.replace('_', ' ')
-    print(summary_out)
+    print(summary_eval)
     with open(args.out + 'summary_eval.txt', 'w+') as file:
         file.write(summary_out)
 

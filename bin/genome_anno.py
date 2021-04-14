@@ -6,18 +6,14 @@
 # ==============================================================
 import os
 import multiprocessing as mp
-
-callback = []
-feature_pref = {'numb_introns' : 2, \
-    'transcript_length' : 0, 'intron_length' : 0, \
-    'fraction_intron_leng' : 1, 'source' : 'braker2'}
+import sys
 
 class NotGtfFormat(Exception):
     pass
 
 class Transcript:
     # data structures and methods for a transcript
-    def __init__(self, id, gene_id, chr, source_anno):
+    def __init__(self, id, gene_id, chr, source_anno, strand):
         self.id = id
         self.chr = chr
         self.gene_id = gene_id
@@ -27,10 +23,11 @@ class Transcript:
         self.start = -1
         self.end = -1
         self.cds_coords = []
+        self.strand = strand
 
     def add_line(self, line):
         # add a single line from the gtf file to the transcript
-        if not line[0] == self.chr:
+        if not (line[0] == self.chr or line[6] == self.strand):
             raise NotGtfFormat('File is not in gtf format. Error in line {}\n'.format('\t'.join(map(str, line)))
                 + 'Transcript ID is not unique')
         if line[2] not in self.transcript_lines.keys():
@@ -59,16 +56,22 @@ class Transcript:
         # add intron lines
         self.find_introns()
         # check if tx has cds or exon
-        self.check_cds_exons()
+        if not self.check_cds_exons():
+            return False
         # add transcript line
         self.find_transcript()
         # add start/stop codon line
         self.find_start_stop_codon()
+        return True
 
     def check_cds_exons(self):
         # check if tx has cds or exon
+        #if 'CDS' not in self.transcript_lines.keys() and 'exon' not in self.transcript_lines.keys():
+            #raise NotGtfFormat('No CDS nor exons in {}'.format(self.id))
         if 'CDS' not in self.transcript_lines.keys() and 'exon' not in self.transcript_lines.keys():
-            raise NotGtfFormat('No CDS nor exons in {}'.format(self.id))
+            sys.stderr.write('Skipping transcript {}, no CDS nor exons in {}\n'.format(self.id, self.id))
+            return False
+        return True
 
     def find_introns(self):
         # add intron lines
@@ -186,7 +189,7 @@ class Anno:
                     #continue
                     transcript_id = line[8]
                     gene_id = transcript_id.split('.')[0]
-                    self.transcript_update(transcript_id, gene_id, line[0])
+                    self.transcript_update(transcript_id, gene_id, line[0], line[6])
                     self.transcripts[transcript_id].add_line(line)
                 else:
                     transcript_id = line[8].split('transcript_id "')
@@ -205,7 +208,7 @@ class Anno:
                             if value == transcript_id:
                                 gene_id = key
 
-                    self.transcript_update(transcript_id, gene_id, line[0])
+                    self.transcript_update(transcript_id, gene_id, line[0], line[6])
                     self.genes_update(gene_id, transcript_id)
                     self.transcripts[transcript_id].add_line(line)
 
@@ -214,9 +217,13 @@ class Anno:
             self.genes_update(gene_id, tx_id)
 
     def norm_tx_format(self):
+        tx_no_cds = []
         # add missing lines to all tx
         for k in self.transcripts.keys():
-            self.transcripts[k].add_missing_lines()
+            if not self.transcripts[k].add_missing_lines():
+                tx_no_cds.append(k)
+        for k in tx_no_cds:
+            del self.transcripts[k]
 
     def genes_update(self, gene_id, transcript_id=''):
         # update gene ids
@@ -228,10 +235,10 @@ class Anno:
             self.genes['None'].remove(transcript_id)
             self.transcripts[transcript_id].gene_id = gene_id
 
-    def transcript_update(self, t_id, g_id, chr):
+    def transcript_update(self, t_id, g_id, chr, strand):
         # update tx ids
         if not t_id in self.transcripts.keys():
-            self.transcripts.update({ t_id : Transcript(t_id, g_id, chr, self.id)})
+            self.transcripts.update({ t_id : Transcript(t_id, g_id, chr, self.id, strand)})
 
     def get_gtf(self):
         # get annotaion file as gtf string

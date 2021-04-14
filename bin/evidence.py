@@ -4,7 +4,7 @@
 #
 # evdence.py: classes to handle the hints from multiple hintfiles
 # ==============================================================
-from bisect import bisect_left
+#from bisect import bisect_left
 
 class NotGtfFormat(Exception):
     pass
@@ -78,7 +78,7 @@ class Hintfile:
             self.hints[new_hint.chr].append(new_hint)
 
 class Evidence:
-    # data structure for one or more hints
+    # data structure for hints
     def __init__(self):
         # hint_keys[chr][start_end_type_strand][src] = multiplicity
         self.hint_keys = {}
@@ -119,7 +119,7 @@ class Evidence:
             self.cds_end[chr] = sorted(self.cds_end[chr], key=lambda h:h[0])
             self.cds_keys_start[chr] = [h[0] for h in self.cds_start[chr]]
             self.cds_keys_end[chr] = [h[0] for h in self.cds_end[chr]]
-
+    '''
     def get_cds_parts(self, chr, start, end, phase):
         result = []
         # indices of hints already added to result
@@ -150,7 +150,7 @@ class Evidence:
                         break
                     index2 = self.cds_end[chr][index1][1]
         return result
-
+    '''
     def get_hint(self, chr, start, end, type, strand):
         if type == 'start_codon':
             type = 'start'

@@ -29,8 +29,9 @@ class Node:
         self.evi_support = False
 
 class Graph:
-    def __init__(self, genome_anno_lst, anno_pref='anno', verbose=0, \
-        sw={'P' : 0.1, 'E' : 5, 'C' : 0.5,  'M' : 1}):
+    #def __init__(self, genome_anno_lst, para=[1,1,1,1,0,0,0,0,0,0,0], anno_pref='anno1', verbose=0):
+    def __init__(self, genome_anno_lst, para=[1,1,1,1,0,0,0,0,0,0], verbose=0):
+
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}
 
@@ -41,7 +42,7 @@ class Graph:
         self.anno = {}
 
         # preferred annotation source
-        self.anno_pref = anno_pref
+        #self.anno_pref = anno_pref
 
         # list of connected graph components
         self.component_list = []
@@ -56,7 +57,9 @@ class Graph:
         self.v = verbose
         self.f = [[],[],[],[],[],[],[]]
         self.ties = 0
-        self.sw = sw
+
+        # parameters for decision rule
+        self.para = para
 
         # init annotations, check for duplicate ids
         self.init_anno(genome_anno_lst)
@@ -84,10 +87,31 @@ class Graph:
         # tx_start_end[chr] = [tx_id, coord, id for start or end]
         # for every tx one element for start and one for end
         tx_start_end = {}
+        # used to check for duplicate txs, list of ['start_end_strand']
+        unique_tx_keys = {}
+        '''
+        anno_keys = [k for k in self.anno.keys() if not k == self.anno_pref]
+        if self.anno_pref in self.anno.keys():
+            anno_keys = [self.anno_pref] + anno_keys
+        '''
         for k in self.anno.keys():
             for tx in self.anno[k].get_transcript_list():
                 if tx.chr not in tx_start_end.keys():
                     tx_start_end.update({tx.chr : []})
+                    unique_tx_keys.update({tx.chr : {}})
+                unique_key = '{}_{}_{}'.format(tx.start, tx.end, tx.strand)
+                if unique_key in unique_tx_keys[tx.chr].keys():
+                    check = False
+                    coords = tx.get_cds_coords()
+                    for t in unique_tx_keys[tx.chr][unique_key]:
+                        if coords == t.get_cds_coords():
+                            check = True
+                            break
+                    if check:
+                        continue
+                else:
+                    unique_tx_keys[tx.chr].update({unique_key : []})
+                unique_tx_keys[tx.chr][unique_key].append(tx)
                 key = '{};{}'.format(tx.source_anno, \
                     tx.id)
                 self.nodes.update({key : Node(tx.source_anno, \
@@ -161,9 +185,10 @@ class Graph:
     def add_node_features(self, evi):
         for key in self.nodes.keys():
             tx = self.__tx_from_key__(key)
-            new_node_feature = Node_features(tx, evi, self.anno_pref, self.sw)
+            new_node_feature = Node_features(tx, evi, self.para)# self.anno_pref, self.para)
             self.nodes[key].feature_vector = new_node_feature.get_features()
-            if self.nodes[key].feature_vector[0] > 0  or self.nodes[key].feature_vector[1] > 0:
+            if self.nodes[key].feature_vector[0] >= self.para['intron_support'] \
+                or self.nodes[key].feature_vector[1] >= self.para['stasto_support']:
                 self.nodes[key].evi_support = True
 
     def decide_edge(self, edge):
@@ -171,11 +196,13 @@ class Graph:
         # use the 'decision rule' to filter tx
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
-        for i in range(0,5):
-            if n1.feature_vector[i] > n2.feature_vector[i]:
+        for i in range(0,4):
+            diff = n1.feature_vector[i] - n2.feature_vector[i]
+            #print(diff)
+            if diff > self.para['e_{}'.format(i+1)]:
                 self.f[i].append(n2.id)
                 return n2.id
-            elif n1.feature_vector[i] < n2.feature_vector[i]:
+            elif diff < (-1 * self.para['e_{}'.format(i+1)]):
                 self.f[i].append(n1.id)
                 return n1.id
         return None
