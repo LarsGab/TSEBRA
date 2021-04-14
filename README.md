@@ -14,6 +14,13 @@ git clone ToDo: ENTER LINK
 ### Usage
 The main script is ```./bin/prevco.py```. For usage information run ```./bin/prevco.py --help```.
 
+### Input Files
+## Gene Predictions 
+ToDo
+## Hint Files
+ToDo
+## Configuration File
+ToDo
 ### Use Case
 PrEvCo is intended to be used together with BRAKER for creating a BRAKER-only prediciton supported by RNA-seq and homologous protein data.
 A typical case for running BRAKER and PrEvCo would be, if you have
@@ -46,9 +53,6 @@ The combined gene prediciton is ```braker1+2_combined.gtf```.
 
 ### Example
 A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example check if PrEvCo runs properly. 
-
-### Configuration File
-
 
 ### Reference
 ToDo
