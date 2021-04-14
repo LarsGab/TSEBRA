@@ -24,9 +24,9 @@ ToDo
 ## Use Case
 PrEvCo is intended to be used together with BRAKER for creating a BRAKER-only prediciton supported by RNA-seq and homologous protein data.
 A typical case for running BRAKER and PrEvCo would be, if you have
-* ```genome.fasta.masked```: a novel genome masked for repeats,
-* ```rna_seq_hints.gff```: intron position evidence from RNA-seq reads,
-* ```proteins.tab```: database of homologous proteins.
+* a novel genome masked for repeats: ```genome.fasta.masked```,
+* hints for intron positions from RNA-seq reads```rna_seq_hints.gff```,
+* database of homologous proteins: ```proteins.tab```.
 1. Run BRAKER1 and BRAKER2 for example with
 ```console
 ### BRAKER1
