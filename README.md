@@ -97,7 +97,7 @@ braker.pl --genome=genome.fasta.masked --prot_seq=proteins.tab \
 The combined gene prediciton is ```braker1+2_combined.gtf```.
 
 ## Example
-A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example check if PrEvCo runs properly. 
+A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example and to check if PrEvCo runs properly. 
 
 ## Reference
 ToDo
