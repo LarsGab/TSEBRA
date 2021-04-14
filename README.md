@@ -47,6 +47,9 @@ The combined gene prediciton is ```braker1+2_combined.gtf```.
 ### Example
 A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example check if PrEvCo runs properly. 
 
+### Configuration File
+
+
 ### Reference
 ToDo
 
