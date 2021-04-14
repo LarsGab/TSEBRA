@@ -1,4 +1,4 @@
-# PrEvCo: gene Predcition and extrinsic Evidence Combiner
+# PrEvCo: gene Predcition and extrinsic Evidence Combiner tool
 ### Introduction
 PrEvCo is a combiner tool that combines gene predictions based on the support by extrisic evidence in form of introns and start/stop codons. It was developed to combine BRAKER1 and BRAKER2 predicitons to increase their accuracy.
 
