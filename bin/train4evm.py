@@ -95,6 +95,7 @@ def main():
             parameter = [1.0,1.0,0.0,0.0,0.675,0.5,0.0,0.0,10.0,0.0,1.0]
 
         para_level_tab = []
+        print(parameter)
         for i in range(0, len(para_label)):
             para_level_tab.append([para_label[i], parameter[i]])
         write_tab(para_level_tab, '{}/para_level.out'.format(workdir))
@@ -113,7 +114,7 @@ def para_train():
     para_level_epsi = [[0.0, 0.5, 1.0], [0.0, 0.5, 1.0], [0.0, 10.0, 20.0], [0.0, 10.0, 20.0]]
     para_level = para_level_sw + [[0.0]]*2 + para_level_supp + para_level_epsi
     maxiter = 2
-    para_level = [[p[0]] for p in para_level]
+    #para_level = [[p[0]] for p in para_level]
     for i in range(0, maxiter):
         prefix = 'it{}'.format(i+1)
         para_level_tab = []

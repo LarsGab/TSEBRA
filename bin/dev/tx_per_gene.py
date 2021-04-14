@@ -13,10 +13,8 @@ def main():
     gtf = [Anno(args.gtf, 'anno1')]
     gtf[0].addGtf()
     gtf[0].norm_tx_format()
-    print(len(gtf[0].transcripts.keys()))
     graph = Graph(gtf)
     graph.build()
-    print(len(graph.nodes.keys()))
     components =  graph.connected_components()
     tx_per_gene = 0
     i = 0

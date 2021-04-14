@@ -1,7 +1,0 @@
-track name=BRAKER2 color=200,0,0 decription="BRAKER2" visibility=3
-chr3L	AUGUSTUS	CDS	16809996	16810024	1	-	2	transcript_id "g4629.t1"; gene_id "g4629";
-chr3L	AUGUSTUS	exon	16809996	16810024	.	-	.	transcript_id "g4629.t1"; gene_id "g4629";
-chr3L	AUGUSTUS	CDS	16810084	16810489	1	-	0	transcript_id "g4629.t1"; gene_id "g4629";
-chr3L	AUGUSTUS	exon	16810084	16810489	.	-	.	transcript_id "g4629.t1"; gene_id "g4629";
-chr3L	AUGUSTUS	CDS	16810595	16810867	1	-	0	transcript_id "g4629.t1"; gene_id "g4629";
-chr3L	AUGUSTUS	exon	16810595	16810867	.	-	.	transcript_id "g4629.t1"; gene_id "g4629";
