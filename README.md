@@ -15,18 +15,40 @@ git clone ToDo: ENTER LINK
 The main script is ```./bin/prevco.py```. For usage information run ```./bin/prevco.py --help```.
 
 ## Input Files
+PrEvCo needs a list of gene prediciton files, a list of hintfiles and a configuration file as input.
+
 #### Gene Predictions 
-ToDo
+The gene prediction files needs to be in gtf format. This is the standard output format of a BRAKER or AUGUSTUS gene prediciton.
+Example:
+```console
+2L      AUGUSTUS        gene    83268   87026   0.88    -       .       g5332
+2L      AUGUSTUS        transcript      83268   87026   0.88    -       .       g5332.t1
+2L      AUGUSTUS        intron  84278   87019   1       -       .       transcript_id "file_1_file_1_g5332.t1"; gene_id "file_1_file_1_g5332";
+2L      AUGUSTUS        CDS     87020   87026   0.88    -       0       transcript_id "file_1_file_1_g5332.t1"; gene_id "file_1_file_1_g5332";
+2L      AUGUSTUS        exon    87020   87026   .       -       .       transcript_id "file_1_file_1_g5332.t1"; gene_id "file_1_file_1_g5332";
+```
+
 #### Hint Files
-ToDo
+The hint files have to be in gff format, the last column must include an attribute for the source for the hint with 'src=' and the number of hints supporting the gene structure segment with 'mult='. This is the standard file format of the ```hintfiles.gff``` in a BRAKER working directory.
+Example:
+```console
+2L      ProtHint        intron  279806  279869  2       +       .       src=P;mult=25;pri=4;al_score=0.437399;
+2L      ProtHint        intron  275252  275318  2       -       .       src=P;mult=19;pri=4;al_score=0.430006;
+2L      ProtHint        stop    293000  293002  1       +       0       grp=7220_0:002b08_g42;src=C;pri=4;
+2L      ProtHint        intron  207632  207710  1       +       .       grp=7220_0:002afa_g26;src=C;pri=4;
+2L      ProtHint        start   207512  207514  1       +       0       grp=7220_0:002afa_g26;src=C;pri=4;
+```
+
 #### Configuration File
 ToDo
+
 ## Use Case
-PrEvCo is intended to be used together with BRAKER for creating a BRAKER-only prediciton supported by RNA-seq and homologous protein data, but it can be used together with any number (>1) of gene predicitons and hintfiles (>1) if they are in correct format.
+The recommended and most common usage for PrEvCo is to combine the resultingbraker.gtffiles of a BRAKER1 and a BRAKER2 run using thehintsfile.gff from both working directories. However, PrEvCo can be applied to any number (>1) of gene predictions and hint files as long as they are in the correct format. A common case might be that a user wants to annotate a novel genome with BRAKER and has:
 A typical case for running BRAKER and PrEvCo would be, if you have
-* a novel genome masked for repeats: ```genome.fasta.masked```,
+* a novel genome with repeats masked: ```genome.fasta.masked```,
 * hints for intron positions from RNA-seq reads```rna_seq_hints.gff```,
 * database of homologous proteins: ```proteins.tab```.
+
 1. Run BRAKER1 and BRAKER2 for example with
 ```console
 ### BRAKER1
