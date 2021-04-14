@@ -58,9 +58,11 @@ class Hintfile:
         # dictonary containing evidence
         # self.hints[chromosom_id] = [Hints()]
         self.hints = {}
+        self.src = set()
         self.read_file(path)
 
     def read_file(self, path):
+        # read a gff file with intron or start/stop codon hints
         with open(path, 'r') as file:
             hints_csv = csv.reader(file, delimiter='\t')
             for line in hints_csv:
@@ -70,16 +72,19 @@ class Hintfile:
                 if not new_hint.chr in self.hints.keys():
                     self.hints.update({new_hint.chr : []})
                 self.hints[new_hint.chr].append(new_hint)
+                self.src.add(new_hint.src)
 
 class Evidence:
     # data structure for hints
     def __init__(self):
         # hint_keys[chr][start_end_type_strand][src] = multiplicity
         self.hint_keys = {}
+        self.src = set()
 
     def add_hintfile(self, path_to_hintfile):
         # read hintfile
         hintfile = Hintfile(path_to_hintfile)
+        self.src = self.src.union(hintfile.src)
         for chr in hintfile.hints.keys():
             if chr not in self.hint_keys.keys():
                 self.hint_keys.update({chr : {}})

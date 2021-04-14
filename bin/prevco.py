@@ -19,8 +19,7 @@ graph = None
 out = ''
 v = 0
 quiet = False
-parameter = {'P' : 1, 'E' : 1, 'C' : 1,  'M' : 1, \
-    'intron_support' : 0, 'stasto_support' : 0, \
+parameter = {'intron_support' : 0, 'stasto_support' : 0, \
     'e_1' : 0, 'e_2' : 0, 'e_3' : 0, 'e_4' : 0}
 
 def main():
@@ -37,7 +36,7 @@ def main():
     from genome_anno import Anno
     from overlap_graph import Graph
     from evidence import Evidence
-    global anno, graph
+    global anno, graph, parameter
 
     args = parseCmd()
     init(args)
@@ -55,33 +54,37 @@ def main():
         anno[-1].norm_tx_format()
         c += 1
 
+    # read hintfiles
     evi = Evidence()
     for h in hintfiles:
         if not quiet:
-            print('### READING EVIDENCE')
+            sys.stderr.write('### READING EVIDENCE')
         evi.add_hintfile(h)
-
+    for src in evi.src:
+        if src not in parameter.keys():
+            sys.stderr.write('ConfigError: No weight for src={}, it is set to 1'.format(src))
+            parameter.update({src : 1})
     # detect overlapping transcripts
     # two transcript overlap, if there is overlap in the cds
     graph = Graph(anno, para=parameter, verbose=v)
     if not quiet:
-        print('### BUILD OVERLAP GRAPH')
+        sys.stderr.write('### BUILD OVERLAP GRAPH')
     graph.build()
 
     # add features
     if not quiet:
-        print('### ADD FEATURES')
+        sys.stderr.write('### ADD FEATURES')
     graph.add_node_features(evi)
 
     # apply decision rule to exclude a set of transcripts
     if not quiet:
-        print('### APPLY DECISION RULE')
+        sys.stderr.write('### APPLY DECISION RULE')
     combined_prediction = graph.get_decided_graph()
 
     if v > 0:
-        print(combined_prediction.keys())
+        sys.stderr.write(combined_prediction.keys())
         for a in anno:
-            print('Numb_tx in {}: {}'.format(a.id, len(combined_prediction[a.id])))
+            sys.stderr.write('Numb_tx in {}: {}'.format(a.id, len(combined_prediction[a.id])))
 
     # write result to output file
     combined_gtf = []
