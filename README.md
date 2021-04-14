@@ -19,7 +19,7 @@ PrEvCo is intended to be used together with BRAKER for creating a BRAKER-only pr
 A typical case for running BRAKER and PrEvCo would be, if you have
 * ```genome.fasta.masked```: a novel genome masked for repeats,
 * ```rna_seq_hints.gff```: intron position evidence from RNA-seq reads,
-* ```protein_database.tab```: database of homologous proteins.
+* ```proteins.tab```: database of homologous proteins.
 1. Run BRAKER1 and BRAKER2 for example with
 ```console
 ### BRAKER1
