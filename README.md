@@ -22,7 +22,7 @@ ToDo
 #### Configuration File
 ToDo
 ## Use Case
-PrEvCo is intended to be used together with BRAKER for creating a BRAKER-only prediciton supported by RNA-seq and homologous protein data.
+PrEvCo is intended to be used together with BRAKER for creating a BRAKER-only prediciton supported by RNA-seq and homologous protein data, but it can be used together with any number (>1) of gene predicitons and hintfiles (>1) if they are in correct format.
 A typical case for running BRAKER and PrEvCo would be, if you have
 * a novel genome masked for repeats: ```genome.fasta.masked```,
 * hints for intron positions from RNA-seq reads```rna_seq_hints.gff```,
