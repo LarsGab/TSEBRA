@@ -1,27 +1,27 @@
-# PrEvCo: gene Predcition and extrinsic Evidence Combiner tool
+# <ins>PrEvCo<\ins>: Gene Predcition and Extrinsic Evidence Combiner Tool
 ### Introduction
 PrEvCo is a combiner tool that combines gene predictions based on the support by extrisic evidence in form of introns and start/stop codons. It was developed to combine BRAKER1 and BRAKER2 predicitons to increase their accuracy.
 
-### Prerequisites
+## Prerequisites
 Python 3.5.2 or higher is required.
 
-### Installation
+## Installation
 Download PrEvCo with 
 ```console
 git clone ToDo: ENTER LINK 
 ```
 
-### Usage
+## Usage
 The main script is ```./bin/prevco.py```. For usage information run ```./bin/prevco.py --help```.
 
-### Input Files
-#### Gene Predictions 
+## Input Files
+### Gene Predictions 
 ToDo
-#### Hint Files
+### Hint Files
 ToDo
-#### Configuration File
+### Configuration File
 ToDo
-### Use Case
+## Use Case
 PrEvCo is intended to be used together with BRAKER for creating a BRAKER-only prediciton supported by RNA-seq and homologous protein data.
 A typical case for running BRAKER and PrEvCo would be, if you have
 * ```genome.fasta.masked```: a novel genome masked for repeats,
@@ -51,9 +51,9 @@ braker.pl --genome=genome.fasta.masked --prot_seq=proteins.tab \
 ```
 The combined gene prediciton is ```braker1+2_combined.gtf```.
 
-### Example
+## Example
 A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example check if PrEvCo runs properly. 
 
-### Reference
+## Reference
 ToDo
 
