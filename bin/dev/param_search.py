@@ -4,13 +4,13 @@ import subprocess as sp
 import os
 import multiprocessing as mp
 
-species = 'Drosophila_melanogaster'
+species = 'Arabidopsis_thaliana'
 t_setting = 'family_excluded'
 pref = '2'
 default_sw = ['0.1', '10', '5', '1']
 default_support = ['0.75', '1']
-default_epsilon = ['0', '0.5', '25', '0', '0']
-label = ['P', 'E', 'C', 'M', 'intron_support', 'stasto_support', 'e_1', 'e_2', 'e_3', 'e_4', 'e_5']
+default_epsilon = ['0', '0.5', '25', '0']
+label = ['P', 'E', 'C', 'M', 'intron_support', 'stasto_support', 'e_1', 'e_2', 'e_3', 'e_4']
 prevco = ''
 braker = ''
 hints = ''
@@ -25,7 +25,8 @@ def main():
     hints = '{}/{}/braker1/hintsfile.gff'.format(args.data, species)
     hints += ',{}/{}/braker2/{}/hintsfile.gff'.format(args.data, species, t_setting)
     anno = '{}/{}/anno'.format(args.data, species)
-
+    if not os.path.exists(args.out):
+        os.mkdir(args.out)
 
     if args.mode == 1:
         para_level_sw = ['0', '0.1', '0.5', '1', '5', '10', '20', '50']
@@ -55,7 +56,7 @@ def main():
         para_level_epsi = [['0', '0.01', '0.1', '0.2', '0.3', '0.5'], \
                             ['0', '5', '10', '25', '50'], ['0']]
         para_list = list(itertools.product(para_level_epsi[0], para_level_epsi[0], \
-            para_level_epsi[1], para_level_epsi[1], para_level_epsi[2]))
+            para_level_epsi[1], para_level_epsi[1]))
         for para in para_list:
             id = '_'.join(para)
             path = args.out + '/' + id
@@ -76,10 +77,10 @@ def main():
 
 
 def job(p):
-    cmd = '{}/bin/prevco.py -c {}/para.cfg -g {} -e {} -q -p {} -o {}/combined.gtf'.format(prevco, p, braker, hints, pref, p)
+    cmd = '{}/bin/prevco.py -c {}/para.cfg -g {} -e {} -q -o {}/combined.gtf'.format(prevco, p, braker, hints, p)
     print(cmd)
     sp.call(cmd, shell=True)
-    cmd = "{}/bin/dev/compute_accuracies.sh {}/annot.gtf {}/pseudo.gff3 {}/combined.gtf gene trans cds".\
+    cmd = "{}/bin/dev/compute_accuracies.sh {}/annot.gtf {}/pseudo.gff3 {}/combined.gtf trans cds".\
         format(prevco, anno, anno, p)
     print(cmd)
     q = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
@@ -92,7 +93,7 @@ def job(p):
     accuracies = [s.split('\t') for s in stdout.split('\n') if s]
     txt = [a[1] for a in accuracies]
     txt = list(map(float, txt))
-    summary = str(sum(txt[2:])/4)
+    summary = str((txt[2]*txt[3])/(txt[2]+txt[3]) + (txt[0]*txt[1])/(txt[0]+txt[1]))
     with open('{}/summary_eval.out'.format(p), 'w+') as file:
         file.write(summary)
 

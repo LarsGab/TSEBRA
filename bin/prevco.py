@@ -7,6 +7,7 @@
 import argparse
 import sys
 import os
+import csv
 
 class ConfigFileError(Exception):
     pass
@@ -16,12 +17,11 @@ anno = []
 hintfiles = []
 graph = None
 out = ''
-#pref = ''
 v = 0
 quiet = False
-parameter = {'P' : 0, 'E' : 0, 'C' : 0,  'M' : 0, \
+parameter = {'P' : 1, 'E' : 1, 'C' : 1,  'M' : 1, \
     'intron_support' : 0, 'stasto_support' : 0, \
-    'e_1' : 0, 'e_2' : 0, 'e_3' : 0, 'e_4' : 0}#, 'e_5' : 0}
+    'e_1' : 0, 'e_2' : 0, 'e_3' : 0, 'e_4' : 0}
 
 def main():
     '''
@@ -63,7 +63,6 @@ def main():
 
     # detect overlapping transcripts
     # two transcript overlap, if there is overlap in the cds
-    #graph = Graph(anno, anno_pref=pref, para=parameter, verbose=v)
     graph = Graph(anno, para=parameter, verbose=v)
     if not quiet:
         print('### BUILD OVERLAP GRAPH')
@@ -78,7 +77,6 @@ def main():
     if not quiet:
         print('### APPLY DECISION RULE')
     combined_prediction = graph.get_decided_graph()
-    combined_gtf = ''
 
     if v > 0:
         print(combined_prediction.keys())
@@ -86,28 +84,26 @@ def main():
             print('Numb_tx in {}: {}'.format(a.id, len(combined_prediction[a.id])))
 
     # write result to output file
+    combined_gtf = []
     for a in anno:
         combined_gtf += a.get_subset_gtf(combined_prediction[a.id])
-        combined_gtf += '\n'
-    combined_gtf = combined_gtf.strip('\n')
     with open(out, 'w+') as file:
-        file.write(combined_gtf)
+        out_writer = csv.writer(file, delimiter='\t', quotechar = "'")
+        for line in combined_gtf:
+            out_writer.writerow(line)
 
 def set_parameter(cfg_file):
     global parameter
     with open(cfg_file, 'r') as file:
-        for line in file.readlines():
-            line = line.strip('\n')
-            if not line:
-                continue
-            if not line[0] == '#':
-                line = line.split(' ')
+        cfg = csv.reader(file, delimiter=' ')
+        for line in cfg:
+            if not line[0][0] == '#':
                 if line[0] not in parameter.keys():
-                    raise ConfigFileError('{} is not a valid parameter.'.format(line[0]))
+                    parameter.update({line[0] : None})
                 parameter[line[0]] = float(line[1])
 
 def init(args):
-    global gtf, hintfiles, threads, hint_source_weight, out, v, quiet#, pref
+    global gtf, hintfiles, threads, hint_source_weight, out, v, quiet
     if args.gtf:
         gtf = args.gtf.split(',')
     if args.hintfiles:
@@ -121,8 +117,6 @@ def init(args):
         out = args.out
     if args.verbose:
         v = args.verbose
-    #if args.pref:
-        #pref = 'anno{}'.format(args.pref)
     if args.quiet:
         quiet = True
 
@@ -137,8 +131,6 @@ def parseCmd():
         help='List of parameter settings, if not set default parameters are used.')
     parser.add_argument('-v', '--verbose', type=int,
         help='')
-    #parser.add_argument('-p', '--pref', type=int, required=True,
-        #help='Index (>=1) of the preferred gene prediction source file in the gene prediciton list.')
     parser.add_argument('-g', '--gtf', type=str, required=True,
         help='List (separated by commas) of gene prediciton files in gtf .\n(gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
     parser.add_argument('-e', '--hintfiles', type=str, required=True,

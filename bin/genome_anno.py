@@ -2,11 +2,12 @@
 # ==============================================================
 # Lars Gabriel
 #
-# Data structure for a genome annotation file
+# genome_anno.py: Handles the data structure for a genome annotation file
 # ==============================================================
+
 import os
-import multiprocessing as mp
 import sys
+import csv
 
 class NotGtfFormat(Exception):
     pass
@@ -17,6 +18,7 @@ class Transcript:
         self.id = id
         self.chr = chr
         self.gene_id = gene_id
+        # self.transcript_lines[segment_type] = [lines of segment type]
         self.transcript_lines = {}
         self.gtf = []
         self.source_anno = source_anno
@@ -28,16 +30,20 @@ class Transcript:
     def add_line(self, line):
         # add a single line from the gtf file to the transcript
         if not (line[0] == self.chr or line[6] == self.strand):
-            raise NotGtfFormat('File is not in gtf format. Error in line {}\n'.format('\t'.join(map(str, line)))
+            raise NotGtfFormat('File is not in gtf format. ' \
+                + 'Error in line {}\n'.format('\t'.join(map(str, line)))
                 + 'Transcript ID is not unique')
+
         if line[2] not in self.transcript_lines.keys():
             self.transcript_lines.update({line[2] : []})
+
         line[3] = int(line[3])
         line[4] = int(line[4])
         if self.start < 0 or line[3] < self.start:
             self.start = line[3]
         if self.end < 0 or line[4] > self.end:
             self.end = line[4]
+
         self.transcript_lines[line[2]].append(line)
 
     def get_cds_coords(self):
@@ -66,8 +72,6 @@ class Transcript:
 
     def check_cds_exons(self):
         # check if tx has cds or exon
-        #if 'CDS' not in self.transcript_lines.keys() and 'exon' not in self.transcript_lines.keys():
-            #raise NotGtfFormat('No CDS nor exons in {}'.format(self.id))
         if 'CDS' not in self.transcript_lines.keys() and 'exon' not in self.transcript_lines.keys():
             sys.stderr.write('Skipping transcript {}, no CDS nor exons in {}\n'.format(self.id, self.id))
             return False
@@ -78,10 +82,10 @@ class Transcript:
         if not 'intron' in self.transcript_lines.keys():
             self.transcript_lines.update({'intron' : []})
             key = ''
-            if 'exon' in self.transcript_lines.keys():
-                key = 'exon'
-            elif 'CDS' in self.transcript_lines.keys():
+            if 'CDS' in self.transcript_lines.keys():
                 key = 'CDS'
+            elif 'exon' in self.transcript_lines.keys():
+                key = 'exon'
             if key:
                 exon_lst = []
                 for line in self.transcript_lines[key]:
@@ -157,8 +161,7 @@ class Transcript:
                         prefix + self.id, g_id)
                 gtf.append(g)
         gtf = sorted(gtf, key=lambda g:g[3])
-        gtf = ['\t'.join(list(map(str, g))) for g in gtf]
-        return('\n'.join(gtf))
+        return gtf
 
 class Anno:
     # data structures and methods for one genome annotation file
@@ -171,22 +174,20 @@ class Anno:
 
     def addGtf(self):
         with open (self.path, 'r') as file:
-            file_lines = file.readlines()
-        for line in file_lines:
-            if not (line[0] == '#' or line == '\n'):
-                line = line.strip('\n').split('\t')
+            file_lines = csv.reader(file, delimiter='\t')
+            for line in file_lines:
+                if line[0][0] ==  '#':
+                    continue
                 line[3] = int(line[3])
                 line[4] = int(line[4])
                 if line[2] == 'gene':
-                    #continue
                     gene_id = line[8]
                     self.genes_update(gene_id)
                     if not gene_id in self.gene_gtf.keys():
                         self.gene_gtf.update({gene_id : line})
                     else:
-                        print('ERROR, gene_id not unique: {}'.format(gene_id))
+                        sys.stderr.write('ERROR, gene_id not unique: {}'.format(gene_id))
                 elif line[2] == 'transcript':
-                    #continue
                     transcript_id = line[8]
                     gene_id = transcript_id.split('.')[0]
                     self.transcript_update(transcript_id, gene_id, line[0], line[6])
@@ -242,21 +243,21 @@ class Anno:
 
     def get_gtf(self):
         # get annotaion file as gtf string
-        gtf = ''
+        gtf = []
         for k in self.genes.keys():
             if k in self.gene_gtf.keys():
-                gtf += '\t'.join(map(str, self.gene_gtf[k])) + '\n'
+                gtf.append(self.gene_gtf[k])
+                #gtf += '\t'.join(map(str, self.gene_gtf[k])) + '\n'
             for t_id in self.genes[k]:
-                gtf += self.transcripts[t_id].get_gtf() + '\n'
-        return gtf.strip('\n')
+                gtf += self.transcripts[t_id].get_gtf()
+        return gtf
 
     def get_subset_gtf(self, tx_list):
         # return string in gtf for tx in tx_list
-        gtf = ''
+        gtf = []
         for tx in tx_list:
-            gtf += self.transcripts[tx[0]].get_gtf(self.id, tx[1]) + '\n'
-        return gtf.strip('\n')
-
+            gtf += self.transcripts[tx[0]].get_gtf(self.id, tx[1])
+        return gtf
 
     def change_id(self, new_id):
         # change annotation file id

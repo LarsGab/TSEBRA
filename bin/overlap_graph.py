@@ -29,8 +29,7 @@ class Node:
         self.evi_support = False
 
 class Graph:
-    #def __init__(self, genome_anno_lst, para=[1,1,1,1,0,0,0,0,0,0,0], anno_pref='anno1', verbose=0):
-    def __init__(self, genome_anno_lst, para=[1,1,1,1,0,0,0,0,0,0], verbose=0):
+    def __init__(self, genome_anno_lst, para, verbose=0):
 
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}
@@ -40,9 +39,6 @@ class Graph:
 
         # self.anno[annoid] = Anno()
         self.anno = {}
-
-        # preferred annotation source
-        #self.anno_pref = anno_pref
 
         # list of connected graph components
         self.component_list = []
@@ -55,7 +51,7 @@ class Graph:
 
         # variables for verbose mode
         self.v = verbose
-        self.f = [[],[],[],[],[],[],[]]
+        self.f = [[],[],[],[]]
         self.ties = 0
 
         # parameters for decision rule
@@ -89,11 +85,7 @@ class Graph:
         tx_start_end = {}
         # used to check for duplicate txs, list of ['start_end_strand']
         unique_tx_keys = {}
-        '''
-        anno_keys = [k for k in self.anno.keys() if not k == self.anno_pref]
-        if self.anno_pref in self.anno.keys():
-            anno_keys = [self.anno_pref] + anno_keys
-        '''
+
         for k in self.anno.keys():
             for tx in self.anno[k].get_transcript_list():
                 if tx.chr not in tx_start_end.keys():
@@ -185,7 +177,7 @@ class Graph:
     def add_node_features(self, evi):
         for key in self.nodes.keys():
             tx = self.__tx_from_key__(key)
-            new_node_feature = Node_features(tx, evi, self.para)# self.anno_pref, self.para)
+            new_node_feature = Node_features(tx, evi, self.para)
             self.nodes[key].feature_vector = new_node_feature.get_features()
             if self.nodes[key].feature_vector[0] >= self.para['intron_support'] \
                 or self.nodes[key].feature_vector[1] >= self.para['stasto_support']:
@@ -246,6 +238,7 @@ class Graph:
             if self.nodes[node].evi_support:
                 anno_id, tx_id = node.split(';')
                 result[anno_id].append([tx_id, self.nodes[node].component_id])
+
         if self.v > 0:
             print('NODES: {}'.format(len(self.nodes.keys())))
             f = list(map(set, self.f))
@@ -259,13 +252,5 @@ class Graph:
             u = u.union(f[2])
             print('f4: {}'.format(len(f[3])))
             print('f4/f3/f2/f1: {}'.format(len(f[3].difference(u))))
-            u = u.union(f[3])
-            print('f5: {}'.format(len(f[4])))
-            print('f5/f4/f3/f2/f1: {}'.format(len(f[4].difference(u))))
-            u = u.union(f[4])
-            print('f6: {}'.format(len(f[5])))
-            print('f6/...: {}'.format(len(f[5].difference(u))))
-            u = u.union(f[5])
-            print('f7: {}'.format(len(f[6])))
-            print('f7/...: {}'.format(len(f[6].difference(u))))
+
         return result
