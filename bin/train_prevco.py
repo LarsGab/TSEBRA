@@ -21,7 +21,6 @@ pseudo = ''
 threads = mp.cpu_count()
 hintfiles = []
 workdir = ''
-pref = ''
 eval_level = ['trans', 'cds']
 quiet = False
 top_para = []
@@ -30,7 +29,7 @@ parameter = {'P' : 0, 'E' : 0, 'C' : 0,  'M' : 0, \
     'intron_support' : 0, 'stasto_support' : 0, \
     'e_1' : 0, 'e_2' : 0, 'e_3' : 0, 'e_4' : 0, 'e_5' : 0}
 para_label = ['P', 'E', 'C', 'M', 'intron_support', 'stasto_support', \
-    'e_1', 'e_2', 'e_3', 'e_4', 'e_5']
+    'e_1', 'e_2', 'e_3', 'e_4']
 def main():
     from genome_anno import Anno
     from overlap_graph import Graph
@@ -53,7 +52,7 @@ def main():
 
     # detect overlapping transcripts
     # two transcript overlap, if there is overlap in the cds
-    graph = Graph(anno, anno_pref=pref, verbose=0)
+    graph = Graph(anno, {}, verbose=0)
     graph.build()
     no_epsi_train(graph, evi, anno)
     #grouped_para_train(graph, evi, anno)
@@ -87,7 +86,7 @@ def grouped_para_train(graph, evi, anno):
     para_level_sw = [0,1,5,10]
     para_level_supp = [[0, 0.5, 1], [0, 0.5, 1]]
     para_level_epsi = [[0, 0.1, 0.5], \
-                        [0, 1, 2, 3], [0, 1]]
+                        [0, 1, 2, 3]]
     leng = 0
     default = [[1,1,0,0], [0,0], [0,0,0,0,0]]
     for i in range(1, 6):
@@ -110,7 +109,7 @@ def grouped_para_train(graph, evi, anno):
 
 
         new_para = list(itertools.product(para_level_epsi[0], para_level_epsi[0], \
-            para_level_epsi[1], para_level_epsi[1], para_level_epsi[2]))
+            para_level_epsi[1], para_level_epsi[1]))
         para_list = [default[0] + default[1] + list(p) for p in new_para]
         print(len(para_list))
         leng += len(para_list)
@@ -154,7 +153,8 @@ def collector(r):
         top_para[0] = r
         top_para = sorted(top_para, key=lambda t:t[1])
 
-def job(p, graph, evi, anno):
+def job(p, g, evi, anno):
+    graph = copy.deepcopy(g)
     for i in range(0, len(para_label)):
         parameter[para_label[i]] = p[i]
     graph.para = parameter
@@ -177,9 +177,6 @@ def job(p, graph, evi, anno):
         if stderr.decode():
             raise EvalError(stderr.decode())
         f1_score += 1/2 * float(stdout.decode().strip('\n'))
-    del graph
-    del evi
-    del anno
     cmd = 'rm {}'.format(combined_gtf_path)
     sp.call(cmd, shell=True)
     return ['_'.join(map(str, p)), f1_score]
@@ -200,8 +197,6 @@ def init(args):
         workdir = args.workdir
         if not os.path.exists(workdir):
             os.mkdir(workdir)
-    if args.pref:
-        pref = 'anno{}'.format(args.pref)
     if args.quiet:
         quiet = True
 
@@ -212,8 +207,6 @@ def parseCmd():
         dictionary: Dictionary with arguments
     """
     parser = argparse.ArgumentParser(description='PrEvCo: gene Predcition and extrinsic Evidence Combiner')
-    parser.add_argument('-p', '--pref', type=int, required=True,
-        help='Index (>=1) of the preferred gene prediction source file in the gene prediciton list.')
     parser.add_argument('-g', '--gtf', type=str, required=True,
         help='List (separated by commas) of gene prediciton files in gtf .\n(gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
     parser.add_argument('-e', '--hintfiles', type=str, required=True,
