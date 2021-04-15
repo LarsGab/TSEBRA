@@ -30,7 +30,7 @@ Example:
 ```
 
 #### Hint Files
-The hint files have to be in gff format, the last column must include an attribute for the source for the hint with 'src=' and the number of hints supporting the gene structure segment with 'mult='. This is the standard file format of the ```hintfiles.gff``` in a BRAKER working directory.
+The hint files have to be in gff format, the last column must include an attribute for the source for the hint with 'src=' and can include the number of hints supporting the gene structure segment with 'mult='. This is the standard file format of the ```hintfiles.gff``` in a BRAKER working directory.
 
 Example:
 ```console
