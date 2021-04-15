@@ -112,7 +112,7 @@ class Transcript:
                     if line[4] > self.end:
                         self.end = line[4]
             tx_line = [self.chr, line[1], 'transcript', self.start, self.end, \
-            '0', line[6], '.', self.id]
+            '.', line[6], '.', self.id]
             self.add_line(tx_line)
 
     def find_start_stop_codon(self):

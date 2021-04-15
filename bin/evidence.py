@@ -15,7 +15,7 @@ class AttributeMissing(Exception):
 class Hint:
     # data structure for one hint
     def __init__(self, line):
-        # currently hints are in form of introns, start/stop codons used
+        # currently hints are used in form of introns, start/stop codons
         if not len(line) == 9:
             raise NotGtfFormat('File not in gtf Format. Error at line: {}'.format(line))
         self.chr, self.source_program, self.type, self.start, self.end, \

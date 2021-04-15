@@ -2,6 +2,7 @@
 import os
 import sys
 import pytest
+import csv
 
 sys.path.append('/home/lars/work/prevco/bin')
 
@@ -13,7 +14,7 @@ anno1 = testDir + '/genome_anno/anno1.gtf'
 anno_format_error = testDir + '/genome_anno/format_error.gtf'
 anno_missing_gid = testDir + '/genome_anno/missing_gid.gtf'
 tx1 = testDir + '/genome_anno/tx1.gtf'
-tx1_args = ('tx1', 'g.tx1', '3L', 'GeneMark.hmm')
+tx1_args = ('tx1', 'g.tx1', '3L', 'GeneMark.hmm', '-')
 
 @pytest.fixture
 def transcript():
@@ -23,8 +24,8 @@ def transcript():
 def file_tx1():
     result = []
     with open(tx1, 'r') as file:
-        for line in file.readlines():
-            line = line.strip('\n').split('\t')
+        file_tab = csv.reader(file, delimiter='\t')
+        for line in file_tab:
             result.append(line)
     return result
 
@@ -32,8 +33,8 @@ def file_tx1():
 def file_anno1():
     result = []
     with open(anno1, 'r') as file:
-        for line in file.readlines():
-            line = line.strip('\n')
+        file_tab = csv.reader(file, delimiter='\t')
+        for line in file_tab:
             result.append(line)
     return result
 
@@ -66,23 +67,25 @@ def test_transcript_add_lines(transcript_tx1, file_tx1):
 
 def test_transcript_find_lines(transcript_tx1):
     missing = {"intron" : [['3L', 'GeneMark.hmm', 'intron', 18462541, 18462718, \
-            '0', '-', '.', \
+            '.', '-', '0', \
             'gene_id "g.tx1"; transcript_id "tx1";']], \
         "start_codon" : [['3L', 'GeneMark.hmm', 'start_codon', 18463066, 18463068, \
             '.', '-', '.', 'gene_id "g.tx1"; transcript_id "tx1";']], \
         "transcript" : [['3L', 'GeneMark.hmm', 'transcript', 18462228, 18463068, \
-            '0', '-', '.', 'tx1']]}
+            '.', '-', '.', 'tx1']]}
     transcript_tx1.add_missing_lines()
     for key in missing.keys():
         for line in missing[key]:
             assert line in transcript_tx1.transcript_lines[key]
 
 def test_anno_read_file(anno_anno1, file_anno1):
-    gtf_anno = anno_anno1.get_gtf().split('\n')
-    gtf_anno = [g.split('\t')[:8] for g in gtf_anno]
-    file_anno1 = [f.split('\t')[:8] for f in file_anno1]
+    gtf_anno = anno_anno1.get_gtf()
+    gtf_anno = [list(map(str, g[:8])) for g in gtf_anno]
+    file_anno1 = [f[:8] for f in file_anno1]
     assert len(gtf_anno) == len(file_anno1)
     for line in file_anno1:
+        print(line)
+        print(gtf_anno)
         assert line in gtf_anno
 
 def test_format_error():
@@ -93,9 +96,9 @@ def test_format_error():
 def test_missing_gid(file_anno1):
     anno = Anno(anno_missing_gid, 'anno1')
     anno.addGtf()
-    gtf_anno = anno.get_gtf().split('\n')
-    gtf_anno = [g.split('\t')[:8] for g in gtf_anno]
-    file_anno1 = [f.split('\t')[:8] for f in file_anno1]
+    gtf_anno = anno.get_gtf()
+    gtf_anno = [list(map(str, g[:8])) for g in gtf_anno]
+    file_anno1 = [f[:8] for f in file_anno1]
     assert len(gtf_anno) == len(file_anno1)
     for line in gtf_anno:
         assert line in file_anno1
