@@ -70,7 +70,7 @@ The recommended and most common usage for PrEvCo is to combine the resultingbrak
 A typical case for running BRAKER and PrEvCo would be, if you have
 * a novel genome with repeats masked: ```genome.fasta.masked```,
 * hints for intron positions from RNA-seq reads```rna_seq_hints.gff```,
-* database of homologous proteins: ```proteins.tab```.
+* database of homologous proteins: ```proteins.fa```.
 
 1. Run BRAKER1 and BRAKER2 for example with
 ```console
@@ -79,7 +79,7 @@ braker.pl --genome=genome.fasta.masked --hints=rna_seq_hints.gff \
             --softmasking --species=species_name --workingdir=braker1_out
     
 ### BRAKER2
-braker.pl --genome=genome.fasta.masked --prot_seq=proteins.tab \ 
+braker.pl --genome=genome.fasta.masked --prot_seq=proteins.fa \ 
     --softmasking --species=species_name --epmode --prg=ph \ 
     --workingdir=braker2_out
 ```
