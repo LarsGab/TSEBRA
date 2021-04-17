@@ -2,11 +2,11 @@ import sys
 import os
 import pytest
 import csv
-sys.path.append('/home/lars/work/prevco/bin')
-
-from evidence import NotGtfFormat, AttributeMissing, Hint, Evidence
 
 testDir = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(testDir + '/../bin/')
+
+from evidence import NotGtfFormat, AttributeMissing, Hint, Evidence
 
 @pytest.fixture
 def hints1():

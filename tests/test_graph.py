@@ -3,13 +3,13 @@ import os
 import sys
 import pytest
 
-sys.path.append('/home/lars/work/prevco/bin')
+testDir = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(testDir + '/../bin/')
 
 from genome_anno import Anno
 from overlap_graph import Graph, Node
 from evidence import Hintfile
 
-testDir = os.path.abspath(os.path.dirname(__file__))
 example_files = testDir + '/graph/'
 
 def compare_lists(list1, list2):

@@ -4,12 +4,11 @@ import sys
 import pytest
 import csv
 
-sys.path.append('/home/lars/work/prevco/bin')
+testDir = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(testDir + '/../bin/')
 
 from genome_anno import Transcript, Anno, NotGtfFormat
 
-
-testDir = os.path.abspath(os.path.dirname(__file__))
 anno1 = testDir + '/genome_anno/anno1.gtf'
 anno_format_error = testDir + '/genome_anno/format_error.gtf'
 anno_missing_gid = testDir + '/genome_anno/missing_gid.gtf'

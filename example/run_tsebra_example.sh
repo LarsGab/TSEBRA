@@ -9,7 +9,7 @@ h1=$c/braker1_results/hintsfile.gff
 h2=$c/braker2_results/hintsfile.gff
 
 # create working directory
-d=$c/prevco_workdir/
+d=$c/tsebra_workdir/
 mkdir -p $d
 
 # Make sure that the transcript IDs of the BRAKER predicitons are in order
@@ -19,8 +19,8 @@ echo "\n*** Fix possible ID errors in *.gtf files ***\n"
 
 new_b1=$d/braker1.gtf
 new_b2=$d/braker2.gtf
-python3 $c/../bin/dev/fix_gtf_id_error.py --gtf $b1 --out $new_b1
-python3 $c/../bin/dev/fix_gtf_id_error.py --gtf $b2 --out $new_b2
+$c/../bin/fix_gtf_ids.py --gtf $b1 --out $new_b1
+$c/../bin/fix_gtf_ids.py --gtf $b2 --out $new_b2
 b1=$new_b1
 b2=$new_b2
 
@@ -30,6 +30,6 @@ o=$d/braker1+2.gtf
 
 echo "*** Running PrEvCo ***\n"
 
-$c/../bin/prevco.py -g $b1,$b2 -c $c/../config/para1.cfg -e $h1,$h2 -o $o
+$c/../bin/tsebra.py -g $b1,$b2 -c $c/../config/default.cfg -e $h1,$h2 -o $o
 
 echo "\n*** Finished. Result at: $o ***\n"

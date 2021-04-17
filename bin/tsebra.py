@@ -48,7 +48,7 @@ def main():
     c = 1
     for g in gtf:
         if not quiet:
-            print('### READING GTF')
+            sys.stderr.write('### READING GTF\n')
         anno.append(Anno(g, 'anno{}'.format(c)))
         anno[-1].addGtf()
         anno[-1].norm_tx_format()
@@ -58,7 +58,7 @@ def main():
     evi = Evidence()
     for h in hintfiles:
         if not quiet:
-            sys.stderr.write('### READING EVIDENCE')
+            sys.stderr.write('### READING EVIDENCE\n')
         evi.add_hintfile(h)
     for src in evi.src:
         if src not in parameter.keys():
@@ -68,23 +68,23 @@ def main():
     # two transcript overlap, if there is overlap in the cds
     graph = Graph(anno, para=parameter, verbose=v)
     if not quiet:
-        sys.stderr.write('### BUILD OVERLAP GRAPH')
+        sys.stderr.write('### BUILD OVERLAP GRAPH\n')
     graph.build()
 
     # add features
     if not quiet:
-        sys.stderr.write('### ADD FEATURES')
+        sys.stderr.write('### ADD FEATURES\n')
     graph.add_node_features(evi)
 
     # apply decision rule to exclude a set of transcripts
     if not quiet:
-        sys.stderr.write('### APPLY DECISION RULE')
+        sys.stderr.write('### APPLY DECISION RULE\n')
     combined_prediction = graph.get_decided_graph()
 
     if v > 0:
         sys.stderr.write(combined_prediction.keys())
         for a in anno:
-            sys.stderr.write('Numb_tx in {}: {}'.format(a.id, len(combined_prediction[a.id])))
+            sys.stderr.write('Numb_tx in {}: {}\n'.format(a.id, len(combined_prediction[a.id])))
 
     # write result to output file
     combined_gtf = []
