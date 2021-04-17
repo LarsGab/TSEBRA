@@ -66,8 +66,7 @@ e_4 10
 
 
 ## Use Case
-The recommended and most common usage for TSEBRA is to combine the resultingbraker.gtffiles of a BRAKER1 and a BRAKER2 run using thehintsfile.gff from both working directories. However, TSEBRA can be applied to any number (>1) of gene predictions and hint files as long as they are in the correct format. A common case might be that a user wants to annotate a novel genome with BRAKER and has:
-A typical case for running BRAKER and TSEBRA would be, if you have
+The recommended and most common usage for TSEBRA is to combine the resulting ```braker.gtf``` files of a BRAKER1 and a BRAKER2 run using the hintsfile.gff from both working directories. However, TSEBRA can be applied to any number (>1) of gene predictions and hint files as long as they are in the correct format. A common case might be that a user wants to annotate a novel genome with BRAKER and has:
 * a novel genome with repeats masked: ```genome.fasta.masked```,
 * hints for intron positions from RNA-seq reads```rna_seq_hints.gff```,
 * database of homologous proteins: ```proteins.fa```.
