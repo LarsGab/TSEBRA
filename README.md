@@ -1,6 +1,6 @@
 # TSEBRA: Transcript Selector for BRAKER
 ### Introduction
-TSEBRA is a combiner tool that selects transcripts from gene predictions based on the support by extrisic evidence in form of introns and start/stop codons. It was developed to combine BRAKER1<sup name="a1">[1](#ref1)</sup> and BRAKER2<sup name="a2">[2](#ref2)</sup> predicitons to increase their accuracy.
+TSEBRA is a combiner tool that selects transcripts from gene predictions based on the support by extrisic evidence in form of introns and start/stop codons. It was developed to combine BRAKER1<sup name="a1">[1](#ref1)</sup> and BRAKER2<sup name="a2">[2](#ref2)</sup> predicitons to increase their accuracies.
 
 ## Prerequisites
 Python 3.5.2 or higher is required.
@@ -18,7 +18,7 @@ The main script is ```./bin/prevco.py```. For usage information run ```./bin/pre
 TSEBRA needs a list of gene prediciton files, a list of hintfiles and a configuration file as input.
 
 #### Gene Predictions 
-The gene prediction files needs to be in gtf format. This is the standard output format of a BRAKER or AUGUSTUS gene prediciton.
+The gene prediction files needs to be in gtf format. This is the standard output format of a BRAKER or AUGUSTUS<sup name="a3">[3,](#ref3)</sup><sup name="a4">[4](#ref4)</sup> gene prediciton.
 
 Example:
 ```console
@@ -104,4 +104,6 @@ A small example is located at ```example/```. Run ```./example/run_prevco_exampl
 
 <b id="ref2">[2]</b> Tomas Bruna, Katharina J. Hoff, Alexandre Lomsadze, Mario Stanke and Mark Borodvsky. 2021. “BRAKER2: automatic eukaryotic genome annotation with GeneMark-EP+ and AUGUSTUS supported by a protein database." *NAR Genomics and Bioinformatics* 3(1):lqaa108.[↑](#a2)
 
+<b id="ref3">[3]</b> Stanke, Mario, Mark Diekhans, Robert Baertsch, and David Haussler. 2008. “Using Native and Syntenically Mapped cDNA Alignments to Improve de Novo Gene Finding.” *Bioinformatics* 24 (5). Oxford University Press: 637--44.[↑](#a3)
 
+<b id="ref4">[4]</b> Stanke, Mario, Oliver Schöffmann, Burkhard Morgenstern, and Stephan Waack. 2006. “Gene Prediction in Eukaryotes with a Generalized Hidden Markov Model That Uses Hints from External Sources.” *BMC Bioinformatics* 7 (1). BioMed Central: 62.[↑](#a4)
