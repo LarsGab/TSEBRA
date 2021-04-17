@@ -131,17 +131,17 @@ def parseCmd():
     """
     parser = argparse.ArgumentParser(description='PrEvCo: gene Predcition and extrinsic Evidence Combiner')
     parser.add_argument('-c', '--cfg', type=str,
-        help='List of parameter settings, if not set default parameters are used.')
+        help='Configuration file that sets the parameter for TSEBRA. You can find the recommended parameter at config/default.cfg.')
     parser.add_argument('-v', '--verbose', type=int,
         help='')
     parser.add_argument('-g', '--gtf', type=str, required=True,
-        help='List (separated by commas) of gene prediciton files in gtf .\n(gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
+        help='List (separated by commas) of gene prediciton files in gtf .\n(e.g. gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
     parser.add_argument('-e', '--hintfiles', type=str, required=True,
-        help='List (separated by commas) of files containing extrinsic evidence in gff.\n(hintsfile1.gff,hintsfile2.gtf,3.gtf)')
+        help='List (separated by commas) of files containing extrinsic evidence in gff.\n(e.g. hintsfile1.gff,hintsfile2.gtf,3.gtf)')
     parser.add_argument('-o', '--out', type=str, required=True,
         help='Outputfile for the combined gene prediciton in gtf.')
     parser.add_argument('-q', '--quiet', action='store_true',
-        help='No standard output.')
+        help='Quiet mode.')
     return parser.parse_args()
 
 if __name__ == '__main__':
