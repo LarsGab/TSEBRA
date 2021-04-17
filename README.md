@@ -12,7 +12,7 @@ git clone ToDo: ENTER LINK
 ```
 
 ## Usage
-The main script is ```./bin/prevco.py```. For usage information run ```./bin/prevco.py --help```.
+The main script is ```./bin/tsebra.py```. For usage information run ```./bin/tsebra.py --help```.
 
 ## Input Files
 TSEBRA needs a list of gene prediciton files, a list of hintfiles and a configuration file as input.
@@ -90,7 +90,7 @@ braker.pl --genome=genome.fasta.masked --prot_seq=proteins.fa \
 ```
 3. Combine predicitons with TSEBRA
 ```console
-./bin/prevco.py -g braker1_fixed.gtf,braker2_fixed.gtf -c default.cfg \ 
+./bin/tsebra.py -g braker1_fixed.gtf,braker2_fixed.gtf -c default.cfg \ 
     -e braker1_out/hintsfile.gff,braker2_out/hintsfile.gff \
     -o braker1+2_combined.gtf
 ```
