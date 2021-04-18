@@ -84,7 +84,7 @@ braker.pl --genome=genome.fasta.masked --prot_seq=proteins.fa \
     --softmasking --species=species_name --epmode --prg=ph \ 
     --workingdir=braker2_out
 ```
-2. Make sure that the gene and transcript IDs of the gene prediction files are in order (This step is optional)
+2. Make sure that the gene and transcript IDs of the gene prediction files are in order (this step is optional)
 ```console
 ./bin/fix_gtf_ids.py --gtf braker1_out/braker.gtf --out braker1_fixed.gtf
 ./bin/fix_gtf_ids.py --gtf braker2_out/braker.gtf --out braker2_fixed.gtf
