@@ -6,9 +6,13 @@ TSEBRA is a combiner tool that selects transcripts from gene predictions based o
 Python 3.5.2 or higher is required.
 
 ## Installation
-Download TSEBRA with 
+Download TSEBRA:
 ```console
-git clone ToDo: ENTER LINK 
+git clone https://github.com/LarsGab/TSEBRA 
+```
+Or download as submodule of BRAKER with:
+```console
+git clone --recurse-submodules https://github.com/Gaius-Augustus/BRAKER
 ```
 
 ## Usage
