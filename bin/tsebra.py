@@ -31,7 +31,8 @@ def main():
     4. Create feature vector (for a feature list see features.py) for all transcripts
     5. Compare the feature vectors of all pairs of overlapping transcripts
     6. Exclude transcripts based on the 'decision rule' and 5.
-    7. Create combined gene predicitions (all transcripts that weren't excluded)
+    7. Remove Transcripts with low evidence support
+    8. Create combined gene predicitions (all transcripts that weren't excluded)
     '''
     from genome_anno import Anno
     from overlap_graph import Graph
