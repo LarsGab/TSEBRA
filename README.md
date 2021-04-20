@@ -10,7 +10,7 @@ Download TSEBRA:
 ```console
 git clone https://github.com/LarsGab/TSEBRA 
 ```
-Or download as submodule of BRAKER with:
+Or download TSEBRA as submodule of BRAKER with:
 ```console
 git clone --recurse-submodules https://github.com/Gaius-Augustus/BRAKER
 ```
