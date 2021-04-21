@@ -2,7 +2,7 @@
 # ==============================================================
 # author: Lars Gabriel
 #
-# PrEvCo: gene Predcition and extrinsic Evidence Combiner
+# TSEBRA: Transcript Selector for BRAKER
 # ==============================================================
 import argparse
 import sys
@@ -129,7 +129,7 @@ def parseCmd():
     Returns:
         dictionary: Dictionary with arguments
     """
-    parser = argparse.ArgumentParser(description='PrEvCo: gene Predcition and extrinsic Evidence Combiner')
+    parser = argparse.ArgumentParser(description='TSEBRA: Transcript Selector for BRAKER')
     parser.add_argument('-c', '--cfg', type=str,
         help='Configuration file that sets the parameter for TSEBRA. You can find the recommended parameter at config/default.cfg.')
     parser.add_argument('-v', '--verbose', type=int,
