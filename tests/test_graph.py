@@ -32,7 +32,7 @@ def test_example_1():
     compare_lists(result, component_list)
 
 def test_example_2():
-    result = [['anno2;t1', 'anno1;t1'], ['anno2;t2']]
+    result = [['anno2;t1'], ['anno1;t1'], ['anno2;t2']]
     anno1 = Anno(example_files + '/ex2_anno1.gtf', 'anno1')
     anno1.addGtf()
     anno1.norm_tx_format()
@@ -41,7 +41,6 @@ def test_example_2():
     anno2.norm_tx_format()
     graph = Graph([anno1, anno2], {})
     graph.build()
-    print(graph.print_nodes())
     component_list = graph.connected_components()
     compare_lists(result, component_list)
 

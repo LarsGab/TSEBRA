@@ -132,14 +132,19 @@ class Graph:
                             self.nodes[match].edge_to.update({interval[0] : new_edge_key})
 
     def compare_tx_cds(self, tx1, tx2):
-        # check for overlapping cds in two txs
-        coords = []
-        coords += tx1.get_cds_coords()
-        coords += tx2.get_cds_coords()
-        coords = sorted(coords, key=lambda c:c[0])
-        for i in range(1, len(coords)):
-            if coords[i][0] <= coords[i-1][1]:
-                return True
+        # check if two tx have overlapping coding regions
+        if not tx1.strand == tx2.strand:
+            return False
+        tx1_coords = tx1.get_cds_coords()
+        tx2_coords = tx2.get_cds_coords()
+        for phase in ['0', '1', '2']:
+            coords = []
+            coords += tx1_coords[phase]
+            coords += tx2_coords[phase]
+            coords = sorted(coords, key=lambda c:c[0])
+            for i in range(1, len(coords)):
+                if coords[i-1][1] - coords[i][0] > 1:
+                    return True
         return False
 
     def print_nodes(self):

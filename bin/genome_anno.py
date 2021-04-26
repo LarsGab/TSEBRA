@@ -24,7 +24,7 @@ class Transcript:
         self.source_anno = source_anno
         self.start = -1
         self.end = -1
-        self.cds_coords = []
+        self.cds_coords = {}
         self.strand = strand
 
     def add_line(self, line):
@@ -47,14 +47,15 @@ class Transcript:
         self.transcript_lines[line[2]].append(line)
 
     def get_cds_coords(self):
-        # returns list of [start_coord, end_coord] of all CDS
-        if not self.cds_coords:
+        # returns dict of cds_coords[phase] = [start_coord, end_coord] of all CDS
+        if not self.cds_coords.keys():
+            self.cds_coords = {'0' : [], '1' : [], '2' : []}
             if 'CDS' in self.transcript_lines.keys():
                 key  = 'CDS'
             else:
                 key = 'exon'
             for line in self.transcript_lines[key]:
-                self.cds_coords.append([line[3], line[4]])
+                self.cds_coords[line[7]].append([line[3], line[4]])
         return self.cds_coords
 
     def add_missing_lines(self):
