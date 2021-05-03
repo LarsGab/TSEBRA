@@ -83,7 +83,7 @@ def main():
     combined_prediction = graph.get_decided_graph()
 
     if v > 0:
-        sys.stderr.write(combined_prediction.keys())
+        sys.stderr.write(str(combined_prediction.keys()) + '\n')
         for a in anno:
             sys.stderr.write('Numb_tx in {}: {}\n'.format(a.id, len(combined_prediction[a.id])))
 
