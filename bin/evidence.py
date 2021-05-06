@@ -13,9 +13,18 @@ class AttributeMissing(Exception):
     pass
 
 class Hint:
-    # data structure for one hint
+    """
+        Class handling the data structures and methods for a hint
+    """
     def __init__(self, line):
-        # currently hints are used in form of introns, start/stop codons
+        """
+            Create a hint from a gff line. The line has to include 'src=' as
+            an attribute in the last column. Only introns, start/stop codons
+            are used.
+
+            Args:
+                line (list(str)): GFF line for one hint from extrinsic evidence.
+        """
         if not len(line) == 9:
             raise NotGtfFormat('File not in gtf Format. Error at line: {}'.format(line))
         self.chr, self.source_program, self.type, self.start, self.end, \
@@ -44,6 +53,10 @@ class Hint:
             self.type = 'start'
 
     def hint2list(self):
+        """
+            Returns:
+                line (list(str)): GFF line for the hint.
+        """
         attribute = ['src=' + self.src]
         if int(self.mult) > 1:
             attribute.append('mult={}'.format(self.mult))
@@ -53,8 +66,14 @@ class Hint:
             self.score, self.strand, self.phase, ';'.join(attribute)]
 
 class Hintfile:
-    # data strucure for a gff file with hints
+    """
+        Class handling the data structures and methods for a hintfile
+    """
     def __init__(self, path):
+        """
+            Args:
+                path (str): Path to the hintfile.
+        """
         # dictonary containing evidence
         # self.hints[chromosom_id] = [Hints()]
         self.hints = {}
@@ -62,7 +81,11 @@ class Hintfile:
         self.read_file(path)
 
     def read_file(self, path):
-        # read a gff file with intron or start/stop codon hints
+        """
+            Read a gff file with intron or start/stop codon hints
+            and create a dict of Hints.
+        """
+        #
         with open(path, 'r') as file:
             hints_csv = csv.reader(file, delimiter='\t')
             for line in hints_csv:
@@ -75,13 +98,19 @@ class Hintfile:
                 self.src.add(new_hint.src)
 
 class Evidence:
-    # data structure for hints
+    """
+        Class handling the data structures and methods for extrinsic evidence
+        from one or more hintfiles.
+    """
     def __init__(self):
         # hint_keys[chr][start_end_type_strand][src] = multiplicity
         self.hint_keys = {}
         self.src = set()
 
     def add_hintfile(self, path_to_hintfile):
+        """
+            Read hintfile
+        """
         # read hintfile
         hintfile = Hintfile(path_to_hintfile)
         self.src = self.src.union(hintfile.src)

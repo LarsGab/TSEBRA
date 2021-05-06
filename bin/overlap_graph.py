@@ -2,35 +2,62 @@
 # ==============================================================
 # Lars Gabriel
 #
-# Graph for transcripts of multiple genome annotations
-# It can detect overlapping transcripts
-# Add a feature vector to each node
-# Compare nodes with the 'decision rule'
+# Graph for transcripts of multiple genome annotations.
+# It can detect overlapping transcripts.
+# Add a feature vector to each node.
+# Compare nodes with the 'decision rule'.
 # ==============================================================
 from features import Node_features
 
 class Edge:
-    def __init__(self, tx1_id, tx2_id):
-        self.node1 = tx1_id
-        self.node2 = tx2_id
+    """
+        Class handling an edge in the overlap graph.
+    """
+    def __init__(self, n1_id, n2_id):
+        """
+            Args:
+                n1_id (str): Node ID from overlap graph
+                n2_id (str): Node ID from overlap graph 
+        """
+        self.node1 = n1_id
+        self.node2 = n2_id
         self.node_to_remove = None
 
 class Node:
+    """
+        Class handling a node that represents a transcript in the overlap graph.
+    """
     def __init__(self, a_id, t_id):
+        """
+            Args:
+                a_id (str): Annotation ID of the transcript from Anno object
+                t_id (str): Transcript ID from Transcrpt object
+        """
         self.id = '{};{}'.format(a_id, t_id)
         self.transcript_id = t_id
+        # ID of original annotation/gene prediction
         self.anno_id = a_id
+        # unique ID for a cluster of overlapping transcripts
         self.component_id = None
 
         # dict of edge_ids of edges that are incident
         # self.edge_to[id of incident Node] = edge_id
         self.edge_to = {}
-        self.feature_vector = [None] * 7
+        self.feature_vector = [None] * 4
         self.evi_support = False
 
 class Graph:
+    """
+        Overlap graph that can detect and filter overlapping transcripts.
+    """
     def __init__(self, genome_anno_lst, para, verbose=0):
-
+        """
+            Args:
+                genome_anno_lst (list(Anno)): List of Anno class objects
+                                              containing genome annotations.
+                para (dict(float)): Dictionary for parameter used for filtering of transcripts.
+                verbose (int): Verbose mode if verbose >0 .
+        """
         # self.nodes['anno;txid'] = Node(anno, txid)
         self.nodes = {}
 
@@ -43,7 +70,7 @@ class Graph:
         # list of connected graph components
         self.component_list = []
 
-        # subset of all transcripts that weren't excluded by the decision rule
+        # subset of all transcripts that weren't removed by the transcript comparison rule
         self.decided_graph = []
 
         # dict of duplicate genome annotation ids to new ids
@@ -72,16 +99,30 @@ class Graph:
             self.anno.update({ga.id : ga})
 
     def __tx_from_key__(self, key):
-        # get transcript of a node
+        """
+            Gets a transcript of a node.
+
+            Args:
+                key (str): ID of a node as 'anno_id;tx_id'
+
+            Returns:
+                (Transcript): Transcript class object with id = tx_id
+                              from Anno() with id = anno_id
+        """
         anno_id, tx_id = key.split(';')
         return self.anno[anno_id].transcripts[tx_id]
 
     def build(self):
-        # build graph
-        # put all transcripts of a chromosome in one list and sort it by start coordinates
-        # create vertex in graph for each transcript
+        """
+            Builds the overlap graph for >=1 Anno() objects.
+            Each node of the graph represents a unique transcript from any annotation.
+            Two nodes have an edge if their transcripts overlap.
+            Two transcripts overlap if they share at least 3 adjacent protein coding nucleotides.
+        """
+
         # tx_start_end[chr] = [tx_id, coord, id for start or end]
         # for every tx one element for start and one for end
+        # this dict is used to check for overlapping transcripts
         tx_start_end = {}
         # used to check for duplicate txs, list of ['start_end_strand']
         unique_tx_keys = {}
@@ -132,7 +173,17 @@ class Graph:
                             self.nodes[match].edge_to.update({interval[0] : new_edge_key})
 
     def compare_tx_cds(self, tx1, tx2):
-        # check if two tx have overlapping coding regions
+        """
+            Check if two transcripts share at least 3 adjacent protein
+            coding nucleotides on the same strand and reading frame.
+
+            Args:
+                tx1 (Transcript): Transcript class object of first transcript
+                tx2 (Transcript): Transcript class object of second transcript
+
+            Returns:
+                (boolean): TRUE if they overlap and FALSE otherwise
+        """
         if not tx1.strand == tx2.strand:
             return False
         tx1_coords = tx1.get_cds_coords()
@@ -148,6 +199,7 @@ class Graph:
         return False
 
     def print_nodes(self):
+        # prints all nodes of the graph (only used for development)
         for k in self.nodes.keys():
             print(self.nodes[k].id)
             print(self.nodes[k].transcript_id)
@@ -156,7 +208,14 @@ class Graph:
             print('\n')
 
     def connected_components(self):
-        # returns list of connected components of the graph and adds component id to vertices
+        """
+            Compute all clusters of connected transcripts.
+            A cluster is connected component of the graph.
+            Adds component IDs to nodes.
+
+            Returns:
+                (list(list(str))): Lists of list of all node IDs of a component.
+        """
         visited = []
         self.component_list = []
         component_index = 0
@@ -180,6 +239,12 @@ class Graph:
         return self.component_list
 
     def add_node_features(self, evi):
+        """
+            Compute for all nodes the feature vector based on the evidence support by evi.
+
+            Args:
+                evi (Evidence): Evidence class object with all hints from any source.
+        """
         for key in self.nodes.keys():
             tx = self.__tx_from_key__(key)
             new_node_feature = Node_features(tx, evi, self.para)
@@ -189,8 +254,15 @@ class Graph:
                 self.nodes[key].evi_support = True
 
     def decide_edge(self, edge):
-        # compare the feature vectors f of two txs
-        # use the 'decision rule' to filter tx
+        """
+            Apply transcript comparison rule to two overlapping transcripts
+
+            Args:
+                edge (Edge): edge between two transcripts
+
+            Returns:
+                (str): node ID of the transcript that is marked for removal
+        """
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
         for i in range(0,4):
@@ -205,6 +277,17 @@ class Graph:
         return None
 
     def decide_component(self, component):
+        """
+            Applies transcript comparison rule to all transcripts of one component
+            and returns the node IDs of all transcripts that are not removed by
+            a comparison.
+
+            Args:
+                component (list(str)): List of node IDs
+
+            Returns:
+                (list(str)): Filtered subset of component list.
+        """
         # return all ids of vertices of a graph component, that weren't excluded by the decision rule
         result = component.copy()
         for node_id in component:
@@ -216,9 +299,10 @@ class Graph:
         return result
 
     def decide_graph(self):
-        # applies the decision rule to all pairs of connected vertices and
-        # excludes all transcript with no evidencesupport
-        # returns node.id for all nodes in final prediction
+        """
+            Create list of connected components of the graph and apply the
+            transcript comparison rule to all components.
+        """
         for key in self.edges.keys():
             self.edges[key].node_to_remove = self.decide_edge(self.edges[key])
         self.decided_graph = []
@@ -231,11 +315,21 @@ class Graph:
                 self.decided_graph += component
 
     def get_decided_graph(self):
-        # returns the result of decide graph as a dict with
-        # result[anno_id] = [[tx_ids, new_gene_id]]
-        # a connected component in decided graph is a gene in the output
+        """
+            Filter graph with the transcript comparison rule.
+            Then, remove all transcripts with low evidence support and
+            compute the subset of transcripts that are included in the
+            combined gene prediciton.
+
+            Returns:
+                (dict(list(list(str))): Dictionary with transcript IDs and new
+                gene IDs of all transcripts included in the combined gene prediciton
+                for all input annotations
+
+        """
         if not self.decided_graph:
             self.decide_graph()
+        # result[anno_id] = [[tx_ids, new_gene_id]]
         result = {}
         for key in self.anno.keys():
             result.update({key : []})

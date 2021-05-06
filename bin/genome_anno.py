@@ -13,8 +13,18 @@ class NotGtfFormat(Exception):
     pass
 
 class Transcript:
-    # data structures and methods for a transcript
+    """
+        Class handling the data structures and methods for a transcript
+    """
     def __init__(self, id, gene_id, chr, source_anno, strand):
+        """
+            Args:
+                id (str): Transcript ID
+                gene_id (str): Gene ID
+                chr (str): Chromosome/Sequence name where the transcript is located
+                source_anno (str): Anno ID
+                strand (str): Strand (+/-) on which the transctipt is located
+        """
         self.id = id
         self.chr = chr
         self.gene_id = gene_id
@@ -28,7 +38,12 @@ class Transcript:
         self.strand = strand
 
     def add_line(self, line):
-        # add a single line from the gtf file to the transcript
+        """
+            Add a single line from the gtf file to the transcript data structure.
+
+            Args:
+                line (list): List of all elements of a line from a gtf file
+        """
         if not (line[0] == self.chr or line[6] == self.strand):
             raise NotGtfFormat('File is not in gtf format. ' \
                 + 'Error in line {}\n'.format('\t'.join(map(str, line)))
@@ -47,6 +62,13 @@ class Transcript:
         self.transcript_lines[line[2]].append(line)
 
     def get_cds_coords(self):
+        """
+            Get the coordinates and reading frame of the coding regions
+
+            Returns:
+                (dict(list(list(int)))): Dictionary with list of CDS coords for
+                                        each each frame phase (0,1,2)
+        """
         # returns dict of cds_coords[phase] = [start_coord, end_coord] of all CDS
         if not self.cds_coords.keys():
             self.cds_coords = {'0' : [], '1' : [], '2' : []}
@@ -59,7 +81,13 @@ class Transcript:
         return self.cds_coords
 
     def add_missing_lines(self):
-        # add components to tx, that can miss in gtf files
+        """
+            Add transcript, intron, CDS, exon coordinates if they were not
+            included in the gtf file
+
+            Returns:
+                (boolean): FALSE if no cds were found for the tx, TRUE otherwise
+        """
         # add intron lines
         self.find_introns()
         # check if tx has cds or exon
@@ -72,14 +100,18 @@ class Transcript:
         return True
 
     def check_cds_exons(self):
-        # check if tx has cds or exon
+        """
+            Check if tx has CDS or exons.
+        """
         if 'CDS' not in self.transcript_lines.keys() and 'exon' not in self.transcript_lines.keys():
             sys.stderr.write('Skipping transcript {}, no CDS nor exons in {}\n'.format(self.id, self.id))
             return False
         return True
 
     def find_introns(self):
-        # add intron lines
+        """
+            Add intron lines.
+        """
         if not 'intron' in self.transcript_lines.keys():
             self.transcript_lines.update({'intron' : []})
             key = ''
@@ -104,7 +136,9 @@ class Transcript:
                     self.transcript_lines['intron'].append(intron)
 
     def find_transcript(self):
-        # add transcript line
+        """
+            Add transcript lines.
+        """
         if not 'transcript' in self.transcript_lines.keys():
             for k in self.transcript_lines.keys():
                 for line in self.transcript_lines[k]:
@@ -117,7 +151,9 @@ class Transcript:
             self.add_line(tx_line)
 
     def find_start_stop_codon(self):
-        # add start/stop codon line
+        """
+            Add start/stop codon lines.
+        """
         if not 'transcript' in self.transcript_lines.keys():
             self.find_transcript()
         tx = self.transcript_lines['transcript'][0]
@@ -144,7 +180,12 @@ class Transcript:
             self.add_line(stop)
 
     def get_gtf(self, prefix='', new_gene_id=None):
-        # returns transcript lines in gtf
+        """
+            Creates gtf output for the transcript.
+
+            Returns:
+                (list(list(str))): List of lines in gtf format as lists
+        """
         gtf = []
         if new_gene_id:
             g_id = new_gene_id
@@ -165,8 +206,15 @@ class Transcript:
         return gtf
 
 class Anno:
-    # data structures and methods for one genome annotation file
+    """
+        Class handling the data structures and methods for a one genome annotation file
+    """
     def __init__(self, path, id):
+        """
+            Args:
+                path (str): Path to the annotation/gene prediction file in gtf format.
+                id (str): Annotation ID
+        """
         self.id = id
         self.genes = {'None' : []}
         self.gene_gtf = {}
@@ -174,6 +222,10 @@ class Anno:
         self.path = path
 
     def addGtf(self):
+        """
+            Read a gtf file and create a dictionary of Transcript objects for
+            all transcript in the file
+        """
         with open (self.path, 'r') as file:
             file_lines = csv.reader(file, delimiter='\t')
             for line in file_lines:
@@ -219,6 +271,11 @@ class Anno:
             self.genes_update(gene_id, tx_id)
 
     def norm_tx_format(self):
+        """
+            Add to all Transcript objects transcript, intron, CDS, exon
+            coordinates if they were not included in the gtf file.
+            Delete all transripts that have no exons or CDS
+        """
         tx_no_cds = []
         # add missing lines to all tx
         for k in self.transcripts.keys():
@@ -228,6 +285,12 @@ class Anno:
             del self.transcripts[k]
 
     def genes_update(self, gene_id, transcript_id=''):
+        """
+            Update gene ID dict.
+            Args:
+                gene_id (str): Gene ID
+                transcript_id (str): Transcript ID
+        """
         # update gene ids
         if not gene_id in self.genes.keys():
             self.genes.update({ gene_id : []})
@@ -238,12 +301,23 @@ class Anno:
             self.transcripts[transcript_id].gene_id = gene_id
 
     def transcript_update(self, t_id, g_id, chr, strand):
-        # update tx ids
+        """
+            Update transcript ID dict.
+            Args:
+                t_id (str): Transcript ID
+                g_id (str): Gene ID
+                chr (str): Chromosome name
+                strand (str): Strand (+/-)
+        """
         if not t_id in self.transcripts.keys():
             self.transcripts.update({ t_id : Transcript(t_id, g_id, chr, self.id, strand)})
 
     def get_gtf(self):
-        # get annotaion file as gtf string
+        """
+            Get annotaion file as gtf list
+            Returns:
+                list(list(str)): Gtf file as list of lists
+        """
         gtf = []
         for k in self.genes.keys():
             if k in self.gene_gtf.keys():
@@ -254,18 +328,29 @@ class Anno:
         return gtf
 
     def get_subset_gtf(self, tx_list):
-        # return string in gtf for tx in tx_list
+        """
+            Get annotaion file for a subset of transcripts
+            Args:
+                tx_list (list(str)): List of transcript IDs
+            Returns:
+                list(list(str)): Gtf file as list of lists
+        """
         gtf = []
         for tx in tx_list:
             gtf += self.transcripts[tx[0]].get_gtf(self.id, tx[1])
         return gtf
 
     def change_id(self, new_id):
-        # change annotation file id
+        """
+            Change annotation file ID.
+        """
         self.id = new_id
         for k in self.transcripts.keys():
             self.transcripts.source_anno = self.id
 
     def get_transcript_list(self):
-        # get list of all txs
+        """
+            Returns:
+                (List(Transcript)): List of all transcripts.
+        """
         return list(self.transcripts.values())
