@@ -8,7 +8,7 @@ Python 3.5.2 or higher is required.
 ## Installation
 Download TSEBRA:
 ```console
-git clone https://github.com/LarsGab/TSEBRA 
+git clone https://github.com/Gaius-Augustus/TSEBRA
 ```
 Or download TSEBRA as submodule of BRAKER with:
 ```console
