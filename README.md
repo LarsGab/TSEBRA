@@ -19,10 +19,10 @@ git clone --recurse-submodules https://github.com/Gaius-Augustus/BRAKER
 The main script is ```./bin/tsebra.py```. For usage information run ```./bin/tsebra.py --help```.
 
 ## Input Files
-TSEBRA needs a list of gene prediciton files, a list of hintfiles and a configuration file as input.
+TSEBRA takes a list of gene prediciton files, a list of hintfiles and a configuration file as mandatory input.
 
 #### Gene Predictions 
-The gene prediction files needs to be in gtf format. This is the standard output format of a BRAKER or AUGUSTUS<sup name="a3">[3,](#ref3)</sup><sup name="a4">[4](#ref4)</sup> gene prediciton.
+The gene prediction files have to be in gtf format. This is the standard output format of a BRAKER or AUGUSTUS<sup name="a3">[3,](#ref3)</sup><sup name="a4">[4](#ref4)</sup> gene prediciton.
 
 Example:
 ```console
@@ -34,7 +34,7 @@ Example:
 ```
 
 #### Hint Files
-The hint files have to be in gff format, the last column must include an attribute for the source for the hint with 'src=' and can include the number of hints supporting the gene structure segment with 'mult='. This is the standard file format of the ```hintfiles.gff``` in a BRAKER working directory.
+The hints files have to be in gff format, the last column must include an attribute for the source for the hint with 'src=' and can include the number of hints supporting the gene structure segment with 'mult='. This is the standard file format of the ```hintfiles.gff``` in a BRAKER working directory.
 
 Example:
 ```console
@@ -47,7 +47,7 @@ Example:
 
 #### Configuration File
 The configuration file has to include three types of parameter:
-1. The weight for each hint source. A weight is set to 1, if the weight for a source is not determined in the cfg file.
+1. The weight for each hint source. (A weight is set to 1, if the weight for a source is not determined in the cfg file.)
 2. Required fraction of supported introns or supported start/stop-codons for a transcript.
 3. Allowed difference between two overlapping transcripts for each feature type.
 
