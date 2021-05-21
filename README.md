@@ -105,7 +105,7 @@ The combined gene prediciton is ```braker1+2_combined.gtf```.
 A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example and to check if TSEBRA runs properly. 
 
 ## Licence
-All source code, i.e. `bin/*.py` are under the Artistic License (see <https://opensource.org/licenses/Artistic-2.0>).
+All source code, i.e. `bin/*.py` are under the [Artistic License](bin/LICENSE.txt)(see <https://opensource.org/licenses/Artistic-2.0>).
 
 ## References
 <b id="ref1">[1]</b> Hoff, Katharina J, Simone Lange, Alexandre Lomsadze, Mark Borodovsky, and Mario Stanke. 2015. “BRAKER1: Unsupervised Rna-Seq-Based Genome Annotation with Genemark-et and Augustus.” *Bioinformatics* 32 (5). Oxford University Press: 767--69.[↑](#a1)
