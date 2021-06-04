@@ -10,10 +10,6 @@ Download TSEBRA:
 ```console
 git clone https://github.com/Gaius-Augustus/TSEBRA
 ```
-Or download TSEBRA as submodule of BRAKER with:
-```console
-git clone --recurse-submodules https://github.com/Gaius-Augustus/BRAKER
-```
 
 ## Usage
 The main script is ```./bin/tsebra.py```. For usage information run ```./bin/tsebra.py --help```.
