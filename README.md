@@ -1,6 +1,6 @@
 # TSEBRA: Transcript Selector for BRAKER
 ### Introduction
-TSEBRA is a combiner tool that selects transcripts from gene predictions based on the support by extrisic evidence in form of introns and start/stop codons. It was developed to combine BRAKER1<sup name="a1">[1](#ref1)</sup> and BRAKER2<sup name="a2">[2](#ref2)</sup> predicitons to increase their accuracies.
+[TSEBRA](https://www.biorxiv.org/content/10.1101/2021.06.01.446499v1) is a combiner tool that selects transcripts from gene predictions based on the support by extrisic evidence in form of introns and start/stop codons. It was developed to combine BRAKER1<sup name="a1">[1](#ref1)</sup> and BRAKER2<sup name="a2">[2](#ref2)</sup> predicitons to increase their accuracies.
 
 ## Prerequisites
 Python 3.5.2 or higher is required.
@@ -102,6 +102,10 @@ A small example is located at ```example/```. Run ```./example/run_prevco_exampl
 
 ## Licence
 All source code, i.e. `bin/*.py` are under the [Artistic License](bin/LICENSE.txt) (see <https://opensource.org/licenses/Artistic-2.0>).
+
+## Citing TSEBRA
+Preprint:
+L. Gabriel, K. J. Hoff, T. Bruna, M. Borodovsky, M.Stanke. 2021. TSEBRA: "Transcript Selector for BRAKER." *bioRxiv* https://doi.org/10.1101/2021.06.07.447316
 
 ## References
 <b id="ref1">[1]</b> Hoff, Katharina J, Simone Lange, Alexandre Lomsadze, Mark Borodovsky, and Mario Stanke. 2015. “BRAKER1: Unsupervised Rna-Seq-Based Genome Annotation with Genemark-et and Augustus.” *Bioinformatics* 32 (5). Oxford University Press: 767--69.[↑](#a1)
