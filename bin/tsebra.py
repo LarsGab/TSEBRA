@@ -100,7 +100,7 @@ def main():
     for a in anno:
         combined_gtf += a.get_subset_gtf(combined_prediction[a.id])
     with open(out, 'w+') as file:
-        out_writer = csv.writer(file, delimiter='\t', quotechar = "'")
+        out_writer = csv.writer(file, delimiter='\t', quotechar = "'", lineterminator = '\n')
         for line in combined_gtf:
             out_writer.writerow(line)
 
