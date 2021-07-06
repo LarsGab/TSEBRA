@@ -96,13 +96,14 @@ def main():
     # write result to output file
     if not quiet:
         sys.stderr.write('### WRITE COMBINED GENE PREDICTION\n')
-    combined_gtf = []
+    combined_anno = Anno('', 'combined_annotation')
     for a in anno:
-        combined_gtf += a.get_subset_gtf(combined_prediction[a.id])
-    with open(out, 'w+') as file:
-        out_writer = csv.writer(file, delimiter='\t', quotechar = "'", lineterminator = '\n')
-        for line in combined_gtf:
-            out_writer.writerow(line)
+        txs = a.get_subset([t[0] for t in combined_prediction[a.id]])
+        for id, new_gene_id in combined_prediction[a.id]:
+            txs[id].set_gene_id(new_gene_id)
+        combined_anno.add_transcripts(txs, a.id + '.')
+    combined_anno.find_genes()
+    combined_anno.write_anno(out)
 
     if not quiet:
         sys.stderr.write('### FINISHED\n\n')

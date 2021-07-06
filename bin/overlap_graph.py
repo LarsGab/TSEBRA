@@ -17,7 +17,7 @@ class Edge:
         """
             Args:
                 n1_id (str): Node ID from overlap graph
-                n2_id (str): Node ID from overlap graph 
+                n2_id (str): Node ID from overlap graph
         """
         self.node1 = n1_id
         self.node2 = n2_id
@@ -124,7 +124,7 @@ class Graph:
         # for every tx one element for start and one for end
         # this dict is used to check for overlapping transcripts
         tx_start_end = {}
-        # used to check for duplicate txs, list of ['start_end_strand']
+        # check for duplicate txs, list of ['start_end_strand']
         unique_tx_keys = {}
 
         for k in self.anno.keys():

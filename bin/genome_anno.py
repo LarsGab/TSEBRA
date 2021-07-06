@@ -36,6 +36,7 @@ class Transcript:
         self.end = -1
         self.cds_coords = {}
         self.strand = strand
+        self.source_method = ''
 
     def add_line(self, line):
         """
@@ -52,6 +53,8 @@ class Transcript:
         if line[2] not in self.transcript_lines.keys():
             self.transcript_lines.update({line[2] : []})
 
+        self.source_method = line[1]
+
         line[3] = int(line[3])
         line[4] = int(line[4])
         if self.start < 0 or line[3] < self.start:
@@ -60,6 +63,9 @@ class Transcript:
             self.end = line[4]
 
         self.transcript_lines[line[2]].append(line)
+
+    def set_gene_id(self, new_gene_id):
+        self.gene_id = new_gene_id
 
     def get_cds_coords(self):
         """
@@ -78,6 +84,8 @@ class Transcript:
                 key = 'exon'
             for line in self.transcript_lines[key]:
                 self.cds_coords[line[7]].append([line[3], line[4]])
+            for k in self.cds_coords.keys():
+                self.cds_coords[k].sort(key=lambda c: (c[0],c[1]))
         return self.cds_coords
 
     def add_missing_lines(self):
@@ -179,7 +187,7 @@ class Transcript:
         if not 'stop_codon' in self.transcript_lines.keys():
             self.add_line(stop)
 
-    def get_gtf(self, prefix='', new_gene_id=None):
+    def get_gtf(self, prefix=''):
         """
             Creates gtf output for the transcript.
 
@@ -187,22 +195,22 @@ class Transcript:
                 (list(list(str))): List of lines in gtf format as lists
         """
         gtf = []
-        if new_gene_id:
-            g_id = new_gene_id
-        else:
-            g_id = self.gene_id
-
         if prefix:
             prefix += '.'
+        tx_line = []
         for k in self.transcript_lines.keys():
             for g in self.transcript_lines[k]:
                 if k == 'transcript':
-                    g[8] = prefix + self.id
+                    tx_line  = g
+                    tx_line[8] = prefix + self.id
+                    continue
                 else:
                     g[8] = 'transcript_id \"{}\"; gene_id \"{}";'.format(\
-                        prefix + self.id, g_id)
+                        prefix + self.id, self.gene_id)
                 gtf.append(g)
-        gtf = sorted(gtf, key=lambda g:g[3])
+        gtf = sorted(gtf, key=lambda g: (g[3],g[4]))
+        if tx_line:
+            gtf = [tx_line] + gtf
         return gtf
 
 class Anno:
@@ -239,7 +247,7 @@ class Anno:
                     if not gene_id in self.gene_gtf.keys():
                         self.gene_gtf.update({gene_id : line})
                     else:
-                        sys.stderr.write('ERROR, gene_id not unique: {}'.format(gene_id))
+                        sys.stderr.write('ERROR, gene_id not unique: {}\n'.format(gene_id))
                 elif line[2] == 'transcript':
                     transcript_id = line[8]
                     gene_id = transcript_id.split('.')[0]
@@ -312,33 +320,70 @@ class Anno:
         if not t_id in self.transcripts.keys():
             self.transcripts.update({ t_id : Transcript(t_id, g_id, chr, self.id, strand)})
 
+    def find_genes(self):
+        """
+            Find all genes in the annotation and find the transcripts that
+            belong to each gene. Also, cretae a dict with the gtf lines for each gene.
+        """
+        self.gene_gtf = {}
+        self.genes = {}
+        for tx in self.transcripts.values():
+            if tx.gene_id in self.genes.keys():
+                if not (tx.chr == self.gene_gtf[tx.gene_id][0] and \
+                    tx.strand == self.gene_gtf[tx.gene_id][6]):
+                    sys.stderr.write('ERROR, gene_id not unique: {}.'.format(tx.gene_id))
+                    tx.gene_id = tx.gene_id + '.' + tx.chr + '.' + tx.strand
+                    sys.stderr.write(' Adding new gene: {}'.format(tx.gene_id))
+                else:
+                    self.genes[tx.gene_id].append(tx.id)
+                    self.gene_gtf[tx.gene_id][3] = min(self.gene_gtf[tx.gene_id][3], \
+                        tx.start)
+                    self.gene_gtf[tx.gene_id][4] = max(self.gene_gtf[tx.gene_id][4], \
+                        tx.end)
+                    continue
+            self.genes.update({tx.gene_id : [tx.id]})
+            self.gene_gtf.update({tx.gene_id : [tx.chr, tx.source_method, 'gene', \
+                tx.start, tx.end, '.', tx.strand, '.', tx.gene_id]})
+
     def get_gtf(self):
         """
-            Get annotaion file as gtf list
+            Get annotaion file as gtf list.
             Returns:
                 list(list(str)): Gtf file as list of lists
         """
         gtf = []
-        for k in self.genes.keys():
-            if k in self.gene_gtf.keys():
-                gtf.append(self.gene_gtf[k])
-                #gtf += '\t'.join(map(str, self.gene_gtf[k])) + '\n'
-            for t_id in self.genes[k]:
-                gtf += self.transcripts[t_id].get_gtf()
+        gene_gtf = sorted(self.gene_gtf.values(), key=lambda g: (g[0],g[3],g[4]))
+        for gene in gene_gtf:
+            gtf.append(gene)
+            for tx_id in self.genes[gene[8]]:
+                gtf += self.transcripts[tx_id].get_gtf()
         return gtf
 
-    def get_subset_gtf(self, tx_list):
+    def add_transcripts(self, txs, id_prefix=''):
         """
-            Get annotaion file for a subset of transcripts
+            Adds a dict of transcripts to the transcripts of the annotation.
+            Args:
+                dict(Transcript()): dictionary of Transcripts added to the annotation
+        """
+        if not id_prefix:
+            self.transcripts.update({txs})
+        else:
+            for tx in txs.values():
+                tx.id = id_prefix + tx.id
+                self.transcripts.update({tx.id : tx})
+
+    def get_subset(self, tx_list):
+        """
+            Get annotaion file for a subset of transcripts.
             Args:
                 tx_list (list(str)): List of transcript IDs
             Returns:
                 list(list(str)): Gtf file as list of lists
         """
-        gtf = []
+        tx_subset = {}
         for tx in tx_list:
-            gtf += self.transcripts[tx[0]].get_gtf(self.id, tx[1])
-        return gtf
+            tx_subset.update({tx : self.transcripts[tx]})
+        return tx_subset
 
     def change_id(self, new_id):
         """
@@ -346,7 +391,7 @@ class Anno:
         """
         self.id = new_id
         for k in self.transcripts.keys():
-            self.transcripts.source_anno = self.id
+            self.transcripts[k].source_anno = self.id
 
     def get_transcript_list(self):
         """
@@ -354,3 +399,14 @@ class Anno:
                 (List(Transcript)): List of all transcripts.
         """
         return list(self.transcripts.values())
+
+    def write_anno(self, out_path):
+        """
+            Write Annotation in gtf format to out_path.
+            Args:
+                (str) : path to the output file
+        """
+        with open(out_path, 'w+') as file:
+            out_writer = csv.writer(file, delimiter='\t', quotechar = "'", lineterminator = '\n')
+            for line in self.get_gtf():
+                out_writer.writerow(line)
