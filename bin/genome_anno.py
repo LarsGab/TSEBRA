@@ -61,7 +61,8 @@ class Transcript:
             self.start = line[3]
         if self.end < 0 or line[4] > self.end:
             self.end = line[4]
-
+        if self.gene_id == '' and not line[2] == 'transcript':
+            self.gene_id = line[8].split('gene_id "')[1].split('";')[0]
         self.transcript_lines[line[2]].append(line)
 
     def set_gene_id(self, new_gene_id):
@@ -228,6 +229,7 @@ class Anno:
         self.gene_gtf = {}
         self.transcripts = {}
         self.path = path
+        self.translation_tab = []
 
     def addGtf(self):
         """
@@ -250,7 +252,7 @@ class Anno:
                         sys.stderr.write('ERROR, gene_id not unique: {}\n'.format(gene_id))
                 elif line[2] == 'transcript':
                     transcript_id = line[8]
-                    gene_id = transcript_id.split('.')[0]
+                    gene_id = ''
                     self.transcript_update(transcript_id, gene_id, line[0], line[6])
                     self.transcripts[transcript_id].add_line(line)
                 else:
@@ -333,7 +335,7 @@ class Anno:
                     tx.strand == self.gene_gtf[tx.gene_id][6]):
                     sys.stderr.write('ERROR, gene_id not unique: {}.'.format(tx.gene_id))
                     tx.gene_id = tx.gene_id + '.' + tx.chr + '.' + tx.strand
-                    sys.stderr.write(' Adding new gene: {}'.format(tx.gene_id))
+                    sys.stderr.write(' Adding new gene: {}\n'.format(tx.gene_id))
                 else:
                     self.genes[tx.gene_id].append(tx.id)
                     self.gene_gtf[tx.gene_id][3] = min(self.gene_gtf[tx.gene_id][3], \
@@ -399,6 +401,40 @@ class Anno:
                 (List(Transcript)): List of all transcripts.
         """
         return list(self.transcripts.values())
+
+    def rename_tx_ids(self, prefix=''):
+        """
+            Renames all tx and genes and returns translation table for old tx id to new tx id.
+            Args:
+                prefix (string): String added before each tx and gene ID.
+            Returns:
+                translation_tab (list(str, str)): Translation table for old tx id to new tx id.
+        """
+        self.translation_tab = []
+        gene_numb = 1
+        old_gene_gtf = sorted(self.gene_gtf.values(), key=lambda g: (g[0],g[3],g[4]))
+        self.gene_gtf = {}
+        old_genes = self.genes
+        self.genes = {}
+        old_txs = self.transcripts
+        self.transcripts = {}
+        for gene in old_gene_gtf:
+            tx_numb = 1
+            old_gene_id = gene[8]
+            new_gene_id = "{}_g{}".format(prefix, gene_numb)
+            gene[8] = new_gene_id
+            self.genes.update({new_gene_id : []})
+            self.gene_gtf.update({new_gene_id : gene})
+            for old_tx_id in old_genes[old_gene_id]:
+                new_tx_id = "{}_g{}.t{}".format(prefix, gene_numb, tx_numb)
+                self.transcripts.update({new_tx_id : old_txs[old_tx_id]})
+                self.transcripts[new_tx_id].id = new_tx_id
+                self.transcripts[new_tx_id].gene_id = new_gene_id
+                self.genes[new_gene_id].append(new_tx_id)
+                tx_numb +=1
+                self.translation_tab.append([new_tx_id, old_tx_id])
+            gene_numb += 1
+        return self.translation_tab
 
     def write_anno(self, out_path):
         """
