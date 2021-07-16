@@ -100,6 +100,19 @@ The combined gene prediciton is ```braker1+2_combined.gtf```.
 ## Example
 A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example and to check if TSEBRA runs properly. 
 
+## Renaming the transcripts from the TSEBRA output
+The IDs of the transcripts and genes in the TSEBRA output can be renamed such that the gene and transcript ID match. 
+Genes and transcript are numbered consecutively and for example, the second transcript of gene "g12" has the ID "g12.t2".
+If a prefix is set then it will be added before all IDs, for example, the transcript ID is "dmel_g12.t2" if the prefix is set to "dmel".
+Additionally, a translation can be produced that provides the mapping from old to new transcript IDs.
+
+Example for renaming ```tsebra_result.gtf```:
+```console
+./bin/rename_gtf.py --gtf tsebra_result.gtf --prefix dmel --translation_tab translation.tab --out tsebra_result_renamed.gtf
+```
+The arguments ```--prefix``` and ```translation_tab``` are optional.
+
+
 ## Licence
 All source code, i.e. `bin/*.py` are under the [Artistic License](bin/LICENSE.txt) (see <https://opensource.org/licenses/Artistic-2.0>).
 
