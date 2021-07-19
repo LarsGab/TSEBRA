@@ -418,15 +418,17 @@ class Anno:
         self.genes = {}
         old_txs = self.transcripts
         self.transcripts = {}
+        if prefix:
+            prefix += '_'
         for gene in old_gene_gtf:
             tx_numb = 1
             old_gene_id = gene[8]
-            new_gene_id = "{}_g{}".format(prefix, gene_numb)
+            new_gene_id = "{}g{}".format(prefix, gene_numb)
             gene[8] = new_gene_id
             self.genes.update({new_gene_id : []})
             self.gene_gtf.update({new_gene_id : gene})
             for old_tx_id in old_genes[old_gene_id]:
-                new_tx_id = "{}_g{}.t{}".format(prefix, gene_numb, tx_numb)
+                new_tx_id = "{}g{}.t{}".format(prefix, gene_numb, tx_numb)
                 self.transcripts.update({new_tx_id : old_txs[old_tx_id]})
                 self.transcripts[new_tx_id].id = new_tx_id
                 self.transcripts[new_tx_id].gene_id = new_gene_id

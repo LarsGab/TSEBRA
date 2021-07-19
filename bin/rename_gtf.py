@@ -29,7 +29,6 @@ def main():
     anno.find_genes()
     tx_tab = anno.rename_tx_ids(prefix)
     anno.write_anno(args.out)
-    print(tx_tab)
     if args.translation_tab:
         with open(args.translation_tab, 'w+') as file:
             out_writer = csv.writer(file, delimiter='\t', quotechar = "'", lineterminator = '\n')
