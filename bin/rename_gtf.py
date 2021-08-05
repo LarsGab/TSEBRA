@@ -2,7 +2,7 @@
 # ==============================================================
 # author: Lars Gabriel
 #
-# TSEBRA: Transcript Selector for BRAKER
+# Rename the transcripts and genes of a GTF file.
 # ==============================================================
 import argparse
 import os

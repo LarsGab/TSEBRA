@@ -112,7 +112,7 @@ def main():
 
 def set_parameter(cfg_file):
     """
-        read parameters from the cfg file and store them in the dict parameter.
+        read parameters from the cfg file and store them in parameter.
 
         Args:
             cfg_file (str): Path to configuration file.

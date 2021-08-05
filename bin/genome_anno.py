@@ -163,30 +163,52 @@ class Transcript:
         """
             Add start/stop codon lines.
         """
-        if not 'transcript' in self.transcript_lines.keys():
-            self.find_transcript()
-        tx = self.transcript_lines['transcript'][0]
 
-        line1 = [self.chr, tx[1], '', tx[3], tx[3] + 2, \
-        '.', tx[6], '.', "gene_id \"{}\"; transcript_id \"{}\";".format(\
-        self.gene_id, self.id)]
-        line2 = [self.chr, tx[1], '', tx[4] - 2, tx[4], \
-        '.', tx[6], '.', "gene_id \"{}\"; transcript_id \"{}\";".format(\
-        self.gene_id, self.id)]
-        if tx[6] == '+':
-            line1[2] = 'start_codon'
-            line2[2] = 'stop_codon'
-            start = line1
-            stop = line2
-        else:
-            line1[2] = 'stop_codon'
-            line2[2] = 'start_codon'
-            stop = line1
-            start = line2
         if not 'start_codon' in self.transcript_lines.keys():
-            self.add_line(start)
+            self.transcript_lines.update({'start_codon' : []})
         if not 'stop_codon' in self.transcript_lines.keys():
-            self.add_line(stop)
+            self.transcript_lines.update({'stop_codon' : []})
+
+
+        key = ''
+        if 'CDS' in self.transcript_lines.keys():
+            key = 'CDS'
+        elif 'exon' in self.transcript_lines.keys():
+            key = 'exon'
+        if key:
+            self.transcript_lines[key].sort(key = lambda x : x[3])
+            tx = self.transcript_lines[key][0]
+            line1 = [self.chr, tx[1], '', tx[3], tx[3] + 2, \
+            '.', self.strand, '0', "gene_id \"{}\"; transcript_id \"{}\";".format(\
+            self.gene_id, self.id)]
+            tx = self.transcript_lines[key][-1]
+            line2 = [self.chr, tx[1], '', tx[4] - 2, tx[4], \
+            '.', self.strand, '0', "gene_id \"{}\"; transcript_id \"{}\";".format(\
+            self.gene_id, self.id)]
+
+            fragmented_transcript = True
+            if tx[6] == '+':
+                line1[2] = 'start_codon'
+                line2[2] = 'stop_codon'
+                if self.transcript_lines[key][0][7] == 0:
+                    fragmented_transcript = False
+                start = line1
+                stop = line2
+            else:
+                line1[2] = 'stop_codon'
+                line2[2] = 'start_codon'
+                if self.transcript_lines[key][-1][7] == 0:
+                    fragmented_transcript = False
+                stop = line1
+                start = line2
+            if not 'start_codon' in self.transcript_lines.keys() and not fragmented_transcript:
+                if not fragmented_transcript:
+                    self.add_line(start)
+                else:
+                    self.transcript_lines.update({'start_codon' : []})
+            if not 'stop_codon' in self.transcript_lines.keys():
+                self.add_line(stop)
+
 
     def get_gtf(self, prefix=''):
         """
