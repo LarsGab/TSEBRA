@@ -46,18 +46,18 @@ The configuration file has to include three different sets of parameter:
 1. Weights for all sources of hints. The source of a hint is specified by the mandatory 'src=' attribute in the last column of the ```hintsfile.gff``` (see section 'Hint Files'). See section 'Transcript scores' in [TSEBRA](https://doi.org/10.1101/2021.06.07.447316) for more information on how these weigths are used.  
 A weight is set to 1, if the weight for a hint source is not specified in the configuration file.  
 
- * *Notes on adjusting these parameters: Increase the weight of the hint sources that have the highest quality. For example, if the protein database includes only species that are remotely related to the target species, the hints produced by BRAKER2 might be less accurate than the RNA-seq evidence. Then, you should increase the weight of the source related to the RNA-seq hints.*    
+   * *Notes on adjusting these parameters: Increase the weight of the hint sources that have the highest quality. For example, if the protein database includes only species that are remotely related to the target species, the hints produced by BRAKER2 might be less accurate than the RNA-seq evidence. Then, you should increase the weight of the source related to the RNA-seq hints.*    
 
 
 2. Required fractions of supported introns or supported start/stop-codons for a transcript. A transcript is not included in the TSEBRA result if the fractions of introns and start/stop codons supported by extrinsic evidence are lower than the thresholds.  
 
- * *Notes on adjusting these parameters: The low evidence support thresholds for low evidence support are quite strict in the default configuration file. In this configuration, only transcripts with very high evidence support are allowed in the TSBERA result. In some cases, the default setting might be too strict, so that too many transcripts are filtered out. In this case, you should reduce the threshold of 'intron_support' (e.g., to 0.2).*  
+   * *Notes on adjusting these parameters: The low evidence support thresholds for low evidence support are quite strict in the default configuration file. In this configuration, only transcripts with very high evidence support are allowed in the TSBERA result. In some cases, the default setting might be too strict, so that too many transcripts are filtered out. In this case, you should reduce the threshold of 'intron_support' (e.g., to 0.2).*  
 
 
 3. Allowed difference between two overlapping transcripts for the four transcript scores (see section 'Transcript scores' in [TSEBRA](https://doi.org/10.1101/2021.06.07.447316) for a definition of the different transcript scores and section 'Pairwise transcript comparison rule' for more information on how transcripts are compared). TSEBRA compares transcripts via their transcript scores and removes the one with the lower score if their difference exceeds the respective threshold.  
 Note that e_1, e_2 are fractions (e_1, e_2 &#x220A; [0,1]), and e_3, e_4 can be larger than 1 (e_3, e_4 &ge; 0).  
 
- * *Notes on adjusting these parameters: The higher the thresholds are set the less transcripts are filtered by the respective rule. With these thresholds one can adjust the effect of each filtering rule of TSEBRA. As these thresholds are increased, more transcripts are included in the TSEBRA result, in particular, more alternatively spliced isoforms per gene are contained in the result.*  
+   * *Notes on adjusting these parameters: The higher the thresholds are set the less transcripts are filtered by the respective rule. With these thresholds one can adjust the effect of each filtering rule of TSEBRA. As these thresholds are increased, more transcripts are included in the TSEBRA result, in particular, more alternatively spliced isoforms per gene are contained in the result.*  
 
 
 
