@@ -467,6 +467,6 @@ class Anno:
                 (str) : path to the output file
         """
         with open(out_path, 'w+') as file:
-            out_writer = csv.writer(file, delimiter='\t', quotechar = "'", lineterminator = '\n')
+            out_writer = csv.writer(file, delimiter='\t', quotechar = "|", lineterminator = '\n')
             for line in self.get_gtf():
                 out_writer.writerow(line)
