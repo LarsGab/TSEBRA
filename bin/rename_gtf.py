@@ -31,7 +31,7 @@ def main():
     anno.write_anno(args.out)
     if args.translation_tab:
         with open(args.translation_tab, 'w+') as file:
-            out_writer = csv.writer(file, delimiter='\t', quotechar = "'", lineterminator = '\n')
+            out_writer = csv.writer(file, delimiter='\t', quotechar = "|", lineterminator = '\n')
             for line in tx_tab:
                 out_writer.writerow(line)
 
