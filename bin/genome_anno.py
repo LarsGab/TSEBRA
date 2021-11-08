@@ -261,6 +261,7 @@ class Anno:
         with open (self.path, 'r') as file:
             file_lines = csv.reader(file, delimiter='\t')
             for line in file_lines:
+                line = [l.strip(' ') for l in line]
                 if line[0][0] ==  '#':
                     continue
                 line[3] = int(line[3])
