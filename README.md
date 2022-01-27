@@ -95,7 +95,7 @@ braker.pl --genome=genome.fasta.masked --hints=rna_seq_hints.gff \
             --softmasking --species=species_name --workingdir=braker1_out
 ### BRAKER2
 braker.pl --genome=genome.fasta.masked --prot_seq=proteins.fa \
-    --softmasking --species=species_name --epmode --prg=ph \
+    --softmasking --species=species_name --epmode \
     --workingdir=braker2_out
 ```
 2. Make sure that the gene and transcript IDs of the gene prediction files are in order (this step is optional)
