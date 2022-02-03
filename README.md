@@ -78,10 +78,17 @@ e_2 0.5
 e_3 25
 e_4 10
 ```
-
+Description of evidence sources in default BRAKER1 and BRAKER2 outputs:
+```
+E = RNA-seq hints
+M = manual hints, these are hints that are enforced during the prediction step of BRAKER,
+C = protein hints from proteins with a 'high' spliced alignment score.
+P = protein hints from proteins that have a 'good' spliced alignment score, 
+     but that is lower than the score from the ones in 'C'. 
+```
 
 ## Use Case
-The recommended and most common usage for TSEBRA is to combine the resulting ```braker.gtf``` files of a BRAKER1 and a BRAKER2 run using the hintsfile.gff from both working directories. However, TSEBRA can be applied to any number (>1) of gene predictions and hint files as long as they are in the correct format.
+The recommended and most common usage for TSEBRA is to combine the resulting ```augustus.hints.gtf``` files of a BRAKER1 and a BRAKER2 run using the hintsfile.gff from both working directories. However, TSEBRA can be applied to any number (>1) of gene predictions and hint files as long as they are in the correct format.
 
 A common case might be that a user wants to annotate a novel genome with BRAKER and has:
 * a novel genome with repeats masked: ```genome.fasta.masked```,
@@ -98,14 +105,9 @@ braker.pl --genome=genome.fasta.masked --prot_seq=proteins.fa \
     --softmasking --species=species_name --epmode \
     --workingdir=braker2_out
 ```
-2. Make sure that the gene and transcript IDs of the gene prediction files are in order (this step is optional)
+2. Combine predicitons with TSEBRA
 ```console
-./bin/fix_gtf_ids.py --gtf braker1_out/braker.gtf --out braker1_fixed.gtf
-./bin/fix_gtf_ids.py --gtf braker2_out/braker.gtf --out braker2_fixed.gtf
-```
-3. Combine predicitons with TSEBRA
-```console
-./bin/tsebra.py -g braker1_fixed.gtf,braker2_fixed.gtf -c default.cfg \
+./bin/tsebra.py -g braker1_out/augustus.hints.gtf,braker2_out/augustus.hints.gtf -c default.cfg \
     -e braker1_out/hintsfile.gff,braker2_out/hintsfile.gff \
     -o braker1+2_combined.gtf
 ```
@@ -114,7 +116,9 @@ The combined gene prediciton is ```braker1+2_combined.gtf```.
 ## Example
 A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example and to check if TSEBRA runs properly.
 
-## Renaming the transcripts from the TSEBRA output
+## Other scripts in the TSEBRA repository
+
+### Renaming transcripts from a TSEBRA output
 The IDs of the transcripts and genes in the TSEBRA output can be renamed such that the gene and transcript ID match.
 Genes and transcript are numbered consecutively and for example, the second transcript of gene "g12" has the ID "g12.t2".
 If a prefix is set then it will be added before all IDs, for example, the transcript ID is "dmel_g12.t2" if the prefix is set to "dmel".
@@ -124,8 +128,15 @@ Example for renaming ```tsebra_result.gtf```:
 ```console
 ./bin/rename_gtf.py --gtf tsebra_result.gtf --prefix dmel --translation_tab translation.tab --out tsebra_result_renamed.gtf
 ```
-The arguments ```--prefix``` and ```translation_tab``` are optional.
+The arguments ```--prefix``` and ```--translation_tab``` are optional.
 
+### Fixing the formatting issue of `braker.gtf`
+A BRAKER run produces a second complete gene set named `braker.gtf`, besides the official output `augustus.hints.gtf`. The `braker.gtf` is the result of merging `augustus.hints.gtf` with some 'high-confidents' genes from the GeneMark prediction. However, the merging process leads to a formatting issue in `braker.gtf`. 
+A quick fix for this formatting issue is the script `fix_gtf_ids.py`, e.g.:
+```console
+./bin/fix_gtf_ids.py --gtf braker_out/braker.gtf --out braker1_fixed.gtf
+```
+Take note that the `braker.gtf` and `fix_gtf_ids.py` haven't been tested sufficently and there is no guarantee that this gene set is superior to `augustus.hints.gtf`.
 
 ## Licence
 All source code, i.e. `bin/*.py` are under the [Artistic License](bin/LICENSE.txt) (see <https://opensource.org/licenses/Artistic-2.0>).
