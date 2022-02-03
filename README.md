@@ -122,7 +122,7 @@ A small example is located at ```example/```. Run ```./example/run_prevco_exampl
 The IDs of the transcripts and genes in the TSEBRA output can be renamed such that the gene and transcript ID match.
 Genes and transcript are numbered consecutively and for example, the second transcript of gene "g12" has the ID "g12.t2".
 If a prefix is set then it will be added before all IDs, for example, the transcript ID is "dmel_g12.t2" if the prefix is set to "dmel".
-Additionally, a translation can be produced that provides the mapping from old to new transcript IDs.
+Additionally, a translation table can be produced that provides the mapping from old to new transcript IDs.
 
 Example for renaming ```tsebra_result.gtf```:
 ```console
