@@ -310,7 +310,6 @@ class Graph:
                     new_components[-1].append(n2_id)
                     not_visited += [n for n in self.nodes[n2_id].edge_to if n in result and n not in not_visited + visited]                    
                     if k > 0:
-                        print(not_visited, result)
                         self.nodes[n2_id].component_id = f'g_{self.component_index}'
         return result
 
