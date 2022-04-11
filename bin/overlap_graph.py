@@ -68,6 +68,7 @@ class Graph:
         self.anno = {}
 
         # list of connected graph components
+        self.component_index = 0
         self.component_list = []
 
         # subset of all transcripts that weren't removed by the transcript comparison rule
@@ -218,7 +219,7 @@ class Graph:
         """
         visited = []
         self.component_list = []
-        component_index = 0
+        self.component_index = 0
         for key in list(self.nodes.keys()):
             component = [key]
             if key in visited:
@@ -233,9 +234,9 @@ class Graph:
                 not_visited += new_nodes
                 component += new_nodes
             self.component_list.append(component)
-            component_index += 1
+            self.component_index += 1
             for node in component:
-                self.nodes[node].component_id = 'g_{}'.format(component_index)
+                self.nodes[node].component_id = 'g_{}'.format(self.component_index)
         return self.component_list
 
     def add_node_features(self, evi):
@@ -296,6 +297,21 @@ class Graph:
                 if node_to_remove:
                     if node_to_remove in result:
                         result.remove(node_to_remove)
+        new_components = [[]]
+        visited = []
+        for k, n_id in enumerate(result):
+            if n_id not in visited:
+                if k > 0:
+                    self.component_index += 1
+                not_visited = [n_id]
+                while not_visited:
+                    n2_id = not_visited.pop()
+                    visited.append(n2_id)
+                    new_components[-1].append(n2_id)
+                    not_visited += [n for n in self.nodes[n2_id].edge_to if n in result and n not in not_visited + visited]                    
+                    if k > 0:
+                        print(not_visited, result)
+                        self.nodes[n2_id].component_id = f'g_{self.component_index}'
         return result
 
     def decide_graph(self):
