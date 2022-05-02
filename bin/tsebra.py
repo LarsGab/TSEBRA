@@ -12,7 +12,11 @@ import csv
 class ConfigFileError(Exception):
     pass
 
+class GeneSetMissing(Exception):
+    pass
+
 gtf = []
+enforce_tx = []
 anno = []
 hintfiles = []
 graph = None
@@ -51,29 +55,39 @@ def main():
 
     # read gene prediciton files
     c = 1
+    keep = []
+
     for g in gtf:
         if not quiet:
-            sys.stderr.write('### READING GENE PREDICTION: [{}]\n'.format(g))
-        anno.append(Anno(g, 'anno{}'.format(c)))
+            sys.stderr.write(f'### READING GENE PREDICTION: [{g}]\n')
+        anno.append(Anno(g, f'anno{c}'))
         anno[-1].addGtf()
         anno[-1].norm_tx_format()
+        c += 1
+    for g in enforce_tx:
+        if not quiet:
+            sys.stderr.write(f'### READING GENE PREDICTION: [{g}]\n')
+        anno.append(Anno(g, f'anno{c}'))
+        anno[-1].addGtf()
+        anno[-1].norm_tx_format()
+        keep.append(f'anno{c}')
         c += 1
 
     # read hintfiles
     evi = Evidence()
     for h in hintfiles:
         if not quiet:
-            sys.stderr.write('### READING EXTRINSIC EVIDENCE: [{}]\n'.format(h))
+            sys.stderr.write(f'### READING EXTRINSIC EVIDENCE: [{h}]\n')
         evi.add_hintfile(h)
     for src in evi.src:
         if src not in parameter.keys():
-            sys.stderr.write('ConfigError: No weight for src={}, it is set to 1\n'.format(src))
+            sys.stderr.write(f'ConfigError: No weight for src={src}, it is set to 1\n')
             parameter.update({src : 1})
 
     # create graph with an edge for each unique transcript
     # and an edge if two transcripts overlap
     # two transcripts overlap if they share at least 3 adjacent protein coding nucleotides
-    graph = Graph(anno, para=parameter, verbose=v)
+    graph = Graph(anno, para=parameter, keep_tx=keep, verbose=v)
     if not quiet:
         sys.stderr.write('### BUILD OVERLAP GRAPH\n')
     graph.build()
@@ -127,9 +141,14 @@ def set_parameter(cfg_file):
                 parameter[line[0]] = float(line[1])
 
 def init(args):
-    global gtf, hintfiles, threads, hint_source_weight, out, v, quiet
+    global gtf, hintfiles, threads, hint_source_weight, out, enforce_tx, v, quiet
     if args.gtf:
         gtf = args.gtf.split(',')
+    if args.keep_gtf:
+        enforce_tx = args.keep_gtf.split(',')
+    if not args.keep_gtf and not args.gtf:
+        raise GeneSetMissing('At least one gene set has to be provided '\
+            + 'either with --gtf or --kepp_all!')
     if args.hintfiles:
         hintfiles = args.hintfiles.split(',')
     if args.cfg:
@@ -153,9 +172,13 @@ def parseCmd():
     parser = argparse.ArgumentParser(description='TSEBRA: Transcript Selector for BRAKER\n\n' \
         + 'TSEBRA combines gene predictions by selecing ' \
         + 'transcripts based on their extrisic evidence support.')
-    parser.add_argument('-g', '--gtf', type=str, required=True,
+    parser.add_argument('-g', '--gtf', type=str,
         help='List (separated by commas) of gene prediciton files in gtf.\n' \
             + '(e.g. gene_pred1.gtf,gene_pred2.gtf,gene_pred3.gtf)')
+    parser.add_argument('-k', '--keep_gtf', type=str,
+        help='List (separated by commas) of gene prediciton files in gtf.\n' \
+            + 'These gene sets are used the same way as other inputs, but TSEBRA '\
+            + 'ensures that all transcripts from these gene sets are included in the output.')
     parser.add_argument('-e', '--hintfiles', type=str, required=True,
         help='List (separated by commas) of files containing extrinsic evidence in gff.\n' \
             + '(e.g. hintsfile1.gff,hintsfile2.gtf,3.gtf)')

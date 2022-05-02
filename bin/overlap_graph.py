@@ -45,12 +45,13 @@ class Node:
         self.edge_to = {}
         self.feature_vector = [None] * 4
         self.evi_support = False
+        self.enforce = False
 
 class Graph:
     """
         Overlap graph that can detect and filter overlapping transcripts.
     """
-    def __init__(self, genome_anno_lst, para, verbose=0):
+    def __init__(self, genome_anno_lst, para, keep_tx=[], verbose=0):
         """
             Args:
                 genome_anno_lst (list(Anno)): List of Anno class objects
@@ -84,6 +85,9 @@ class Graph:
 
         # parameters for decision rule
         self.para = para
+
+        # list of transcript set names that are enforced
+        self.keep_tx = keep_tx
 
         # init annotations, check for duplicate ids
         self.init_anno(genome_anno_lst)
@@ -130,6 +134,7 @@ class Graph:
 
         for k in self.anno.keys():
             for tx in self.anno[k].get_transcript_list():
+                key = f'{tx.source_anno};{tx.id}'
                 if tx.chr not in tx_start_end.keys():
                     tx_start_end.update({tx.chr : []})
                     unique_tx_keys.update({tx.chr : {}})
@@ -142,14 +147,16 @@ class Graph:
                             check = True
                             break
                     if check:
+                        if tx.source_anno in self.keep_tx:
+                            self.nodes[f'{t.source_anno};{t.id}'].enforce = True
                         continue
                 else:
                     unique_tx_keys[tx.chr].update({unique_key : []})
                 unique_tx_keys[tx.chr][unique_key].append(tx)
-                key = '{};{}'.format(tx.source_anno, \
-                    tx.id)
                 self.nodes.update({key : Node(tx.source_anno, \
                     tx.id)})
+                if tx.source_anno in self.keep_tx:
+                    self.nodes[key].enforce = True
                 tx_start_end[tx.chr].append([key, tx.start, 0])
                 tx_start_end[tx.chr].append([key, tx.end, 1])
 
@@ -295,7 +302,8 @@ class Graph:
             for e_id in self.nodes[node_id].edge_to.values():
                 node_to_remove = self.edges[e_id].node_to_remove
                 if node_to_remove:
-                    if node_to_remove in result:
+                    if node_to_remove in result and \
+                        not self.nodes[node_to_remove].enforce:
                         result.remove(node_to_remove)
         new_components = [[]]
         visited = []
@@ -308,7 +316,8 @@ class Graph:
                     n2_id = not_visited.pop()
                     visited.append(n2_id)
                     new_components[-1].append(n2_id)
-                    not_visited += [n for n in self.nodes[n2_id].edge_to if n in result and n not in not_visited + visited]                    
+                    not_visited += [n for n in self.nodes[n2_id].edge_to \
+                        if n in result and n not in not_visited + visited]
                     if k > 0:
                         self.nodes[n2_id].component_id = f'g_{self.component_index}'
         return result
@@ -349,7 +358,7 @@ class Graph:
         for key in self.anno.keys():
             result.update({key : []})
         for node in self.decided_graph:
-            if self.nodes[node].evi_support:
+            if self.nodes[node].evi_support or self.nodes[node].enforce:
                 anno_id, tx_id = node.split(';')
                 result[anno_id].append([tx_id, self.nodes[node].component_id])
 
