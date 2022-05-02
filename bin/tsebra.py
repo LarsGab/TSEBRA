@@ -179,7 +179,7 @@ def parseCmd():
         help='List (separated by commas) of gene prediciton files in gtf.\n' \
             + 'These gene sets are used the same way as other inputs, but TSEBRA '\
             + 'ensures that all transcripts from these gene sets are included in the output.')
-    parser.add_argument('-e', '--hintfiles', type=str, required=True,
+    parser.add_argument('-e', '--hintfiles', type=str,
         help='List (separated by commas) of files containing extrinsic evidence in gff.\n' \
             + '(e.g. hintsfile1.gff,hintsfile2.gtf,3.gtf)')
     parser.add_argument('-c', '--cfg', type=str, required=True,
