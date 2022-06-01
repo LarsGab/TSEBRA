@@ -305,6 +305,9 @@ class Graph:
                     if node_to_remove in result and \
                         not self.nodes[node_to_remove].enforce:
                         result.remove(node_to_remove)
+            if node_id in result and not self.nodes[node_id].evi_support and \
+                not self.nodes[node_id].enforce:
+                result.remove(node_id)
         new_components = [[]]
         visited = []
         for k, n_id in enumerate(result):
@@ -335,7 +338,8 @@ class Graph:
         for component in self.component_list:
             if len(component) > 1:
                 self.decided_graph += self.decide_component(component)
-            else:
+            elif self.nodes[component[0]].evi_support \
+                or self.nodes[component[0]].enforce:
                 self.decided_graph += component
 
     def get_decided_graph(self):
@@ -358,9 +362,9 @@ class Graph:
         for key in self.anno.keys():
             result.update({key : []})
         for node in self.decided_graph:
-            if self.nodes[node].evi_support or self.nodes[node].enforce:
-                anno_id, tx_id = node.split(';')
-                result[anno_id].append([tx_id, self.nodes[node].component_id])
+            # if self.nodes[node].evi_support or self.nodes[node].enforce:
+            anno_id, tx_id = node.split(';')
+            result[anno_id].append([tx_id, self.nodes[node].component_id])
 
         if self.v > 0:
             print('NODES: {}'.format(len(self.nodes.keys())))
