@@ -1,4 +1,9 @@
 # TSEBRA: Transcript Selector for BRAKER
+
+<p align="center">
+<img src="docs/TSEBRA_Logo.png" alt="drawing" width="700"/>
+</p>
+
 ### Introduction
 [TSEBRA](https://doi.org/10.1186/s12859-021-04482-0) is a combiner tool that selects transcripts from gene predictions based on the support by extrisic evidence in form of introns and start/stop codons. It was developed to combine BRAKER1<sup name="a1">[1](#ref1)</sup> and BRAKER2<sup name="a2">[2](#ref2)</sup> predicitons to increase their accuracies.
 
