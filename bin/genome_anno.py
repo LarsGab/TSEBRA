@@ -67,7 +67,38 @@ class Transcript:
 
     def set_gene_id(self, new_gene_id):
         self.gene_id = new_gene_id
+        
+    def get_type_coords(self, type, frame=True):
+        """
+            Get the coordinates and reading frame of the coding regions
 
+            Returns:
+                (dict(list(list(int)))): Dictionary with list of CDS coords for
+                                        each each frame phase (0,1,2)
+        """
+        # returns dict of cds_coords[phase] = [start_coord, end_coord] of all CDS
+
+        if frame:
+            coords = {'0' : [], '1' : [], '2' : [], '.' : []}
+        else:
+            coords = []
+        if type == 'CDS' and type not in self.transcript_lines.keys():
+            type = 'exon'
+        if type not in self.transcript_lines.keys():
+            return coords
+        for line in self.transcript_lines[type]:
+            if frame:
+                coords[line[7]].append([line[3], line[4]])
+            else:
+                coords.append([line[3], line[4]])
+        if frame:
+            for k in coords.keys():
+                coords[k].sort(key=lambda c: (c[0],c[1]))
+        else:
+            coords.sort(key=lambda c: (c[0],c[1]))
+        return coords
+    
+    
     def get_cds_coords(self):
         """
             Get the coordinates and reading frame of the coding regions

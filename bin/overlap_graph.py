@@ -8,6 +8,8 @@
 # Compare nodes with the 'decision rule'.
 # ==============================================================
 from features import Node_features
+import numpy as np
+
 
 class Edge:
     """
@@ -35,6 +37,7 @@ class Node:
         """
         self.id = '{};{}'.format(a_id, t_id)
         self.transcript_id = t_id
+        self.is_in_ref_anno = 0.0
         # ID of original annotation/gene prediction
         self.anno_id = a_id
         # unique ID for a cluster of overlapping transcripts
@@ -46,6 +49,7 @@ class Node:
         self.feature_vector = [None] * 4
         self.evi_support = False
         self.enforce = False
+        self.gene_sets = set()
 
 class Graph:
     """
@@ -67,6 +71,8 @@ class Graph:
 
         # self.anno[annoid] = Anno()
         self.anno = {}
+        
+        self.max_features = np.zeros(6)
 
         # list of connected graph components
         self.component_index = 0
@@ -141,20 +147,22 @@ class Graph:
                 unique_key = '{}_{}_{}'.format(tx.start, tx.end, tx.strand)
                 if unique_key in unique_tx_keys[tx.chr].keys():
                     check = False
-                    coords = tx.get_cds_coords()
+                    coords = tx.get_type_coords('CDS')
                     for t in unique_tx_keys[tx.chr][unique_key]:
-                        if coords == t.get_cds_coords():
+                        if coords == t.get_type_coords('CDS'):
                             check = True
                             break
                     if check:
                         if tx.source_anno in self.keep_tx:
                             self.nodes[f'{t.source_anno};{t.id}'].enforce = True
+                        self.nodes[f'{t.source_anno};{t.id}'].gene_sets.add(t.source_anno)
                         continue
                 else:
                     unique_tx_keys[tx.chr].update({unique_key : []})
                 unique_tx_keys[tx.chr][unique_key].append(tx)
                 self.nodes.update({key : Node(tx.source_anno, \
                     tx.id)})
+                self.nodes[f'{tx.source_anno};{tx.id}'].gene_sets.add(tx.source_anno)
                 if tx.source_anno in self.keep_tx:
                     self.nodes[key].enforce = True
                 tx_start_end[tx.chr].append([key, tx.start, 0])
@@ -194,8 +202,8 @@ class Graph:
         """
         if not tx1.strand == tx2.strand:
             return False
-        tx1_coords = tx1.get_cds_coords()
-        tx2_coords = tx2.get_cds_coords()
+        tx1_coords = tx1.get_type_coords('CDS')
+        tx2_coords = tx2.get_type_coords('CDS')
         for phase in ['0', '1', '2']:
             coords = []
             coords += tx1_coords[phase]
@@ -205,6 +213,39 @@ class Graph:
                 if coords[i-1][1] - coords[i][0] > 1:
                     return True
         return False
+
+    def add_reference_anno_label(self, ref_anno):
+        """
+            Sets the value of is_in_ref_anno for each node to 1
+            if the coding sequence of the corresponding transcript matches the
+            coding sequence of a transcript in the reference anno
+
+            Args:
+                ref_anno (Anno): Anno() obeject of reference annotation
+        """
+        def get_cds_keys(tx):
+            keys = [tx.chr, tx.strand] + [str(c[0]) + '_' + str(c[1]) \
+                for c in tx.get_type_coords('CDS', frame=False)]
+            return keys
+        ref_anno_keys = []
+        ref_anno_cds = []
+        for tx in ref_anno.transcripts.values():
+            cds_keys = get_cds_keys(tx)
+            ref_anno_cds += cds_keys
+            ref_anno_keys.append('_'.join(cds_keys))
+        ref_anno_cds = set(ref_anno_cds)
+        ref_anno_keys = set(ref_anno_keys)
+        
+        false_cds_keys = set([])
+        correct_cds_keys = set([])
+        numb_correct_tx = 0
+        for n in self.nodes:
+            self.nodes[n].is_in_ref_anno = 0.0
+            c_keys = get_cds_keys(self.__tx_from_key__(n))
+            if '_'.join(c_keys) in ref_anno_keys:
+                self.nodes[n].is_in_ref_anno = 1.0
+            
+
 
     def print_nodes(self):
         # prints all nodes of the graph (only used for development)
@@ -253,15 +294,33 @@ class Graph:
             Args:
                 evi (Evidence): Evidence class object with all hints from any source.
         """
+        self.max_features = np.zeros(6, float)
+        all_features = []
         for key in self.nodes.keys():
             tx = self.__tx_from_key__(key)
             new_node_feature = Node_features(tx, evi, self.para)
-            self.nodes[key].feature_vector = new_node_feature.get_features()
+            self.nodes[key].feature_vector = np.array(new_node_feature.get_features())
+            self.max_features = np.maximum(self.nodes[key].feature_vector, 
+                                          self.max_features)
+            all_features.append(self.nodes[key].feature_vector)
+            
+                
+        std = np.std(np.array(all_features)[:,2:], axis=0)
+        mean = np.mean(np.array(all_features)[:,2:], axis=0)
+        for key in self.nodes.keys():
+            tx = self.__tx_from_key__(key)
+#             print(self.nodes[key].feature_vector, mean, std)
+            self.nodes[key].feature_vector[2:] -= mean
+            self.nodes[key].feature_vector[2:] /= std
+#             print(self.nodes[key].feature_vector, '\n\n')
             if self.nodes[key].feature_vector[0] >= self.para['intron_support'] \
                 or self.nodes[key].feature_vector[1] >= self.para['stasto_support']:
                 self.nodes[key].evi_support = True
+            if self.nodes[key].feature_vector[0] >= 0.9999 and \
+                self.nodes[key].feature_vector[1] == 1:
+                self.nodes[key].evi_support = True
 
-    def decide_edge(self, edge):
+    def decide_edge(self, edge, iter_range = range(0,6)):
         """
             Apply transcript comparison rule to two overlapping transcripts
 
@@ -273,15 +332,31 @@ class Graph:
         """
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
-        for i in range(0,4):
+        tx1 = self.__tx_from_key__(n1.id)
+        tx2 = self.__tx_from_key__(n2.id)
+#         if (not n1.evi_support) or (not n2.evi_support):
+#             return None
+        
+        if len(tx1.transcript_lines['intron']) == 0 or \
+            len(tx2.transcript_lines['intron']) == 0:
+            iter_range = [1,3]
+        for i in iter_range:
             diff = n1.feature_vector[i] - n2.feature_vector[i]
             #print(diff)
-            if diff > self.para['e_{}'.format(i+1)]:
-                self.f[i].append(n2.id)
+            if diff > self.para[f'e_{i+1}']:
+#                 self.f[i].append(n2.id)
                 return n2.id
-            elif diff < (-1 * self.para['e_{}'.format(i+1)]):
-                self.f[i].append(n1.id)
+            elif diff < (-1 * self.para[f'e_{i+1}']):
+#                 self.f[i].append(n1.id)
                 return n1.id
+            
+        if len(tx1.transcript_lines['intron']) == 0 and \
+            len(tx2.transcript_lines['intron']) == 0:
+            if tx1.start >= tx2.start and tx1.end <= tx2.end:
+                return n1.id
+            elif tx1.start <= tx2.start and tx1.end >= tx2.end:
+                return n2.id
+        
         return None
 
     def decide_component(self, component):
