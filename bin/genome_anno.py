@@ -34,6 +34,7 @@ class Transcript:
         self.source_anno = source_anno
         self.start = -1
         self.end = -1
+        self.cds_len = -1
         self.cds_coords = {}
         self.strand = strand
         self.source_method = ''
@@ -68,6 +69,39 @@ class Transcript:
     def set_gene_id(self, new_gene_id):
         self.gene_id = new_gene_id
 
+    def get_cds_len(self):
+        if self.cds_len < 0:
+            self.cds_coords = sum([c[1] - c[0] + 1 for c in self.get_type_coords('CDS', False)])
+        return self.cds_coords
+        
+    def get_type_coords(self, type, frame=True):
+        """
+            Get the coordinates and reading frame of the coding regions
+            Returns:
+                (dict(list(list(int)))): Dictionary with list of CDS coords for
+                                        each each frame phase (0,1,2)
+        """
+        # returns dict of cds_coords[phase] = [start_coord, end_coord] of all CDS
+        if frame:
+            coords = {'0' : [], '1' : [], '2' : [], '.' : []}
+        else:
+            coords = []
+        if type == 'CDS' and type not in self.transcript_lines.keys():
+            type = 'exon'
+        if type not in self.transcript_lines.keys():
+            return coords
+        for line in self.transcript_lines[type]:
+            if frame:
+                coords[line[7]].append([line[3], line[4]])
+            else:
+                coords.append([line[3], line[4]])
+        if frame:
+            for k in coords.keys():
+                coords[k].sort(key=lambda c: (c[0],c[1]))
+        else:
+            coords.sort(key=lambda c: (c[0],c[1]))
+        return coords
+        
     def get_cds_coords(self):
         """
             Get the coordinates and reading frame of the coding regions
