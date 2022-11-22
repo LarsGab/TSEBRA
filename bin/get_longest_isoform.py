@@ -57,12 +57,11 @@ def main():
     
     combined_anno = Anno('', 'combined_annotation')
     # for each gene locus, choose the transcript with longes coding sequence
+    if not quiet:
+        sys.stderr.write('### CHOOSE LONGEST ISOFORM FOR EACH GENE\n')
     for i, comp in enumerate(graph.connected_components()):
         tx_longest = sorted([graph.__tx_from_key__(n) for \
                    n in comp], key=lambda t:t.get_cds_len())[-1]
-            a = sorted([graph.__tx_from_key__(n) for \
-                   n in comp], key=lambda t:t.get_cds_len())
-            print([k.get_cds_len() for k in a])
         tx_longest.set_gene_id(f'g_{i+1}')
         tx_longest.id = f'{tx_longest.source_anno}.{tx_longest.id}'
         combined_anno.transcripts.update({tx_longest.id : tx_longest})    
