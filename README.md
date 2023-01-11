@@ -143,6 +143,12 @@ A quick fix for this formatting issue is the script `fix_gtf_ids.py`, e.g.:
 ```
 Take note that the `braker.gtf` and `fix_gtf_ids.py` haven't been tested sufficently and there is no guarantee that this gene set is superior to `augustus.hints.gtf`.
 
+### Getting the longest isoform of each gene loci from different gene sets
+Combines multiple gene sets and reports the transcript with the longest coding region for each cluster of overlapping transcripts (one transcript per gene loci), e.g.
+```console
+./bin/get_longest_isoform.py --gtf gene_set1.gtf,gene_set2.gtf --out longest_insoforms.gtf
+```
+
 ## Licence
 All source code, i.e. `bin/*.py` are under the [Artistic License](bin/LICENSE.txt) (see <https://opensource.org/licenses/Artistic-2.0>).
 

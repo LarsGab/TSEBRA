@@ -34,6 +34,7 @@ class Transcript:
         self.source_anno = source_anno
         self.start = -1
         self.end = -1
+        self.cds_len = -1
         self.cds_coords = {}
         self.strand = strand
         self.source_method = ''
@@ -71,13 +72,11 @@ class Transcript:
     def get_type_coords(self, type, frame=True):
         """
             Get the coordinates and reading frame of the coding regions
-
             Returns:
                 (dict(list(list(int)))): Dictionary with list of CDS coords for
                                         each each frame phase (0,1,2)
         """
         # returns dict of cds_coords[phase] = [start_coord, end_coord] of all CDS
-
         if frame:
             coords = {'0' : [], '1' : [], '2' : [], '.' : []}
         else:
@@ -97,8 +96,7 @@ class Transcript:
         else:
             coords.sort(key=lambda c: (c[0],c[1]))
         return coords
-    
-    
+
     def get_cds_coords(self):
         """
             Get the coordinates and reading frame of the coding regions

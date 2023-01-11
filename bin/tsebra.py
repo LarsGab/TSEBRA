@@ -182,7 +182,7 @@ def parseCmd():
     parser.add_argument('-e', '--hintfiles', type=str,
         help='List (separated by commas) of files containing extrinsic evidence in gff.\n' \
             + '(e.g. hintsfile1.gff,hintsfile2.gtf,3.gtf)')
-    parser.add_argument('-c', '--cfg', type=str, required=True,
+    parser.add_argument('-c', '--cfg', type=str,
         help='Configuration file that sets the parameter for TSEBRA. ' \
             + 'You can find the recommended parameter at config/default.cfg.')
     parser.add_argument('-o', '--out', type=str, required=True,
