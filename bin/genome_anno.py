@@ -68,11 +68,6 @@ class Transcript:
 
     def set_gene_id(self, new_gene_id):
         self.gene_id = new_gene_id
-
-    def get_cds_len(self):
-        if self.cds_len < 0:
-            self.cds_coords = sum([c[1] - c[0] + 1 for c in self.get_type_coords('CDS', False)])
-        return self.cds_coords
         
     def get_type_coords(self, type, frame=True):
         """
@@ -101,7 +96,7 @@ class Transcript:
         else:
             coords.sort(key=lambda c: (c[0],c[1]))
         return coords
-        
+
     def get_cds_coords(self):
         """
             Get the coordinates and reading frame of the coding regions
