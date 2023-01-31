@@ -55,7 +55,7 @@ class Graph:
     """
         Overlap graph that can detect and filter overlapping transcripts.
     """
-    def __init__(self, genome_anno_lst, para, keep_tx=[], verbose=0):
+    def __init__(self, genome_anno_lst, para, keep_tx=[], filter_single=False, verbose=0):
         """
             Args:
                 genome_anno_lst (list(Anno)): List of Anno class objects
@@ -77,7 +77,7 @@ class Graph:
         # list of connected graph components
         self.component_index = 0
         self.component_list = []
-
+        
         # subset of all transcripts that weren't removed by the transcript comparison rule
         self.decided_graph = []
 
@@ -97,6 +97,9 @@ class Graph:
 
         # init annotations, check for duplicate ids
         self.init_anno(genome_anno_lst)
+        
+        # filter single exon genes
+        self.filter_single = filter_single
 
     def init_anno(self, genome_anno_lst):
         # make sure that the genome_anno ids are unique
@@ -234,8 +237,7 @@ class Graph:
             ref_anno_cds += cds_keys
             ref_anno_keys.append('_'.join(cds_keys))
         ref_anno_cds = set(ref_anno_cds)
-        ref_anno_keys = set(ref_anno_keys)
-        
+        ref_anno_keys = set(ref_anno_keys)        
         false_cds_keys = set([])
         correct_cds_keys = set([])
         numb_correct_tx = 0
@@ -244,8 +246,6 @@ class Graph:
             c_keys = get_cds_keys(self.__tx_from_key__(n))
             if '_'.join(c_keys) in ref_anno_keys:
                 self.nodes[n].is_in_ref_anno = 1.0
-            
-
 
     def print_nodes(self):
         # prints all nodes of the graph (only used for development)
@@ -302,23 +302,21 @@ class Graph:
             self.nodes[key].feature_vector = np.array(new_node_feature.get_features())
             self.max_features = np.maximum(self.nodes[key].feature_vector, 
                                           self.max_features)
-            all_features.append(self.nodes[key].feature_vector)
-            
+            all_features.append(self.nodes[key].feature_vector)            
                 
         std = np.std(np.array(all_features)[:,2:], axis=0)
         mean = np.mean(np.array(all_features)[:,2:], axis=0)
         for key in self.nodes.keys():
             tx = self.__tx_from_key__(key)
-#             print(self.nodes[key].feature_vector, mean, std)
             self.nodes[key].feature_vector[2:] -= mean
             self.nodes[key].feature_vector[2:] /= std
-#             print(self.nodes[key].feature_vector, '\n\n')
             if self.nodes[key].feature_vector[0] >= self.para['intron_support'] \
                 or self.nodes[key].feature_vector[1] >= self.para['stasto_support']:
                 self.nodes[key].evi_support = True
-            if self.nodes[key].feature_vector[0] >= 0.9999 and \
-                self.nodes[key].feature_vector[1] == 1:
-                self.nodes[key].evi_support = True
+            if self.filter_single:
+                if len(tx.transcript_lines['intron']) == 0 and \
+                    self.nodes[key].feature_vector[1] == 0:
+                    self.nodes[key].evi_support = False
 
     def decide_edge(self, edge, iter_range = range(0,6)):
         """
@@ -330,33 +328,34 @@ class Graph:
             Returns:
                 (str): node ID of the transcript that is marked for removal
         """
+        
         n1 = self.nodes[edge.node1]
         n2 = self.nodes[edge.node2]
-        tx1 = self.__tx_from_key__(n1.id)
-        tx2 = self.__tx_from_key__(n2.id)
-#         if (not n1.evi_support) or (not n2.evi_support):
-#             return None
-        
-        if len(tx1.transcript_lines['intron']) == 0 or \
-            len(tx2.transcript_lines['intron']) == 0:
-            iter_range = [1,3]
-        for i in iter_range:
-            diff = n1.feature_vector[i] - n2.feature_vector[i]
-            #print(diff)
-            if diff > self.para[f'e_{i+1}']:
-#                 self.f[i].append(n2.id)
-                return n2.id
-            elif diff < (-1 * self.para[f'e_{i+1}']):
-#                 self.f[i].append(n1.id)
-                return n1.id
+        if n1.evi_support and n2.evi_support:
+            tx1 = self.__tx_from_key__(n1.id)
+            tx2 = self.__tx_from_key__(n2.id)
+    #         if (not n1.evi_support) or (not n2.evi_support):
+    #             return None
             
-        if len(tx1.transcript_lines['intron']) == 0 and \
-            len(tx2.transcript_lines['intron']) == 0:
-            if tx1.start >= tx2.start and tx1.end <= tx2.end:
-                return n1.id
-            elif tx1.start <= tx2.start and tx1.end >= tx2.end:
-                return n2.id
-        
+            if len(tx1.transcript_lines['intron']) == 0 or \
+                len(tx2.transcript_lines['intron']) == 0:
+                iter_range = [1,3]
+            for i in iter_range:
+                diff = n1.feature_vector[i] - n2.feature_vector[i]
+                #print(diff)
+                if diff > self.para[f'e_{i+1}']:
+    #                 self.f[i].append(n2.id)
+                    return n2.id
+                elif diff < (-1 * self.para[f'e_{i+1}']):
+    #                 self.f[i].append(n1.id)
+                    return n1.id
+                
+            if len(tx1.transcript_lines['intron']) == 0 and \
+                len(tx2.transcript_lines['intron']) == 0:
+                if tx1.start >= tx2.start and tx1.end <= tx2.end:
+                    return n1.id
+                elif tx1.start <= tx2.start and tx1.end >= tx2.end:
+                    return n2.id        
         return None
 
     def decide_component(self, component):

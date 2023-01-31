@@ -59,8 +59,8 @@ A weight is set to 1, if the weight for a hint source is not specified in the co
    * *Notes on adjusting these parameters: The low evidence support thresholds for low evidence support are quite strict in the default configuration file. In this configuration, only transcripts with very high evidence support are allowed in the TSBERA result. In some cases, the default setting might be too strict, so that too many transcripts are filtered out. In this case, you should reduce the threshold of 'intron_support' (e.g., to 0.2).*  
 
 
-3. Allowed difference between two overlapping transcripts for the four transcript scores (see section 'Transcript scores' in [TSEBRA](https://doi.org/10.1101/2021.06.07.447316) for a definition of the different transcript scores and section 'Pairwise transcript comparison rule' for more information on how transcripts are compared). TSEBRA compares transcripts via their transcript scores and removes the one with the lower score if their difference exceeds the respective threshold.  
-Note that e_1, e_2 are fractions (e_1, e_2 &#x220A; [0,1]), and e_3, e_4 can be larger than 1 (e_3, e_4 &ge; 0).  
+3. Allowed difference between two overlapping transcripts for the six transcript scores. TSEBRA compares transcripts via their transcript scores and removes the one with the lower score if their difference exceeds the respective threshold.  
+Note that it is recommended to choose thesholds between [0,2], since the transcript scores are normalized to [-1,1]. 
 
    * *Notes on adjusting these parameters: The higher the thresholds are set the less transcripts are filtered by the respective rule. With these thresholds one can adjust the effect of each filtering rule of TSEBRA. As these thresholds are increased, more transcripts are included in the TSEBRA result, in particular, more alternatively spliced isoforms per gene are contained in the result.*  
 
@@ -69,19 +69,25 @@ Note that e_1, e_2 are fractions (e_1, e_2 &#x220A; [0,1]), and e_3, e_4 can be 
 The name and the value of a parameter are separated by a space, and each parameter is listed in a different line.  
 Example:
 ```console
-# src weights
-P 0.1
-E 10
-C 5
+# Weight for each hint source
+# Values have to be >= 0
+P 1
+E 1
+C 1
 M 1
-# Low evidence support
-intron_support 0.75
+# Required fraction of supported introns 
+# or supported start/stop-codons for a transcript
+# Values have to be in [0,1]
+intron_support 0.8
 stasto_support 1
-# Feature differences
-e_1 0
+# Allowed difference for each feature 
+# Values have to be in [0,2]
+e_1 0.0
 e_2 0.5
-e_3 25
-e_4 10
+e_3 0.096
+e_4 0.02
+e_5 0.18
+e_6 0.18
 ```
 Description of evidence sources in default BRAKER1 and BRAKER2 outputs:
 ```
@@ -120,6 +126,12 @@ The combined gene prediciton is ```braker1+2_combined.gtf```.
 
 ## Example
 A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example and to check if TSEBRA runs properly.
+
+## Filter single-exon genes out
+In default mode, TSEBRA is conservative in filtering single exon genes out. In some cases BRAKER predicts a lot of false positive single exon genes. In these cases, it is recommended to run TSBERA using the `--filter_single_exon_genes`. In this mode, TSBERA filters additonally all single-exon genes out that have no support by a start or stop codon hint. 
+
+## Print transcript scores
+The transcript scores play a very improtant role in TSEBRA. These are used for pairwise comparison of all transcripts isoforms that have overlapping coding regions. You can print the scores as table to a file with the option `--score_tab /path/to/output/file.tab`.
 
 ## Other scripts in the TSEBRA repository
 
