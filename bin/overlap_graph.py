@@ -10,7 +10,6 @@
 from features import Node_features
 import numpy as np
 
-
 class Edge:
     """
         Class handling an edge in the overlap graph.
@@ -55,7 +54,7 @@ class Graph:
     """
         Overlap graph that can detect and filter overlapping transcripts.
     """
-    def __init__(self, genome_anno_lst, para, keep_tx=[], filter_single=False, verbose=0):
+    def __init__(self, genome_anno_lst, para, keep_tx=[], filter_single=False, ignore_phase=False, verbose=0):
         """
             Args:
                 genome_anno_lst (list(Anno)): List of Anno class objects
@@ -100,6 +99,7 @@ class Graph:
         
         # filter single exon genes
         self.filter_single = filter_single
+        self.ignore_phase = ignore_phase
 
     def init_anno(self, genome_anno_lst):
         # make sure that the genome_anno ids are unique
@@ -205,16 +205,21 @@ class Graph:
         """
         if not tx1.strand == tx2.strand:
             return False
-        tx1_coords = tx1.get_type_coords('CDS')
-        tx2_coords = tx2.get_type_coords('CDS')
-        for phase in ['0', '1', '2']:
-            coords = []
-            coords += tx1_coords[phase]
-            coords += tx2_coords[phase]
-            coords = sorted(coords, key=lambda c:c[0])
-            for i in range(1, len(coords)):
-                if coords[i-1][1] - coords[i][0] > 1:
+        coords = []
+        coords += [c + [int(phase)] for phase, coord_phase in tx1.get_type_coords('CDS').items() for c in coord_phase]
+        coords += [c + [int(phase)] for phase, coord_phase in tx2.get_type_coords('CDS').items() for c in coord_phase]
+        coords = sorted(coords, key = lambda x: x[0])
+        
+        for i in range(1, len(coords)):
+            if coords[i-1][1] - coords[i][0] > 0:       
+                if self.ignore_phase:
                     return True
+                elif tx1.strand == '+' and \
+                    abs(coords[i-1][0]-coords[i-1][2]-coords[i][0]+coords[i][2])%3 == 0:
+                    return True
+                elif abs(coords[i-1][1]+coords[i-1][2]-coords[i][1]-coords[i][2])%3 == 0:
+                    return True
+                print(coords, coords[i-1], coords[i], tx1.strand)
         return False
 
     def add_reference_anno_label(self, ref_anno):
@@ -339,7 +344,7 @@ class Graph:
             
             if len(tx1.transcript_lines['intron']) == 0 or \
                 len(tx2.transcript_lines['intron']) == 0:
-                iter_range = [1,3]
+                iter_range = [1,4]
             for i in iter_range:
                 diff = n1.feature_vector[i] - n2.feature_vector[i]
                 #print(diff)
@@ -427,7 +432,6 @@ class Graph:
                 (dict(list(list(str))): Dictionary with transcript IDs and new
                 gene IDs of all transcripts included in the combined gene prediciton
                 for all input annotations
-
         """
         if not self.decided_graph:
             self.decide_graph()

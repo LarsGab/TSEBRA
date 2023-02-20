@@ -24,6 +24,7 @@ out = ''
 v = 0
 quiet = False
 filter_sing_exon = False
+ignore_tx_phase = False
 scores_tab = ''
 parameter = {'intron_support' : 0, 'stasto_support' : 0, \
     'e_1' : 0, 'e_2' : 0, 'e_3' : 0, 'e_4' : 0}
@@ -58,7 +59,7 @@ def main():
     # read gene prediciton files
     c = 1
     keep = []
-
+    
     for g in gtf:
         if not quiet:
             sys.stderr.write(f'### READING GENE PREDICTION: [{g}]\n')
@@ -74,7 +75,7 @@ def main():
         anno[-1].norm_tx_format()
         keep.append(f'anno{c}')
         c += 1
-
+    
     # read hintfiles
     evi = Evidence()
     for h in hintfiles:
@@ -89,7 +90,8 @@ def main():
     # create graph with an edge for each unique transcript
     # and an edge if two transcripts overlap
     # two transcripts overlap if they share at least 3 adjacent protein coding nucleotides
-    graph = Graph(anno, para=parameter, keep_tx=keep, filter_single=filter_sing_exon, verbose=v)
+    
+    graph = Graph(anno, para=parameter, keep_tx=keep, filter_single=filter_sing_exon, ignore_phase=ignore_tx_phase, verbose=v)
     if not quiet:
         sys.stderr.write('### BUILD OVERLAP GRAPH\n')
     graph.build()
@@ -163,7 +165,7 @@ def write_csv(out_path, tab):
             out_writer.writerow(line)
 
 def init(args):
-    global gtf, hintfiles, threads, hint_source_weight, out, enforce_tx, v, scores_tab, filter_sing_exon, quiet
+    global gtf, hintfiles, threads, hint_source_weight, out, enforce_tx, v, scores_tab, filter_sing_exon, ignore_tx_phase, quiet
     if args.gtf:
         gtf = args.gtf.split(',')
     if args.keep_gtf:
@@ -182,6 +184,8 @@ def init(args):
         scores_tab = args.score_tab
     if args.filter_single_exon_genes:
         filter_sing_exon = args.filter_single_exon_genes
+    if args.ignore_tx_phase:
+        ignore_tx_phase = args.ignore_tx_phase
     if args.out:
         out = args.out
     if args.verbose:
@@ -214,6 +218,9 @@ def parseCmd():
     parser.add_argument('--filter_single_exon_genes', action='store_true',
         help='Filter out all single-exon genes out that are not' \
             + ' supported by at least one start- or stop-codon hint.')
+    parser.add_argument('--ignore_tx_phase', action='store_true',
+        help='Ignore the phase of transcripts while detecting clusters ' \
+            + 'of overlapping transcripts.')
     parser.add_argument('-s', '--score_tab', type=str,
         help='Prints the transcript scores as a table to the specified file.')
     parser.add_argument('-o', '--out', type=str, required=True,

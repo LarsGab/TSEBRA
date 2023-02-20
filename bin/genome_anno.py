@@ -73,7 +73,7 @@ class Transcript:
         """
             Get the coordinates and reading frame of the coding regions
             Returns:
-                (dict(list(list(int)))): Dictionary with list of CDS coords for
+                (dict(list(list(int)))): Dictionary with list of type coords for
                                         each each frame phase (0,1,2)
         """
         # returns dict of cds_coords[phase] = [start_coord, end_coord] of all CDS
@@ -93,6 +93,9 @@ class Transcript:
         if frame:
             for k in coords.keys():
                 coords[k].sort(key=lambda c: (c[0],c[1]))
+            if type == 'CDS':
+                coords['0'] += coords['.']
+                del coords['.']
         else:
             coords.sort(key=lambda c: (c[0],c[1]))
         return coords
