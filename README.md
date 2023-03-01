@@ -133,6 +133,9 @@ In default mode, TSEBRA is conservative in filtering single exon genes out. In s
 ## Print transcript scores
 The transcript scores play a very improtant role in TSEBRA. These are used for pairwise comparison of all transcripts isoforms that have overlapping coding regions. You can print the scores as table to a file with the option `--score_tab /path/to/output/file.tab`.
 
+## Ignore Frame
+By default, TSEBRA groups all transcript isoforms that have overlapping coding regions in the same open reading frame (phase column in gtf) to candidates of the same gene. However, in some cases, it might be desired to consider already all transcripts with overlapping conding regions (regardless of the reading frame) as candidates for a gene. In this case add the `--ignore_tx_phase` to the TSEBRA commmand. 
+
 ## Other scripts in the TSEBRA repository
 
 ### Renaming transcripts from a TSEBRA output
