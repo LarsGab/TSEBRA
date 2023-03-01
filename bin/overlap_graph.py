@@ -71,8 +71,6 @@ class Graph:
         # self.anno[annoid] = Anno()
         self.anno = {}
         
-        self.max_features = np.zeros(6)
-
         # list of connected graph components
         self.component_index = 0
         self.component_list = []
@@ -219,7 +217,6 @@ class Graph:
                     return True
                 elif abs(coords[i-1][1]+coords[i-1][2]-coords[i][1]-coords[i][2])%3 == 0:
                     return True
-                print(coords, coords[i-1], coords[i], tx1.strand)
         return False
 
     def add_reference_anno_label(self, ref_anno):
@@ -299,16 +296,12 @@ class Graph:
             Args:
                 evi (Evidence): Evidence class object with all hints from any source.
         """
-        self.max_features = np.zeros(6, float)
         all_features = []
         for key in self.nodes.keys():
             tx = self.__tx_from_key__(key)
             new_node_feature = Node_features(tx, evi, self.para)
             self.nodes[key].feature_vector = np.array(new_node_feature.get_features())
-            self.max_features = np.maximum(self.nodes[key].feature_vector, 
-                                          self.max_features)
             all_features.append(self.nodes[key].feature_vector)            
-                
         std = np.std(np.array(all_features)[:,2:], axis=0)
         mean = np.mean(np.array(all_features)[:,2:], axis=0)
         for key in self.nodes.keys():
@@ -322,7 +315,7 @@ class Graph:
                 if len(tx.transcript_lines['intron']) == 0 and \
                     self.nodes[key].feature_vector[1] == 0:
                     self.nodes[key].evi_support = False
-
+        
     def decide_edge(self, edge, iter_range = range(0,6)):
         """
             Apply transcript comparison rule to two overlapping transcripts
@@ -339,28 +332,17 @@ class Graph:
         if n1.evi_support and n2.evi_support:
             tx1 = self.__tx_from_key__(n1.id)
             tx2 = self.__tx_from_key__(n2.id)
-    #         if (not n1.evi_support) or (not n2.evi_support):
-    #             return None
-            
+            iter_range = range(4)
             if len(tx1.transcript_lines['intron']) == 0 or \
                 len(tx2.transcript_lines['intron']) == 0:
-                iter_range = [1,4]
+                iter_range = [1,3]
+                
             for i in iter_range:
                 diff = n1.feature_vector[i] - n2.feature_vector[i]
-                #print(diff)
                 if diff > self.para[f'e_{i+1}']:
-    #                 self.f[i].append(n2.id)
                     return n2.id
                 elif diff < (-1 * self.para[f'e_{i+1}']):
-    #                 self.f[i].append(n1.id)
-                    return n1.id
-                
-            if len(tx1.transcript_lines['intron']) == 0 and \
-                len(tx2.transcript_lines['intron']) == 0:
-                if tx1.start >= tx2.start and tx1.end <= tx2.end:
-                    return n1.id
-                elif tx1.start <= tx2.start and tx1.end >= tx2.end:
-                    return n2.id        
+                    return n1.id       
         return None
 
     def decide_component(self, component):

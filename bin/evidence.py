@@ -93,13 +93,10 @@ class Hintfile:
                 new_hint = Hint(line)
                 if not new_hint.chr in self.hints.keys():
                     self.hints.update({new_hint.chr : []})
-                if (new_hint.src == 'E' and new_hint.score > 0) \
-                    or (new_hint.src == 'P' and new_hint.mult > 1) or\
-                    new_hint.src=='M' or new_hint.src=='C':
-                    self.hints[new_hint.chr].append(new_hint)
-                    if new_hint.src not in self.src:
-                        self.src.update({new_hint.src : 0})
-                    self.src[new_hint.src] += new_hint.mult
+                self.hints[new_hint.chr].append(new_hint)
+                if new_hint.src not in self.src:
+                    self.src.update({new_hint.src : 0})
+                self.src[new_hint.src] += new_hint.mult
 
 class Evidence:
     """
@@ -131,8 +128,7 @@ class Evidence:
                     self.hint_keys[chr].update({new_key : {}})
                 if not hint.src in self.hint_keys[chr][new_key].keys():
                     self.hint_keys[chr][new_key].update({hint.src : 0})
-                self.hint_keys[chr][new_key][hint.src] += int(hint.mult)/self.src[hint.src]
-#                 print(hint.mult, self.hint_keys[chr][new_key][hint.src])
+                self.hint_keys[chr][new_key][hint.src] += int(hint.mult)
 
     def get_hint(self, chr, start, end, type, strand):
         if type == 'start_codon':
