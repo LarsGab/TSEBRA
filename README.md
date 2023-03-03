@@ -127,6 +127,15 @@ The combined gene prediciton is ```braker1+2_combined.gtf```.
 ## Example
 A small example is located at ```example/```. Run ```./example/run_prevco_example.sh``` to execute the example and to check if TSEBRA runs properly.
 
+## Enforcing a gene set
+A gene set can be enforced in the TSEBRA output, i.e. all transcript are guaranteed to be included in the output, with the `--keep_gtf` option. The transcripts of enforced gene sets are still compared to all gene sets and used to evaluate them.
+Example:
+ ```console
+./bin/tsebra.py -g gene_set1,gene_set2 -c default.cfg \
+    -k enforced_set1,enforced_set2 -e hintsfile1.gff,braker2_out/hintsfile2.gff \
+    -o tsebra.gtf
+```
+
 ## Filter single-exon genes out
 In default mode, TSEBRA is conservative in filtering single exon genes out. In some cases BRAKER predicts a lot of false positive single exon genes. In these cases, it is recommended to run TSBERA using the `--filter_single_exon_genes`. In this mode, TSBERA filters additonally all single-exon genes out that have no support by a start or stop codon hint. 
 
