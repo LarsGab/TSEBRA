@@ -317,8 +317,7 @@ class Graph:
                     self.nodes[key].evi_support = False
         
     def decide_edge(self, edge, iter_range = range(0,6)):
-        """
-            Apply transcript comparison rule to two overlapping transcripts
+        """Apply transcript comparison rule to two overlapping transcripts
 
             Args:
                 edge (Edge): edge between two transcripts
@@ -346,8 +345,7 @@ class Graph:
         return None
 
     def decide_component(self, component):
-        """
-            Applies transcript comparison rule to all transcripts of one component
+        """Applies transcript comparison rule to all transcripts of one component
             and returns the node IDs of all transcripts that are not removed by
             a comparison.
 

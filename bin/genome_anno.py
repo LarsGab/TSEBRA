@@ -260,9 +260,13 @@ class Transcript:
                     tx_line[8] = prefix + self.id
                     continue
                 else:
-                    g[8] = 'transcript_id \"{}\"; gene_id \"{}";'.format(\
-                        prefix + self.id, self.gene_id)
-                gtf.append(g)
+                    g[8] = f'transcript_id \"{prefix + self.id}\"; gene_id \"{self.gene_id}";'
+                gtf.append(g) 
+
+        if not 'exon' in self.transcript_lines.keys():
+            for g in self.transcript_lines['CDS']: 
+                gtf.append(g[:2] + ['exon'] + g[3:])                                
+
         gtf = sorted(gtf, key=lambda g: (g[3],g[4]))
         if tx_line:
             gtf = [tx_line] + gtf
