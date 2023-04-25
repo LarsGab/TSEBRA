@@ -32,6 +32,7 @@ def main():
                 if line[2] in ['gene', 'transcript']:
                     continue
                 id_prefix = line[0] + line[6]
+                id_prefix = id_prefix.replace(' ', '')                
                 transcript_id = line[8].split('transcript_id "')[1].split('";')[0]
                 temp = line[8].split('transcript_id "')
                 line[8] = '{}transcript_id "{}_{}";{}'.format(temp[0], id_prefix, transcript_id, '";'.join(temp[1].split('";')[1:]))

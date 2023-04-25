@@ -36,12 +36,10 @@ class Hint:
             self.src = attribute.split('src=')[1].split(';')[0]
         except IndexError:
             raise AttributeMissing('Source of Hint is missing in line {}.'.format(line))
-
-        self.mult = ''
+        self.score = float(self.score)
+        self.mult = 1
         if 'mult=' in attribute:
-            self.mult = attribute.split('mult=')[1].split(';')[0]
-        else:
-            self.mult= '1'
+            self.mult = int(attribute.split('mult=')[1].split(';')[0])       
 
         self.pri = ''
         if 'pri=' in attribute:
@@ -77,7 +75,8 @@ class Hintfile:
         # dictonary containing evidence
         # self.hints[chromosom_id] = [Hints()]
         self.hints = {}
-        self.src = set()
+        # dictionary with self.src[src] = sum_of_all_mults_of_hints_from_src
+        self.src = {}
         self.read_file(path)
 
     def read_file(self, path):
@@ -95,7 +94,9 @@ class Hintfile:
                 if not new_hint.chr in self.hints.keys():
                     self.hints.update({new_hint.chr : []})
                 self.hints[new_hint.chr].append(new_hint)
-                self.src.add(new_hint.src)
+                if new_hint.src not in self.src:
+                    self.src.update({new_hint.src : 0})
+                self.src[new_hint.src] += new_hint.mult
 
 class Evidence:
     """
@@ -105,7 +106,7 @@ class Evidence:
     def __init__(self):
         # hint_keys[chr][start_end_type_strand][src] = multiplicity
         self.hint_keys = {}
-        self.src = set()
+        self.src = {}
 
     def add_hintfile(self, path_to_hintfile):
         """
@@ -113,7 +114,10 @@ class Evidence:
         """
         # read hintfile
         hintfile = Hintfile(path_to_hintfile)
-        self.src = self.src.union(hintfile.src)
+        for s in hintfile.src:
+            if s not in self.src:
+                self.src.update({s : 0})
+            self.src[s] += hintfile.src[s]
         for chr in hintfile.hints.keys():
             if chr not in self.hint_keys.keys():
                 self.hint_keys.update({chr : {}})

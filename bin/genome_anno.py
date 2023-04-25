@@ -34,8 +34,10 @@ class Transcript:
         self.source_anno = source_anno
         self.start = -1
         self.end = -1
+        self.cds_len = -1
         self.cds_coords = {}
         self.strand = strand
+        self.source_method = ''
 
     def add_line(self, line):
         """
@@ -52,14 +54,51 @@ class Transcript:
         if line[2] not in self.transcript_lines.keys():
             self.transcript_lines.update({line[2] : []})
 
+        self.source_method = line[1]
+
         line[3] = int(line[3])
         line[4] = int(line[4])
         if self.start < 0 or line[3] < self.start:
             self.start = line[3]
         if self.end < 0 or line[4] > self.end:
             self.end = line[4]
-
+        if self.gene_id == '' and not line[2] == 'transcript':
+            self.gene_id = line[8].split('gene_id "')[1].split('";')[0]
         self.transcript_lines[line[2]].append(line)
+
+    def set_gene_id(self, new_gene_id):
+        self.gene_id = new_gene_id
+        
+    def get_type_coords(self, type, frame=True):
+        """
+            Get the coordinates and reading frame of the coding regions
+            Returns:
+                (dict(list(list(int)))): Dictionary with list of type coords for
+                                        each each frame phase (0,1,2)
+        """
+        # returns dict of cds_coords[phase] = [start_coord, end_coord] of all CDS
+        if frame:
+            coords = {'0' : [], '1' : [], '2' : [], '.' : []}
+        else:
+            coords = []
+        if type == 'CDS' and type not in self.transcript_lines.keys():
+            type = 'exon'
+        if type not in self.transcript_lines.keys():
+            return coords
+        for line in self.transcript_lines[type]:
+            if frame:
+                coords[line[7]].append([line[3], line[4]])
+            else:
+                coords.append([line[3], line[4]])
+        if frame:
+            for k in coords.keys():
+                coords[k].sort(key=lambda c: (c[0],c[1]))
+            if type == 'CDS':
+                coords['0'] += coords['.']
+                del coords['.']
+        else:
+            coords.sort(key=lambda c: (c[0],c[1]))
+        return coords
 
     def get_cds_coords(self):
         """
@@ -78,6 +117,8 @@ class Transcript:
                 key = 'exon'
             for line in self.transcript_lines[key]:
                 self.cds_coords[line[7]].append([line[3], line[4]])
+            for k in self.cds_coords.keys():
+                self.cds_coords[k].sort(key=lambda c: (c[0],c[1]))
         return self.cds_coords
 
     def add_missing_lines(self):
@@ -154,32 +195,54 @@ class Transcript:
         """
             Add start/stop codon lines.
         """
-        if not 'transcript' in self.transcript_lines.keys():
-            self.find_transcript()
-        tx = self.transcript_lines['transcript'][0]
 
-        line1 = [self.chr, tx[1], '', tx[3], tx[3] + 2, \
-        '.', tx[6], '.', "gene_id \"{}\"; transcript_id \"{}\";".format(\
-        self.gene_id, self.id)]
-        line2 = [self.chr, tx[1], '', tx[4] - 2, tx[4], \
-        '.', tx[6], '.', "gene_id \"{}\"; transcript_id \"{}\";".format(\
-        self.gene_id, self.id)]
-        if tx[6] == '+':
-            line1[2] = 'start_codon'
-            line2[2] = 'stop_codon'
-            start = line1
-            stop = line2
-        else:
-            line1[2] = 'stop_codon'
-            line2[2] = 'start_codon'
-            stop = line1
-            start = line2
         if not 'start_codon' in self.transcript_lines.keys():
-            self.add_line(start)
+            self.transcript_lines.update({'start_codon' : []})
         if not 'stop_codon' in self.transcript_lines.keys():
-            self.add_line(stop)
+            self.transcript_lines.update({'stop_codon' : []})
 
-    def get_gtf(self, prefix='', new_gene_id=None):
+
+        key = ''
+        if 'CDS' in self.transcript_lines.keys():
+            key = 'CDS'
+        elif 'exon' in self.transcript_lines.keys():
+            key = 'exon'
+        if key:
+            self.transcript_lines[key].sort(key = lambda x : x[3])
+            tx = self.transcript_lines[key][0]
+            line1 = [self.chr, tx[1], '', tx[3], tx[3] + 2, \
+            '.', self.strand, '0', "gene_id \"{}\"; transcript_id \"{}\";".format(\
+            self.gene_id, self.id)]
+            tx = self.transcript_lines[key][-1]
+            line2 = [self.chr, tx[1], '', tx[4] - 2, tx[4], \
+            '.', self.strand, '0', "gene_id \"{}\"; transcript_id \"{}\";".format(\
+            self.gene_id, self.id)]
+
+            fragmented_transcript = True
+            if tx[6] == '+':
+                line1[2] = 'start_codon'
+                line2[2] = 'stop_codon'
+                if self.transcript_lines[key][0][7] == 0:
+                    fragmented_transcript = False
+                start = line1
+                stop = line2
+            else:
+                line1[2] = 'stop_codon'
+                line2[2] = 'start_codon'
+                if self.transcript_lines[key][-1][7] == 0:
+                    fragmented_transcript = False
+                stop = line1
+                start = line2
+            if not 'start_codon' in self.transcript_lines.keys() and not fragmented_transcript:
+                if not fragmented_transcript:
+                    self.add_line(start)
+                else:
+                    self.transcript_lines.update({'start_codon' : []})
+            if not 'stop_codon' in self.transcript_lines.keys():
+                self.add_line(stop)
+
+
+    def get_gtf(self, prefix=''):
         """
             Creates gtf output for the transcript.
 
@@ -187,22 +250,26 @@ class Transcript:
                 (list(list(str))): List of lines in gtf format as lists
         """
         gtf = []
-        if new_gene_id:
-            g_id = new_gene_id
-        else:
-            g_id = self.gene_id
-
         if prefix:
             prefix += '.'
+        tx_line = []
         for k in self.transcript_lines.keys():
             for g in self.transcript_lines[k]:
                 if k == 'transcript':
-                    g[8] = prefix + self.id
+                    tx_line  = g
+                    tx_line[8] = prefix + self.id
+                    continue
                 else:
-                    g[8] = 'transcript_id \"{}\"; gene_id \"{}";'.format(\
-                        prefix + self.id, g_id)
-                gtf.append(g)
-        gtf = sorted(gtf, key=lambda g:g[3])
+                    g[8] = f'transcript_id \"{prefix + self.id}\"; gene_id \"{self.gene_id}";'
+                gtf.append(g) 
+
+        if not 'exon' in self.transcript_lines.keys():
+            for g in self.transcript_lines['CDS']: 
+                gtf.append(g[:2] + ['exon'] + g[3:])                                
+
+        gtf = sorted(gtf, key=lambda g: (g[3],g[4]))
+        if tx_line:
+            gtf = [tx_line] + gtf
         return gtf
 
 class Anno:
@@ -220,6 +287,7 @@ class Anno:
         self.gene_gtf = {}
         self.transcripts = {}
         self.path = path
+        self.translation_tab = []
 
     def addGtf(self):
         """
@@ -229,6 +297,7 @@ class Anno:
         with open (self.path, 'r') as file:
             file_lines = csv.reader(file, delimiter='\t')
             for line in file_lines:
+                line = [l.strip(' ') for l in line]
                 if line[0][0] ==  '#':
                     continue
                 line[3] = int(line[3])
@@ -239,10 +308,10 @@ class Anno:
                     if not gene_id in self.gene_gtf.keys():
                         self.gene_gtf.update({gene_id : line})
                     else:
-                        sys.stderr.write('ERROR, gene_id not unique: {}'.format(gene_id))
+                        sys.stderr.write('ERROR, gene_id not unique: {}\n'.format(gene_id))
                 elif line[2] == 'transcript':
                     transcript_id = line[8]
-                    gene_id = transcript_id.split('.')[0]
+                    gene_id = ''
                     self.transcript_update(transcript_id, gene_id, line[0], line[6])
                     self.transcripts[transcript_id].add_line(line)
                 else:
@@ -312,33 +381,70 @@ class Anno:
         if not t_id in self.transcripts.keys():
             self.transcripts.update({ t_id : Transcript(t_id, g_id, chr, self.id, strand)})
 
+    def find_genes(self):
+        """
+            Find all genes in the annotation and find the transcripts that
+            belong to each gene. Also, cretae a dict with the gtf lines for each gene.
+        """
+        self.gene_gtf = {}
+        self.genes = {}
+        for tx in self.transcripts.values():
+            if tx.gene_id in self.genes.keys():
+                if not (tx.chr == self.gene_gtf[tx.gene_id][0] and \
+                    tx.strand == self.gene_gtf[tx.gene_id][6]):
+                    sys.stderr.write('ERROR, gene_id not unique: {}.'.format(tx.gene_id))
+                    tx.gene_id = tx.gene_id + '.' + tx.chr + '.' + tx.strand
+                    sys.stderr.write(' Adding new gene: {}\n'.format(tx.gene_id))
+                else:
+                    self.genes[tx.gene_id].append(tx.id)
+                    self.gene_gtf[tx.gene_id][3] = min(self.gene_gtf[tx.gene_id][3], \
+                        tx.start)
+                    self.gene_gtf[tx.gene_id][4] = max(self.gene_gtf[tx.gene_id][4], \
+                        tx.end)
+                    continue
+            self.genes.update({tx.gene_id : [tx.id]})
+            self.gene_gtf.update({tx.gene_id : [tx.chr, tx.source_method, 'gene', \
+                tx.start, tx.end, '.', tx.strand, '.', tx.gene_id]})
+
     def get_gtf(self):
         """
-            Get annotaion file as gtf list
+            Get annotaion file as gtf list.
             Returns:
                 list(list(str)): Gtf file as list of lists
         """
         gtf = []
-        for k in self.genes.keys():
-            if k in self.gene_gtf.keys():
-                gtf.append(self.gene_gtf[k])
-                #gtf += '\t'.join(map(str, self.gene_gtf[k])) + '\n'
-            for t_id in self.genes[k]:
-                gtf += self.transcripts[t_id].get_gtf()
+        gene_gtf = sorted(self.gene_gtf.values(), key=lambda g: (g[0],g[3],g[4]))
+        for gene in gene_gtf:
+            gtf.append(gene)
+            for tx_id in self.genes[gene[8]]:
+                gtf += self.transcripts[tx_id].get_gtf()
         return gtf
 
-    def get_subset_gtf(self, tx_list):
+    def add_transcripts(self, txs, id_prefix=''):
         """
-            Get annotaion file for a subset of transcripts
+            Adds a dict of transcripts to the transcripts of the annotation.
+            Args:
+                dict(Transcript()): dictionary of Transcripts added to the annotation
+        """
+        if not id_prefix:
+            self.transcripts.update({txs})
+        else:
+            for tx in txs.values():
+                tx.id = id_prefix + tx.id
+                self.transcripts.update({tx.id : tx})
+
+    def get_subset(self, tx_list):
+        """
+            Get annotaion file for a subset of transcripts.
             Args:
                 tx_list (list(str)): List of transcript IDs
             Returns:
                 list(list(str)): Gtf file as list of lists
         """
-        gtf = []
+        tx_subset = {}
         for tx in tx_list:
-            gtf += self.transcripts[tx[0]].get_gtf(self.id, tx[1])
-        return gtf
+            tx_subset.update({tx : self.transcripts[tx]})
+        return tx_subset
 
     def change_id(self, new_id):
         """
@@ -346,7 +452,7 @@ class Anno:
         """
         self.id = new_id
         for k in self.transcripts.keys():
-            self.transcripts.source_anno = self.id
+            self.transcripts[k].source_anno = self.id
 
     def get_transcript_list(self):
         """
@@ -354,3 +460,50 @@ class Anno:
                 (List(Transcript)): List of all transcripts.
         """
         return list(self.transcripts.values())
+
+    def rename_tx_ids(self, prefix=''):
+        """
+            Renames all tx and genes and returns translation table for old tx id to new tx id.
+            Args:
+                prefix (string): String added before each tx and gene ID.
+            Returns:
+                translation_tab (list(str, str)): Translation table for old tx id to new tx id.
+        """
+        self.translation_tab = []
+        gene_numb = 1
+        old_gene_gtf = sorted(self.gene_gtf.values(), key=lambda g: (g[0],g[3],g[4]))
+        self.gene_gtf = {}
+        old_genes = self.genes
+        self.genes = {}
+        old_txs = self.transcripts
+        self.transcripts = {}
+        if prefix:
+            prefix += '_'
+        for gene in old_gene_gtf:
+            tx_numb = 1
+            old_gene_id = gene[8]
+            new_gene_id = "{}g{}".format(prefix, gene_numb)
+            gene[8] = new_gene_id
+            self.genes.update({new_gene_id : []})
+            self.gene_gtf.update({new_gene_id : gene})
+            for old_tx_id in old_genes[old_gene_id]:
+                new_tx_id = "{}g{}.t{}".format(prefix, gene_numb, tx_numb)
+                self.transcripts.update({new_tx_id : old_txs[old_tx_id]})
+                self.transcripts[new_tx_id].id = new_tx_id
+                self.transcripts[new_tx_id].gene_id = new_gene_id
+                self.genes[new_gene_id].append(new_tx_id)
+                tx_numb +=1
+                self.translation_tab.append([new_tx_id, old_tx_id])
+            gene_numb += 1
+        return self.translation_tab
+
+    def write_anno(self, out_path):
+        """
+            Write Annotation in gtf format to out_path.
+            Args:
+                (str) : path to the output file
+        """
+        with open(out_path, 'w+') as file:
+            out_writer = csv.writer(file, delimiter='\t', quotechar = "|", lineterminator = '\n')
+            for line in self.get_gtf():
+                out_writer.writerow(line)
