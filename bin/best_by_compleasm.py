@@ -105,7 +105,9 @@ def find_genemark_gtf(input_dir):
     for genemark_dir in genemark_directories:
         genemark_gtf_file = os.path.join(input_dir, genemark_dir, "genemark.gtf")
         training_gtf_file = os.path.join(input_dir, genemark_dir, "training.gtf")
-        if os.path.isfile(genemark_gtf_file):
+        if not os.path.isfile(training_gtf_file):
+            training_gtf_file = os.path.join(input_dir, "genemark.good.gtf")
+        if os.path.isfile(genemark_gtf_file) and os.path.isfile(training_gtf_file):
             return check_file(genemark_gtf_file), check_file(training_gtf_file)
 
     return False, False
@@ -275,7 +277,7 @@ def determine_mode(path_dir):
         SystemExit: If the files are not complete for either of the runs
 
     """
-    if path_dir["braker_aa"] and path_dir["braker_gtf"] and path_dir["hints"] and path_dir["genome"] and path_dir["augustus_aa"] and path_dir["augustus_gtf"] and path_dir["genemark.gtf"] and path_dir["training_gtf"] and path_dir["hints"]:
+    if path_dir["braker_aa"] and path_dir["braker_gtf"] and path_dir["hints"] and path_dir["genome"] and path_dir["augustus_aa"] and path_dir["augustus_gtf"] and path_dir["genemark_gtf"] and path_dir["training_gtf"] and path_dir["hints"]:
         return "BRAKER"
     elif path_dir["galba_aa"] and path_dir["galba_gtf"] and path_dir["miniprot_trainingGenes.gtf"] and path_dir["genome"] and path_dir["hints"]:
         return "GALBA"
