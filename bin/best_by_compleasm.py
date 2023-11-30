@@ -36,12 +36,12 @@ argparser.add_argument('-p', '--busco_db', type=str, required = True,
 
 args = argparser.parse_args()
 
-def parse_busco(file):
+def parse_compleasm(file):
     """
-    Parse the BUSCO statistics from the specified file.
+    Parse the compleasm statistics from the specified file.
 
     Args:
-        file (str): Path to the file containing BUSCO statistics.
+        file (str): Path to the file containing compleasm statistics.
 
     Returns:
         float: percentage of missing BUSCOs.
@@ -51,12 +51,12 @@ def parse_busco(file):
 
     """
     missing = 0
+    stat_pattern = r'M:(\d+\.\d+)\%, \d+'
     try:
         with open(file, "r") as f:
             for line in f:
-                stat_pattern = r'\s+C:(\d+\.\d+)\%\[S:(\d+\.\d+)%,D:(\d+\.\d+)\%\],F:(\d+\.\d+)%,M:(\d+\.\d+)%,n:(\d+)'
                 if re.search(stat_pattern, line):
-                    print("BUSCO statistics found in file: " + file)
+                    print("compleasm statistics found in file: " + file)
                     print(line)
                     missing = float(re.search(stat_pattern, line).group(5))
     except IOError:
@@ -128,19 +128,30 @@ def run_compleasm(protein_files, threads, busco_db, tmp_dir):
         SystemExit: If there is an error in execting compleasm.
 
     """
-
+    # download the BUSCO database if not present
+    if not os.path.exists("mb_downloads/" + args.busco_db):
+        # cut off the _odb10 suffix from args.busco_db
+        # if it exists
+        if args.busco_db.endswith("_odb10"):
+            busco_db = args.busco_db[:-6]
+        else:
+            busco_db = args.busco_db
+        compleasm_cmd = [args.compleasm_bin, "download", busco_db]
+    # run compleasm on the protein files
     for protein_file in protein_files:
-        complasm_cmd = [args.compleasm_bin, "protein", "-p", protein_file, "-l", args.busco_db, "-t", args.threads, "-o", args.tmp_dir]
+        # this currently only works with branch 0.2.3 from github
+        # create a tool-specific output subdirectory
+        tool = re.search(r'^([^.]+)\.', os.path.basename(protein_file)).group(1)
+        tool_out_dir = args.tmp_dir + "/" + tool
+        complasm_cmd = [args.compleasm_bin, "protein", "-p", protein_file, "-l", busco_db, "-t", args.threads, "-o", tool_out_dir]
         run_simple_process(compleasm_cmd)
 
     result_dict = {}
     for protein_file in protein_files:
         # identify the gene prediction program from the protein file name
         tool = re.search(r'^([^.]+)\.', os.path.basename(protein_file)).group(1)
-        result_dict[tool] = check_file(tmp_dir + "/" + tool + "_busco/short_summary.specific." + 
-                                      busco_db + "." + tool + "_busco.txt")
-    
-    
+        result_dict[tool] = check_file(tmp_dir + "/" + tool + "summary.txt")
+
     return result_dict
 
 def run_getanno(annobin, genome_file, gtf, output_dir):
@@ -280,68 +291,6 @@ def determine_mode(path_dir):
 def check_dir(dir):
     """
     Check if the specified directory exists.
-# Step 1: Find all input files
-file_paths = find_input_files(args)
-
-# Step 2: find out which GeneMark was used: ETP or EP or ET or ES or none
-file_paths["genemark_gtf"], file_paths["training_gtf"] = find_genemark_gtf(args.input_dir)
-
-# Step 3: Check if all dependencies are available
-args.tsebra = check_binary(args.tsebra, "tsebra.py")
-args.getanno = check_binary(args.getanno, "getAnnoFastaFromJoingenes.py")
-# we do not check for BUSCO because it is hidden in an environment
-
-# Step 4: Check if temporary directory exists
-# if not, create it
-if not os.path.exists(args.tmp_dir):
-    try:
-        os.makedirs(args.tmp_dir)
-    except OSError:
-        print("ERROR: Creation of the directory %s failed" % args.tmp_dir)
-        sys.exit(1)
-
-# Step 5: Create protein sequene file for GeneMark gtf file
-file_paths["genemark_aa"] = run_getanno(args.getanno, args.genome, file_paths["genemark_gtf"], args.tmp_dir)
-
-# Step 6: run BUSCO
-protein_file_list = [file_paths["genemark_aa"], file_paths["braker_aa"], file_paths["augustus_aa"]]
-busco_out_dict = run_busco(protein_file_list, args.threads, args.busco_db, args.tmp_dir)
-
-# Step 7: parse and compare the number of missing BUSCOs
-genemark_missing = parse_busco(busco_out_dict["genemark"])
-augustus_missing = parse_busco(busco_out_dict["augustus"])
-braker_missing = parse_busco(busco_out_dict["braker"])
-
-# Step 8: Decide whether the provided BRAKER gene set is good enough
-if braker_missing <= augustus_missing and braker_missing <= genemark_missing and braker_missing <= 5:
-    print("The BRAKER gene set " + file_paths["braker_gtf"] + " is the best one. It lacks " + str(braker_missing) + " BUSCOs.")
-    sys.exit(0)
-elif augustus_missing >= genemark_missing:
-    tsebra_force = file_paths["genemark_gtf"]
-    not_tsebra_force = file_paths["augustus_gtf"]
-else:
-    tsebra_force = file_paths["augustus_gtf"]
-    not_tsebra_force = file_paths["genemark_gtf"]
-
-# Step 9: Run TSEBRA and enforce the best gene set
-tsebra_cmd = [args.tsebra, "-k", file_paths["training_gtf"] + "," + tsebra_force,
-              "-g", not_tsebra_force, "-e", file_paths["hints"], "-o", args.tmp_dir + "/better_braker.gtf"]
-run_simple_process(tsebra_cmd)
-
-# Step 10: generate protein sequence file for the new BRAKER gene set
-better_gtf = check_file(args.tmp_dir + "/better.gtf")
-bb_aa = run_getanno(args.getanno, args.genome, better_gtf, args.tmp_dir)
-
-# Step 11: Run BUSCO on the new BRAKER gene set
-secondary_busco_out = run_busco([bb_aa], args.threads, args.busco_db, args.tmp_dir)
-
-# Step 12: parse BUSCO output and report numbers
-better_braker_missing = parse_busco(list(secondary_busco_out.values())[0])
-if better_braker_missing < braker_missing:
-    print("The new best BRAKER gene set is " + better_gtf + ". BUSCO results:")
-    parse_busco(better_braker_missing)
-else:
-    print("WARNING: The new BRAKER gene set is not better than the original one :-(")
 
     Returns:
         str: Path to the directory if it exists.
