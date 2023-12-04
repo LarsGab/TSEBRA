@@ -6,6 +6,8 @@ import argparse
 import subprocess
 from inspect import currentframe, getframeinfo
 import shutil
+import re
+from datetime import datetime
 
 __author__ = "Katharina J. Hoff"
 __copyright__ = "Copyright 2023. All rights reserved."
@@ -30,9 +32,9 @@ argparser.add_argument('-f', '--getanno', type=str, required = False,
 argparser.add_argument('-g', '--genome', type=str, required = True,
                             help = 'Genome FASTA file')
 argparser.add_argument('-t', '--threads', type=str, required = False, default = 1,
-                       help = 'Number of threads to use for running BUSCO')
+                       help = 'Number of threads to use for running compleasm')
 argparser.add_argument('-p', '--busco_db', type=str, required = True,
-                            help = 'BUSCO lineage for running BUSCO')
+                            help = 'BUSCO lineage for running compleasm')
 
 args = argparser.parse_args()
 
@@ -56,9 +58,7 @@ def parse_compleasm(file):
         with open(file, "r") as f:
             for line in f:
                 if re.search(stat_pattern, line):
-                    print("compleasm statistics found in file: " + file)
-                    print(line)
-                    missing = float(re.search(stat_pattern, line).group(5))
+                    missing = float(re.search(stat_pattern, line).group(1))
     except IOError:
         print("ERROR: Could not open file: " + file)
         sys.exit(1)
@@ -106,7 +106,7 @@ def find_genemark_gtf(input_dir):
         genemark_gtf_file = os.path.join(input_dir, genemark_dir, "genemark.gtf")
         training_gtf_file = os.path.join(input_dir, genemark_dir, "training.gtf")
         if not os.path.isfile(training_gtf_file):
-            training_gtf_file = os.path.join(input_dir, "genemark.good.gtf")
+            training_gtf_file = os.path.join(input_dir, "traingenes.gtf")
         if os.path.isfile(genemark_gtf_file) and os.path.isfile(training_gtf_file):
             return check_file(genemark_gtf_file), check_file(training_gtf_file)
 
@@ -132,6 +132,7 @@ def run_compleasm(protein_files, threads, busco_db, tmp_dir):
     """
     # download the BUSCO database if not present
     if not os.path.exists("mb_downloads/" + args.busco_db):
+        print("We think honestly that " + string("mb_dowloads/" + args.busco_db) + " does not exist.")
         # cut off the _odb10 suffix from args.busco_db
         # if it exists
         if args.busco_db.endswith("_odb10"):
@@ -139,20 +140,22 @@ def run_compleasm(protein_files, threads, busco_db, tmp_dir):
         else:
             busco_db = args.busco_db
         compleasm_cmd = [args.compleasm_bin, "download", busco_db]
+        run_simple_process(compleasm_cmd)
+
     # run compleasm on the protein files
     for protein_file in protein_files:
         # this currently only works with branch 0.2.3 from github
         # create a tool-specific output subdirectory
         tool = re.search(r'^([^.]+)\.', os.path.basename(protein_file)).group(1)
         tool_out_dir = args.tmp_dir + "/" + tool
-        complasm_cmd = [args.compleasm_bin, "protein", "-p", protein_file, "-l", busco_db, "-t", args.threads, "-o", tool_out_dir]
+        compleasm_cmd = [args.compleasm_bin, "protein", "-p", protein_file, "-l", busco_db, "-t", str(args.threads), "-o", tool_out_dir]
         run_simple_process(compleasm_cmd)
 
     result_dict = {}
     for protein_file in protein_files:
         # identify the gene prediction program from the protein file name
         tool = re.search(r'^([^.]+)\.', os.path.basename(protein_file)).group(1)
-        result_dict[tool] = check_file(tmp_dir + "/" + tool + "summary.txt")
+        result_dict[tool] = check_file(tmp_dir + "/" + tool + "/summary.txt")
 
     return result_dict
 
@@ -187,13 +190,9 @@ def run_simple_process(args_lst):
 
     """
     try:
-        print(str(datetime.now().date()) + " " +
-          str(datetime.now().time()) + " Trying to execute the following command:")
         print(" ".join(args_lst))
         result = subprocess.run(
             args_lst, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print(str(datetime.now().date()) + " " +
-          str(datetime.now().time()) + " Suceeded in executing command.")
         if(result.returncode == 0):
             return(result)
         else:
@@ -370,11 +369,9 @@ def main():
             print("The BRAKER gene set " + file_paths["braker_gtf"] + " is the best one. It lacks " + str(braker_missing) + "% BUSCOs.")
             sys.exit(0)
         elif augustus_missing >= genemark_missing:
-            print("We end up in the second case.")
             tsebra_force = file_paths["genemark_gtf"]
             not_tsebra_force = file_paths["augustus_gtf"]
         else:
-            print("We end up in the third case.")
             tsebra_force = file_paths["augustus_gtf"]
             not_tsebra_force = file_paths["genemark_gtf"]
     elif w_mode == "GALBA":
@@ -385,7 +382,6 @@ def main():
             print("The GALBA gene set " + file_paths["galba_gtf"] + " is the best one. It lacks " + str(galba_missing) + "% BUSCOs.")
             sys.exit(0)
         else:
-            print("We end up in the second case.")
             tsebra_force = file_paths["miniprot_trainingGenes_gtf"]
             not_tsebra_force = file_paths["galba_gtf"]
 
@@ -398,18 +394,19 @@ def main():
                       "-g", not_tsebra_force, "-e", file_paths["hints"], "-o", args.tmp_dir + "/better.gtf"]
     run_simple_process(tsebra_cmd)
 
-    # Step 10: generate protein sequence file for the new BRAKER gene set
+    # Step 11: generate protein sequence file for the new BRAKER gene set
     better_gtf = check_file(args.tmp_dir + "/better.gtf")
     bb_aa = run_getanno(args.getanno, args.genome, better_gtf, args.tmp_dir)
 
-    # Step 11: Run compleasm on the new gene set
-    secondary_compleasm_out = run_busco([bb_aa], args.threads, args.busco_db, args.tmp_dir)
+    # Step 12: Run compleasm on the new gene set
+    secondary_compleasm_out = run_compleasm([bb_aa], args.threads, args.busco_db, args.tmp_dir)
 
-    # Step 12: parse BUSCO output and report numbers
-    better_missing = parse_busco(list(secondary_compleasm_out.values())[0])
+    # Step 13: parse compleasm output and report numbers
+    better_missing = parse_compleasm(list(secondary_compleasm_out.values())[0])
     if w_mode == "BRAKER":
         if better_missing < braker_missing:
             print("The new best BRAKER gene set is " + better_gtf + ".")
+            print("It is missing " + str(better_missing) + "% BUSCOs.")
         else:
             # if the new gene set is not superior, produce an output that tells the user what
             # of the previously existing gene sets had the lowest percentage of missing BUSCOs
