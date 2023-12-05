@@ -132,7 +132,6 @@ def run_compleasm(protein_files, threads, busco_db, tmp_dir):
     """
     # download the BUSCO database if not present
     if not os.path.exists("mb_downloads/" + args.busco_db):
-        print("We think honestly that " + string("mb_dowloads/" + args.busco_db) + " does not exist.")
         # cut off the _odb10 suffix from args.busco_db
         # if it exists
         if args.busco_db.endswith("_odb10"):
