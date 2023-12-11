@@ -18,7 +18,8 @@ __email__ = "katharina.hoff@uni-greifswald.de"
 __status__ = "development"
 
 argparser = argparse.ArgumentParser(description = 'Find or build the best gene set generated with BRAKER and ' + 
-                                    'TSEBRA minimizing missing BUSCOs using compleasm.')
+                                    'TSEBRA minimizing missing BUSCOs using compleasm. Will only compute a ' +
+                                    'new BRAKER gene set if the percentage of missing BUSCOs exceeds 5%.')
 argparser.add_argument('-m', '--tmp_dir', type=str, required = True,
                           help = 'Temporary directory where intermediate files will be written')
 argparser.add_argument('-c', '--compleasm_bin', type=str, required = False,
@@ -275,7 +276,7 @@ def determine_mode(path_dir):
         SystemExit: If the files are not complete for either of the runs
 
     """
-    if path_dir["braker_aa"] and path_dir["braker_gtf"] and path_dir["hints"] and path_dir["genome"] and path_dir["augustus_aa"] and path_dir["augustus_gtf"] and path_dir["genemark_gtf"] and path_dir["training_gtf"] and path_dir["hints"]:
+    if path_dir["braker_aa"] and path_dir["braker_gtf"] and path_dir["hints"] and path_dir["genome"] and path_dir["augustus_aa"] and path_dir["augustus_gtf"] and path_dir["genemark_gtf"] and path_dir["hints"]:
         return "BRAKER"
     elif path_dir["galba_aa"] and path_dir["galba_gtf"] and path_dir["miniprot_trainingGenes.gtf"] and path_dir["genome"] and path_dir["hints"]:
         return "GALBA"
@@ -283,7 +284,7 @@ def determine_mode(path_dir):
         print("ERROR: The specified directory does not contain all required files.")
         print("These are the files that were found:")
         print(path_dir)
-        print("We require the following key files for a BRAKER run: braker.aa, braker.gtf, hintsfile.gff, genome.fa, augustus.hints.aa, augustus.hints.gtf, genemark.gtf, training.gtf, hintsfile.gff")
+        print("We require the following key files for a BRAKER run: braker.aa, braker.gtf, hintsfile.gff, genome.fa, augustus.hints.aa, augustus.hints.gtf, genemark.gtf, hintsfile.gff")
         print("We require the following key files for a GALBA run: galba.aa, galba.gtf, miniprot_trainingGenes.gtf, genome.fa, hintsfile.gff")
         sys.exit(1)
 
@@ -363,8 +364,7 @@ def main():
         print("BRAKER is missing " + str(braker_missing) + " BUSCOs.")
         print("GeneMark is missing " + str(genemark_missing) + " BUSCOs.")
         print("Augustus is missing " + str(augustus_missing) + " BUSCOs.")
-
-        if braker_missing <= augustus_missing and braker_missing <= genemark_missing:
+        if braker_missing <= 5 and braker_missing <= augustus_missing and braker_missing <= genemark_missing:
             print("The BRAKER gene set " + file_paths["braker_gtf"] + " is the best one. It lacks " + str(braker_missing) + "% BUSCOs.")
             sys.exit(0)
         elif augustus_missing >= genemark_missing:
@@ -386,7 +386,12 @@ def main():
 
     # Step 10: Run TSEBRA and enforce the best gene set
     if w_mode == "BRAKER":
-        tsebra_cmd = [args.tsebra, "-k", file_paths["training_gtf"] + "," + tsebra_force,
+        if file_paths['training_gtf']:
+            tsebra_cmd = [args.tsebra, "-k", file_paths["training_gtf"] + "," + tsebra_force,
+                      "-g", not_tsebra_force, "-e", file_paths["hints"], "-o", args.tmp_dir + "/better.gtf"]
+        else:
+            print("Warning: No training.gtf file found. TSEBRA will be run without it, you may be using an older version of BRAKER.")
+            tsebra_cmd = [args.tsebra, "-k", tsebra_force,
                       "-g", not_tsebra_force, "-e", file_paths["hints"], "-o", args.tmp_dir + "/better.gtf"]
     elif w_mode == "GALBA":
         tsebra_cmd = [args.tsebra, "-k", tsebra_force,
@@ -409,7 +414,7 @@ def main():
         else:
             # if the new gene set is not superior, produce an output that tells the user what
             # of the previously existing gene sets had the lowest percentage of missing BUSCOs
-            print("WARNING: The new BRAKER gene set is not better than the original one :-(")
+            print("WARNING: The new BRAKER gene set is not better than the original one!")
             print("The best gene set produced by the original BRAKER run is:")
             gene_sets = [file_paths["braker_gtf"], file_paths["genemark_gtf"], file_paths["augustus_gtf"]]
             # Create a dictionary to map gene set names to their respective missing values
